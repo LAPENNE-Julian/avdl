@@ -1,14 +1,17 @@
-<footer>
-        <nav class="footer__nav">
-            <div class="footer__nav__menu">
-                    <ul>
+        <footer class="py-2 bg-dark fixed-bottom">
+            <div class="container">
+                <nav class="m-0 text-center text-white">
+                    <ul class="list-inline">
                         <!-- <li><a href="">Qui sommes-nous ?</a></li> -->
-                        <li><a href="">Contact</a></li>
-                        <li><a href="">Mentions légales</a></li>
+                        <li class="list-inline-item"><a href="">Contact</a></li>
+                        <li class="list-inline-item"><a href="">Mentions légales</a></li>
                     </ul>
+                </nav>
             </div>
-        </nav>
-    </footer>
-    <script defer src="assets/js/app.js"></script>
-</body>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
+        </script>
+    </body>
 </html>
