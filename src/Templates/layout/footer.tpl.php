@@ -1,4 +1,4 @@
-        <footer class="py-2 bg-dark fixed-bottom">
+        <footer class="bg-dark bottom">
             <div class="container">
                 <nav class="m-0 text-center text-white">
                     <ul class="list-inline">
