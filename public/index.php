@@ -11,6 +11,14 @@ $router->map('GET', '/', [
     'method' => 'home',
 ], 'main-home');
 
+/**
+ * Anecdote
+ */
+$router->map('GET', '/anecdote/[i:id]', [
+    'controller' => '\App\Controllers\AnecdoteController',
+    'method' => 'read',
+], 'anecdote-read');
+
 /* -------------
 --- DISPATCH ---
 --------------*/

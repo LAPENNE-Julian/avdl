@@ -5,10 +5,30 @@ body {
     background-size: cover;
 }
 
-header {
-    width: 100%;
+/* footer */
+footer, nav {
+    width : 100%;
 }
 
+footer ul {
+    list-style:none;
+    line-height:1.6;
+    font-size:inherit;
+    margin-bottom:0;
+}
+
+footer ul a {
+    color:inherit;
+    text-decoration:none;
+    opacity:0.6;
+}
+  
+footer ul a:hover {
+    opacity:0.8;
+    color: white;
+}
+
+/*Home page*/
 #home {
     background-color: rgb(250 250 250 / 0.9);
     padding: 12%;
@@ -26,10 +46,9 @@ header {
 }
 
 /*caroussel*/
-
 #latest, #best {
     background-color: rgb(250 250 250 / 0.9);
-    border-bottom: medium solid gray;
+    margin: 5% 0;
     padding: 0;
 }
 
@@ -68,31 +87,23 @@ h4 {
 
 .carousel-control-prev, 
 .carousel-control-next {
-
     width: 5%;
 }
 
-/* footer */
-
-footer, nav {
-    width : 100%;
+/*anecdote-read*/
+#anecdote-read {
+    background-color: rgb(250 250 250 / 0.9);
+    padding: 0%;
+    margin: 10% 0;
 }
 
-footer ul {
-    list-style:none;
-    line-height:1.6;
-    font-size:inherit;
-    margin-bottom:0;
+#anecdote-categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
 
-footer ul a {
-    color:inherit;
-    text-decoration:none;
-    opacity:0.6;
+#anecdote-read h2 {
+    font-size: 110%;
+    margin-bottom: 5%;
 }
-  
-footer ul a:hover {
-    opacity:0.8;
-    color: white;
-}
-
