@@ -104,6 +104,62 @@ h4 {
 }
 
 #anecdote-read h2 {
-    font-size: 110%;
-    margin-bottom: 5%;
+    font-size: 150%;
+    margin: 5% 0%;
+}
+
+#anecdote-content {
+    display: flex;
+    flex-direction: row;
+    padding: 0%;
+    margin-top: 5%;
+    align-items: center;
+}
+
+#anecdote-content-vote {
+    width: 25%;
+    margin-right: 10%;
+}
+
+#anecdote-content p {
+    font-size: 120%;
+}
+
+#anecdote-source {
+    text-align: end;
+    margin-top: 10%;
+}
+
+#anecdote-source a {
+    color: darkblue;
+}
+
+#anecdote-known ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    margin-left: 10%;
+}
+
+#anecdote-known li {
+    margin-right: 5%;
+    margin-top: 10%;
+}
+
+@media (max-width: 560px){
+    #anecdote-known ul {
+        flex-direction: column;
+    }
+}
+
+#anecdote-navigation ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 15%;
+}
+
+#anecdote-navigation ul a:hover {
+    opacity:0.8;
+    color: rgb(68, 67, 67);
 }
