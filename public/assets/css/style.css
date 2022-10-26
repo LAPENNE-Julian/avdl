@@ -94,7 +94,12 @@ h4 {
 #anecdote-read {
     background-color: rgb(250 250 250 / 0.9);
     padding: 0%;
-    margin: 10% 0;
+    margin: 5% 0;
+}
+
+#anecdote {
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
 
 #anecdote-categories {
@@ -147,6 +152,15 @@ h4 {
 }
 
 @media (max-width: 560px){
+    #anecdote {
+        padding-top: 10%;
+        padding-bottom: 10%;
+    }
+
+    #anecdote-read {
+        margin: 10% 0;
+    }
+
     #anecdote-known ul {
         flex-direction: column;
     }
