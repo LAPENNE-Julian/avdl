@@ -114,6 +114,33 @@ footer ul a:hover {
     margin: 5% 0;
 }
 
+/*category-browse*/
+#category-browse {
+    background-color: rgb(250 250 250 / 0.9);
+    padding: 0%;
+    margin: 5% 0;
+}
+
+#category-browse-inner {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    padding : 5% 20% 10%;
+
+
+}
+
+.category-browse-item {
+    margin: 5%;
+    padding: 15%;
+    text-align: center;
+    border: medium solid black;
+    background-color: black;
+}
+
+.category-browse-item a {
+    color: white;
+}
+
 /*anecdote-browse*/
 #anecdote-browse-inner {
     padding-top: 0%;

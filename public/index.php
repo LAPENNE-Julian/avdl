@@ -24,6 +24,14 @@ $router->map('GET', '/anecdote/[i:id]', [
     'method' => 'read',
 ], 'anecdote-read');
 
+/**
+ * Category
+ */
+$router->map('GET', '/category', [
+    'controller' => '\App\Controllers\CategoryController',
+    'method' => 'browse',
+], 'category-browse');
+
 /* -------------
 --- DISPATCH ---
 --------------*/
