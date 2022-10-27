@@ -59,8 +59,9 @@
                 </li>
             </ul>
         </div>
+    </div>
 
-        <div id="anecdote-navigation">
+    <div id="arrow-navigation">
             <ul>
                 <li>
                     <a href="#" title="previous" alt="previous">
@@ -79,5 +80,4 @@
                 </li>
             </ul>
         </div>
-    </div>
 </section>
