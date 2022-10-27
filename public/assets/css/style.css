@@ -5,6 +5,39 @@ body {
     background-size: cover;
 }
 
+h3 {
+    font-size: 150%;
+    text-align: center;
+    padding-top: 2%;
+}
+
+h4 {
+    font-size: 110%;
+    margin-bottom: 5%;
+}
+
+.carousel-inner {
+    padding: 10% 15%;
+}
+
+#label-categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.label-category {
+    padding: 1% 2%;
+    margin-left: 2%;
+    margin-bottom: 5%;
+    border-radius: 10%;
+}
+
+#author {
+    text-align: end;
+    margin-top: 5%;
+}
+
 /* footer */
 footer, nav {
     width : 100%;
@@ -52,52 +85,32 @@ footer ul a:hover {
     padding: 0;
 }
 
-h3 {
-    font-size: 150%;
-    text-align: center;
-    padding-top: 2%;
-}
-
-.carousel-inner {
-    padding: 10% 15%;
-}
-
-#carousel-categories {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-}
-
-.label-category {
-    padding: 1% 2%;
-    margin-left: 2%;
-    margin-bottom: 5%;
-    border-radius: 10%;
-}
-
-h4 {
-    font-size: 110%;
-    margin-bottom: 5%;
-}
-
-#author {
-    text-align: end;
-    margin-top: 5%;
-}
-
 .carousel-control-prev, 
 .carousel-control-next {
     width: 5%;
 }
 
-/*anecdote-read*/
-#anecdote-read {
+/*anecdote-browse-read*/
+#anecdote-read #anecdote-browse {
     background-color: rgb(250 250 250 / 0.9);
     padding: 0%;
     margin: 5% 0;
 }
 
-#anecdote {
+/*anecdote-browse*/
+#anecdote-browse-inner {
+    padding-top: 0%;
+    padding-bottom: 5%;
+}
+
+.anecdote-browse-item {
+    border: medium solid rgb(145, 145, 145);
+    padding: 5%;;
+    margin: 5%;
+}
+
+/*anecdote-read*/
+#anecdote-read-inner {
     padding-top: 5%;
     padding-bottom: 5%;
 }
@@ -151,8 +164,21 @@ h4 {
     margin-top: 10%;
 }
 
+#anecdote-navigation ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 15%;
+}
+
+#anecdote-navigation ul a:hover {
+    opacity:0.8;
+    color: rgb(68, 67, 67);
+}
+
 @media (max-width: 560px){
-    #anecdote {
+    /*anecdote-read*/
+    #anecdote-read-inner {
         padding-top: 10%;
         padding-bottom: 10%;
     }
@@ -164,16 +190,4 @@ h4 {
     #anecdote-known ul {
         flex-direction: column;
     }
-}
-
-#anecdote-navigation ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 15%;
-}
-
-#anecdote-navigation ul a:hover {
-    opacity:0.8;
-    color: rgb(68, 67, 67);
 }

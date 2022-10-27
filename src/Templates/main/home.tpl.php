@@ -11,7 +11,7 @@
             <div class="carousel-inner">
                 
                 <div class="carousel-item active">
-                    <div id="carousel-categories" class="container-fluid">
+                    <div id="label-categories" class="container-fluid">
                             <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
                             <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
                     </div>
@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="carousel-item">
-                    <div id="carousel-categories" class="container-fluid">
+                    <div id="label-categories" class="container-fluid">
                             <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
                             <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
                     </div>
@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="carousel-item">
-                    <div id="carousel-categories" class="container-fluid">
+                    <div id="label-categories" class="container-fluid">
                             <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
                             <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
                     </div>
@@ -62,7 +62,7 @@
             <div class="carousel-inner">
 
                 <div class="carousel-item active">
-                    <div id="carousel-categories" class="container-fluid">
+                    <div id="label-categories" class="container-fluid">
                         <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
                         <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
                     </div>
@@ -72,7 +72,7 @@
                 </div>
 
                 <div class="carousel-item">
-                    <div id="carousel-categories" class="container-fluid">
+                    <div id="label-categories" class="container-fluid">
                         <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
                         <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
                     </div>
@@ -82,7 +82,7 @@
                 </div>
 
                 <div class="carousel-item">
-                    <div id="carousel-categories" class="container-fluid">
+                    <div id="label-categories" class="container-fluid">
                         <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
                         <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
                     </div>

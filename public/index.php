@@ -14,6 +14,11 @@ $router->map('GET', '/', [
 /**
  * Anecdote
  */
+$router->map('GET', '/anecdote', [
+    'controller' => '\App\Controllers\AnecdoteController',
+    'method' => 'browse',
+], 'anecdote-browse');
+
 $router->map('GET', '/anecdote/[i:id]', [
     'controller' => '\App\Controllers\AnecdoteController',
     'method' => 'read',

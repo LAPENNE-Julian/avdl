@@ -1,6 +1,6 @@
 <section id="anecdote-read" class="container-fluid">
-    <div id="anecdote" class="carousel-inner">
-        <div id="anecdote-categories" class="container-fluid">
+    <div id="anecdote-read-inner" class="carousel-inner">
+        <div id="label-categories" class="container-fluid">
             <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
             <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
         </div>

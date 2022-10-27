@@ -28,7 +28,7 @@
                             <a class="nav-link" aria-current="page" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Anecdotes</a>
+                            <a class="nav-link" href="<?php $_SERVER['HTTP_HOST'] ?>/anecdote">Anecdotes</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Catégories</a>
