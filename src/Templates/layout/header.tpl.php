@@ -31,7 +31,7 @@
                             <a class="nav-link" href="<?php $_SERVER['HTTP_HOST'] ?>/anecdote">Anecdotes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Catégories</a>
+                            <a class="nav-link" href="<?php $_SERVER['HTTP_HOST'] ?>/category">Catégories</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Hasard</a>

@@ -125,8 +125,6 @@ footer ul a:hover {
     display: grid;
     grid-template-columns: 33% 33% 33%;
     padding : 5% 20% 10%;
-
-
 }
 
 .category-browse-item {
@@ -139,6 +137,14 @@ footer ul a:hover {
 
 .category-browse-item a {
     color: white;
+}
+
+@media (max-width: 400px){
+    /*category-browse*/
+    #category-browse-inner {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 /*anecdote-browse*/
@@ -221,5 +227,10 @@ footer ul a:hover {
 
     #anecdote-known ul {
         flex-direction: column;
+    }
+
+    /*category-browse*/
+    #category-browse-inner {
+        grid-template-columns: 50% 50%;
     }
 }
