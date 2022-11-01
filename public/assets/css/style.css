@@ -308,14 +308,14 @@ footer ul a:hover {
 }
 
 /*backoffice*/
-#backoffice-anecdote, #backoffice-category {
+#backoffice-anecdote, #backoffice-category, #backoffice-user {
     background-color: white;
     padding: 2% 12% 12%;
     border-bottom: medium solid gray;
     margin-bottom: 5%;
 }
 
-#backoffice-anecdote-header, #backoffice-category-header {
+#backoffice-anecdote-header, #backoffice-category-header, #backoffice-user-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -336,7 +336,7 @@ footer ul a:hover {
     }
 
     /*backoffice*/
-    #backoffice-anecdote, #backoffice-category {
+    #backoffice-anecdote, #backoffice-category, #backoffice-user {
         padding: 0%;
     }
 }

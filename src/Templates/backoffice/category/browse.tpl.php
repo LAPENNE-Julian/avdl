@@ -53,7 +53,8 @@ require_once __DIR__ . '/../partials/nav.tpl.php';
 
         </td>
       </tr>
-      <?php endforeach; ?>
+      
+    <?php endforeach; ?>
     </tbody>
   </table>
 </div>

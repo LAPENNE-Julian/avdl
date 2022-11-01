@@ -47,6 +47,14 @@ $router->map('GET', '/category', [
 --------------*/
 
 /**
+ * BREAD user
+ */
+$router->map('GET', '/backoffice/user', [
+    'controller' => '\App\Controllers\backoffice\UserController',
+    'method' => 'browse',
+], 'backoffice-user-browse');
+
+/**
  * BREAD anecdote
  */
 $router->map('GET', '/backoffice/anecdote', [
