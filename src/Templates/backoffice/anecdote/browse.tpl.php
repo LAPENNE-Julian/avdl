@@ -5,7 +5,7 @@ require_once __DIR__ . '/../partials/nav.tpl.php';
 ?>
 
   <div id="backoffice-anecdote-header">
-    <h2>Anecdotes list</h2>
+    <h2 class="backoffice-header">Anecdotes list</h2>
 
     <div class="text-end">
       <a class="btn btn-dark btn-lg" href="/backoffice/anecdote/add">Add</a>
