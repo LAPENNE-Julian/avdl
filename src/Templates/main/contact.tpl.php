@@ -52,7 +52,7 @@
 
     <div id='contact-form'>
 
-        <h3>Nous contacter</h4>
+        <h3>Nous contacter</h3>
 
         <form id="contact-form-content" action="#" method="POST">
             

@@ -1,15 +1,17 @@
-<div class="container">
+<div id="backoffice-anecdote" class="container-fluid">
 
 <?php 
 require_once __DIR__ . '/../partials/nav.tpl.php';
 ?>
 
-  <h1>Anecdotes list</h1>
+  <div id="backoffice-anecdote-header">
+    <h2>Anecdotes list</h2>
 
-  <div class="text-end">
-    <a class="btn btn-dark btn-lg" href="/backoffice/anecdote/add">Add</a>
+    <div class="text-end">
+      <a class="btn btn-dark btn-lg" href="/backoffice/anecdote/add">Add</a>
+    </div>
   </div>
-
+  
   <table class="table table-striped">
     <thead>
       <tr>
