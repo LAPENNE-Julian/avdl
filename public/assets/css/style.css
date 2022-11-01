@@ -20,6 +20,12 @@ h4 {
     font-weight: bold;
 }
 
+#home, #legal-notices, #contact{
+    background-color: rgb(250 250 250 / 0.9);
+    padding: 12%;
+    border-bottom: medium solid gray;
+}
+
 .carousel-inner {
     padding: 10% 15%;
 }
@@ -83,12 +89,6 @@ footer ul a:hover {
 }
 
 /*Home page*/
-#home, #legal-notices {
-    background-color: rgb(250 250 250 / 0.9);
-    padding: 12%;
-    border-bottom: medium solid gray;
-}
-
 #home h2 {
     font-size: 400%;
     text-align: left;
@@ -135,6 +135,35 @@ footer ul a:hover {
 #legal-notices a {
     color: rgb(77, 139, 15);
     font-weight: bold;
+}
+
+/*contact*/
+#contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#contact-data {
+    background-color: black;
+    color: white;
+    padding: 5% 5%;
+}
+
+.contact-data-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    margin-bottom: 5%;
+}
+
+.contact-data-header h4 {
+    padding-left : 5%;
+    text-transform: uppercase;
+}
+
+#contact-data p {
+    margin-bottom: 20%;
 }
 
 /*anecdote-browse-read*/
