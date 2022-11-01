@@ -3,8 +3,8 @@
                 <nav class="m-0 text-center text-white">
                     <ul class="list-inline">
                         <!-- <li><a href="">Qui sommes-nous ?</a></li> -->
-                        <li class="list-inline-item"><a href="">Contact</a></li>
-                        <li class="list-inline-item"><a href="">Mentions légales</a></li>
+                        <li class="list-inline-item"><a href="/contact">Contact</a></li>
+                        <li class="list-inline-item"><a href="/mentions-legales">Mentions légales</a></li>
                     </ul>
                 </nav>
             </div>

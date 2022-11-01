@@ -11,6 +11,16 @@ $router->map('GET', '/', [
     'method' => 'home',
 ], 'main-home');
 
+$router->map('GET', '/contact', [
+    'controller' => '\App\Controllers\MainController',
+    'method' => 'contact',
+], 'main-contact');
+
+$router->map('GET', '/mentions-legales', [
+    'controller' => '\App\Controllers\MainController',
+    'method' => 'legal',
+], 'main-legal');
+
 /**
  * Anecdote
  */

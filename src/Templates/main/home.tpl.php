@@ -7,7 +7,7 @@
     <section id="latest" class="container-fluid">
         <h3>Nos dernières anecdotes</h3>
         
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div id="carousel-latest-anecdote" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 
                 <div class="carousel-item active">
@@ -43,7 +43,7 @@
 
             </div>
 
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel-latest-anecdote" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
@@ -58,7 +58,7 @@
     <section id="best" class="container-fluid">
         <h3>Top 5 anecdotes</h3>
         
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div id="carousel-best-anecdote" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
 
                 <div class="carousel-item active">
@@ -93,7 +93,7 @@
 
             </div>
 
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel-best-anecdote" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>

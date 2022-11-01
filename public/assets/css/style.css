@@ -16,6 +16,10 @@ h4 {
     margin-bottom: 5%;
 }
 
+.label-bold {
+    font-weight: bold;
+}
+
 .carousel-inner {
     padding: 10% 15%;
 }
@@ -79,7 +83,7 @@ footer ul a:hover {
 }
 
 /*Home page*/
-#home {
+#home, #legal-notices {
     background-color: rgb(250 250 250 / 0.9);
     padding: 12%;
     border-bottom: medium solid gray;
@@ -105,6 +109,32 @@ footer ul a:hover {
 .carousel-control-prev, 
 .carousel-control-next {
     width: 5%;
+}
+
+/*legale notices*/
+#legal-notices {
+    margin : 5% 0%;
+    padding: 5% 15%;
+    border : none;
+}
+
+#legal-notices h3 {
+    margin-bottom: 5%;
+}
+
+#legal-notices h4 {
+    font-weight: bold;
+}
+
+#legal-notices p {
+    text-align: justify;
+    margin-bottom: 5%;
+    line-height: 1.5;
+}
+
+#legal-notices a {
+    color: rgb(77, 139, 15);
+    font-weight: bold;
 }
 
 /*anecdote-browse-read*/
@@ -215,6 +245,16 @@ footer ul a:hover {
 }
 
 @media (max-width: 560px){
+
+    /*legal-notices*/
+    #legal-notices h3 {
+        margin-bottom: 10%;
+    }
+    
+    #legal-notices h4 {
+        margin-bottom: 10%;
+    }
+
     /*anecdote-read*/
     #anecdote-read-inner {
         padding-top: 10%;
