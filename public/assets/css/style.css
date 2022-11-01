@@ -20,7 +20,7 @@ h4 {
     font-weight: bold;
 }
 
-#home, #legal-notices, #contact{
+#home, #legal-notices, #contact {
     background-color: rgb(250 250 250 / 0.9);
     padding: 12%;
     border-bottom: medium solid gray;
@@ -208,15 +208,6 @@ footer ul a:hover {
     text-transform: uppercase;
 }
 
-@media (max-width: 700px) {
-    #contact {
-       flex-direction: column;
-    }
-    #contact-data {
-        margin: 0% 0% 10% 0%;
-    }
-}
-
 /*anecdote-browse-read*/
 #anecdote-read, #anecdote-browse {
     background-color: rgb(250 250 250 / 0.9);
@@ -247,14 +238,6 @@ footer ul a:hover {
 
 .category-browse-item a {
     color: white;
-}
-
-@media (max-width: 400px){
-    /*category-browse*/
-    #category-browse-inner {
-        display: flex;
-        flex-direction: column;
-    }
 }
 
 /*anecdote-browse*/
@@ -324,8 +307,41 @@ footer ul a:hover {
     margin-top: 10%;
 }
 
-@media (max-width: 560px){
+/*backoffice*/
+#backoffice-anecdote, #backoffice-category, #backoffice-user {
+    background-color: white;
+    padding: 2% 12% 12%;
+    border-bottom: medium solid gray;
+    margin-bottom: 5%;
+}
 
+#backoffice-anecdote-header, #backoffice-category-header, #backoffice-user-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5% 0%;
+}
+
+.backoffice-header {
+    font-size: 150%;
+}
+
+/*--MEDIA QUERIES--*/
+@media (max-width: 400px){
+    /*category-browse*/
+    #category-browse-inner {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /*backoffice*/
+    #backoffice-anecdote, #backoffice-category, #backoffice-user {
+        padding: 0%;
+    }
+}
+
+@media (max-width: 560px){
     /*legal-notices*/
     #legal-notices h3 {
         margin-bottom: 10%;
@@ -352,5 +368,14 @@ footer ul a:hover {
     /*category-browse*/
     #category-browse-inner {
         grid-template-columns: 50% 50%;
+    }
+}
+
+@media (max-width: 700px) {
+    #contact {
+       flex-direction: column;
+    }
+    #contact-data {
+        margin: 0% 0% 10% 0%;
     }
 }
