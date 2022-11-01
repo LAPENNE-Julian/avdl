@@ -137,17 +137,19 @@ footer ul a:hover {
     font-weight: bold;
 }
 
-/*contact*/
+/*contact - data*/
 #contact {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
+    border : none
 }
 
 #contact-data {
     background-color: black;
     color: white;
     padding: 5% 5%;
+    margin-right: 15%;
 }
 
 .contact-data-header {
@@ -164,6 +166,55 @@ footer ul a:hover {
 
 #contact-data p {
     margin-bottom: 20%;
+}
+
+/*contact - form*/
+#contact-form {
+    background-color: white;
+    padding: 5%;
+}
+
+#contact-form h3 {
+    font-weight: bold;
+    margin-bottom: 15%;
+}
+
+#contact-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    --bs-gutter-x: 0;
+    margin-bottom: 10%;
+    border-bottom: medium solid gray;
+}
+
+#name, #email, #message {
+    border : none;
+}
+
+.submit {
+    width: 100%;
+}
+
+#submit-button {
+    width: 100%;
+    background-color: black;
+    color: white;
+    border : none;
+    padding: 2%;
+    text-transform: uppercase;
+}
+
+@media (max-width: 700px) {
+    #contact {
+       flex-direction: column;
+    }
+    #contact-data {
+        margin: 0% 0% 10% 0%;
+    }
 }
 
 /*anecdote-browse-read*/
