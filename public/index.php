@@ -43,6 +43,18 @@ $router->map('GET', '/category', [
 ], 'category-browse');
 
 /* -------------
+--- BACKOFFICE ---
+--------------*/
+
+/**
+ * BREAD anecdote
+ */
+$router->map('GET', '/backoffice/anecdote', [
+    'controller' => '\App\Controllers\backoffice\AnecdoteController',
+    'method' => 'browse',
+], 'backoffice-anecdote-browse');
+
+/* -------------
 --- DISPATCH ---
 --------------*/
 
