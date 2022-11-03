@@ -75,9 +75,7 @@ class UserController extends CoreController
 
             //Redirection to edit form
             //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/user/edit/' . $user->getId());
-            $this->Redirection('user/edit/' . $user->getId());
-            //Post error message in the view
-            $_SESSION['errorMessage'] = 'User Roles must be \'user\' or \'admin\'.';
+            $this->RedirectionWithErrorMessage('user/edit/' . $user->getId(), 'User Roles must be \'user\' or \'admin\'.');
             //stop the script
             exit;
         }
@@ -90,8 +88,8 @@ class UserController extends CoreController
         //If pseudo is edit
         if($clearPseudo !== $user->getPseudo()){
 
-            //Check spaces and string length
-            $checkPseudo = $this->CheckPseudo($clearPseudo);
+            //Check spaces and string min-length 4 characters
+            $checkPseudo = $this->CheckString($clearPseudo, 4);
 
             //if pseudo edit is under 4 characters or have spaces
             if($checkPseudo == true){
@@ -142,8 +140,8 @@ class UserController extends CoreController
         //If password is edit
         if($clearPassword !== $user->getPassword()){
 
-            //Check spaces and string length
-            $checkPassword = $this->CheckPassword($clearPassword);
+            //Check spaces and string min-length 6 characters
+            $checkPassword = $this->CheckString($clearPassword, 6);
 
             //if password edit is under 6 characters or have spaces
             if($checkPassword == true){
@@ -155,7 +153,7 @@ class UserController extends CoreController
 
                 //Redirection to edit form
                 //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/user/edit/' . $user->getId());
-                $this->RedirectionWithErrorMessage('user/edit/' . $user->getId(), 'the password requires 6 characters without spaces');
+                $this->RedirectionWithErrorMessage('user/edit/' . $user->getId(), 'The password requires 6 characters without spaces');
 
             } 
         }
@@ -250,24 +248,24 @@ class UserController extends CoreController
     }
 
     /**
-     * Check pseudo - spaces and length
+     * Check string - spaces and length
      *
      * @param string $string
      * @return bool
      */
-    public function CheckPseudo(string $string): bool
+    public function CheckString(string $string, int $number): bool
     {
         //Find spaces
-        $clearPseudo = $this->TrimString($string);
+        $clearString = $this->TrimString($string);
 
         //If no spaces
-        if($clearPseudo == true) {
+        if($clearString == true) {
 
             //check length string
-            $clearPseudo = $this->CheckStringLength($string, 4);
+            $clearString = $this->CheckStringLength($string, $number);
 
             //if length ok
-            if($clearPseudo == true) {
+            if($clearString == true) {
 
                 return true;
 
@@ -281,38 +279,4 @@ class UserController extends CoreController
             return false;
         }
     }
-
-    /**
-     * Check password - spaces and length
-     *
-     * @param string $string
-     * @return bool
-     */
-    public function CheckPassword(string $string): bool
-    {
-        //Find spaces
-        $clearPassword = $this->TrimString($string);
-
-        //If no spaces
-        if($clearPassword == true) {
-
-            //check length string
-            $clearPassword = $this->CheckStringLength($string, 6);
-
-            //if length ok
-            if($clearPassword == true) {
-
-                return true;
-
-            } else {
-
-                return false;
-            }
-
-        } else {
-
-            return false;
-        }
-    }
-
 }
