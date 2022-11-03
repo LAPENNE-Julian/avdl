@@ -334,10 +334,6 @@ footer ul a:hover {
     margin-bottom: 5%;
 }
 
-.backoffice-header {
-    font-size: 150%;
-}
-
 #backoffice-anecdote-header, 
 #backoffice-category-header, 
 #backoffice-user-header {
@@ -346,6 +342,39 @@ footer ul a:hover {
     justify-content: space-between;
     align-items: center;
     margin: 5% 0%;
+}
+
+/*backooffice-category*/
+.read h1 {
+    text-align: left;
+    border-bottom: thin solid black;
+    padding-bottom: 1%;
+    margin-bottom: 2%;
+}
+
+.read article {
+    margin-top : 2%;
+    padding : 2%;
+}
+
+.read h2 {
+    margin-bottom: 1%;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.read p {
+    margin-bottom: 5%;
+}
+
+#div-category-color {
+    width: 25%;
+    padding: 1% 0%;
+    margin-bottom: 5%;
+}
+
+#div-category-color p {
+    margin-bottom: 0%;
 }
 
 /*--MEDIA QUERIES--*/
@@ -361,6 +390,10 @@ footer ul a:hover {
     #backoffice-category, 
     #backoffice-user {
         padding: 0%;
+    }
+
+    #div-category-color {
+        width: 50%;
     }
 }
 

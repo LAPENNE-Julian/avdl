@@ -1,4 +1,4 @@
-<div id="backoffice-read-category" class="container-fluid backoffice">
+<div id="backoffice-read-category" class="container-fluid backoffice read">
     <h1>Category details</h1>
         <div class="text-end">
             <a href="/backoffice/category/edit/<?= htmlentities($category->getId()) ?>" class="btn btn-warning">
@@ -10,18 +10,20 @@
         </div>
   
     <article>
-        <h4>Name</h4>
+        <h2>Name</h2>
             <p><?= htmlentities($category->getName()) ?></p>
 
-        <h4>Color</h4>
-            <p><?= htmlentities($category->getColor()) ?></p>
-
-        <!-- <h4>Image</h4>
+        <h2>Color</h2>
+            <div id="div-category-color" style="background-color:<?= htmlentities($category->getColor()) ?>">
+                <p><?= htmlentities($category->getColor()) ?></p>
+            </div>
+               
+        <!-- <h2>Image</h2>
             <img src="" alt="">
             <p>No image in database</p>
             -->
 
-        <h4>Create at</h4>
+        <h2>Create at</h2>
             <p><?= $category->getCreatedAt() ?></p>
     </article>
 </div>
