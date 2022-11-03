@@ -54,6 +54,36 @@ $router->map('GET', '/backoffice/user', [
     'method' => 'browse',
 ], 'backoffice-user-browse');
 
+$router->map('GET', '/backoffice/user/[i:id]', [
+    'controller' => '\App\Controllers\backoffice\UserController',
+    'method' => 'read',
+], 'backoffice-user-read');
+
+$router->map('GET', '/backoffice/user/add', [
+    'controller' => '\App\Controllers\backoffice\UserController',
+    'method' => 'add',
+], 'backoffice-user-add');
+
+$router->map('POST', '/backoffice/user/add', [
+    'controller' => '\App\Controllers\backoffice\UserController',
+    'method' => 'addPost',
+], 'backoffice-user-add-post');
+ 
+$router->map('GET', '/backoffice/user/edit/[i:id]', [
+    'controller' => '\App\Controllers\backoffice\UserController',
+    'method' => 'edit',
+], 'backoffice-user-edit');
+
+$router->map('POST', '/backoffice/user/edit/[i:id]', [
+    'controller' => '\App\Controllers\backoffice\UserController',
+    'method' => 'editPost',
+], 'backoffice-user-edit-post');
+
+$router->map('GET', '/backoffice/user/delete/[i:id]', [
+    'controller' => '\App\Controllers\backoffice\UserController',
+    'method' => 'delete',
+], 'backoffice-user-delete');
+
 /**
  * BREAD anecdote
  */

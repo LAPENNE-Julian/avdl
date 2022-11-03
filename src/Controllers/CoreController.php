@@ -38,12 +38,29 @@ class CoreController
     }
 
     /**
+     * Redirection with error Message
+     *
+     * @param string $road
+     * @param string $errorMessage
+     * @return void
+     */
+    public static function RedirectionWithErrorMessage(string $road, string $errorMessage): void
+    {
+        //Redirection
+        CoreController::Redirection($road);
+        //Post error message in the view
+        $_SESSION['errorMessage'] = $errorMessage;
+        //stop the script
+        exit;  
+    }
+
+    /**
      * Clear html entities in string edit 
      *
      * @param string $data
      * @return string
      */
-    public static function ClearData(string $data) :string 
+    public function ClearData(string $data) :string 
     {
         //clean data
         htmlentities(strip_tags($data));

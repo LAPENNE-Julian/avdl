@@ -211,7 +211,7 @@ footer ul a:hover {
     border-bottom: medium solid gray;
 }
 
-#name, #email, #message {
+#contact-name, #contact-email, #contact-message {
     border : none;
 }
 
@@ -343,6 +343,8 @@ footer ul a:hover {
     align-items: center;
     margin: 5% 0%;
 }
+
+/*backoffice-user*/
 
 /*backooffice-category*/
 .read h1,

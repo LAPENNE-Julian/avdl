@@ -173,7 +173,7 @@ class CategoryController extends CoreController
      */
     public static function TrimCategoryName(string $categoryName)
     {
-        //Remove spaces in name edit
+        //Remove first and last spaces in name edit
         $categoryNameTrim = trim($categoryName);
 
         //if nameTrim edit is under 2 characters
