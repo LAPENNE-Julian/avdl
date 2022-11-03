@@ -27,15 +27,14 @@ class CoreController
     }
 
     /**
-     * Redirection with id
+     * Redirection
      *
      * @param string $road
-     * @param int $id
      * @return void
      */
-    public static function RedirectionWithId(string $road,int $id) :void
+    public static function Redirection(string $road) :void
     {
-        header('Location: '. $_SERVER['HTTP_ORIGIN'] . $road . $id);
+        header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/' . 'backoffice/'. $road);
     }
 
     /**

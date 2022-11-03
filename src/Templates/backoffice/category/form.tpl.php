@@ -1,6 +1,6 @@
 <div id="backoffice-form-category" class="container-fluid backoffice form">
 
-    <h1><?= htmlentities($category->getId()) === null ? 'Add':'Edit' ?> a category</h1>
+    <h1><?= htmlentities($category->getId()) == null ? 'Add':'Edit' ?> a category</h1>
     
     <div class="text-end">
         <a class="btn btn-dark btn-lg" href="/backoffice/category">Back to list</a>
@@ -25,7 +25,7 @@
         </div> -->
         
         <input type="hidden" name="token" id="token" value="">
-        <button type="submit" class="btn btn-warning btn-block"><?= htmlentities($category->getId()) === null ? 'Add':'Edit' ?></button>
+        <button type="submit" class="btn btn-warning btn-block"><?= htmlentities($category->getId()) == null ? 'Add':'Edit' ?></button>
         
     </form>
 </div>

@@ -2,6 +2,7 @@
 
 <?php 
 require_once __DIR__ . '/../partials/nav.tpl.php';
+require_once __DIR__ . '/../partials/flashMessage.tpl.php';
 ?>
 
   <div id="backoffice-category-header">
