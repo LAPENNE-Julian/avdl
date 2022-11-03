@@ -345,36 +345,48 @@ footer ul a:hover {
 }
 
 /*backooffice-category*/
-.read h1 {
+.read h1,
+.form h1 {
     text-align: left;
     border-bottom: thin solid black;
     padding-bottom: 1%;
     margin-bottom: 2%;
 }
 
-.read article {
+.read article,
+.form form {
     margin-top : 2%;
     padding : 2%;
 }
 
-.read h2 {
+.read h2,
+.form label {
     margin-bottom: 1%;
     text-transform: uppercase;
     font-weight: bold;
 }
 
-.read p {
+.read p,
+.form input {
     margin-bottom: 5%;
 }
 
+/*backoffice-category-read*/
 #div-category-color {
     width: 25%;
     padding: 1% 0%;
     margin-bottom: 5%;
+    border:thin solid black;
 }
 
 #div-category-color p {
     margin-bottom: 0%;
+}
+
+/*backoffice-category-form*/
+#input-category-color {
+    width: 25%;
+    margin-top: 1%;
 }
 
 /*--MEDIA QUERIES--*/
@@ -392,8 +404,14 @@ footer ul a:hover {
         padding: 0%;
     }
 
+    /*backoffice-category-read*/
     #div-category-color {
         width: 50%;
+    }
+
+    /*backoffice-category-form*/
+    #input-category-color {
+    width: 50%;
     }
 }
 
