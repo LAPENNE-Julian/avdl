@@ -5,7 +5,7 @@
             <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
         </div>
 
-        <h2>Titre de l'anecdote 1</h2>
+        <h1>Titre de l'anecdote 1</h1>
         <p id="anecdote-author">Publié par Auteur le 01.01.1999</p>
 
         <div id="anecdote-content">

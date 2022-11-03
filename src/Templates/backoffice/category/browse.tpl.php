@@ -1,11 +1,11 @@
-<div id="backoffice-category" class="container-fluid">
+<div id="backoffice-category" class="container-fluid backoffice">
 
 <?php 
 require_once __DIR__ . '/../partials/nav.tpl.php';
 ?>
 
   <div id="backoffice-category-header">
-    <h2 class="backoffice-header">Categories list</h2>
+    <h1 class="backoffice-header">Categories list</h1>
 
     <div class="text-end">
     <a class="btn btn-dark btn-lg" href="/backoffice/category/add">Add</a>

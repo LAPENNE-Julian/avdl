@@ -1,8 +1,8 @@
 <section id="legal-notices" class="container-fluid">
 
-    <h3>Mentions Légales</h3>
+    <h1>Mentions Légales</h1>
 
-    <h4>1 - Édition du site</h4>
+    <h2>1 - Édition du site</h2>
 
     <p>
         En vertu de l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, il est précisé aux utilisateurs du site internet <span class="label-bold">https://www.avez-vous-deja-lu.fr</span> l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi:
@@ -20,7 +20,7 @@
         <span class="label-bold">Autres contributeurs :</span> google search
     </p>
 
-    <h4>2 - Propriété intellectuelle et contrefaçons.</h4>
+    <h2>2 - Propriété intellectuelle et contrefaçons.</h2>
 
     <p>
         <span class="label-bold">Nom Prénom</span> est propriétaire des droits de propriété intellectuelle et détient les droits d’usage sur tous les éléments accessibles sur le site internet, notamment les textes, images, graphismes, logos, vidéos, architecture, icônes et sons.
@@ -33,7 +33,7 @@
         L.335-2 et suivants du Code de Propriété Intellectuelle</a>.
     </p>
     
-    <h4>3 - Limitations de responsabilité.</h4>
+    <h2>3 - Limitations de responsabilité.</h2>
 
     <p>
         <span class="label-bold">Nom Prénom</span> ne pourra être tenu pour responsable des dommages directs et indirects causés au matériel de l’utilisateur, lors de l’accès au site <span class="label-bold">https://www.avez-vous-deja-lu.fr</span>.
@@ -47,7 +47,7 @@
         Le cas échéant, <span class="label-bold">Nom Prénom</span> se réserve également la possibilité de mettre en cause la responsabilité civile et/ou pénale de l’utilisateur, notamment en cas de message à caractère raciste, injurieux, diffamant, ou pornographique, quel que soit le support utilisé (texte, photographie …).
     </p>
     
-    <h4>4 - CNIL et gestion des données personnelles.</h4>
+    <h2>4 - CNIL et gestion des données personnelles.</h2>
 
     <p>
         Conformément aux dispositions de <a href="https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000000886460">la loi 78-17 du 6 janvier 1978 modifiée</a>, l’utilisateur du site <span class="label-bold">https://www.avez-vous-deja-lu.fr</span> dispose d’un droit d’accès, de modification et de suppression des informations collectées. Pour exercer ce droit, envoyez un message à notre Délégué à la Protection des Données : <span class="label-bold">NOM Prénom - admin@mail.fr</span>.
@@ -55,7 +55,7 @@
         Pour plus d'informations sur la façon dont nous traitons vos données (type de données, finalité, destinataire...), lisez notre <span class="label-bold">https://www.avez-vous-deja-lu/politique-confidentialite</span>. [Consignes : ajoutez ici le lien hypertexte vers votre politique de confidentialité]
     </p>
     
-    <h4>5 - Liens hypertextes et cookies</h4>
+    <h2>5 - Liens hypertextes et cookies</h2>
 
     <p>
         Le site <span class="label-bold">https://www.avez-vous-deja-lu.fr</span> contient des liens hypertextes vers d’autres sites et dégage toute responsabilité à propos de ces liens externes ou des liens créés par d’autres sites vers https://www.avez-vous-deja-lu.fr.
@@ -71,7 +71,7 @@
         Pour plus d'informations sur la façon dont nous faisons usage des cookies, lisez notre <span class="label-bold">https://www.avez-vous-deja-lu/politique-confidentialite</span>. [Consignes : ajoutez ici le lien hypertexte vers votre politique de confidentialité ou vers votre politique de cookies si vous en avez une (c'est le cas si vous utilisez Complianz)]
     </p>
 
-    <h4>6 - Droit applicable et attribution de juridiction.</h4>
+    <h2>6 - Droit applicable et attribution de juridiction.</h2>
 
     <p>
         Tout litige en relation avec l’utilisation du site <span class="label-bold">https://www.avez-vous-deja-lu.fr</span> est soumis au droit français. En dehors des cas où la loi ne le permet pas, il est fait attribution exclusive de juridiction aux tribunaux compétents de <span class="label-bold">LYON</span>.

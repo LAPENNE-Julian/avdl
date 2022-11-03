@@ -1,11 +1,11 @@
-<div id="backoffice-user" class="container-fuid">
+<div id="backoffice-user" class="container-fuid backoffice">
 
 <?php 
 require_once __DIR__ . '/../partials/nav.tpl.php';
 ?>
 
 <div id="backoffice-user-header">
-    <h2 class="backoffice-header">Users list</h2>
+    <h1 class="backoffice-header">Users list</h1>
 
     <div class="text-end">
       <a class="btn btn-dark btn-lg" href="/backoffice/user/add">Add</a>

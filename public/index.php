@@ -70,6 +70,36 @@ $router->map('GET', '/backoffice/category', [
     'method' => 'browse',
 ], 'backoffice-category-browse');
 
+$router->map('GET', '/backoffice/category/[i:id]', [
+    'controller' => '\App\Controllers\backoffice\CategoryController',
+    'method' => 'read',
+], 'backoffice-category-read');
+
+$router->map('GET', '/backoffice/category/add', [
+    'controller' => '\App\Controllers\backoffice\CategoryController',
+    'method' => 'add',
+], 'backoffice-category-add');
+
+$router->map('POST', '/backoffice/category/add', [
+    'controller' => '\App\Controllers\backoffice\CategoryController',
+    'method' => 'addPost',
+], 'backoffice-category-add-post');
+ 
+$router->map('GET', '/backoffice/category/edit/[i:id]', [
+    'controller' => '\App\Controllers\backoffice\CategoryController',
+    'method' => 'edit',
+], 'backoffice-category-edit');
+
+$router->map('POST', '/backoffice/category/edit/[i:id]', [
+    'controller' => '\App\Controllers\backoffice\CategoryController',
+    'method' => 'editPost',
+], 'backoffice-category-edit-post');
+
+$router->map('GET', '/backoffice/category/delete/[i:id]', [
+    'controller' => '\App\Controllers\backoffice\CategoryController',
+    'method' => 'delete',
+], 'backoffice-category-delete');
+
 /* -------------
 --- DISPATCH ---
 --------------*/

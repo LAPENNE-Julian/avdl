@@ -1,5 +1,5 @@
 <section id="category-browse" class="container-fluid">
-    <h3>Les Catégories</h3>
+    <h1>Les Catégories</h1>
     
         <div id="category-browse-inner" class="carousel-inner">
             <div class="category-browse-item">

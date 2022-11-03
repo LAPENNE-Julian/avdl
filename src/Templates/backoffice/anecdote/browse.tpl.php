@@ -1,11 +1,11 @@
-<div id="backoffice-anecdote" class="container-fluid">
+<div id="backoffice-anecdote" class="container-fluid backoffice">
 
 <?php 
 require_once __DIR__ . '/../partials/nav.tpl.php';
 ?>
 
   <div id="backoffice-anecdote-header">
-    <h2 class="backoffice-header">Anecdotes list</h2>
+    <h1 class="backoffice-header">Anecdotes list</h1>
 
     <div class="text-end">
       <a class="btn btn-dark btn-lg" href="/backoffice/anecdote/add">Add</a>

@@ -3,6 +3,12 @@ namespace App\Controllers;
 
 class CoreController
 {
+    protected $errorController;
+
+    public function __construct()
+    {
+        $this->errorController = new ErrorController();
+    }
     
     public function show($templateName, $viewData = [])
     {

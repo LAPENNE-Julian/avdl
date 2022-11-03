@@ -5,13 +5,13 @@ body {
     background-size: cover;
 }
 
-h3 {
+h1 {
     font-size: 150%;
     text-align: center;
     padding-top: 2%;
 }
 
-h4 {
+h2 {
     font-size: 110%;
     margin-bottom: 5%;
 }
@@ -20,8 +20,21 @@ h4 {
     font-weight: bold;
 }
 
-#home, #legal-notices, #contact {
+#home, 
+#latest, #best,
+#legal-notices, #contact,
+#anecdote-read,
+#anecdote-browse,
+#category-browse {
     background-color: rgb(250 250 250 / 0.9);
+}
+
+#home, #latest, #best p {
+    line-height: 1.5;
+}
+
+#home, 
+#legal-notices, #contact {
     padding: 12%;
     border-bottom: medium solid gray;
 }
@@ -89,19 +102,26 @@ footer ul a:hover {
 }
 
 /*Home page*/
-#home h2 {
+#home h1 {
     font-size: 400%;
     text-align: left;
     padding-bottom: 5%;
 }
 
-#home, #latest, #best p {
-    line-height: 1.5;
+#latest h2, #best h2 {
+    font-size: 150%;
+    text-align: center;
+    padding-top: 2%;
+    margin-bottom: 0%;
+}
+
+#latest h3, #best h3 {
+    font-size: 110%;
+    margin-bottom: 5%;
 }
 
 /*caroussel*/
 #latest, #best {
-    background-color: rgb(250 250 250 / 0.9);
     margin: 5% 0;
     padding: 0;
 }
@@ -118,11 +138,11 @@ footer ul a:hover {
     border : none;
 }
 
-#legal-notices h3 {
+#legal-notices h1 {
     margin-bottom: 5%;
 }
 
-#legal-notices h4 {
+#legal-notices h2 {
     font-weight: bold;
 }
 
@@ -159,7 +179,7 @@ footer ul a:hover {
     margin-bottom: 5%;
 }
 
-.contact-data-header h4 {
+.contact-data-header h2 {
     padding-left : 5%;
     text-transform: uppercase;
 }
@@ -174,7 +194,7 @@ footer ul a:hover {
     padding: 5%;
 }
 
-#contact-form h3 {
+#contact-form h1 {
     font-weight: bold;
     margin-bottom: 15%;
 }
@@ -210,34 +230,8 @@ footer ul a:hover {
 
 /*anecdote-browse-read*/
 #anecdote-read, #anecdote-browse {
-    background-color: rgb(250 250 250 / 0.9);
     padding: 0%;
     margin: 5% 0;
-}
-
-/*category-browse*/
-#category-browse {
-    background-color: rgb(250 250 250 / 0.9);
-    padding: 0%;
-    margin: 5% 0;
-}
-
-#category-browse-inner {
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
-    padding : 5% 20% 10%;
-}
-
-.category-browse-item {
-    margin: 5%;
-    padding: 15%;
-    text-align: center;
-    border: medium solid black;
-    background-color: black;
-}
-
-.category-browse-item a {
-    color: white;
 }
 
 /*anecdote-browse*/
@@ -264,8 +258,9 @@ footer ul a:hover {
     justify-content: flex-end;
 }
 
-#anecdote-read h2 {
-    font-size: 150%;
+#anecdote-read h1 {
+    text-align: start;
+    padding-top: 0%;
     margin: 5% 0%;
 }
 
@@ -307,24 +302,50 @@ footer ul a:hover {
     margin-top: 10%;
 }
 
+/*category-browse*/
+#category-browse {
+    padding: 0%;
+    margin: 5% 0;
+}
+
+#category-browse-inner {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    padding : 5% 20% 10%;
+}
+
+.category-browse-item {
+    margin: 5%;
+    padding: 15%;
+    text-align: center;
+    border: medium solid black;
+    background-color: black;
+}
+
+.category-browse-item a {
+    color: white;
+}
+
 /*backoffice*/
-#backoffice-anecdote, #backoffice-category, #backoffice-user {
+.backoffice {
     background-color: white;
     padding: 2% 12% 12%;
     border-bottom: medium solid gray;
     margin-bottom: 5%;
 }
 
-#backoffice-anecdote-header, #backoffice-category-header, #backoffice-user-header {
+.backoffice-header {
+    font-size: 150%;
+}
+
+#backoffice-anecdote-header, 
+#backoffice-category-header, 
+#backoffice-user-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin: 5% 0%;
-}
-
-.backoffice-header {
-    font-size: 150%;
 }
 
 /*--MEDIA QUERIES--*/
@@ -336,18 +357,20 @@ footer ul a:hover {
     }
 
     /*backoffice*/
-    #backoffice-anecdote, #backoffice-category, #backoffice-user {
+    #backoffice-anecdote, 
+    #backoffice-category, 
+    #backoffice-user {
         padding: 0%;
     }
 }
 
 @media (max-width: 560px){
     /*legal-notices*/
-    #legal-notices h3 {
+    #legal-notices h1 {
         margin-bottom: 10%;
     }
     
-    #legal-notices h4 {
+    #legal-notices h2 {
         margin-bottom: 10%;
     }
 

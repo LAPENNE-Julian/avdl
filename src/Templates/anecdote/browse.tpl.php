@@ -1,5 +1,5 @@
 <section id="anecdote-browse" class="container-fluid">
-        <h3>Les anecdotes</h3>
+        <h1>Les anecdotes</h1>
         
             <div id="anecdote-browse-inner" class="carousel-inner">
                 <div class="anecdote-browse-item">
@@ -7,7 +7,7 @@
                         <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
                         <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
                     </div>
-                    <h4>Titre de l'anecdote 1</h4>
+                    <h2>Titre de l'anecdote 1</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime voluptatibus similique odit ex, inventore molestias repudiandae. Expedita similique quod placeat iure voluptatibus consequuntur sequi ducimus esse quos aliquid, ratione ipsum!<a href="#" class="anecdote__link">afficher plus</a></p>
                     <p id="author">Publié par Auteur le 01.01.1999</p>
                 </div>
@@ -17,7 +17,7 @@
                         <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
                         <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
                     </div>
-                    <h4>Titre de l'anecdote 2</h4>
+                    <h2>Titre de l'anecdote 2</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime voluptatibus similique odit ex, inventore molestias repudiandae. Expedita similique quod placeat iure voluptatibus consequuntur sequi ducimus esse quos aliquid, ratione ipsum!<a href="#" class="anecdote__link">afficher plus</a></p>
                     <p id="author">Publié par Auteur le 01.01.1999</p>
                 </div>
@@ -27,7 +27,7 @@
                         <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
                         <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
                     </div>
-                    <h4>Titre de l'anecdote 3</h4>
+                    <h2>Titre de l'anecdote 3</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime voluptatibus similique odit ex, inventore molestias repudiandae. Expedita similique quod placeat iure voluptatibus consequuntur sequi ducimus esse quos aliquid, ratione ipsum!<a href="#" class="anecdote__link">afficher plus</a></p>
                     <p id="author">Publié par Auteur le 01.01.1999</p>
                 </div>

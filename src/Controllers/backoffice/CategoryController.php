@@ -16,4 +16,21 @@ class CategoryController extends CoreController
             'categories' => $categoriesList,
         ]);
     }
+
+    public function read($id)
+    {
+        //Get category by id
+        $category = Category::find($id);
+
+        if($category == null){
+ 
+            $this->errorController->err404();
+
+        } else {
+
+                $this->show('backoffice/category/read', [
+                'category' => $category,
+            ]);
+        }
+    }
 }
