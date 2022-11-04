@@ -19,6 +19,9 @@
         <!-- <h4>Image</h4> -->
         <!-- <img id="avatar" class="img-thumbnail" src="" alt=""> -->
         
+        <h2>Password</h2>
+            <p>XXXX</p>
+
         <h2>Role</h2>
             <?php switch ($user->getRoles()) {
             case 1 : echo '<p>User</p>';

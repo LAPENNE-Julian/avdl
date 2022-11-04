@@ -41,17 +41,22 @@ class CoreController
      * Redirection with error Message
      *
      * @param string $road
-     * @param string $errorMessage
+     * @param string $label
+     * @param string $message
      * @return void
      */
-    public static function RedirectionWithErrorMessage(string $road, string $errorMessage): void
+    public static function RedirectionWithMessage(string $road, string $label,string $message): void
     {
         //Redirection
         CoreController::Redirection($road);
         //Post error message in the view
-        $_SESSION['errorMessage'] = $errorMessage;
-        //stop the script
-        exit;  
+        $_SESSION[$label] = $message;
+
+        if($label == 'errorMessage'){
+            
+            //stop the script
+            exit;
+        }
     }
 
     /**

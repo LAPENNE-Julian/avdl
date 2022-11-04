@@ -1,9 +1,9 @@
 <div id="backoffice-form-user" class="container-fluid backoffice form">
     
-    <h1><?= htmlentities($user->getId()) === null ? 'Add':'Edit' ?> user</h1>
+    <h1><?= htmlentities($user->getId()) == null ? 'Add':'Edit' ?> user</h1>
     
     <div class="text-end">
-        <a class="btn btn-dark btn-lg" href="/backoffice/user">Back to list</a>
+        <a class="btn btn-dark" href="/backoffice/user">Back to list</a>
     </div>
 
     <form action="" method="POST">
@@ -40,7 +40,7 @@
         </div>
         
         <input type="hidden" name="token" id="token" value="">
-        <button type="submit" class="btn btn-warning btn-block mt-5"><?= htmlentities($user->getId()) === null ? 'Add':'Edit' ?></button>
+        <button type="submit" class="btn btn-warning btn-block mt-5"><?= htmlentities($user->getId()) == null ? 'Add':'Edit' ?></button>
     
     </form>
 </div>

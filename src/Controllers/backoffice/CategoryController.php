@@ -69,13 +69,10 @@ class CategoryController extends CoreController
         $newName = $this->TrimCategoryName($clearName);
 
         if ($newName == false) {
-            //Redirection to edit form
+            
+            //Post error message in the view and redirection to edit form
             // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/category/edit/'. $category->getId());
-            $this->Redirection('category/edit/'. $category->getId());
-            //Post error message in the view
-            $_SESSION['errorMessage'] = 'The name requires 2 characters without space';
-            //stop the script
-            exit;
+            $this->RedirectionWithMessage('category/edit/'. $category->getId(), 'errorMessage', 'The name requires 2 characters without space');
 
         } else {
 
@@ -88,7 +85,7 @@ class CategoryController extends CoreController
             $category->update();
 
             //Redirection after edit
-            // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/category/'. $category->getId());
+            //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/category/'. $category->getId());
             $this->Redirection('category/'. $category->getId());
         }   
     }
@@ -119,13 +116,10 @@ class CategoryController extends CoreController
         $newName = $this->TrimCategoryName($clearName);
 
         if($newName == false){
-            //Redirection to edit form
+
+            //Post error message in the view and redirection to add form
             // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/category/edit/'. $category->getId());
-            $this->Redirection('category/add');
-            //Post error message in the view
-            $_SESSION['errorMessage'] = 'The name requires 2 characters without space';
-            //stop the script
-            exit;
+            $this->RedirectionWithMessage('category/add', 'errorMessage', 'The name requires 2 characters without space');
 
         } else {
 
@@ -137,11 +131,9 @@ class CategoryController extends CoreController
             //Insert in database 
             $category->insert();
 
-            //Post success message
-            $_SESSION['successMessage'] = 'The category : ' . $category->getName() .' => id : ' . $category->getId() . ' created successfully';
-            //Redirection after insert
+            // Post success message and redirection after insert
             // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/category');
-            $this->Redirection('category');
+            $this->RedirectionWithMessage('category', 'successMessage','The category : ' . $category->getName() .' => id : ' . $category->getId() . ' created successfully');
         }
     }
 

@@ -365,12 +365,17 @@ footer ul a:hover {
 .form label {
     margin-bottom: 1%;
     text-transform: uppercase;
+    font-size: 110%;
     font-weight: bold;
 }
 
-.read p,
+.read p {
+    margin: 2% 0% 3.1%;
+    padding-left: 1.2%;
+}
+
 .form input {
-    margin-bottom: 5%;
+    margin-bottom: 2%;
 }
 
 /*backoffice-category-read*/
@@ -404,6 +409,11 @@ footer ul a:hover {
     #backoffice-category, 
     #backoffice-user {
         padding: 0%;
+    }
+
+    .read p {
+        margin: 5% 0% 6%;
+        padding-left: 5%;
     }
 
     /*backoffice-category-read*/

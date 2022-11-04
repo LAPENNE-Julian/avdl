@@ -3,7 +3,7 @@
     <h1><?= htmlentities($category->getId()) == null ? 'Add':'Edit' ?> a category</h1>
     
     <div class="text-end">
-        <a class="btn btn-dark btn-lg" href="/backoffice/category">Back to list</a>
+        <a class="btn btn-dark" href="/backoffice/category">Back to list</a>
     </div>
 
     <form action="" method="POST">

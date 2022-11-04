@@ -2,6 +2,7 @@
 
 <?php 
 require_once __DIR__ . '/../partials/nav.tpl.php';
+require_once __DIR__ . '/../partials/flashMessage.tpl.php';
 ?>
 
 <div id="backoffice-user-header">
@@ -23,7 +24,8 @@ require_once __DIR__ . '/../partials/nav.tpl.php';
     <tbody>
     <?php foreach($users as $user): ?>
       <tr>
-        <th scope="row"><?= htmlentities($user->getPseudo()) ?></th>
+        <th scope="row"><?= htmlentities($user->getId()) ?></th>
+        <td><?= htmlentities($user->getPseudo()) ?></td>
         <td><?= htmlentities($user->getEmail()) ?></td>
         <td>
           <a class="btn btn-outline-primary" href="/backoffice/user/<?= htmlentities($user->getId()) ?>" title="Read" alt="Read">
