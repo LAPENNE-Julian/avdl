@@ -88,13 +88,13 @@ class UserController extends CoreController
         //If pseudo is edit
         if($clearPseudo !== $user->getPseudo()){
 
-            //Check spaces and string min-length 4 characters
+            //Check spaces in string and min-length 4 characters
             $checkPseudo = $this->CheckString($clearPseudo, 4);
 
-            //if pseudo edit is under 4 characters or have spaces
+            //If string is under 4 characters or have spaces
             if($checkPseudo == true){
 
-                //Check if pseudo is unique in database
+                //Check if new pseudo is unique in database
                 $uniquePseudo = $this->CheckUniquePseudo($clearPseudo);
 
                 if ($uniquePseudo == true) {
@@ -166,12 +166,12 @@ class UserController extends CoreController
     }
 
     /**
-     * Clean spaces in string
+     * Find if string have spaces
      *
      * @param string $string
      * @return bool
      */
-    public static function TrimString(string $string): bool
+    public static function CheckSpaceInString(string $string): bool
     {
         //Find space in string
         $spaces = strpos($string, ' ');
@@ -196,7 +196,7 @@ class UserController extends CoreController
      */
     public static function CheckStringLength(string $string, int $number): bool
     {
-        //if string length is under X characters
+        //if string length is under $number characters
         if(strlen($string) < $number ){
 
             return false;
@@ -256,7 +256,7 @@ class UserController extends CoreController
     public function CheckString(string $string, int $number): bool
     {
         //Find spaces
-        $clearString = $this->TrimString($string);
+        $clearString = $this->CheckSpaceInString($string);
 
         //If no spaces
         if($clearString == true) {
@@ -264,15 +264,9 @@ class UserController extends CoreController
             //check length string
             $clearString = $this->CheckStringLength($string, $number);
 
-            //if length ok
-            if($clearString == true) {
-
-                return true;
-
-            } else {
-
-                return false;
-            }
+            //if the length is respected return -> true
+            //Or return  -> false
+            return $clearString;
 
         } else {
 
