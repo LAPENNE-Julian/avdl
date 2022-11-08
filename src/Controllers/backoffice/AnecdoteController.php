@@ -16,4 +16,25 @@ class AnecdoteController extends CoreController
             'anecdotes' => $anecdotesList,
         ]);
     }
+
+    public function read($id)
+    {
+        //Get anecdote by id
+        $anecdote = Anecdote::find($id);
+
+        //Get all former categories of the anecdote
+        $categoriesAnecdote = Anecdote::getCategoryAnecdote($id);
+
+        if($anecdote == null){
+ 
+            $this->errorController->err404();
+
+        } else {
+
+            $this->show('/backoffice/anecdote/read', [
+                'anecdote' => $anecdote,
+                'categoriesAnecdote' => $categoriesAnecdote,
+            ]);
+        }
+    }
 }

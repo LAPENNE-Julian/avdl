@@ -92,6 +92,36 @@ $router->map('GET', '/backoffice/anecdote', [
     'method' => 'browse',
 ], 'backoffice-anecdote-browse');
 
+$router->map('GET', '/backoffice/anecdote/[i:id]', [
+    'controller' => '\App\Controllers\backoffice\AnecdoteController',
+    'method' => 'read',
+], 'backoffice-anecdote-read');
+
+$router->map('GET', '/backoffice/anecdote/add', [
+    'controller' => '\App\Controllers\backoffice\AnecdoteController',
+    'method' => 'add',
+], 'backoffice-anecdote-add');
+
+$router->map('POST', '/backoffice/anecdote/add', [
+    'controller' => '\App\Controllers\backoffice\AnecdoteController',
+    'method' => 'addPost',
+], 'backoffice-anecdote-add-post');
+ 
+$router->map('GET', '/backoffice/anecdote/edit/[i:id]', [
+    'controller' => '\App\Controllers\backoffice\AnecdoteController',
+    'method' => 'edit',
+], 'backoffice-anecdote-edit');
+
+$router->map('POST', '/backoffice/anecdote/edit/[i:id]', [
+    'controller' => '\App\Controllers\backoffice\AnecdoteController',
+    'method' => 'editPost',
+], 'backoffice-anecdote-edit-post');
+
+$router->map('GET', '/backoffice/anecdote/delete/[i:id]', [
+    'controller' => '\App\Controllers\backoffice\AnecdoteController',
+    'method' => 'delete',
+], 'backoffice-anecdote-delete');
+
 /**
  * BREAD category
  */
