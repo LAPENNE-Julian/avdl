@@ -76,18 +76,26 @@ class AnecdoteController extends CoreController
         $clearDescription = $this->ClearData($description);
         $clearContent = $this->ClearData($content);
         $clearSource = $this->ClearData($source);
-        // $clearCategory1 = $this->ClearData($category1);
-        // $clearCategory2 = $this->ClearData($category2);
-        // $clearCategory3 = $this->ClearData($category3);
 
+        $clearCategory1 = $this->CheckCategoryValue($category1);
+        $clearCategory2 = $this->CheckCategoryValue($category2);
+        $clearCategory3 = $this->CheckCategoryValue($category3);
+
+        if($clearCategory1 !== false) {
+            $anecdote->setCategory1($category1);
+        }
+        if($clearCategory2 !== false){
+            $anecdote->setCategory2($category2);
+        }
+        if ($clearCategory3 !== false) {
+            $anecdote->setCategory3($category3);
+        }
+        
         //Set property anecdote object
         $anecdote->setTitle($clearTitle);
         $anecdote->setDescription($clearDescription);
         $anecdote->setContent($clearContent);
         $anecdote->setsource($clearSource);
-        $anecdote->setCategory1($category1);
-        $anecdote->setCategory2($category2);
-        $anecdote->setCategory3($category3);
         
         //Update anecdote in database 
         $anecdote->update();
@@ -96,4 +104,46 @@ class AnecdoteController extends CoreController
         //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/'. $anecdote->getId());
         $this->Redirection('anecdote/' .  $anecdote->getId());
     }
+
+    /**
+     * Check category value
+     *
+     * @param int|null $categoryValue
+     * @return 
+     */
+    public function CheckCategoryValue($categoryValue){
+
+    //clear space 
+    $clearCategoryValue = trim($categoryValue);
+
+    //Find spaces in string
+    $checkSpacesInCategoryValue = $this->CheckSpaceInString($clearCategoryValue);
+
+    if($checkSpacesInCategoryValue == false){
+    
+        //Check if category value is an interger
+        $categoryIsInteger = is_numeric($clearCategoryValue);
+
+        if($categoryIsInteger == true){
+
+            $category = Category::find($clearCategoryValue);
+
+            if($category !== null) {
+
+                return $category->getId();
+
+            } else {
+
+                return false;
+            }
+
+        } else {
+
+            return false;
+        }
+
+    } else {
+
+        return false;
+    }}
 }

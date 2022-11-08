@@ -348,28 +348,6 @@ class UserController extends CoreController
     }
 
     /**
-     * Find if string have spaces
-     *
-     * @param string $string
-     * @return bool
-     */
-    public static function CheckSpaceInString(string $string): bool
-    {
-        //Find space in string
-        $spaces = strpos($string, ' ');
-
-        if (is_int($spaces) === true) {
-
-            return false;
-            // echo 'il y a un espace';
-
-        } else {
-
-            return true;
-        }
-    }
-
-    /**
      * Check string length
      *
      * @param string $string
