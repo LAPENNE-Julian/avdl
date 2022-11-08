@@ -344,13 +344,6 @@ footer ul a:hover {
     margin: 5% 0%;
 }
 
-/*backoffice-anecdote-read*/
-#backoffice-anecdote-read-categoryList {
-    margin: 2% 0% 3.1%;
-    padding-left: 1.2%;
-}
-
-/*backooffice-category*/
 .read h1,
 .form h1 {
     text-align: left;
@@ -366,7 +359,8 @@ footer ul a:hover {
 }
 
 .read h2,
-.form label {
+.form label,
+.form-label {
     margin-bottom: 1%;
     text-transform: uppercase;
     font-size: 110%;
@@ -380,6 +374,14 @@ footer ul a:hover {
 
 .form input {
     margin-bottom: 2%;
+}
+
+/*backoffice-anecdote-read
+backoffice-anecdote-form*/
+#backoffice-anecdote-read-categoryList,
+#backoffice-anecdote-form-categoryList {
+    margin: 2% 0% 3.1%;
+    padding-left: 1.2%;
 }
 
 /*backoffice-category-read*/

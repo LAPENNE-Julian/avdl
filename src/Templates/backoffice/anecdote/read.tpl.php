@@ -31,14 +31,11 @@
         <h2>Categories</h2>
         
             <ul id="backoffice-anecdote-read-categoryList">
-            <?php foreach($categoriesAnecdote as $duo): ?>
-
-                <li><?= htmlentities($duo['name']) ?></li>
-                
-            <?php endforeach; ?>
+                <li><?= htmlentities($anecdote->categoryName1) ?></li>
+                <li><?= htmlentities($anecdote->categoryName2) ?></li>
+                <li><?= htmlentities($anecdote->categoryName3) ?></li>
             </ul>
         
-
         <h2>Create at</h2>
             <p><?= $anecdote->getCreatedAt() ?></p>
     </article>

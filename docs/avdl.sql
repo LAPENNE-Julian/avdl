@@ -40,9 +40,22 @@ CREATE TABLE `anecdote` (
 `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 
 `updated_at` DATETIME DEFAULT NULL,
 `writer_id` INT UNSIGNED DEFAULT 1,
+`category_1` INT UNSIGNED DEFAULT NULL,
+`category_2` INT UNSIGNED DEFAULT NULL,
+`category_3` INT UNSIGNED DEFAULT NULL,
+
 PRIMARY KEY (`id`),
 INDEX `fk_writer_id` (`writer_id`),
-FOREIGN KEY (`writer_id`) REFERENCES `user`(`id`) ON DELETE SET NULL ON UPDATE CASCADE)
+FOREIGN KEY (`writer_id`) REFERENCES `user`(`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+
+INDEX `fk_anecdote_category_1` (`category_1`),
+FOREIGN KEY (`category_1`) REFERENCES `category`(`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+
+INDEX `fk_anecdote_category_2` (`category_2`),
+FOREIGN KEY (`category_2`) REFERENCES `category`(`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+
+INDEX `fk_anecdote_category_3` (`category_3`),
+FOREIGN KEY (`category_3`) REFERENCES `category`(`id`) ON DELETE SET NULL ON UPDATE CASCADE)
 ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `category`
@@ -58,17 +71,7 @@ CREATE TABLE `category` (
 `slug` VARCHAR(255) NOT NULL,
 PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
--- -----------------------------------------------------
--- Table `anecdote_category`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `anecdote_category` (
-`anecdote_id` INT UNSIGNED NOT NULL, 
-`category_id` INT UNSIGNED NOT NULL, 
-PRIMARY KEY (`anecdote_id`, `category_id`),
-INDEX `fk_anecdote_category_anecdote_id` (`anecdote_id`),
-FOREIGN KEY (`anecdote_id`) REFERENCES `anecdote`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-FOREIGN KEY (`category_id`) REFERENCES `category`(`id`) ON DELETE CASCADE ON UPDATE CASCADE)
-ENGINE = InnoDB;
+
 -- -----------------------------------------------------
 -- Table `anecdote_action`
 -- -----------------------------------------------------

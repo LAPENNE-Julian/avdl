@@ -28,19 +28,28 @@ class Anecdote extends CoreModel {
      */
     private $source;
     /**
-     * @var string
+     * @var int
      */
     private $writer_id;
     /**
      * @var int
      */
+    private $category_1;
+    /**
+     * @var int
+     */
+    private $category_2;
+    /**
+     * @var int
+     */
+    private $category_3;
 
     /**
      * Get the value of title
      *
      * @return  string
      */ 
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -60,7 +69,7 @@ class Anecdote extends CoreModel {
      *
      * @return  string
      */ 
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -80,7 +89,7 @@ class Anecdote extends CoreModel {
      *
      * @return  string
      */ 
-    public function getContent()
+    public function getContent(): string
     {
         return $this->content;
     }
@@ -100,7 +109,7 @@ class Anecdote extends CoreModel {
      *
      * @return  string
      */ 
-    public function getImg()
+    public function getImg(): string
     {
         return $this->img;
     }
@@ -120,7 +129,7 @@ class Anecdote extends CoreModel {
      *
      * @return  string
      */ 
-    public function getSource()
+    public function getSource(): string
     {
         return $this->source;
     }
@@ -140,7 +149,7 @@ class Anecdote extends CoreModel {
      *
      * @return  int
      */ 
-    public function getWriterId()
+    public function getWriterId(): int
     {
         return $this->writer_id;
     }
@@ -156,6 +165,66 @@ class Anecdote extends CoreModel {
     }
 
     /**
+     * Get the value of category_1
+     *
+     * @return  int|null 
+     */ 
+    public function getCategory1(): ?int
+    {
+        return $this->category_1;
+    }
+
+    /**
+     * Set the value of category_1
+     *
+     * @param  int|null  $category_1
+     */ 
+    public function setCategory1($categoryId)
+    {
+        $this->category_1 = $categoryId;
+    }
+
+    /**
+     * Get the value of category_2
+     *
+     * @return  int|null 
+     */ 
+    public function getCategory2(): ?int
+    {
+        return $this->category_2;
+    }
+
+    /**
+     * Set the value of category_2
+     *
+     * @param  int|null $category_2
+     */ 
+    public function setCategory2($categoryId)
+    {
+        $this->category_2 = $categoryId;
+    }
+
+    /**
+     * Get the value of category_3
+     *
+     * @return  int|null 
+     */ 
+    public function getCategory3(): ?int
+    {
+        return $this->category_3;
+    }
+
+    /**
+     * Set the value of category_3
+     *
+     * @param  int|null $category_3
+     */ 
+    public function setCategory3($categoryId)
+    {
+        $this->category_3 = $categoryId;
+    }
+
+    /**
      * Insert new anecdote
      */
     public function insert()
@@ -163,8 +232,8 @@ class Anecdote extends CoreModel {
         $pdo = Database::getPDO();
 
         $sql = '
-            INSERT INTO anecdote (title, description, content, img, source, writer_id)
-            VALUES (:title, :description, :content, :img, :source, :writer_id)
+            INSERT INTO anecdote (title, description, content, img, source, writer_id, category_1, category_2, category_3)
+            VALUES (:title, :description, :content, :img, :source, :writer_id, :category_1, :category_2, :category_3)
         ';
 
         $pdoStatement = $pdo->prepare($sql);
@@ -175,6 +244,9 @@ class Anecdote extends CoreModel {
         $pdoStatement->bindValue(':img', $this->img);
         $pdoStatement->bindValue(':source', $this->source);
         $pdoStatement->bindValue(':writer_id', $this->writer_id);
+        $pdoStatement->bindValue(':writer_id', $this->category_1);
+        $pdoStatement->bindValue(':writer_id', $this->category_2);
+        $pdoStatement->bindValue(':writer_id', $this->category_3);
 
         $queryWorked = $pdoStatement->execute();
 
@@ -203,6 +275,9 @@ class Anecdote extends CoreModel {
                 `content` = :content,
                 `img` = :img,
                 `source` = :source,
+                `category_1` = :category_1,
+                `category_2` = :category_2,
+                `category_3` = :category_3,
                 `updated_at` = NOW()
             WHERE id = :id
         ';
@@ -214,6 +289,9 @@ class Anecdote extends CoreModel {
         $pdoStatement->bindValue(':content', $this->content);
         $pdoStatement->bindValue(':img', $this->img);
         $pdoStatement->bindValue(':source', $this->source);
+        $pdoStatement->bindValue(':category_1', $this->category_1);
+        $pdoStatement->bindValue(':category_2', $this->category_2);
+        $pdoStatement->bindValue(':category_3', $this->category_3);
         $pdoStatement->bindValue(':id', $this->id);
 
         $queryWorked = $pdoStatement->execute();
@@ -266,62 +344,41 @@ class Anecdote extends CoreModel {
         `anecdote`.`content`,
         `anecdote`.`img`,
         `anecdote`.`source`,
-        `anecdote`.`created_at`, 
+        `anecdote`.`created_at`,
+        `anecdote`.`category_1`,
+        `anecdote`.`category_2`,
+        `anecdote`.`category_3`,
 
-        (SELECT `category_id`
-                    FROM `anecdote_category`
-                    WHERE `anecdote_id` = `anecdote`.`id` LIMIT 1 OFFSET 0) AS `categoryId1`,
         (SELECT `name`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId1`) AS `categoryName1`,
+                    WHERE `category`.`id` = `category_1`) AS `categoryName1`,
         (SELECT `color`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId1`) AS `categoryColor1`,
+                    WHERE `category`.`id` = `category_1`) AS `categoryColor1`,
         (SELECT `slug`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId1`) AS `categorySlug1`,          
-
-        (SELECT `category_id`
-                    FROM `anecdote_category`
-                    WHERE `anecdote_id` = `anecdote`.`id` LIMIT 1 OFFSET 1) AS `categoryId2`,
+                    WHERE `category`.`id` = `category_1`) AS `categorySlug1`,          
         (SELECT `name`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId2`) AS `categoryName2`,
+                    WHERE `category`.`id` = `category_2`) AS `categoryName2`,
         (SELECT `color`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId2`) AS `categoryColor2`,
+                    WHERE `category`.`id` = `category_2`) AS `categoryColor2`,
         (SELECT `slug`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId2`) AS `categorySlug2`,
+                    WHERE `category`.`id` = `category_2`) AS `categorySlug2`,
         
-        (SELECT `category_id`
-                    FROM `anecdote_category`
-                    WHERE `anecdote_id` = `anecdote`.`id` LIMIT 1 OFFSET 2) AS `categoryId3`,
         (SELECT `name`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId3`) AS `categoryName3`,
+                    WHERE `category`.`id` = `category_3`) AS `categoryName3`,
         (SELECT `color`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId3`) AS `categoryColor3`,
+                    WHERE `category`.`id` = `category_3`) AS `categoryColor3`,
         (SELECT `slug`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId3`) AS `categorySlug3`,
-
-        `user`.`id` AS `userId`,
-        `user`.`pseudo`,
-        `user`.`img` AS `userImg`,
-
-        (SELECT COUNT(`user_id`) 
-                FROM `anecdote_action` 
-                WHERE `anecdote_action`.`vote` = 1 AND `anecdote_id` = `anecdote`.`id`
-        ) AS `upvote`,
-        (SELECT COUNT(`user_id`) 
-                FROM `anecdote_action` 
-                WHERE `anecdote_action`.`vote` = 2 AND `anecdote_id` = `anecdote`.`id`
-        ) AS `downvote`
+                    WHERE `category`.`id` = `category_3`) AS `categorySlug3`
 
         FROM `anecdote`
-        LEFT JOIN `user` ON `anecdote`.`writer_id` = `user`.`id`
         WHERE `anecdote`.`id` = :id';
         
         // prepare() return PDOStatement object
@@ -355,10 +412,43 @@ class Anecdote extends CoreModel {
     {
         $pdo = Database::getPDO();
 
-        $sql = 'SELECT `anecdote_id`, `category_id`, 
-            (SELECT `name` FROM `category` WHERE `category`.`id` = `category_id`) AS `name`
-            FROM `anecdote_category`
-            WHERE `anecdote_id` = :anecdoteId';
+        $sql = 'SELECT 
+        `anecdote`.`id`, 
+        `anecdote`.`category_1`,
+        `anecdote`.`category_2`,
+        `anecdote`.`category_3`,
+
+        (SELECT `name`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_1`) AS `categoryName1`,
+        (SELECT `color`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_1`) AS `categoryColor1`,
+        (SELECT `slug`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_1`) AS `categorySlug1`,          
+        (SELECT `name`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_2`) AS `categoryName2`,
+        (SELECT `color`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_2`) AS `categoryColor2`,
+        (SELECT `slug`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_2`) AS `categorySlug2`,
+        
+        (SELECT `name`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_3`) AS `categoryName3`,
+        (SELECT `color`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_3`) AS `categoryColor3`,
+        (SELECT `slug`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_3`) AS `categorySlug3`
+
+        FROM `anecdote`
+        WHERE `anecdote`.`id` = :anecdoteId';
 
         $pdoStatement = $pdo->prepare($sql);
 
@@ -423,33 +513,6 @@ class Anecdote extends CoreModel {
             $pdoStatement->bindValue(':userId', $userId);
 
             $queryWorked = $pdoStatement->execute();
-
-        // $queryWorked return a boolean if the request work
-        if ($queryWorked) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Insert new category for anecdote
-     */
-    public static function insertCategoryToAnecdote(int $anecdoteId, int $categoryId)
-    {
-        $pdo = Database::getPDO();
-
-        $sql = '
-            INSERT INTO anecdote_category (anecdote_id, category_id)
-            VALUES (:anecdote_id, :category_id)
-        ';
-
-        $pdoStatement = $pdo->prepare($sql);
-
-        $pdoStatement->bindValue(':anecdote_id', $anecdoteId);
-        $pdoStatement->bindValue(':category_id', $categoryId);
-
-        $queryWorked = $pdoStatement->execute();
 
         // $queryWorked return a boolean if the request work
         if ($queryWorked) {
@@ -586,32 +649,6 @@ class Anecdote extends CoreModel {
             return false;
         }
     }
-    
-    /**
-     * Delete category anecdote
-     */
-    public static function deleteCategoryAnecdote(int $anecdoteId, int $categoryId)
-    {
-        $pdo = Database::getPDO();
-
-        $sql = 'DELETE FROM `anecdote_category`
-            WHERE `anecdote_id` = :anecdoteId
-            AND `category_id` = :categoryId';
-
-        $pdoStatement = $pdo->prepare($sql);
-
-        $pdoStatement->bindValue(':anecdoteId', $anecdoteId);
-        $pdoStatement->bindValue(':categoryId', $categoryId);
-
-        $queryWorked = $pdoStatement->execute();
-
-        // $queryWorked return a boolean if the request work
-        if ($queryWorked) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     /**
      * Get anecdote by id
@@ -629,46 +666,39 @@ class Anecdote extends CoreModel {
         `anecdote`.`content`,
         `anecdote`.`img`,
         `anecdote`.`source`,
-        `anecdote`.`created_at`, 
+        `anecdote`.`created_at`,
+        `anecdote`.`category_1`,
+        `anecdote`.`category_2`,
+        `anecdote`.`category_3`,
 
-        (SELECT `category_id`
-                    FROM `anecdote_category`
-                    WHERE `anecdote_id` = `anecdote`.`id` LIMIT 1 OFFSET 0) AS `categoryId1`,
         (SELECT `name`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId1`) AS `categoryName1`,
+                    WHERE `category`.`id` = `category_1`) AS `categoryName1`,
         (SELECT `color`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId1`) AS `categoryColor1`,
+                    WHERE `category`.`id` = `category_1`) AS `categoryColor1`,
         (SELECT `slug`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId1`) AS `categorySlug1`,          
-
-        (SELECT `category_id`
-                    FROM `anecdote_category`
-                    WHERE `anecdote_id` = `anecdote`.`id` LIMIT 1 OFFSET 1) AS `categoryId2`,
+                    WHERE `category`.`id` = `category_1`) AS `categorySlug1`,          
         (SELECT `name`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId2`) AS `categoryName2`,
+                    WHERE `category`.`id` = `category_2`) AS `categoryName2`,
         (SELECT `color`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId2`) AS `categoryColor2`,
+                    WHERE `category`.`id` = `category_2`) AS `categoryColor2`,
         (SELECT `slug`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId2`) AS `categorySlug2`,
+                    WHERE `category`.`id` = `category_2`) AS `categorySlug2`,
         
-        (SELECT `category_id`
-                    FROM `anecdote_category`
-                    WHERE `anecdote_id` = `anecdote`.`id` LIMIT 1 OFFSET 2) AS `categoryId3`,
         (SELECT `name`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId3`) AS `categoryName3`,
+                    WHERE `category`.`id` = `category_3`) AS `categoryName3`,
         (SELECT `color`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId3`) AS `categoryColor3`,
+                    WHERE `category`.`id` = `category_3`) AS `categoryColor3`,
         (SELECT `slug`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId3`) AS `categorySlug3`,
+                    WHERE `category`.`id` = `category_3`) AS `categorySlug3`,
 
         `user`.`id` AS `userId`,
         `user`.`pseudo`,
@@ -705,47 +735,40 @@ class Anecdote extends CoreModel {
         $sql = 'SELECT 
         `anecdote`.`id`, 
         `anecdote`.`title`, 
-        `anecdote`.`description`,
-        `anecdote`.`created_at`, 
-     
-        (SELECT `category_id`
-                    FROM `anecdote_category`
-                    WHERE `anecdote_id` = `anecdote`.`id` LIMIT 1 OFFSET 0) AS `categoryId1`,
-        (SELECT `name`
-                    FROM `category`
-                    WHERE `category`.`id` = `categoryId1`) AS `categoryName1`,
-        (SELECT `color`
-                    FROM `category`
-                    WHERE `category`.`id` = `categoryId1`) AS `categoryColor1`,
-        (SELECT `slug`
-                    FROM `category`
-                    WHERE `category`.`id` = `categoryId1`) AS `categorySlug1`,          
+        `anecdote`.`description`, 
+        `anecdote`.`created_at`,
+        `anecdote`.`category_1`,
+        `anecdote`.`category_2`,
+        `anecdote`.`category_3`,
 
-        (SELECT `category_id`
-                    FROM `anecdote_category`
-                    WHERE `anecdote_id` = `anecdote`.`id` LIMIT 1 OFFSET 1) AS `categoryId2`,
         (SELECT `name`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId2`) AS `categoryName2`,
+                    WHERE `category`.`id` = `category_1`) AS `categoryName1`,
         (SELECT `color`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId2`) AS `categoryColor2`,
+                    WHERE `category`.`id` = `category_1`) AS `categoryColor1`,
         (SELECT `slug`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId2`) AS `categorySlug2`,
+                    WHERE `category`.`id` = `category_1`) AS `categorySlug1`,          
+        (SELECT `name`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_2`) AS `categoryName2`,
+        (SELECT `color`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_2`) AS `categoryColor2`,
+        (SELECT `slug`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_2`) AS `categorySlug2`,
         
-        (SELECT `category_id`
-                    FROM `anecdote_category`
-                    WHERE `anecdote_id` = `anecdote`.`id` LIMIT 1 OFFSET 2) AS `categoryId3`,
         (SELECT `name`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId3`) AS `categoryName3`,
+                    WHERE `category`.`id` = `category_3`) AS `categoryName3`,
         (SELECT `color`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId3`) AS `categoryColor3`,
+                    WHERE `category`.`id` = `category_3`) AS `categoryColor3`,
         (SELECT `slug`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId3`) AS `categorySlug3`, 
+                    WHERE `category`.`id` = `category_3`) AS `categorySlug3`,
 
         `user`.`id` AS `userId`,
         `user`.`pseudo`,
@@ -761,8 +784,8 @@ class Anecdote extends CoreModel {
         ) AS `downvote`
 
         FROM `anecdote`
-        LEFT JOIN `user` ON `anecdote`.`writer_id` = `user`.`id`'
-        ;
+        LEFT JOIN `user` ON `anecdote`.`writer_id` = `user`.`id`
+        WHERE `anecdote`.`id` = :id';
 
         $pdoStatement = $pdo->prepare($sql);
         $pdoStatement->execute();
@@ -783,46 +806,39 @@ class Anecdote extends CoreModel {
         `anecdote`.`id`, 
         `anecdote`.`title`, 
         `anecdote`.`description`, 
-        `anecdote`.`created_at`, 
-     
-        (SELECT `category_id`
-                    FROM `anecdote_category`
-                    WHERE `anecdote_id` = `anecdote`.`id` LIMIT 1 OFFSET 0) AS `categoryId1`,
-        (SELECT `name`
-                    FROM `category`
-                    WHERE `category`.`id` = `categoryId1`) AS `categoryName1`,
-        (SELECT `color`
-                    FROM `category`
-                    WHERE `category`.`id` = `categoryId1`) AS `categoryColor1`,
-        (SELECT `slug`
-                    FROM `category`
-                    WHERE `category`.`id` = `categoryId1`) AS `categorySlug1`,          
+        `anecdote`.`created_at`,
+        `anecdote`.`category_1`,
+        `anecdote`.`category_2`,
+        `anecdote`.`category_3`,
 
-        (SELECT `category_id`
-                    FROM `anecdote_category`
-                    WHERE `anecdote_id` = `anecdote`.`id` LIMIT 1 OFFSET 1) AS `categoryId2`,
         (SELECT `name`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId2`) AS `categoryName2`,
+                    WHERE `category`.`id` = `category_1`) AS `categoryName1`,
         (SELECT `color`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId2`) AS `categoryColor2`,
+                    WHERE `category`.`id` = `category_1`) AS `categoryColor1`,
         (SELECT `slug`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId2`) AS `categorySlug2`,
+                    WHERE `category`.`id` = `category_1`) AS `categorySlug1`,          
+        (SELECT `name`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_2`) AS `categoryName2`,
+        (SELECT `color`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_2`) AS `categoryColor2`,
+        (SELECT `slug`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_2`) AS `categorySlug2`,
         
-        (SELECT `category_id`
-                    FROM `anecdote_category`
-                    WHERE `anecdote_id` = `anecdote`.`id` LIMIT 1 OFFSET 2) AS `categoryId3`,
         (SELECT `name`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId3`) AS `categoryName3`,
+                    WHERE `category`.`id` = `category_3`) AS `categoryName3`,
         (SELECT `color`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId3`) AS `categoryColor3`,
+                    WHERE `category`.`id` = `category_3`) AS `categoryColor3`,
         (SELECT `slug`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId3`) AS `categorySlug3`, 
+                    WHERE `category`.`id` = `category_3`) AS `categorySlug3`,
 
         `user`.`id` AS `userId`,
         `user`.`pseudo`,
@@ -861,46 +877,39 @@ class Anecdote extends CoreModel {
         `anecdote`.`id`, 
         `anecdote`.`title`, 
         `anecdote`.`description`, 
-        `anecdote`.`created_at`, 
-     
-        (SELECT `category_id`
-                    FROM `anecdote_category`
-                    WHERE `anecdote_id` = `anecdote`.`id` LIMIT 1 OFFSET 0) AS `categoryId1`,
-        (SELECT `name`
-                    FROM `category`
-                    WHERE `category`.`id` = `categoryId1`) AS `categoryName1`,
-        (SELECT `color`
-                    FROM `category`
-                    WHERE `category`.`id` = `categoryId1`) AS `categoryColor1`,
-        (SELECT `slug`
-                    FROM `category`
-                    WHERE `category`.`id` = `categoryId1`) AS `categorySlug1`,          
+        `anecdote`.`created_at`,
+        `anecdote`.`category_1`,
+        `anecdote`.`category_2`,
+        `anecdote`.`category_3`,
 
-        (SELECT `category_id`
-                    FROM `anecdote_category`
-                    WHERE `anecdote_id` = `anecdote`.`id` LIMIT 1 OFFSET 1) AS `categoryId2`,
         (SELECT `name`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId2`) AS `categoryName2`,
+                    WHERE `category`.`id` = `category_1`) AS `categoryName1`,
         (SELECT `color`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId2`) AS `categoryColor2`,
+                    WHERE `category`.`id` = `category_1`) AS `categoryColor1`,
         (SELECT `slug`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId2`) AS `categorySlug2`,
+                    WHERE `category`.`id` = `category_1`) AS `categorySlug1`,          
+        (SELECT `name`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_2`) AS `categoryName2`,
+        (SELECT `color`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_2`) AS `categoryColor2`,
+        (SELECT `slug`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_2`) AS `categorySlug2`,
         
-        (SELECT `category_id`
-                    FROM `anecdote_category`
-                    WHERE `anecdote_id` = `anecdote`.`id` LIMIT 1 OFFSET 2) AS `categoryId3`,
         (SELECT `name`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId3`) AS `categoryName3`,
+                    WHERE `category`.`id` = `category_3`) AS `categoryName3`,
         (SELECT `color`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId3`) AS `categoryColor3`,
+                    WHERE `category`.`id` = `category_3`) AS `categoryColor3`,
         (SELECT `slug`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId3`) AS `categorySlug3`, 
+                    WHERE `category`.`id` = `category_3`) AS `categorySlug3`,
 
         `user`.`id` AS `userId`,
         `user`.`pseudo`,
@@ -960,47 +969,40 @@ class Anecdote extends CoreModel {
         $sql = 'SELECT 
         `anecdote`.`id`, 
         `anecdote`.`title`, 
-        `anecdote`.`description`,
-        `anecdote`.`created_at`, 
-     
-        (SELECT `category_id`
-                    FROM `anecdote_category`
-                    WHERE `anecdote_id` = `anecdote`.`id` LIMIT 1 OFFSET 0) AS `categoryId1`,
-        (SELECT `name`
-                    FROM `category`
-                    WHERE `category`.`id` = `categoryId1`) AS `categoryName1`,
-        (SELECT `color`
-                    FROM `category`
-                    WHERE `category`.`id` = `categoryId1`) AS `categoryColor1`,
-        (SELECT `slug`
-                    FROM `category`
-                    WHERE `category`.`id` = `categoryId1`) AS `categorySlug1`,          
+        `anecdote`.`description`, 
+        `anecdote`.`created_at`,
+        `anecdote`.`category_1`,
+        `anecdote`.`category_2`,
+        `anecdote`.`category_3`,
 
-        (SELECT `category_id`
-                    FROM `anecdote_category`
-                    WHERE `anecdote_id` = `anecdote`.`id` LIMIT 1 OFFSET 1) AS `categoryId2`,
         (SELECT `name`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId2`) AS `categoryName2`,
+                    WHERE `category`.`id` = `category_1`) AS `categoryName1`,
         (SELECT `color`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId2`) AS `categoryColor2`,
+                    WHERE `category`.`id` = `category_1`) AS `categoryColor1`,
         (SELECT `slug`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId2`) AS `categorySlug2`,
+                    WHERE `category`.`id` = `category_1`) AS `categorySlug1`,          
+        (SELECT `name`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_2`) AS `categoryName2`,
+        (SELECT `color`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_2`) AS `categoryColor2`,
+        (SELECT `slug`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_2`) AS `categorySlug2`,
         
-        (SELECT `category_id`
-                    FROM `anecdote_category`
-                    WHERE `anecdote_id` = `anecdote`.`id` LIMIT 1 OFFSET 2) AS `categoryId3`,
         (SELECT `name`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId3`) AS `categoryName3`,
+                    WHERE `category`.`id` = `category_3`) AS `categoryName3`,
         (SELECT `color`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId3`) AS `categoryColor3`,
+                    WHERE `category`.`id` = `category_3`) AS `categoryColor3`,
         (SELECT `slug`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId3`) AS `categorySlug3`, 
+                    WHERE `category`.`id` = `category_3`) AS `categorySlug3`,
 
         `user`.`id` AS `userId`,
         `user`.`pseudo`,
