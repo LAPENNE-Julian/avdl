@@ -205,7 +205,7 @@ footer ul a:hover {
     align-items: center;
 }
 
-.row {
+.row-border {
     --bs-gutter-x: 0;
     margin-bottom: 10%;
     border-bottom: medium solid gray;
@@ -376,12 +376,36 @@ footer ul a:hover {
     margin-bottom: 2%;
 }
 
-/*backoffice-anecdote-read
-backoffice-anecdote-form*/
+/*backoffice-anecdote-read*/
 #backoffice-anecdote-read-categoryList,
 #backoffice-anecdote-form-categoryList {
     margin: 2% 0% 3.1%;
     padding-left: 1.2%;
+}
+
+#backoffice-anecdote-read-categoryList {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+#backoffice-anecdote-read-categoryList li{
+    border: thin solid grey;
+    padding: 1% 8% 1% 2%;
+    margin-right: 10%;
+}
+
+/*backoffice-anecdote-form*/
+textarea {
+    margin-bottom: 2%;
+}
+
+.form-anecdote-select-category-item {
+    margin-right: 5%;
+}
+
+.form-anecdote-select-category-item label{
+    margin-bottom: 3%;
 }
 
 /*backoffice-category-read*/
@@ -469,5 +493,17 @@ backoffice-anecdote-form*/
     }
     #contact-data {
         margin: 0% 0% 10% 0%;
+    }
+}
+
+@media (max-width: 810px) {
+    /*backoffice-anecdote-form*/
+    /*backoffice-anecdote-form*/
+    .form-anecdote-select-category {
+        display: flex;
+        flex-direction: column;
+    }
+    .form-anecdote-select-category-item {
+        width: 60%;
     }
 }

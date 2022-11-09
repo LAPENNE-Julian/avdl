@@ -77,20 +77,32 @@ class AnecdoteController extends CoreController
         $clearContent = $this->ClearData($content);
         $clearSource = $this->ClearData($source);
 
-        $clearCategory1 = $this->CheckCategoryValue($category1);
-        $clearCategory2 = $this->CheckCategoryValue($category2);
-        $clearCategory3 = $this->CheckCategoryValue($category3);
+        $clearCategories = $this->CheckClearCategory($category1, $category2, $category3);
 
-        if($clearCategory1 !== false) {
-            $anecdote->setCategory1($category1);
-        }
-        if($clearCategory2 !== false){
-            $anecdote->setCategory2($category2);
-        }
-        if ($clearCategory3 !== false) {
-            $anecdote->setCategory3($category3);
-        }
+        if($clearCategories == true){
+
+            //Check categories are unique
+            $categories = $this->CheckUniqueCategoryValue($category1, $category2, $category3);
         
+            extract($categories);
+
+            //If category selected value = 0, set category null
+            $categoryValue1 = $this->SetNullCategory($c1);
+            $categoryValue2 = $this->SetNullCategory($c2);
+            $categoryValue3 = $this->SetNullCategory($c3);
+            
+            //Set category
+            $anecdote->setCategory1($categoryValue1);
+            $anecdote->setCategory2($categoryValue2);
+            $anecdote->setCategory3($categoryValue3);
+
+        } else {
+
+            //Post error message in the view and redirection to edit form
+            // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/edit/'. $anecdote->getId());
+            $this->RedirectionWithMessage('anecdote/edit/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
+        }
+
         //Set property anecdote object
         $anecdote->setTitle($clearTitle);
         $anecdote->setDescription($clearDescription);
@@ -106,29 +118,39 @@ class AnecdoteController extends CoreController
     }
 
     /**
-     * Check category value
+     * Set category null for value 0
      *
-     * @param int|null $categoryValue
-     * @return 
+     * @param int $categoryValue
+     * @return null
      */
-    public function CheckCategoryValue($categoryValue){
+    protected static function SetNullCategory($categoryValue){
 
-    //clear space 
-    $clearCategoryValue = trim($categoryValue);
+        if($categoryValue == 0){
 
-    //Find spaces in string
-    $checkSpacesInCategoryValue = $this->CheckSpaceInString($clearCategoryValue);
+             return $categoryValue = null;
 
-    if($checkSpacesInCategoryValue == false){
-    
-        //Check if category value is an interger
-        $categoryIsInteger = is_numeric($clearCategoryValue);
+        } else {
 
-        if($categoryIsInteger == true){
+            return $categoryValue;
+        }
+    }
 
-            $category = Category::find($clearCategoryValue);
+    /**
+     * Clear category value
+     *
+     * @param int|null|string $categoryValue
+     * @return null|bool
+     */
+    protected function ClearCategoryData($categoryValue){
 
-            if($category !== null) {
+        //Check if category value is an integer
+        $categoryIsInteger = is_numeric($categoryValue);
+
+        if($categoryIsInteger == true && $categoryValue !== 0){
+
+            $category = Category::find($categoryValue);
+
+            if($category !== null || $category !== false) {
 
                 return $category->getId();
 
@@ -136,14 +158,64 @@ class AnecdoteController extends CoreController
 
                 return false;
             }
+        }
+    }
+
+    /**
+     * Check Clear category value not return false
+     *
+     * @param int|bool $category
+     * @return 
+     */
+    protected function CheckClearCategory($category1, $category2, $category3){
+
+        $clearCategory1 = $this->ClearCategoryData($category1);
+        $clearCategory2 = $this->ClearCategoryData($category2);
+        $clearCategory3 = $this->ClearCategoryData($category3);
+
+        if($clearCategory1 !== false || $clearCategory1 == 0 
+        && $clearCategory2 !== false || $clearCategory2 == 0
+        && $clearCategory3 !== false || $clearCategory3 == 0) {
+
+            return true;
 
         } else {
 
             return false;
         }
+    }
 
-    } else {
+    /**
+     * Removes duplicate category values
+     *
+     * @param int|null $category1
+     * @param int|null $category2
+     * @param int|null $category3
+     * @return array
+     */
+    protected function CheckUniqueCategoryValue($category1, $category2, $category3){
 
-        return false;
-    }}
+        if ($category1 == $category2) {
+
+            $category2 = 0;
+        }
+
+        if ($category1 == $category3) {
+
+            $category3 = 0;
+        }
+
+        if ($category2 == $category3) {
+
+            $category3 = 0;
+        }
+
+        $array = [
+            'c1' => $category1,
+            'c2' => $category2,
+            'c3' => $category3,
+        ];
+
+        return $array;
+    }
 }

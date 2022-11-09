@@ -14,7 +14,7 @@
             <input type="text" name="name" class="form-control" id="name" value="<?= htmlentities($category->getName()) ?>" minlength="2" required>
         </div>
 
-        <div class="form-group ">
+        <div class="form-group">
             <label for="color">Color</label>
             <input id="input-category-color"  type="color" name="color" class="form-control" id="color" aria-describedby="subtitleHelpBlock" value="<?= htmlentities($category->getColor()) ?>">
         </div>

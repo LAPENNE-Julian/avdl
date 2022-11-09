@@ -11,14 +11,17 @@ class Category extends CoreModel
      * @var string
      */
     private $name;
+
     /**
      * @var string
      */
     private $color;
+
     /**
      * @var string
      */
     private $img;
+
     /**
      * @var string
      */
@@ -63,6 +66,8 @@ class Category extends CoreModel
 
     /**
      * Get the value of img
+     *
+     * @return  string|null
      */ 
     public function getImg()
     {
@@ -71,8 +76,10 @@ class Category extends CoreModel
 
     /**
      * Set the value of img
+     *
+     * @param  string  $img
      */ 
-    public function setImg($img)
+    public function setImg(string $img)
     {
         $this->img = $img;
     }

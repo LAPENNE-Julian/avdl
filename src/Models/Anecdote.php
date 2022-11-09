@@ -11,34 +11,42 @@ class Anecdote extends CoreModel {
      * @var string
      */
     private $title;
+
     /**
      * @var string
      */
     private $description;
+
     /**
      * @var string
      */
     private $content;
+
     /**
      * @var string
      */
     private $img;
+
     /**
      * @var string
      */
     private $source;
+
     /**
      * @var int
      */
     private $writer_id;
+
     /**
      * @var int
      */
     private $category_1;
+
     /**
      * @var int
      */
     private $category_2;
+    
     /**
      * @var int
      */
@@ -67,9 +75,9 @@ class Anecdote extends CoreModel {
     /**
      * Get the value of description
      *
-     * @return  string
+     * @return  string|null
      */ 
-    public function getDescription(): string
+    public function getDescription()
     {
         return $this->description;
     }
@@ -107,9 +115,9 @@ class Anecdote extends CoreModel {
     /**
      * Get the value of img
      *
-     * @return  string
+     * @return  string|null
      */ 
-    public function getImg(): string
+    public function getImg()
     {
         return $this->img;
     }
@@ -127,9 +135,9 @@ class Anecdote extends CoreModel {
     /**
      * Get the value of source
      *
-     * @return  string
+     * @return  string|null
      */ 
-    public function getSource(): string
+    public function getSource()
     {
         return $this->source;
     }
@@ -244,9 +252,9 @@ class Anecdote extends CoreModel {
         $pdoStatement->bindValue(':img', $this->img);
         $pdoStatement->bindValue(':source', $this->source);
         $pdoStatement->bindValue(':writer_id', $this->writer_id);
-        $pdoStatement->bindValue(':writer_id', $this->category_1);
-        $pdoStatement->bindValue(':writer_id', $this->category_2);
-        $pdoStatement->bindValue(':writer_id', $this->category_3);
+        $pdoStatement->bindValue(':category_1', $this->category_1);
+        $pdoStatement->bindValue(':category_2', $this->category_2);
+        $pdoStatement->bindValue(':category_3', $this->category_3);
 
         $queryWorked = $pdoStatement->execute();
 
@@ -275,10 +283,10 @@ class Anecdote extends CoreModel {
                 `content` = :content,
                 `img` = :img,
                 `source` = :source,
+                `updated_at` = NOW(),
                 `category_1` = :category_1,
                 `category_2` = :category_2,
-                `category_3` = :category_3,
-                `updated_at` = NOW()
+                `category_3` = :category_3
             WHERE id = :id
         ';
 

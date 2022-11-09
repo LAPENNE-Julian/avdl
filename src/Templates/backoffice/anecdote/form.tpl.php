@@ -38,29 +38,29 @@
 
       
         <div class="form-group">
-            <div class="row">
-                <div class="col-3">
-                    <label for="brand">Categorie 1 :</label>
+            <div class="row form-anecdote-select-category">
+                <div class="col-3 form-anecdote-select-category-item">
+                    <label for="category-1">Categorie 1 :</label>
                     <select name="category-1" id="category-1" class="form-control">
-                        <option value="null">null</option>
+                        <option value="0">null</option>
                         <?php foreach($categories as $category): ?>
                         <option value="<?= $category->getId() ?>" <?= $category->getId() == $anecdote->getCategory1() ? ' selected':'' ?>><?= $category->getName() ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
 
-                <div class="col-3">
-                    <label for="brand">Categorie 2 :</label>
+                <div class="col-3 form-anecdote-select-category-item">
+                    <label for="category-2">Categorie 2 :</label>
                     <select name="category-2" id="category-2" class="form-control">
-                        <option value="null">null</option>
+                        <option value="0">null</option>
                         <?php foreach($categories as $category): ?>
                         <option value="<?= $category->getId() ?>" <?= $category->getId() == $anecdote->getCategory2() ? ' selected':'' ?>><?= $category->getName() ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
 
-                <div class="col-3">
-                    <label for="brand">Categorie 3 :</label>
+                <div class="col-3 form-anecdote-select-category-item">
+                    <label for="category-3">Categorie 3 :</label>
                     <select name="category-3" id="category-3" class="form-control">
                         <option value="null">null</option>
                         <?php foreach($categories as $category): ?>

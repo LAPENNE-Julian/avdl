@@ -163,7 +163,7 @@ class CategoryController extends CoreController
      * @param string $categoryName
      * @return string|bool
      */
-    public static function TrimCategoryName(string $categoryName)
+    protected static function TrimCategoryName(string $categoryName)
     {
         //Remove first and last spaces in name edit
         $categoryNameTrim = trim($categoryName);
@@ -183,7 +183,7 @@ class CategoryController extends CoreController
      * @param string $toBeSlugged
      * @return string
      */
-    public static function MakeSlugName(string $toBeSlugged) :string 
+    protected static function MakeSlugName(string $toBeSlugged) :string 
     {
         // to lowercase
         // replace ' ' by '-'

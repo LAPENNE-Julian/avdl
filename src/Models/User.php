@@ -7,10 +7,29 @@ use PDO;
 
 class User extends CoreModel
 {
+    /**
+     * @var string
+     */
     private $pseudo;
+
+    /**
+     * @var string
+     */
     private $email;
+
+    /**
+     * @var string
+     */
     private $password;
+
+    /**
+     * @var string
+     */
     private $img;
+
+    /**
+     * @var int
+     */
     private $roles;
 
     /**
@@ -78,6 +97,8 @@ class User extends CoreModel
 
     /**
      * Get the value of img
+     *
+     * @return  string|null
      */ 
     public function getImg()
     {
@@ -86,8 +107,10 @@ class User extends CoreModel
 
     /**
      * Set the value of img
+     *
+     * @param  string  $img
      */ 
-    public function setImg($img)
+    public function setImg(string $img)
     {
         $this->img = $img;
     }

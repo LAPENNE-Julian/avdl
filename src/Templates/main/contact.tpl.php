@@ -56,19 +56,19 @@
 
         <form id="contact-form-content" action="#" method="POST">
             
-            <div class="row">
+            <div class="row-border">
                 <!-- <label class="required" for="name">Votre nom :</label><br /> -->
                 <input id="contact-name" class="input" name="name" type="text" placeholder="Votre nom" value="" size="30" /><br />
                 <span id="name_validation" class="error_message"></span>
             </div>
 
-            <div class="row">
+            <div class="row-border">
                 <!-- <label class="required" for="email">Votre email :</label><br /> -->
                 <input id="contact-email" class="input" name="email" type="text" placeholder="Votre adresse email valide" value="" size="30" /><br />
                 <span id="email_validation" class="error_message"></span>
             </div>
 
-            <div class="row">
+            <div class="row-border">
                 <!-- <label class="required" for="message">Votre message :</label><br /> -->
                 <textarea id="contact-message" class="input" name="message" rows="7" cols="30"></textarea><br />
                 <span id="message_validation" class="error_message"></span>

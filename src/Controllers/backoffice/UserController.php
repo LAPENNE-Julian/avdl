@@ -313,7 +313,7 @@ class UserController extends CoreController
      * @param string $userName
      * @return string
      */
-    public static function ImgNameGenerator(string $userName): string
+    protected static function ImgNameGenerator(string $userName): string
     {
         // To lowercase
         $clearName = strtolower($userName);
@@ -336,7 +336,7 @@ class UserController extends CoreController
      * @param string $imgType
      * @return string
      */
-    public static function ImgPathGenerator(string $imgName, string $imgType): string
+    protected static function ImgPathGenerator(string $imgName, string $imgType): string
     {
         //get http host
         $server = $_SERVER['HTTP_HOST'];
@@ -354,7 +354,7 @@ class UserController extends CoreController
      * @param int $number
      * @return bool
      */
-    public static function CheckStringLength(string $string, int $number): bool
+    protected static function CheckStringLength(string $string, int $number): bool
     {
         //if string length is under $number characters
         if(strlen($string) < $number ){
@@ -368,39 +368,12 @@ class UserController extends CoreController
     }
 
     /**
-     * Check string - spaces and length
-     *
-     * @param string $string
-     * @return bool
-     */
-    public function CheckString(string $string, int $number): bool
-    {
-        //Find spaces
-        $clearString = $this->CheckSpaceInString($string);
-
-        //If no spaces
-        if($clearString == true) {
-
-            //check length string
-            $clearString = $this->CheckStringLength($string, $number);
-
-            //if the length is respected return -> true
-            //Or return  -> false
-            return $clearString;
-
-        } else {
-
-            return false;
-        }
-    }
-
-    /**
      * Check if Pseudo is unique in database
      *
      * @param string $string
      * @return bool
      */
-    public static function CheckUniquePseudo(string $string): bool
+    protected static function CheckUniquePseudo(string $string): bool
     {
         if (User::findByPseudo($string) == null) {
 
@@ -420,7 +393,7 @@ class UserController extends CoreController
      * @param string $string
      * @return bool
      */
-    public static function CheckUniqueEmail(string $string): bool
+    protected static function CheckUniqueEmail(string $string): bool
     {
         if (User::findByEmail($string) == null) {
 
@@ -432,5 +405,32 @@ class UserController extends CoreController
             //no, the pseudo already exist
             return false;
         }  
+    }
+
+    /**
+     * Check string - spaces and length
+     *
+     * @param string $string
+     * @return bool
+     */
+    protected function CheckString(string $string, int $number): bool
+    {
+        //Find spaces
+        $clearString = $this->CheckSpaceInString($string);
+
+        //If no spaces
+        if($clearString == true) {
+
+            //check length string
+            $clearString = $this->CheckStringLength($string, $number);
+
+            //if the length is respected return -> true
+            //Or return  -> false
+            return $clearString;
+
+        } else {
+
+            return false;
+        }
     }
 }
