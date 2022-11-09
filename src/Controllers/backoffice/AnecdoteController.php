@@ -77,30 +77,75 @@ class AnecdoteController extends CoreController
         $clearContent = $this->ClearData($content);
         $clearSource = $this->ClearData($source);
 
-        $clearCategories = $this->CheckClearCategory($category1, $category2, $category3);
+        //Check categories are unique
+        $categories = $this->CheckUniqueCategoryValue($category1, $category2, $category3);
 
-        if($clearCategories == true){
+        extract($categories);
 
-            //Check categories are unique
-            $categories = $this->CheckUniqueCategoryValue($category1, $category2, $category3);
-        
-            extract($categories);
-
-            //If category selected value = 0, set category null
-            $categoryValue1 = $this->SetNullCategory($c1);
-            $categoryValue2 = $this->SetNullCategory($c2);
-            $categoryValue3 = $this->SetNullCategory($c3);
-            
+        //Set Category1
+        if($c1 == 0){
             //Set category
-            $anecdote->setCategory1($categoryValue1);
-            $anecdote->setCategory2($categoryValue2);
-            $anecdote->setCategory3($categoryValue3);
+            $anecdote->setCategory1(null);
 
         } else {
 
-            //Post error message in the view and redirection to edit form
-            // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/edit/'. $anecdote->getId());
-            $this->RedirectionWithMessage('anecdote/edit/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
+            $clearCategory1 = $this->ClearCategoryData($c1);
+
+            if($clearCategory1 == false ){
+
+                //Post error message in the view and redirection to edit form
+                // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/edit/'. $anecdote->getId());
+                $this->RedirectionWithMessage('anecdote/edit/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
+            
+            } else {
+
+                $anecdote->setCategory1($c1);
+
+            }
+        }
+
+        //Set Category2
+        if($c2 == 0){
+            //Set category
+            $anecdote->setCategory2(null);
+
+        } else {
+
+            $clearCategory2 = $this->ClearCategoryData($c2);
+
+            if($clearCategory2 == false ){
+
+                //Post error message in the view and redirection to edit form
+                // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/edit/'. $anecdote->getId());
+                $this->RedirectionWithMessage('anecdote/edit/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
+            
+            } else {
+
+                $anecdote->setCategory2($c2);
+
+            }
+        }
+
+        //Set Category3
+        if($c3 == 0){
+            //Set category
+            $anecdote->setCategory3(null);
+
+        } else {
+
+            $clearCategory3 = $this->ClearCategoryData($c3);
+
+            if($clearCategory3 == false ){
+
+                //Post error message in the view and redirection to edit form
+                // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/edit/'. $anecdote->getId());
+                $this->RedirectionWithMessage('anecdote/edit/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
+            
+            } else {
+
+                $anecdote->setCategory3($c3);
+
+            }
         }
 
         //Set property anecdote object
@@ -118,24 +163,6 @@ class AnecdoteController extends CoreController
     }
 
     /**
-     * Set category null for value 0
-     *
-     * @param int $categoryValue
-     * @return null
-     */
-    protected static function SetNullCategory($categoryValue){
-
-        if($categoryValue == 0){
-
-             return $categoryValue = null;
-
-        } else {
-
-            return $categoryValue;
-        }
-    }
-
-    /**
      * Clear category value
      *
      * @param int|null|string $categoryValue
@@ -146,7 +173,7 @@ class AnecdoteController extends CoreController
         //Check if category value is an integer
         $categoryIsInteger = is_numeric($categoryValue);
 
-        if($categoryIsInteger == true && $categoryValue !== 0){
+        if($categoryIsInteger == true){
 
             $category = Category::find($categoryValue);
 
@@ -162,31 +189,8 @@ class AnecdoteController extends CoreController
     }
 
     /**
-     * Check Clear category value not return false
-     *
-     * @param int|bool $category
-     * @return 
-     */
-    protected function CheckClearCategory($category1, $category2, $category3){
-
-        $clearCategory1 = $this->ClearCategoryData($category1);
-        $clearCategory2 = $this->ClearCategoryData($category2);
-        $clearCategory3 = $this->ClearCategoryData($category3);
-
-        if($clearCategory1 !== false || $clearCategory1 == 0 
-        && $clearCategory2 !== false || $clearCategory2 == 0
-        && $clearCategory3 !== false || $clearCategory3 == 0) {
-
-            return true;
-
-        } else {
-
-            return false;
-        }
-    }
-
-    /**
      * Removes duplicate category values
+     * and replace categories null at the end
      *
      * @param int|null $category1
      * @param int|null $category2
@@ -195,26 +199,74 @@ class AnecdoteController extends CoreController
      */
     protected function CheckUniqueCategoryValue($category1, $category2, $category3){
 
+        //If Category1 duplicate in category2, category2 set null
         if ($category1 == $category2) {
 
             $category2 = 0;
         }
 
+        //If Category1 duplicate in category3, category3 set null
         if ($category1 == $category3) {
 
             $category3 = 0;
         }
 
+        //If Category2 duplicate in category3, category3 set null
         if ($category2 == $category3) {
 
             $category3 = 0;
         }
 
+        //Default categories arrayto return
         $array = [
             'c1' => $category1,
             'c2' => $category2,
             'c3' => $category3,
         ];
+
+        //In case, category1 is null, category2 is null, category3 is not null
+        if ($category1 == 0 && $category2 == 0 && $category3 !== 0){
+
+            //Default categories array change
+            $array = [
+                'c1' => $category3,
+                'c2' => $category1,
+                'c3' => $category2,
+            ];
+        }
+
+        //In case, category1 is null, category2 is not null, category3 is null
+        if ($category1 == 0 && $category2 !== 0 && $category3 == 0){
+
+            //Default categories array change
+            $array = [
+                'c1' => $category2,
+                'c2' => $category1,
+                'c3' => $category3,
+            ];
+        }
+
+        //In case, category1 is not null, category2 is null, category3 is not null
+        if ($category1 !== 0 && $category2 == 0 && $category3 !== 0){
+
+            //Default categories array change
+            $array = [
+                'c1' => $category1,
+                'c2' => $category3,
+                'c3' => $category2,
+            ];
+        }
+
+        //In case, category1 is null, category2 is not null, category3 is not null
+        if ($category1 == 0 && $category2 !== 0 && $category3 !== 0){
+
+            //Default categories array change
+            $array = [
+                'c1' => $category2,
+                'c2' => $category3,
+                'c3' => $category1,
+            ];
+        }
 
         return $array;
     }
