@@ -128,6 +128,7 @@ class AnecdoteController extends CoreController
 
         //Set Category3
         if($c3 == 0){
+
             //Set category
             $anecdote->setCategory3(null);
 
@@ -162,6 +163,147 @@ class AnecdoteController extends CoreController
         $this->Redirection('anecdote/' .  $anecdote->getId());
     }
 
+    public function add()
+    {
+        //Get all categories
+        $categories = Category::findAll();
+
+        //Create new anecdote object
+        $this->show('/backoffice/anecdote/form', [
+            'anecdote' => new Anecdote(),
+            'categories' => $categories,
+        ]);
+    }
+
+    public function addPost()
+    {
+        //Get input values
+        $title = filter_input(INPUT_POST, 'title');
+        $description = filter_input(INPUT_POST, 'description');
+        $content = filter_input(INPUT_POST, 'content');
+        // $img = filter_input(INPUT_POST, 'img');
+        $source = filter_input(INPUT_POST, 'source', FILTER_VALIDATE_URL);
+        $category1 = filter_input(INPUT_POST, 'category-1');
+        $category2 = filter_input(INPUT_POST, 'category-2');
+        $category3 = filter_input(INPUT_POST, 'category-3');
+
+        //Create new object anecdote
+        $anecdote = new anecdote();
+
+        //Clear datas html entities
+        $clearTitle = $this->ClearData($title);
+        $clearDescription = $this->ClearData($description);
+        $clearContent = $this->ClearData($content);
+        $clearSource = $this->ClearData($source);
+
+        //Check categories are unique
+        $categories = $this->CheckUniqueCategoryValue($category1, $category2, $category3);
+
+        extract($categories);
+
+        //Set Category1
+        if($c1 == 0){
+            //Set category
+            $anecdote->setCategory1(null);
+
+        } else {
+
+            $clearCategory1 = $this->ClearCategoryData($c1);
+
+            if($clearCategory1 == false ){
+
+                //Post error message in the view and redirection to edit form
+                // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/edit/'. $anecdote->getId());
+                $this->RedirectionWithMessage('anecdote/add/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
+            
+            } else {
+
+                $anecdote->setCategory1($c1);
+
+            }
+        }
+
+        //Set Category2
+        if($c2 == 0){
+            //Set category
+            $anecdote->setCategory2(null);
+
+        } else {
+
+            $clearCategory2 = $this->ClearCategoryData($c2);
+
+            if($clearCategory2 == false ){
+
+                //Post error message in the view and redirection to edit form
+                // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/edit/'. $anecdote->getId());
+                $this->RedirectionWithMessage('anecdote/add/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
+            
+            } else {
+
+                $anecdote->setCategory2($c2);
+
+            }
+        }
+
+        //Set Category3
+        if($c3 == 0){
+
+            //Set category
+            $anecdote->setCategory3(null);
+
+        } else {
+
+            $clearCategory3 = $this->ClearCategoryData($c3);
+
+            if($clearCategory3 == false ){
+
+                //Post error message in the view and redirection to edit form
+                // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/edit/'. $anecdote->getId());
+                $this->RedirectionWithMessage('anecdote/add/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
+            
+            } else {
+
+                $anecdote->setCategory3($c3);
+
+            }
+        }
+
+        //Set property anecdote object
+        $anecdote->setTitle($clearTitle);
+        $anecdote->setDescription($clearDescription);
+        $anecdote->setContent($clearContent);
+        $anecdote->setsource($clearSource);
+        // $anecdote->setWriterId($_SESSION['userId']);
+        $anecdote->setWriterId(1);
+        
+        //Insert in database 
+        $anecdote->insert();
+
+        //Redirection after insert
+        //And post success message
+        //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote');
+        $this->RedirectionWithMessage('anecdote', 'successMessage', 'the anecdote => id : ' . $anecdote->getId() . ' created successfully');
+    }
+
+    public function delete($id)
+    {
+        $anecdote = Anecdote::find($id);
+
+        if($anecdote == null){
+ 
+            $this->errorController->err404();
+
+        } else {
+
+            //Delete anecdote
+            $anecdote->delete();
+
+            //Redirection after delete
+            //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote');
+            $this->Redirection('anecdote');
+        }
+    }
+
     /**
      * Clear category value
      *
@@ -173,18 +315,30 @@ class AnecdoteController extends CoreController
         //Check if category value is an integer
         $categoryIsInteger = is_numeric($categoryValue);
 
-        if($categoryIsInteger == true){
+        if ($categoryIsInteger == true) {
 
-            $category = Category::find($categoryValue);
+            $categories = Category::findall();
+            $arraylength = count($categories) - 1;
 
-            if($category !== null || $category !== false) {
+            if ($categoryValue != 0 && $categoryValue <= $arraylength) {
+                
+                $category = Category::find($categoryValue);
 
-                return $category->getId();
+                if (!empty($category) || $category != null || $category != false) {
 
+                    return $category->getId();
+
+                } else {
+
+                    return false;
+                }
             } else {
 
                 return false;
             }
+        } else {
+
+            return false;
         }
     }
 

@@ -57,7 +57,7 @@ class Anecdote extends CoreModel {
      *
      * @return  string
      */ 
-    public function getTitle(): string
+    public function getTitle()
     {
         return $this->title;
     }
@@ -97,7 +97,7 @@ class Anecdote extends CoreModel {
      *
      * @return  string
      */ 
-    public function getContent(): string
+    public function getContent()
     {
         return $this->content;
     }

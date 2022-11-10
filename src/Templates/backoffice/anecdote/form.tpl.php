@@ -7,7 +7,6 @@
         <a class="btn btn-dark" href="/backoffice/anecdote">Back to list</a>
     </div>
     
-
     <form action="" method="POST">
     <?php require_once __DIR__ . '/../partials/errorMessage.tpl.php'; ?>
 
@@ -72,7 +71,7 @@
         </div>
 
         <input type="hidden" name="token" id="token" value="">
-        <button type="submit" class="btn btn-primary btn-block mt-5"><?= htmlentities($anecdote->getId()) === null ? 'Add':'Edit' ?></button>
+        <button type="submit" class="btn btn-primary btn-block mt-5"><?= htmlentities($anecdote->getId()) == null ? 'Add':'Edit' ?></button>
         
     </form>
 </div>
