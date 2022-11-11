@@ -1,5 +1,5 @@
 body {
-    background-color: #c2e1ee;
+    background-color: #212529;
     background-image: url('images/question.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -79,15 +79,11 @@ h2 {
 }
 
 /* footer */
-footer, nav {
-    width : 100%;
-}
-
 footer ul {
     list-style:none;
-    line-height:1.6;
+    padding: 1%;
     font-size:inherit;
-    margin-bottom:0;
+    margin-bottom: 0%;
 }
 
 footer ul a {
@@ -99,6 +95,13 @@ footer ul a {
 footer ul a:hover {
     opacity:0.8;
     color: white;
+}
+
+#footer-copyright p {
+    padding: 1%;
+    margin: 1% 20% 0%;
+    font-size: 70%;
+    border-top: 1px solid #b4b5b6;
 }
 
 /*Home page*/
@@ -430,7 +433,8 @@ textarea {
 
 /*--MEDIA QUERIES--*/
 
-/*Mobile-S, Mobile -L*/
+/*----------multi----------*/
+/*Mobile-S, Mobile-M, Mobile -L*/
 @media (max-width: 425px){
     /*legal-notices*/
     #legal-notices h1 {
@@ -453,9 +457,37 @@ textarea {
     #anecdote-known ul {
         flex-direction: column;
     }
+
+    /*--backoffice--*/
+    #backoffice-anecdote, 
+    #backoffice-category, 
+    #backoffice-user {
+        padding: 0%;
+    }
+
+    /*backoffice-read*/
+    .read p {
+        margin: 5% 0% 6%;
+        padding-left: 5%;
+    }
+
+    /*backoffice-form*/
+    .form {
+        padding: 2% 12% 20%;
+    }
+
+    /*backoffice-category-read*/
+    #div-category-color {
+        width: 50%;
+    }
+
+    /*backoffice-category-form*/
+    #input-category-color {
+        width: 50%;
+    }
 }
 
-/*Mobile-S, Mobile -L, Tablet max 650*/
+/*Mobile-S, Mobile-M, Mobile -L, Tablet max 650*/
 @media (max-width: 650px){
     /*contact*/
     #contact {
@@ -470,6 +502,29 @@ textarea {
         display: flex;
         flex-direction: column;
     }
+
+    /*backoffice-anecdote-form*/
+    /*backoffice-anecdote-form*/
+    .form-anecdote-select-category {
+        display: flex;
+        flex-direction: column;
+    }
+    .form-anecdote-select-category-item {
+        width: 60%;
+    }
+}
+
+/*Mobile-S, Mobile-M, Mobile -L, Tablet max 810*/
+@media (max-width: 810px){
+    /*backoffice-anecdote-form*/
+    /*backoffice-anecdote-form*/
+    .form-anecdote-select-category {
+        display: flex;
+        flex-direction: column;
+    }
+    .form-anecdote-select-category-item {
+        width: 60%;
+    }
 }
 
 /*Tablet min 650, lapTop 1024*/
@@ -478,11 +533,6 @@ textarea {
     #anecdote-browse-inner {
         grid-template-columns: 50% 50%;
     }
-}
-
-/*Tablet, lapTop 1024*/
-@media (min-width: 426px) and (max-width: 1024px){
-    
 }
 
 /*----------standard----------*/
@@ -495,25 +545,8 @@ textarea {
     }
 
     /*--backoffice--*/
-    #backoffice-anecdote, 
-    #backoffice-category, 
-    #backoffice-user {
-        padding: 0%;
-    }
-
-    .read p {
-        margin: 5% 0% 6%;
-        padding-left: 5%;
-    }
-
-    /*backoffice-category-read*/
-    #div-category-color {
-        width: 50%;
-    }
-
-    /*backoffice-category-form*/
-    #input-category-color {
-        width: 50%;
+    .backoffice {
+        margin-bottom: 25%;
     }
 }
 
@@ -522,6 +555,11 @@ textarea {
     /*category-browse*/
     #category-browse-inner {
         grid-template-columns: 50% 50%;
+    }
+
+    /*--backoffice--*/
+    .backoffice {
+        margin-bottom: 15%;
     }
 }
 
@@ -535,14 +573,6 @@ textarea {
 
 /*lapTop 1024*/
 @media (min-width: 769px) and (max-width: 1024px){
-    /*backoffice-anecdote-form*/
-    /*backoffice-anecdote-form*/
-    .form-anecdote-select-category {
-        display: flex;
-        flex-direction: column;
-    }
-    .form-anecdote-select-category-item {
-        width: 60%;
-    }
+    
 }
 

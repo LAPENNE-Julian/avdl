@@ -1,12 +1,17 @@
-        <footer class="bg-dark bottom">
-            <div class="container">
-                <nav class="m-0 text-center text-white">
+        <footer class="container-fluid bg-dark bottom">
+            <div id="footer-inner">
+                <nav class="text-center text-white">
                     <ul class="list-inline">
+                        <li class="list-inline-item"><a href="/">Home</a></li>
                         <!-- <li><a href="">Qui sommes-nous ?</a></li> -->
                         <li class="list-inline-item"><a href="/contact">Contact</a></li>
                         <li class="list-inline-item"><a href="/mentions-legales">Mentions légales</a></li>
                     </ul>
                 </nav>
+
+                <div id="footer-copyright" class="text-center text-white">
+                    <p>2022 &copy; Avez-vous déjà lu..? - all rights reserved</p>
+                </div>
             </div>
         </footer>
 
