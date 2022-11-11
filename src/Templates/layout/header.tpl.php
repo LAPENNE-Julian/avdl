@@ -13,8 +13,8 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
                 <a class="navbar-brand text-info" href="/">
                     <strong>Avez-vous déjà lu ..?</strong>
                 </a>
