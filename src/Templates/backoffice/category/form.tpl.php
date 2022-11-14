@@ -24,7 +24,7 @@
             <input type="file" accept="image/png, image/jpeg" name="img" class="form-control" id="img" placeholder="image jpg, gif, svg, png" value="<?= htmlentities($category->getImg()) ?>">
         </div> -->
         
-        <input type="hidden" name="token" id="token" value="">
+        <input type="hidden" name="token" id="token" value="<?= $_SESSION['token'] ?>">
         <button type="submit" class="btn btn-warning btn-block"><?= htmlentities($category->getId()) == null ? 'Add':'Edit' ?></button>
         
     </form>

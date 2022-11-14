@@ -18,20 +18,22 @@
                 <a class="navbar-brand text-info" href="/">
                     <strong>Avez-vous déjà lu ..?</strong>
                 </a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php $_SERVER['HTTP_HOST'] ?>/anecdote">Anecdotes</a>
+                            <a class="nav-link" href="/anecdote">Anecdotes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php $_SERVER['HTTP_HOST'] ?>/category">Catégories</a>
+                            <a class="nav-link" href="/category">Catégories</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Hasard</a>
@@ -42,15 +44,39 @@
                     </ul>
 
                     <ul class="navbar-nav me-4 mb-md-0">
+
+                    <?php if(empty($_SESSION['userPseudo'])) :?>
+
                         <li class="nav-item nav-link">
                             <a class="btn btn-outline-warning" aria-current="page" href="/logout">Inscription</a>
                         </li>
+
+                    <?php endif ?>
+
+                    <?php if(isset($_SESSION['userPseudo'])) :?>
+
+                        <li class="nav-item nav-link user-pseudo">
+                            <span class="text-white"><?= $_SESSION['userPseudo'] ?></span>
+                        </li>
+                        
+                        <li class="nav-item nav-link">
+                            <a class="btn btn-outline-warning" aria-current="page" href="/logout">Déconnexion</a>
+                        </li>
+
+                    <?php else : ?>
+
                         <li class="nav-item nav-link">
                             <a class="btn btn-outline-warning" aria-current="page" href="/login">Connexion</a>
                         </li>
+                        
+                    <?php endif ?>
+
+                    <?php if(isset($_SESSION['userRoles']) && $_SESSION['userRoles'] == 2) :?>
                         <li class="nav-item nav-link">
                             <a class="btn btn-outline-info" aria-current="page" href="/backoffice/anecdote">BackOffice</a>
                         </li>
+                    <?php endif ?>
+
                     </ul>
                 </div>
             </div>

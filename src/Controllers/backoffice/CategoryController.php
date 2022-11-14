@@ -62,31 +62,31 @@ class CategoryController extends CoreController
         // $img = filter_input(INPUT_POST, 'img');
 
         //Clear datas html entities
-        $clearName = $this->ClearData($name);
-        $clearColor = $this->ClearData($color);
+        $clearName = $this->clearData($name);
+        $clearColor = $this->clearData($color);
 
         //Clean spaces in category name
-        $newName = $this->TrimCategoryName($clearName);
+        $newName = $this->trimCategoryName($clearName);
 
         if ($newName == false) {
             
             //Post error message in the view and redirection to edit form
             // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/category/edit/'. $category->getId());
-            $this->RedirectionWithMessage('category/edit/'. $category->getId(), 'errorMessage', 'The name requires 2 characters without space');
+            $this->redirectionWithMessage('backoffice/category/edit/'. $category->getId(), 'errorMessage', 'The name requires 2 characters without space');
 
         } else {
 
             //Set property category object
             $category->setName($newName);
             $category->setColor($clearColor);
-            $category->setSlug($this->MakeSlugName($name));
+            $category->setSlug($this->makeSlugName($name));
 
             //Update in database
             $category->update();
 
             //Redirection after edit
             //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/category/'. $category->getId());
-            $this->Redirection('category/'. $category->getId());
+            $this->redirection('backoffice/category/'. $category->getId());
         }   
     }
 
@@ -109,31 +109,31 @@ class CategoryController extends CoreController
         $category = new Category();
 
         //Clear datas html entities
-        $clearName = $this->ClearData($name);
-        $clearColor = $this->ClearData($color);
+        $clearName = $this->clearData($name);
+        $clearColor = $this->clearData($color);
 
         //Clean spaces in category name
-        $newName = $this->TrimCategoryName($clearName);
+        $newName = $this->trimCategoryName($clearName);
 
         if($newName == false){
 
             //Post error message in the view and redirection to add form
             // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/category/edit/'. $category->getId());
-            $this->RedirectionWithMessage('category/add', 'errorMessage', 'The name requires 2 characters without space');
+            $this->redirectionWithMessage('backoffice/category/add', 'errorMessage', 'The name requires 2 characters without space');
 
         } else {
 
             //Set property category object
             $category->setName($newName);
             $category->setColor($clearColor);
-            $category->setSlug($this->MakeSlugName($name));
+            $category->setSlug($this->makeSlugName($name));
             
             //Insert in database 
             $category->insert();
 
             // Post success message and redirection after insert
             // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/category');
-            $this->RedirectionWithMessage('category', 'successMessage','The category : ' . $category->getName() .' => id : ' . $category->getId() . ' created successfully');
+            $this->redirectionWithMessage('backoffice/category', 'successMessage','The category : ' . $category->getName() .' => id : ' . $category->getId() . ' created successfully');
         }
     }
 
@@ -153,7 +153,7 @@ class CategoryController extends CoreController
 
             //Redirection after delete
             // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/category');
-            $this->Redirection('category');
+            $this->redirection('backoffice/category');
         }
     }
 
@@ -163,7 +163,7 @@ class CategoryController extends CoreController
      * @param string $categoryName
      * @return string|bool
      */
-    protected static function TrimCategoryName(string $categoryName)
+    protected static function trimCategoryName(string $categoryName)
     {
         //Remove first and last spaces in name edit
         $categoryNameTrim = trim($categoryName);
@@ -183,7 +183,7 @@ class CategoryController extends CoreController
      * @param string $toBeSlugged
      * @return string
      */
-    protected static function MakeSlugName(string $toBeSlugged) :string 
+    protected static function makeSlugName(string $toBeSlugged) :string 
     {
         // to lowercase
         // replace ' ' by '-'

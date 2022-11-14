@@ -3,9 +3,9 @@
 -- -----------------------------------------------------
 START TRANSACTION;
 
-INSERT INTO `user` (`id`,`pseudo`, `email`, `password`, `img`, `roles`, `created_at`, `updated_at`) VALUES (1, 'admin', 'admin@mail.fr', '$2y$10$Wu9LyPxOlv3dfSlZhDvQLuuu8agIsoG/Y7YQjyXCNctKvOrO4BSXq', DEFAULT, 2, DEFAULT, NULL),
-(2, 'user', 'user@mail.fr', '$2y$10$Kr2iCL3ywK3paO1agjpT3uUOv6h.jyshrLe9gA2ZkAP.afXaNWqd.', DEFAULT, 1, DEFAULT, NULL),
-(3, 'ameli', 'ameli@mail.fr', 'ameli', DEFAULT, 1, DEFAULT, NULL);
+INSERT INTO `user` (`id`,`pseudo`, `email`, `password`, `img`, `roles`, `created_at`, `updated_at`, `is_verified`) VALUES (1, 'admin', 'admin@mail.fr', '$2y$10$Wu9LyPxOlv3dfSlZhDvQLuuu8agIsoG/Y7YQjyXCNctKvOrO4BSXq', DEFAULT, 2, DEFAULT, NULL, 1),
+(2, 'user', 'user@mail.fr', '$2y$10$Kr2iCL3ywK3paO1agjpT3uUOv6h.jyshrLe9gA2ZkAP.afXaNWqd.', DEFAULT, 1, DEFAULT, NULL, 1),
+(3, 'ameli', 'ameli@mail.fr', 'ameli', DEFAULT, 1, DEFAULT, NULL, 1);
 
 -- admin mdp crypt : $2y$10$Wu9LyPxOlv3dfSlZhDvQLuuu8agIsoG/Y7YQjyXCNctKvOrO4BSXq = admin
 -- user mpd crypt : $2y$10$Kr2iCL3ywK3paO1agjpT3uUOv6h.jyshrLe9gA2ZkAP.afXaNWqd. = user

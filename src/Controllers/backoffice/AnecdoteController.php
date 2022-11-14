@@ -72,13 +72,13 @@ class AnecdoteController extends CoreController
         $category3 = filter_input(INPUT_POST, 'category-3');
 
         //Clear datas html entities
-        $clearTitle = $this->ClearData($title);
-        $clearDescription = $this->ClearData($description);
-        $clearContent = $this->ClearData($content);
-        $clearSource = $this->ClearData($source);
+        $clearTitle = $this->clearData($title);
+        $clearDescription = $this->clearData($description);
+        $clearContent = $this->clearData($content);
+        $clearSource = $this->clearData($source);
 
         //Check categories are unique
-        $categories = $this->CheckUniqueCategoryValue($category1, $category2, $category3);
+        $categories = $this->checkUniqueCategoryValue($category1, $category2, $category3);
 
         extract($categories);
 
@@ -89,13 +89,13 @@ class AnecdoteController extends CoreController
 
         } else {
 
-            $clearCategory1 = $this->ClearCategoryData($c1);
+            $clearCategory1 = $this->clearCategoryData($c1);
 
             if($clearCategory1 == false ){
 
                 //Post error message in the view and redirection to edit form
                 // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/edit/'. $anecdote->getId());
-                $this->RedirectionWithMessage('anecdote/edit/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
+                $this->redirectionWithMessage('backoffice/anecdote/edit/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
             
             } else {
 
@@ -111,13 +111,13 @@ class AnecdoteController extends CoreController
 
         } else {
 
-            $clearCategory2 = $this->ClearCategoryData($c2);
+            $clearCategory2 = $this->clearCategoryData($c2);
 
             if($clearCategory2 == false ){
 
                 //Post error message in the view and redirection to edit form
                 // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/edit/'. $anecdote->getId());
-                $this->RedirectionWithMessage('anecdote/edit/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
+                $this->redirectionWithMessage('backoffice/anecdote/edit/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
             
             } else {
 
@@ -134,13 +134,13 @@ class AnecdoteController extends CoreController
 
         } else {
 
-            $clearCategory3 = $this->ClearCategoryData($c3);
+            $clearCategory3 = $this->clearCategoryData($c3);
 
             if($clearCategory3 == false ){
 
                 //Post error message in the view and redirection to edit form
                 // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/edit/'. $anecdote->getId());
-                $this->RedirectionWithMessage('anecdote/edit/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
+                $this->redirectionWithMessage('backoffice/anecdote/edit/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
             
             } else {
 
@@ -160,7 +160,7 @@ class AnecdoteController extends CoreController
 
         //Redirection after edit
         //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/'. $anecdote->getId());
-        $this->Redirection('anecdote/' .  $anecdote->getId());
+        $this->redirection('backoffice/anecdote/' .  $anecdote->getId());
     }
 
     public function add()
@@ -191,13 +191,13 @@ class AnecdoteController extends CoreController
         $anecdote = new anecdote();
 
         //Clear datas html entities
-        $clearTitle = $this->ClearData($title);
-        $clearDescription = $this->ClearData($description);
-        $clearContent = $this->ClearData($content);
-        $clearSource = $this->ClearData($source);
+        $clearTitle = $this->clearData($title);
+        $clearDescription = $this->clearData($description);
+        $clearContent = $this->clearData($content);
+        $clearSource = $this->clearData($source);
 
         //Check categories are unique
-        $categories = $this->CheckUniqueCategoryValue($category1, $category2, $category3);
+        $categories = $this->checkUniqueCategoryValue($category1, $category2, $category3);
 
         extract($categories);
 
@@ -208,13 +208,13 @@ class AnecdoteController extends CoreController
 
         } else {
 
-            $clearCategory1 = $this->ClearCategoryData($c1);
+            $clearCategory1 = $this->clearCategoryData($c1);
 
             if($clearCategory1 == false ){
 
                 //Post error message in the view and redirection to edit form
                 // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/edit/'. $anecdote->getId());
-                $this->RedirectionWithMessage('anecdote/add/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
+                $this->redirectionWithMessage('backoffice/anecdote/add/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
             
             } else {
 
@@ -230,13 +230,13 @@ class AnecdoteController extends CoreController
 
         } else {
 
-            $clearCategory2 = $this->ClearCategoryData($c2);
+            $clearCategory2 = $this->clearCategoryData($c2);
 
             if($clearCategory2 == false ){
 
                 //Post error message in the view and redirection to edit form
                 // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/edit/'. $anecdote->getId());
-                $this->RedirectionWithMessage('anecdote/add/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
+                $this->redirectionWithMessage('backoffice/anecdote/add/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
             
             } else {
 
@@ -259,7 +259,7 @@ class AnecdoteController extends CoreController
 
                 //Post error message in the view and redirection to edit form
                 // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/edit/'. $anecdote->getId());
-                $this->RedirectionWithMessage('anecdote/add/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
+                $this->redirectionWithMessage('backoffice/anecdote/add/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
             
             } else {
 
@@ -282,7 +282,7 @@ class AnecdoteController extends CoreController
         //Redirection after insert
         //And post success message
         //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote');
-        $this->RedirectionWithMessage('anecdote', 'successMessage', 'the anecdote => id : ' . $anecdote->getId() . ' created successfully');
+        $this->redirectionWithMessage('backoffice/anecdote', 'successMessage', 'the anecdote => id : ' . $anecdote->getId() . ' created successfully');
     }
 
     public function delete($id)
@@ -300,7 +300,7 @@ class AnecdoteController extends CoreController
 
             //Redirection after delete
             //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote');
-            $this->Redirection('anecdote');
+            $this->redirection('backoffice/anecdote');
         }
     }
 
@@ -310,7 +310,7 @@ class AnecdoteController extends CoreController
      * @param int|null|string $categoryValue
      * @return null|bool
      */
-    protected function ClearCategoryData($categoryValue){
+    protected function clearCategoryData($categoryValue){
 
         //Check if category value is an integer
         $categoryIsInteger = is_numeric($categoryValue);
@@ -351,7 +351,7 @@ class AnecdoteController extends CoreController
      * @param int|null $category3
      * @return array
      */
-    protected function CheckUniqueCategoryValue($category1, $category2, $category3){
+    protected function checkUniqueCategoryValue($category1, $category2, $category3){
 
         //If Category1 duplicate in category2, category2 set null
         if ($category1 == $category2) {

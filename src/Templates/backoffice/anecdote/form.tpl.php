@@ -70,7 +70,7 @@
             </div>
         </div>
 
-        <input type="hidden" name="token" id="token" value="">
+        <input type="hidden" name="token" id="token" value="<?= $_SESSION['token'] ?>">
         <button type="submit" class="btn btn-primary btn-block mt-5"><?= htmlentities($anecdote->getId()) == null ? 'Add':'Edit' ?></button>
         
     </form>

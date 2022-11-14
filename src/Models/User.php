@@ -33,6 +33,11 @@ class User extends CoreModel
     private $roles;
 
     /**
+     * @var bool
+     */
+    private $isVerified = false;
+
+    /**
      * Get the value of pseudo
      * 
      * @return string
@@ -79,7 +84,7 @@ class User extends CoreModel
      * 
      * @return string
      */ 
-    public function getPassword(): ?string
+    public function getPassword(): string
     {
         return $this->password;
     }
@@ -134,6 +139,29 @@ class User extends CoreModel
     public function setRoles(int $roles)
     {
         $this->roles = $roles;
+    }
+
+    /**
+     * Get the value for verified email
+     * 
+     * @return bool
+     */ 
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    /**
+     * Set the value for verified email
+     * 
+     * @param bool $isVerified
+     * @return bool
+     */ 
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
     }
 
     public function insert()
@@ -265,10 +293,13 @@ class User extends CoreModel
     {
         $pdo = Database::getPDO();
 
-        $sql = '
-            SELECT *
-            FROM user
-            WHERE email = :email
+        $sql = 'SELECT 
+                `pseudo`,
+                `email`,
+                `password`,
+                `roles`
+                FROM `user`
+                WHERE `email` = :email
         ';
 
         $pdoStatement = $pdo->prepare($sql);

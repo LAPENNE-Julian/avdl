@@ -33,13 +33,13 @@
             <div class="col-4">
                 <label for="roles">Roles :</label>
                 <select name="roles" id="roles" class="form-control">
-                    <option value="1">user</option>
-                    <option value="2">admin</option>
+                    <option value="1" <?= $user->getRoles() == 1 ? ' selected':'' ?>>user</option>
+                    <option value="2" <?= $user->getRoles() == 2 ? ' selected':'' ?>>admin</option>
                 </select>
             </div>
         </div>
         
-        <input type="hidden" name="token" id="token" value="">
+        <input type="hidden" name="token" id="token" value="<?= $_SESSION['token'] ?>">
         <button type="submit" class="btn btn-warning btn-block mt-5"><?= htmlentities($user->getId()) == null ? 'Add':'Edit' ?></button>
     
     </form>

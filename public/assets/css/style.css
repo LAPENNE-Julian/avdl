@@ -5,6 +5,15 @@ body {
     background-size: cover;
 }
 
+/*user-peseudo-header-nav*/
+.user-pseudo {
+    font-size: 150%;
+    font-weight: bold;
+    text-transform: capitalize;
+    align-self: center;
+    padding: 2%;
+}
+
 h1 {
     font-size: 150%;
     text-align: center;
@@ -104,6 +113,11 @@ footer ul a:hover {
     border-top: 1px solid #b4b5b6;
 }
 
+/*login-form*/
+#form-login-inner{
+    padding: 0% 15%;
+}
+
 /*Home page*/
 #home h1 {
     font-size: 400%;
@@ -143,26 +157,29 @@ footer ul a:hover {
     border : none;
 }
 
-#error404 h1 {
+.errorPage h1 {
     font-size: 400%;
     margin-bottom: 2%;
 }
 
-#error404-item-content {
+#error404-item-data,
+#error403-item-data p {
+    margin: 2%;
+}
+
+#error404-item-content,
+#error403-item-content {
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
     align-items: center;
 }
 
-#error404 img{
+#error404 img,
+#error403 img {
     height: 400px;
     border-radius: 50%;
     margin-left: 10%;
-}
-
-#error404 p {
-    margin: 2%;
 }
 
 #error404 a {
@@ -171,6 +188,16 @@ footer ul a:hover {
     font-weight: bold;
     background-color: #ffc86b;
     border: thin solid #cb7e22;
+    border-radius: 5%;
+    margin-top: 5%;
+}
+
+#error403 a {
+    padding: 2%;
+    color: white;
+    font-weight: bold;
+    background-color: #d92c1c;
+    border: thin solid #b2261b;
     border-radius: 5%;
     margin-top: 5%;
 }
@@ -482,18 +509,25 @@ textarea {
         margin-bottom: 15%;
     }
 
-    #error404 h1 {
+    .errorPage h1 {
         font-size: 200%;
     }
 
-    #error404-item-content {
+    #error404-item-content,
+    #error403-item-content {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
     
-    #error404 img{
+    #error404 img,
+    #error403 img {
         height: 150px;
+    }
+
+    /*login-form*/
+    #form-login-inner{
+    padding: 0% 5%;
     }
     
     /*legal-notices*/
@@ -576,6 +610,12 @@ textarea {
 
 /*Mobile-S, Mobile-M, Mobile -L, Tablet max 810*/
 @media (max-width: 810px){
+    /*user-peseudo-header-nav*/
+    .user-pseudo {
+        font-size: 130%;
+        align-self: flex-start;
+    }
+    
     /*backoffice-anecdote-form*/
     /*backoffice-anecdote-form*/
     .form-anecdote-select-category {
@@ -584,6 +624,15 @@ textarea {
     }
     .form-anecdote-select-category-item {
         width: 60%;
+    }
+}
+
+/*Mobile-S, Mobile-M, Mobile -L, Tablet*/
+@media (max-width: 1023px){
+    /*user-peseudo-header-nav*/
+    .user-pseudo {
+        font-size: 130%;
+        align-self: flex-start;
     }
 }
 
@@ -598,7 +647,7 @@ textarea {
 /*Tablet, LapTop 1024*/
 @media (min-width: 426px) and (max-width: 1024px){
     /*erro404 page */
-    #error404 h1 {
+    .errorPage h1 {
         font-size: 300%;
     }
 }
@@ -634,7 +683,8 @@ textarea {
 /* tablet*/
 @media (min-width: 426px) and (max-width: 768px){
     /*erro404 page */
-    #error404 img{
+    #error404 img,
+    #error403 img {
         height: 250px;
     }
 
@@ -647,7 +697,8 @@ textarea {
 /*lapTop 1024*/
 @media (min-width: 769px) and (max-width: 1024px){
     /*erro404 page */
-    #error404 img{
+    #error404 img,
+    #error403 img {
         height: 350px;
     }
 }
