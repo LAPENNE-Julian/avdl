@@ -33,6 +33,11 @@ class User extends CoreModel
     private $roles;
 
     /**
+     * @var bool
+     */
+    private $isVerified = false;
+
+    /**
      * Get the value of pseudo
      * 
      * @return string
@@ -134,6 +139,29 @@ class User extends CoreModel
     public function setRoles(int $roles)
     {
         $this->roles = $roles;
+    }
+
+    /**
+     * Get the value for verified email
+     * 
+     * @return bool
+     */ 
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    /**
+     * Set the value for verified email
+     * 
+     * @param bool $isVerified
+     * @return bool
+     */ 
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
     }
 
     public function insert()

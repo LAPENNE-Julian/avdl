@@ -21,9 +21,10 @@ CREATE TABLE IF NOT EXISTS `user` (
 `email` VARCHAR(255) NOT NULL,
 `password` VARCHAR(64) NOT NULL,
 `img` VARCHAR(255) DEFAULT NULL, 
-`roles` INT NOT NULL DEFAULT 1 COMMENT '1 => user, 2 => admin',
+`roles` TINYINT NOT NULL DEFAULT 1 COMMENT '1 => user, 2 => admin',
 `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 
 `updated_at` DATETIME DEFAULT NULL,
+`is_verified` TINYINT(1) NOT NULL DEFAULT 0 COMMENT '0 => email not verified, 1 => email verified',
 PRIMARY KEY (`id`),
 UNIQUE INDEX (`pseudo`, `email`))
 ENGINE = InnoDB;
