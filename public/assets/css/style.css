@@ -104,6 +104,11 @@ footer ul a:hover {
     border-top: 1px solid #b4b5b6;
 }
 
+/*login-form*/
+#form-login-inner{
+    padding: 0% 15%;
+}
+
 /*Home page*/
 #home h1 {
     font-size: 400%;
@@ -494,6 +499,11 @@ textarea {
     
     #error404 img{
         height: 150px;
+    }
+
+    /*login-form*/
+    #form-login-inner{
+    padding: 0% 5%;
     }
     
     /*legal-notices*/

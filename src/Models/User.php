@@ -293,10 +293,12 @@ class User extends CoreModel
     {
         $pdo = Database::getPDO();
 
-        $sql = '
-            SELECT *
-            FROM user
-            WHERE email = :email
+        $sql = 'SELECT 
+                `email`,
+                `pseudo`,
+                `roles`
+                FROM `user`
+                WHERE `email` = :email
         ';
 
         $pdoStatement = $pdo->prepare($sql);

@@ -22,6 +22,37 @@ $router->map('GET', '/mentions-legales', [
 ], 'main-legal');
 
 /**
+ * register
+ */
+$router->map('GET', '/register', [
+    'controller' => '\App\Controllers\RegistrationController',
+    'method' => 'register',
+], 'register');
+
+$router->map('POST', '/register', [
+    'controller' => '\App\Controllers\RegistrationController',
+    'method' => 'registerPost',
+], 'register-post');
+
+/**
+ * connection
+ */
+$router->map('GET', '/login', [
+    'controller' => '\App\Controllers\SecurityController',
+    'method' => 'login',
+], 'login');
+
+$router->map('POST', '/login', [
+    'controller' => '\App\Controllers\SecurityController',
+    'method' => 'loginPost',
+], 'login-post');
+
+$router->map('GET', '/logout', [
+    'controller' => '\App\Controllers\SecurityController',
+    'method' => 'logout',
+], 'logout');
+
+/**
  * Anecdote
  */
 $router->map('GET', '/anecdote', [
