@@ -84,7 +84,7 @@ class User extends CoreModel
      * 
      * @return string
      */ 
-    public function getPassword(): ?string
+    public function getPassword(): string
     {
         return $this->password;
     }
@@ -294,8 +294,9 @@ class User extends CoreModel
         $pdo = Database::getPDO();
 
         $sql = 'SELECT 
-                `email`,
                 `pseudo`,
+                `email`,
+                `password`,
                 `roles`
                 FROM `user`
                 WHERE `email` = :email

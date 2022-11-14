@@ -67,7 +67,7 @@ class UserController extends CoreController
 
         //Set Image default
         $imgName = 'avatar-default';
-        $imgPath = $this->ImgPathGenerator($imgName, 'jpg');
+        $imgPath = $this->imgPathGenerator($imgName, 'jpg');
         $user->setImg($imgPath);
 
         //check Roles value
@@ -79,27 +79,27 @@ class UserController extends CoreController
 
             //Redirection to edit form
             //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/user/edit/' . $user->getId());
-            $this->RedirectionWithMessage('user/edit/' . $user->getId(), 'errorMessage', 'User Roles must be \'user\' or \'admin\'.');
+            $this->redirectionWithMessage('user/edit/' . $user->getId(), 'errorMessage', 'User Roles must be \'user\' or \'admin\'.');
             //stop the script
             exit;
         }
 
         //Clear datas html entities
-        $clearPseudo = $this->ClearData($pseudo);
-        $clearEmail = $this->ClearData($email);
-        $clearPassword = $this->ClearData($password);
+        $clearPseudo = $this->clearData($pseudo);
+        $clearEmail = $this->clearData($email);
+        $clearPassword = $this->clearData($password);
 
         //If pseudo is edit
         if($clearPseudo !== $user->getPseudo()){
 
             //Check spaces in string and min-length 4 characters
-            $checkPseudo = $this->CheckString($clearPseudo, 4);
+            $checkPseudo = $this->checkString($clearPseudo, 4);
 
             //If string is under 4 characters or have spaces
             if($checkPseudo == true){
 
                 //Check if new pseudo is unique in database
-                $uniquePseudo = $this->CheckUniquePseudo($clearPseudo);
+                $uniquePseudo = $this->checkUniquePseudo($clearPseudo);
 
                 if ($uniquePseudo == true) {
 
@@ -109,7 +109,7 @@ class UserController extends CoreController
 
                     //Redirection to edit form
                     //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/user/edit/' . $user->getId());
-                    $this->RedirectionWithMessage('user/edit/' . $user->getId(), 'errorMessage', 'Pseudo is already assign, please choose another one');
+                    $this->redirectionWithMessage('backoffice/user/edit/' . $user->getId(), 'errorMessage', 'Pseudo is already assign, please choose another one');
 
                 }
                 
@@ -117,7 +117,7 @@ class UserController extends CoreController
 
                 //Redirection to edit form
                 //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/user/edit/' . $user->getId());
-                $this->RedirectionWithMessage('user/edit/' . $user->getId(), 'errorMessage', 'The pseudo requires 4 characters without space');
+                $this->redirectionWithMessage('backoffice/user/edit/' . $user->getId(), 'errorMessage', 'The pseudo requires 4 characters without space');
                 
             }
         }
@@ -126,7 +126,7 @@ class UserController extends CoreController
         if($clearEmail !== $user->getEmail()){
 
             //Check if Email is unique in database
-            $uniqueEmail = $this->CheckUniqueEmail($clearEmail);
+            $uniqueEmail = $this->checkUniqueEmail($clearEmail);
 
             if ($uniqueEmail == true) {
 
@@ -136,7 +136,7 @@ class UserController extends CoreController
 
                 //Redirection to edit form
                 //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/user/edit/' . $user->getId());
-                $this->RedirectionWithMessage('user/edit/' . $user->getId(), 'errorMessage', 'Email is already register');
+                $this->redirectionWithMessage('backoffice/user/edit/' . $user->getId(), 'errorMessage', 'Email is already register');
 
             }
         }
@@ -145,19 +145,19 @@ class UserController extends CoreController
         if($clearPassword !== $user->getPassword()){
 
             //Check spaces and string min-length 6 characters
-            $checkPassword = $this->CheckString($clearPassword, 6);
+            $checkPassword = $this->checkString($clearPassword, 6);
 
             //if password edit is under 6 characters or have spaces
             if($checkPassword == true){
 
                 //Else hash password in database
                 $user->setPassword(password_hash($clearPassword, PASSWORD_BCRYPT));
-                
+
             } else {
 
                 //Redirection to edit form
                 //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/user/edit/' . $user->getId());
-                $this->RedirectionWithMessage('user/edit/' . $user->getId(), 'errorMessage', 'The password requires 6 characters without spaces');
+                $this->redirectionWithMessage('backoffice/user/edit/' . $user->getId(), 'errorMessage', 'The password requires 6 characters without spaces');
 
             } 
         }
@@ -166,7 +166,7 @@ class UserController extends CoreController
         $user->update();
 
         //Redirection after edit
-        $this->Redirection('user/'. $user->getId());
+        $this->redirection('backoffice/user/'. $user->getId());
     }
 
     public function add()
@@ -198,25 +198,25 @@ class UserController extends CoreController
 
             //Redirection to edit form
             //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/user/edit/' . $user->getId());
-            $this->RedirectionWithMessage('user/edit/', 'errorMessage','User Roles must be \'user\' or \'admin\'.');
+            $this->redirectionWithMessage('backoffice/user/edit/', 'errorMessage','User Roles must be \'user\' or \'admin\'.');
             //stop the script
             exit;
         }
 
         //Clear datas html entities
-        $clearPseudo = $this->ClearData($pseudo);
-        $clearEmail = $this->ClearData($email);
-        $clearPassword = $this->ClearData($password);
+        $clearPseudo = $this->clearData($pseudo);
+        $clearEmail = $this->clearData($email);
+        $clearPassword = $this->clearData($password);
 
 
         //Check spaces in string and min-length 4 characters
-        $checkPseudo = $this->CheckString($clearPseudo, 4);
+        $checkPseudo = $this->checkString($clearPseudo, 4);
 
         //If string is under 4 characters or have spaces
         if($checkPseudo == true){
 
             //Check if new pseudo is unique in database
-            $uniquePseudo = $this->CheckUniquePseudo($clearPseudo);
+            $uniquePseudo = $this->checkUniquePseudo($clearPseudo);
 
             if ($uniquePseudo == true) {
 
@@ -226,7 +226,7 @@ class UserController extends CoreController
 
                 //Redirection to edit form
                 //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/user/edit/' . $user->getId());
-                $this->RedirectionWithMessage('user/edit/' . $user->getId(), 'errorMessage', 'Pseudo is already assign, please choose another one');
+                $this->redirectionWithMessage('backoffice/user/edit/' . $user->getId(), 'errorMessage', 'Pseudo is already assign, please choose another one');
 
             }
             
@@ -234,12 +234,12 @@ class UserController extends CoreController
             
             //Redirection to edit form
             //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/user/edit/' . $user->getId());
-            $this->RedirectionWithMessage('user/edit/' . $user->getId(), 'errorMessage','The pseudo requires 4 characters without space');
+            $this->redirectionWithMessage('backoffice/user/edit/' . $user->getId(), 'errorMessage','The pseudo requires 4 characters without space');
         }
 
         
         //Check if Email is unique in database
-        $uniqueEmail = $this->CheckUniqueEmail($clearEmail);
+        $uniqueEmail = $this->checkUniqueEmail($clearEmail);
 
         if ($uniqueEmail == true) {
 
@@ -249,30 +249,30 @@ class UserController extends CoreController
 
             //Redirection to edit form
             //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/user/edit/' . $user->getId());
-            $this->RedirectionWithMessage('user/edit/' . $user->getId(), 'errorMessage', 'Email is already register');
+            $this->redirectionWithMessage('backoffice/user/edit/' . $user->getId(), 'errorMessage', 'Email is already register');
 
         }
 
         //Check spaces and string min-length 6 characters
-        $checkPassword = $this->CheckString($clearPassword, 6);
+        $checkPassword = $this->checkString($clearPassword, 6);
 
         //if password edit is under 6 characters or have spaces
         if($checkPassword == true){
 
             //Else hash password in database
             $user->setPassword(password_hash($clearPassword, PASSWORD_BCRYPT));
-            
+
         } else {
 
             //Redirection to edit form
             //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/user/edit/' . $user->getId());
-            $this->RedirectionWithMessage('user/add/', 'errorMessage', 'The password requires 6 characters without spaces');
+            $this->redirectionWithMessage('backoffice/user/add/', 'errorMessage', 'The password requires 6 characters without spaces');
 
         } 
 
         //Set Image default
         $imgName = 'avatar-default';
-        $imgPath = $this->ImgPathGenerator($imgName, 'jpg');
+        $imgPath = $this->imgPathGenerator($imgName, 'jpg');
         $user->setImg($imgPath);
 
         // Set Image
@@ -285,7 +285,7 @@ class UserController extends CoreController
 
         // Post success message and redirection after insert
         // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/user');
-        $this->RedirectionWithMessage('user', 'successMessage', 'the user => id : ' . $user->getId() . ' created successfully');
+        $this->redirectionWithMessage('backoffice/user', 'successMessage', 'the user => id : ' . $user->getId() . ' created successfully');
     }
 
     public function delete($id)
@@ -303,7 +303,7 @@ class UserController extends CoreController
 
             //Redirection after delete
             // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/user');
-            $this->Redirection('user');
+            $this->redirection('backoffice/user');
         }
     }
 
@@ -313,7 +313,7 @@ class UserController extends CoreController
      * @param string $userName
      * @return string
      */
-    protected static function ImgNameGenerator(string $userName): string
+    protected static function imgNameGenerator(string $userName): string
     {
         // To lowercase
         $clearName = strtolower($userName);
@@ -336,7 +336,7 @@ class UserController extends CoreController
      * @param string $imgType
      * @return string
      */
-    protected static function ImgPathGenerator(string $imgName, string $imgType): string
+    protected static function imgPathGenerator(string $imgName, string $imgType): string
     {
         //get http host
         $server = $_SERVER['HTTP_HOST'];
@@ -354,7 +354,7 @@ class UserController extends CoreController
      * @param int $number
      * @return bool
      */
-    protected static function CheckStringLength(string $string, int $number): bool
+    protected static function checkStringLength(string $string, int $number): bool
     {
         //if string length is under $number characters
         if(strlen($string) < $number ){
@@ -373,7 +373,7 @@ class UserController extends CoreController
      * @param string $string
      * @return bool
      */
-    protected static function CheckUniquePseudo(string $string): bool
+    protected static function checkUniquePseudo(string $string): bool
     {
         if (User::findByPseudo($string) == null) {
 
@@ -393,7 +393,7 @@ class UserController extends CoreController
      * @param string $string
      * @return bool
      */
-    protected static function CheckUniqueEmail(string $string): bool
+    protected static function checkUniqueEmail(string $string): bool
     {
         if (User::findByEmail($string) == null) {
 
@@ -413,16 +413,16 @@ class UserController extends CoreController
      * @param string $string
      * @return bool
      */
-    protected function CheckString(string $string, int $number): bool
+    protected function checkString(string $string, int $number): bool
     {
         //Find spaces
-        $clearString = $this->CheckSpaceInString($string);
+        $clearString = $this->checkSpaceInString($string);
 
         //If no spaces
         if($clearString == true) {
 
             //check length string
-            $clearString = $this->CheckStringLength($string, $number);
+            $clearString = $this->checkStringLength($string, $number);
 
             //if the length is respected return -> true
             //Or return  -> false

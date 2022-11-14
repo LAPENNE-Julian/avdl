@@ -13,19 +13,19 @@ class SecurityController extends CoreController
 
     public function loginPost()
     {
-        $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-        $password = filter_input(INPUT_POST, 'password');
+        $email = filter_input(INPUT_POST, 'login-email', FILTER_VALIDATE_EMAIL);
+        $password = filter_input(INPUT_POST, 'login-password');
 
         //Clear datas html entities
-        $clearEmail = $this->ClearData($email);
-        $clearPassword = $this->ClearData($password);
+        // $clearEmail = $this->ClearData($email);
+        // $clearPassword = $this->ClearData($password);
 
         //Find User by Email
-        $user = User::findByEmail($clearEmail);
+        $user = User::findByEmail($email);
 
         //instanceof check if $user is an instance of User class
         //password_verify check if the password is correct
-        if ($user instanceof User && password_verify($clearPassword, $user->getPassword())) {
+        if ($user instanceof User && password_verify($password, $user->getPassword())) {
 
             //add the information in $_SESSION
             // $_SESSION['userId'] = $user->getId();
@@ -35,13 +35,13 @@ class SecurityController extends CoreController
 
             //Redirection to home
             //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/');
-            $this->Redirection('/');
-            
+            $this->redirection('');
+        
         } else {
 
             //Redirection to login and post error message in the view 
             //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/login');
-            $this->RedirectionWithMessage('/login', 'errorMessage', 'incorrect identifiers');   
+            $this->redirectionWithMessage('login', 'errorMessage', 'incorrect identifiers');   
         }
     }
 
@@ -55,6 +55,6 @@ class SecurityController extends CoreController
 
         //Redirection to login
         //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/login');
-        $this->Redirection('/login');
+        $this->redirection('login');
     }
 }

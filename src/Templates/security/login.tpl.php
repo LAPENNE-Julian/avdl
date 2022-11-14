@@ -10,15 +10,15 @@
         
         <div class="form-group">
             <label for="email">Email address</label>
-            <input id="login-form-email" type="email" value="" name="email" id="email" class="form-control" autocomplete="email" required autofocus>
+            <input id="login-form-email" type="email" value="" name="login-email" id="email" class="form-control" autocomplete="email" required autofocus>
         </div>
 
         <div class="form-group">
             <label for="password">Password</label>
-            <input id="login-form-password" type="password" name="password" id="password" class="form-control" autocomplete="current-password" required>
+            <input id="login-form-password" type="password" name="login-password" id="password" class="form-control" autocomplete="current-password" required>
         </div>
 
-        <input type="hidden" name="token" id="token" value="">
+        <input type="hidden" name="token" id="token" value="<?= $_SESSION['token'] ?>">
         <button  class="btn btn-info btn-block" >Sign</button>
        
     </form>
