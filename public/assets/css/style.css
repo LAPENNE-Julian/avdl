@@ -113,9 +113,15 @@ footer ul a:hover {
     border-top: 1px solid #b4b5b6;
 }
 
-/*login-form*/
-#form-login-inner{
+/*login-form and register-form*/
+#form-login-inner,
+#form-register-inner {
     padding: 0% 15%;
+}
+
+#form-login-inner button,
+#form-register-inner button {
+    align-self: end;
 }
 
 /*Home page*/
@@ -525,8 +531,9 @@ textarea {
         height: 150px;
     }
 
-    /*login-form*/
-    #form-login-inner{
+    /*login-form and register-form*/
+    #form-login-inner,
+    #form-register-inner {
     padding: 0% 5%;
     }
     

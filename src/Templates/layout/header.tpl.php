@@ -48,7 +48,7 @@
                     <?php if(empty($_SESSION['userPseudo'])) :?>
 
                         <li class="nav-item nav-link">
-                            <a class="btn btn-outline-warning" aria-current="page" href="/logout">Inscription</a>
+                            <a class="btn btn-outline-warning" aria-current="page" href="/register">Inscription</a>
                         </li>
 
                     <?php endif ?>
