@@ -91,7 +91,7 @@ class CoreController
         // RouteName list need check Token
         //-----
         $csrfTokenToCheck = [
-            //'register-post',
+            'register-post',
             'login-post',
             'backoffice-user-add-post',
             'backoffice-user-edit-post',

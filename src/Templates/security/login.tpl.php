@@ -5,6 +5,7 @@
 
     <?php 
     require_once __DIR__ . '/../backoffice/partials/errorMessage.tpl.php';
+    require_once __DIR__ . '/../backoffice/partials/flashMessage.tpl.php';
     ?>
         
         <div class="form-group">
