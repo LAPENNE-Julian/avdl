@@ -297,7 +297,8 @@ class User extends CoreModel
                 `pseudo`,
                 `email`,
                 `password`,
-                `roles`
+                `roles`,
+                `is_verified`
                 FROM `user`
                 WHERE `email` = :email
         ';

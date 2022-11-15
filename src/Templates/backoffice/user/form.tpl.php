@@ -11,7 +11,7 @@
 
         <div class="form-group">
             <label for="pseudo">Pseudo</label>
-            <input type="text" name="pseudo" class="form-control" id="pseudo" placeholder="" value="<?= htmlentities($user->getPseudo()) ?>" minlength="4" required>
+            <input type="text" name="pseudo" class="form-control" id="pseudo" placeholder="minimale 4 characters" value="<?= htmlentities($user->getPseudo()) ?>" minlength="4" required>
         </div>
 
         <div class="form-group">

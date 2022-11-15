@@ -17,31 +17,41 @@ class SecurityController extends CoreController
         $password = filter_input(INPUT_POST, 'login-password');
 
         //Clear datas html entities
-        // $clearEmail = $this->ClearData($email);
-        // $clearPassword = $this->ClearData($password);
+        $clearEmail = $this->ClearData($email);
+        $clearPassword = $this->ClearData($password);
 
         //Find User by Email
-        $user = User::findByEmail($email);
+        $user = User::findByEmail($clearEmail);
 
-        //instanceof check if $user is an instance of User class
-        //password_verify check if the password is correct
-        if ($user instanceof User && password_verify($password, $user->getPassword())) {
+        //If user email is verified
+        if($user->isVerified() == 1){
 
-            //add the information in $_SESSION
-            // $_SESSION['userId'] = $user->getId();
-            $_SESSION['userPseudo'] = $user->getPseudo();
-            $_SESSION['userEmail'] = $user->getEmail();
-            $_SESSION['userRoles'] = $user->getRoles();
+            //instanceof check if $user is an instance of User class
+            //password_verify check if the password is correct
+            if ($user instanceof User && password_verify($clearPassword, $user->getPassword())) {
 
-            //Redirection to home
-            //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/');
-            $this->redirection('');
-        
+                //add the information in $_SESSION
+                // $_SESSION['userId'] = $user->getId();
+                $_SESSION['userPseudo'] = $user->getPseudo();
+                $_SESSION['userEmail'] = $user->getEmail();
+                $_SESSION['userRoles'] = $user->getRoles();
+
+                //Redirection to home
+                //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/');
+                $this->redirection('');
+            
+            } else {
+
+                //Redirection to login and post error message in the view 
+                //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/login');
+                $this->redirectionWithMessage('login', 'errorMessage', 'incorrect identifiers');   
+            }
+
         } else {
 
             //Redirection to login and post error message in the view 
             //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/login');
-            $this->redirectionWithMessage('login', 'errorMessage', 'incorrect identifiers');   
+            $this->redirectionWithMessage('login', 'errorMessage', 'Your email isn\'t verified, please check your mails'); 
         }
     }
 

@@ -24,7 +24,7 @@ $router->map('GET', '/mentions-legales', [
 /**
  * register
  */
-$router->map('GET', '/register', [
+/*$router->map('GET', '/register', [
     'controller' => '\App\Controllers\RegistrationController',
     'method' => 'register',
 ], 'register');
@@ -33,6 +33,7 @@ $router->map('POST', '/register', [
     'controller' => '\App\Controllers\RegistrationController',
     'method' => 'registerPost',
 ], 'register-post');
+*/
 
 /**
  * connection

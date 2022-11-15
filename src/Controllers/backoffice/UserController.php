@@ -2,10 +2,10 @@
 
 namespace App\Controllers\backoffice;
 
-use App\Controllers\CoreController;
+use App\Controllers\RegistrationController;
 use App\Models\User;
 
-class UserController extends CoreController
+class UserController extends RegistrationController
 {
     public function browse()
     {
@@ -70,18 +70,15 @@ class UserController extends CoreController
         $imgPath = $this->imgPathGenerator($imgName, 'jpg');
         $user->setImg($imgPath);
 
-        //check Roles value
-        if($roles > 0 && $roles <= 2 ){
+        //Check Role value
+        if($roles == 2 ){
 
-            $user->setRoles($roles);
+            $user->setRoles(2);
 
         } else {
 
-            //Redirection to edit form
-            //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/user/edit/' . $user->getId());
-            $this->redirectionWithMessage('user/edit/' . $user->getId(), 'errorMessage', 'User Roles must be \'user\' or \'admin\'.');
-            //stop the script
-            exit;
+            //Default 1 => user role
+            $user->setRoles(1);
         }
 
         //Clear datas html entities
@@ -189,18 +186,15 @@ class UserController extends CoreController
         // $img = filter_input(INPUT_POST, 'img');
         $roles = filter_input(INPUT_POST, 'roles', FILTER_VALIDATE_INT);
 
-        //check Roles value
-        if($roles > 0 && $roles <= 2 ){
+        //Check Role value
+        if($roles == 2){
 
-            $user->setRoles($roles);
+            $user->setRoles(2);
 
         } else {
 
-            //Redirection to edit form
-            //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/user/edit/' . $user->getId());
-            $this->redirectionWithMessage('backoffice/user/edit/', 'errorMessage','User Roles must be \'user\' or \'admin\'.');
-            //stop the script
-            exit;
+            //Default 1 => user role
+            $user->setRoles(1);
         }
 
         //Clear datas html entities
@@ -208,11 +202,10 @@ class UserController extends CoreController
         $clearEmail = $this->clearData($email);
         $clearPassword = $this->clearData($password);
 
-
         //Check spaces in string and min-length 4 characters
         $checkPseudo = $this->checkString($clearPseudo, 4);
 
-        //If string is under 4 characters or have spaces
+        //If have 4 characters and haven't spaces
         if($checkPseudo == true){
 
             //Check if new pseudo is unique in database
@@ -224,17 +217,17 @@ class UserController extends CoreController
             
             } else {
 
-                //Redirection to edit form
-                //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/user/edit/' . $user->getId());
-                $this->redirectionWithMessage('backoffice/user/edit/' . $user->getId(), 'errorMessage', 'Pseudo is already assign, please choose another one');
+                //Redirection to add form
+                //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/user/add';
+                $this->redirectionWithMessage('backoffice/user/add', 'errorMessage', 'Pseudo is already assign, please choose another one');
 
             }
             
         } else {
             
-            //Redirection to edit form
-            //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/user/edit/' . $user->getId());
-            $this->redirectionWithMessage('backoffice/user/edit/' . $user->getId(), 'errorMessage','The pseudo requires 4 characters without space');
+            //Redirection to add form
+            //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/user/add';
+            $this->redirectionWithMessage('backoffice/user/add', 'errorMessage','The pseudo requires 4 characters without space');
         }
 
         
@@ -248,8 +241,8 @@ class UserController extends CoreController
         } else {
 
             //Redirection to edit form
-            //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/user/edit/' . $user->getId());
-            $this->redirectionWithMessage('backoffice/user/edit/' . $user->getId(), 'errorMessage', 'Email is already register');
+            //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/user/add';
+            $this->redirectionWithMessage('backoffice/user/add', 'errorMessage', 'Email is already register');
 
         }
 
@@ -265,8 +258,8 @@ class UserController extends CoreController
         } else {
 
             //Redirection to edit form
-            //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/user/edit/' . $user->getId());
-            $this->redirectionWithMessage('backoffice/user/add/', 'errorMessage', 'The password requires 6 characters without spaces');
+            //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/user/add';
+            $this->redirectionWithMessage('backoffice/user/add', 'errorMessage', 'The password requires 6 characters without spaces');
 
         } 
 
@@ -345,92 +338,5 @@ class UserController extends CoreController
         $userImageUrl = 'http://' . $server . '/assets/uploads' . '/' . $imgName . '.' . $imgType;
 
         return $userImageUrl;
-    }
-
-    /**
-     * Check string length
-     *
-     * @param string $string
-     * @param int $number
-     * @return bool
-     */
-    protected static function checkStringLength(string $string, int $number): bool
-    {
-        //if string length is under $number characters
-        if(strlen($string) < $number ){
-
-            return false;
-
-        } else {
-
-            return true;
-        }
-    }
-
-    /**
-     * Check if Pseudo is unique in database
-     *
-     * @param string $string
-     * @return bool
-     */
-    protected static function checkUniquePseudo(string $string): bool
-    {
-        if (User::findByPseudo($string) == null) {
-
-            //yes unique 
-            return true;
-
-        } else {
-
-            //no, the pseudo already exist
-            return false;
-        }  
-    }
-
-    /**
-     * Check if Email is unique in database
-     *
-     * @param string $string
-     * @return bool
-     */
-    protected static function checkUniqueEmail(string $string): bool
-    {
-        if (User::findByEmail($string) == null) {
-
-            //yes unique 
-            return true;
-
-        } else {
-
-            //no, the pseudo already exist
-            return false;
-        }  
-    }
-
-    /**
-     * Check string - spaces and length
-     *
-     * @param string $string
-     * @return bool
-     */
-    protected function checkString(string $string, int $number): bool
-    {
-        //Find spaces
-        $clearString = $this->checkSpaceInString($string);
-
-        //If no spaces
-        if($clearString == true) {
-
-            //check length string
-            $clearString = $this->checkStringLength($string, $number);
-
-            //if the length is respected return -> true
-            //Or return  -> false
-            return $clearString;
-
-        } else {
-
-            return false;
-        }
     }
 }
