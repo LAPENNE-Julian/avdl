@@ -24,9 +24,9 @@ class CoreController
             // 'logout' => no need, free access
             // 'main-home' => no need, free access
 
-            'anecdote-browse' =>    [1,2], 
-            'anecdote-read' =>    [1,2],
-            'category-browse' =>    [1,2],
+            //'anecdote-browse' =>    [1,2], public
+            //'anecdote-read' =>    [1,2], public
+            //'category-browse' =>    [1,2], public
 
             //----Backoffice----//
             //Router user
