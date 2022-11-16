@@ -4,6 +4,7 @@ const anecdotesList = {
 
     console.log("anecdotesList.init() appelé");
     this.bindAllAnecdotesEvents();
+
   },
 
   // ---------------------------------------------------------
@@ -11,19 +12,34 @@ const anecdotesList = {
   // ---------------------------------------------------------
 
   bindAllAnecdotesEvents: function() {
+    //Load all anecdotes browse 9 first anecdotes 
+    let offset = 0;
+
     //Select element <a id="nav-link-anecdote-browse">
     const anecdoteBrowseLink = document.querySelector("#nav-link-anecdote-browse");
     //Add event listener on click navigation
-    anecdoteBrowseLink.addEventListener("click", anecdotesList.handleLoadAnecdotes());
+    anecdoteBrowseLink.addEventListener("click", anecdotesList.handleLoadAnecdotes(offset));
+
+    //Select element <a id="anecdote-browse-next">
+    const anecdoteBrowseNext = document.querySelector("#anecdote-browse-next");
+    //Add event listener on click navigation next page
+    anecdoteBrowseNext.addEventListener("click", anecdotesList.handleLoadAnecdotesNext(offset));
   },
 
   // ---------------------------------------------------------
   // Handlers
   // ---------------------------------------------------------
 
-  handleLoadAnecdotes: function(){
+  handleLoadAnecdotes: function(offset){
     
-    this.loadAnecdotesFromAPI();
+    this.loadAnecdotesFromAPI(offset);
+  },
+
+  handleLoadAnecdotesNext: function(offset){
+
+    offset += 9;
+
+    this.loadAnecdotesFromAPI(offset);
   },
 
   // ---------------------------------------------------------
@@ -95,7 +111,7 @@ const anecdotesList = {
     const parentElement = document.querySelector('#anecdote-browse-inner');
 
     if(parentElement !== null){
-      
+
       //Add divAnecdoter in parentElement
       parentElement.append(divAnecdote);
     }
@@ -105,7 +121,7 @@ const anecdotesList = {
   // AJAX
   // ---------------------------------------------------------
 
-loadAnecdotesFromAPI: function() {
+loadAnecdotesFromAPI: function(offset) {
 
     const config = {
       method: "GET",
@@ -113,7 +129,7 @@ loadAnecdotesFromAPI: function() {
       cache: "no-cache"
     };
 
-    fetch(app.apiRootUrl + "/anecdote", config)
+    fetch(app.apiRootUrl + "/anecdote/" + offset, config)
     .then(
       function(response) {
         //convert json response to object

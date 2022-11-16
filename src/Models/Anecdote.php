@@ -737,7 +737,7 @@ class Anecdote extends CoreModel {
      * 
      * @return JSON
      */
-    public static function browse()
+    public static function browse(int $offsetNum)
     {
         $pdo = Database::getPDO();
         $sql = 'SELECT 
@@ -792,7 +792,8 @@ class Anecdote extends CoreModel {
         ) AS `downvote`
 
         FROM `anecdote`
-        LEFT JOIN `user` ON `anecdote`.`writer_id` = `user`.`id`';
+        LEFT JOIN `user` ON `anecdote`.`writer_id` = `user`.`id`
+        LIMIT 9 OFFSET ' . $offsetNum;
 
         $pdoStatement = $pdo->prepare($sql);
         $pdoStatement->execute();

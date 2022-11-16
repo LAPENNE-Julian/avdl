@@ -13,7 +13,7 @@ class AnecdoteController extends ApiCoreController
      * 
      * Route("api/anecdote", name="api-anecdote-browse", methods="GET")
      */
-    public function browse()
+    public function browse(int $offsetNum)
     {
         $this->apiResponse->setHeader('GET');
 
@@ -21,7 +21,7 @@ class AnecdoteController extends ApiCoreController
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
 
             //Get all anecdotes in database
-            $anecdotes = Anecdote::browse();
+            $anecdotes = Anecdote::browse($offsetNum);
 
             $this->apiResponse->responseAsArray(200, 'anecdotes', $anecdotes);
         
