@@ -55,40 +55,23 @@ const anecdotesList = {
     divAnecdote.append(divCategories);
 
     const categoriesArray = [
-      {categoryName1 : categoryColor1},
-      {categoryName2 : categoryColor2},
-      {categoryName3 : categoryColor3},
+      {'categoryName' : categoryName1, 'categoryColor' : categoryColor1 },
+      {'categoryName' : categoryName2, 'categoryColor' : categoryColor2 },
+      {'categoryName' : categoryName3, 'categoryColor' : categoryColor3 },
     ]
 
-    //Create span element <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
-    const categorySpan1 = document.createElement('span');
-    categorySpan1.classList.add('label-category');
-    categorySpan1.setAttribute('style', 'border: medium solid ' + categoryColor1);
-    categorySpan1.textContent = categoryName1;
-
-    //Add element <span> in element <div id="label-categories" class="container-fluid">
-    divCategories.append(categorySpan1);
-
-    if(categoryName2 !== null){
-      //Create span element <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
-      const categorySpan2 = document.createElement('span');
-      categorySpan2.classList.add('label-category');
-      categorySpan2.setAttribute('style', 'border: medium solid ' + categoryColor2);
-      categorySpan2.textContent = categoryName2;
-    
-      //Add element <span> in element <div id="label-categories" class="container-fluid">
-      divCategories.append(categorySpan2);
-    }
-    
-    if(categoryName3 !== null){
-      //Create span element <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
-      const categorySpan3 = document.createElement('span');
-      categorySpan3.classList.add('label-category');
-      categorySpan3.setAttribute('style', 'border: medium solid ' + categoryColor3);
-      categorySpan3.textContent = categoryName3;
-
-      //Add element <span> in element <div id="label-categories" class="container-fluid">
-      divCategories.append(categorySpan3);
+    for (category of categoriesArray) {
+      
+      if(category.categoryName !== null){
+        //Create span element <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
+        const categorySpan = document.createElement('span');
+        categorySpan.classList.add('label-category');
+        categorySpan.setAttribute('style', 'border: medium solid ' + category.categoryColor);
+        categorySpan.textContent = category.categoryName;
+      
+        //Add element <span> in element <div id="label-categories" class="container-fluid">
+        divCategories.append(categorySpan);
+      }
     }
 
     //Create h2 element <h2>Titre de l'anecdote 1</h2>
