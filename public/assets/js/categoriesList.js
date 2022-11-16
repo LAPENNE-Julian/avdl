@@ -1,15 +1,35 @@
 const categoriesList = {
 
-    init: function() {
-      console.log("categoriesList.init() appelé");
+  init: function() {
 
-      this.loadCategoriesFromAPI();
+    console.log("categoriesList.init() appelé");
+    this.bindAllCategoriesEvents();
+  },
+
+  // ---------------------------------------------------------
+  // Binders
+  // ---------------------------------------------------------
+
+  bindAllCategoriesEvents: function() {
+    //Select element <a id="nav-link-category-browse">
+    const categoryBrowseLink = document.querySelector("#nav-link-category-browse");
+    //Add event listener on click navigation
+    categoryBrowseLink.addEventListener("click", categoriesList.handleLoadCategories());
+  },
+
+  // ---------------------------------------------------------
+  // Handlers
+  // ---------------------------------------------------------
+
+  handleLoadCategories: function(){
     
-    },
+    this.loadCategoriesFromAPI();
+  },
 
   // ---------------------------------------------------------
   // DOM
   // ---------------------------------------------------------
+
   createDivCategory: function(name) {
 
     //Create div element <div class="category-browse-item">
@@ -43,6 +63,7 @@ const categoriesList = {
   // ---------------------------------------------------------
   // AJAX
   // ---------------------------------------------------------
+
   loadCategoriesFromAPI: function() {
 
     const config = {
@@ -54,8 +75,8 @@ const categoriesList = {
     fetch(app.apiRootUrl + "/category", config)
     .then(
       function(response) {
-
-        return response.json();
+        //convert json response to object
+        return response.json(); 
       }
     )
     .then(
