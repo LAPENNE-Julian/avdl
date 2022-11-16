@@ -32,16 +32,6 @@ const anecdotesList = {
 
   createDivAnecdote: function(title, description, categoryName1, categoryColor1, categoryName2, categoryColor2, categoryName3, categoryColor3, pseudo, createdAt) {
 
-    //<div class="anecdote-browse-item">
-      //<div id="label-categories" class="container-fluid">
-      //<span class="label-category" style ="border: medium solid yellow">Catégorie</span>
-      //<span class="label-category" style ="border: medium solid yellow">Catégorie</span>
-      //</div>
-    //<h2>Titre de l'anecdote 1</h2>
-    //<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime voluptatibus similique odit ex, inventore molestias repudiandae. Expedita similique quod placeat iure voluptatibus consequuntur sequi ducimus esse quos aliquid, ratione ipsum!<a href="#" class="anecdote__link">afficher plus</a></p>
-    //<p id="author">Publié par Auteur le 01.01.1999</p>
-    //</div>
-
     //Create div element <div class="anecdote-browse-item">
     const divAnecdote = document.createElement('div');
     divAnecdote.classList.add('anecdote-browse-item');
@@ -104,8 +94,11 @@ const anecdotesList = {
     //Select element <div id="anecdote-browse-inner"> in DOM
     const parentElement = document.querySelector('#anecdote-browse-inner');
 
-    //Add divAnecdoter in parentElement
-    parentElement.append(divAnecdote);
+    if(parentElement !== null){
+      
+      //Add divAnecdoter in parentElement
+      parentElement.append(divAnecdote);
+    }
   },
 
   // ---------------------------------------------------------

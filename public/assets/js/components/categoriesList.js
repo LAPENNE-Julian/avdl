@@ -56,8 +56,11 @@ const categoriesList = {
     //Select element <div id="category-browse-inner"> in DOM
     const parentElement = document.querySelector('#category-browse-inner');
 
-    //Add divCategory in parentElement
-    parentElement.append(divCategory);
+    if(parentElement !== null){
+      
+      //Add divCategory in parentElement
+      parentElement.append(divCategory);
+    }
   },
 
   // ---------------------------------------------------------
