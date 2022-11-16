@@ -53,7 +53,7 @@ const categoriesList = {
 
   insertDivCategoryIntoParent: function(divCategory) {
 
-    //Select element <div id="category-browse-item"> in DOM
+    //Select element <div id="category-browse-inner"> in DOM
     const parentElement = document.querySelector('#category-browse-inner');
 
     //Add divCategory in parentElement

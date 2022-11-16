@@ -30,7 +30,7 @@
                             <a class="nav-link" aria-current="page" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/anecdote">Anecdotes</a>
+                            <a class="nav-link" id="nav-link-anecdote-browse" href="/anecdote">Anecdotes</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="nav-link-category-browse" href="/category">Catégories</a>

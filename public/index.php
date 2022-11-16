@@ -198,6 +198,14 @@ $router->map('GET', '/backoffice/category/delete/[i:id]', [
 --------------*/
 
 /**
+ * Request anecdote
+ */
+$router->map('GET', '/api/anecdote', [
+    'controller' => '\App\Controllers\api\AnecdoteController',
+    'method' => 'browse',
+], 'api-anecdote-browse');
+
+/**
  * Request category
  */
 $router->map('GET', '/api/category', [

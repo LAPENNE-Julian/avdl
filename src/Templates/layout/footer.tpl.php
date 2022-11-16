@@ -20,6 +20,7 @@
         </script>
 
         <script defer src="<?php $_SERVER['HTTP_HOST'] ?>/assets/js/app.js"></script>
-        <script defer src="<?php $_SERVER['HTTP_HOST'] ?>/assets/js/categoriesList.js"></script>
+        <script defer src="<?php $_SERVER['HTTP_HOST'] ?>/assets/js/components/categoriesList.js"></script>
+        <script defer src="<?php $_SERVER['HTTP_HOST'] ?>/assets/js/components/anecdotesList.js"></script>
     </body>
 </html>

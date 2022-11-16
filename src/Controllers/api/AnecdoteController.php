@@ -3,15 +3,15 @@
 namespace App\Controllers\Api;
 
 use App\Controllers\api\ApiCoreController;
+use App\Models\Anecdote;
+use App\Models\User;
 
-use App\Models\Category;
-
-class CategoryController extends ApiCoreController
+class AnecdoteController extends ApiCoreController
 {
     /**
-     * Get all categories.
+     * Get all anecdotes with category.
      * 
-     * Route("api/category", name="api-category-browse", methods="GET")
+     * Route("api/anecdote", name="api-anecdote-browse", methods="GET")
      */
     public function browse()
     {
@@ -20,10 +20,11 @@ class CategoryController extends ApiCoreController
         //check if httpMethod is correct
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
 
-            $categories = Category::browse();
+            //Get all anecdotes in database
+            $anecdotes = Anecdote::browse();
 
-            $this->apiResponse->responseAsArray(200, 'categories', $categories);
-
+            $this->apiResponse->responseAsArray(200, 'anecdotes', $anecdotes);
+        
         } else {
 
             //not allowed method
@@ -32,3 +33,4 @@ class CategoryController extends ApiCoreController
         }
     }
 }
+
