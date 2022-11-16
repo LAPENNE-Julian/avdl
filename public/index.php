@@ -192,6 +192,20 @@ $router->map('GET', '/backoffice/category/delete/[i:id]', [
     'method' => 'delete',
 ], 'backoffice-category-delete');
 
+
+/* -------------
+--- API REQUEST ---
+--------------*/
+
+/**
+ * Request category
+ */
+$router->map('GET', '/api/category', [
+    'controller' => '\App\Controllers\api\CategoryController',
+    'method' => 'browse',
+], 'api-category-browse');
+
+
 /* -------------
 --- DISPATCH ---
 --------------*/

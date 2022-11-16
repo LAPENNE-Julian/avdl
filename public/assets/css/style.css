@@ -401,8 +401,9 @@ footer ul a:hover {
     background-color: black;
 }
 
-.category-browse-item a {
+.category-browse-item-a {
     color: white;
+    text-transform: capitalize;
 }
 
 /*--backoffice--*/
