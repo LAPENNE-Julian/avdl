@@ -368,8 +368,7 @@ footer ul a:hover {
 }
 
 #anecdote-content-vote {
-    width: 25%;
-    margin-right: 10%;
+    margin-right: 20%;
 }
 
 #anecdote-content-vote ul {
@@ -379,7 +378,7 @@ footer ul a:hover {
 }
 
 #anecdote-read-vote {
-    padding: 10% 0%;
+    padding: 25% 0%;
     font-size: 110%;
     font-weight: bold;
 }
@@ -730,7 +729,7 @@ textarea {
 
     /*anecdote-read*/
     #anecdote-read-vote {
-        padding: 15% 0%;
+        padding: 25% 0%;
     }
 
     /*category-browse*/
