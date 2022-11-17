@@ -37,25 +37,33 @@ const anecdote = {
   // DOM
   // ---------------------------------------------------------
 
-  readAnecdote: function(id, title, content, source, createdAt, categoryName1, categoryColor1, categoryName2, categoryColor2, categoryName3, categoryColor3, userId, pseudo, upvote, downvote){
+  readAnecdote: function(id, title, content, source, createdAt, categoryId1, categoryName1, categoryColor1, categoryId2, categoryName2, categoryColor2, categoryId3, categoryName3, categoryColor3, userId, pseudo, upvote, downvote){
 
     //Select div element <div id="label-categories" class="container-fluid">
     const divCategories = document.querySelector('#label-categories');
 
     const categoriesArray = [
-      {'categoryName' : categoryName1, 'categoryColor' : categoryColor1 },
-      {'categoryName' : categoryName2, 'categoryColor' : categoryColor2 },
-      {'categoryName' : categoryName3, 'categoryColor' : categoryColor3 },
+      {'categoryId': categoryId1, 'categoryName' : categoryName1, 'categoryColor' : categoryColor1 },
+      {'categoryId': categoryId2, 'categoryName' : categoryName2, 'categoryColor' : categoryColor2 },
+      {'categoryId': categoryId3, 'categoryName' : categoryName3, 'categoryColor' : categoryColor3 },
     ]
 
     for (category of categoriesArray) {
       
       if(category.categoryName !== null){
+
         //Create span element <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
         const categorySpan = document.createElement('span');
         categorySpan.classList.add('label-category');
         categorySpan.setAttribute('style', 'border: medium solid ' + category.categoryColor);
-        categorySpan.textContent = category.categoryName;
+
+        //Create a element <a href="/category/id">
+        const categoryLink = document.createElement('a');
+        categoryLink.setAttribute('href', 'category/' + category.categoryId);
+        categoryLink.textContent = category.categoryName;
+
+        //Add element <a> in element <span>
+        categorySpan.append(categoryLink);
       
         //Add element <span> in element <div id="label-categories" class="container-fluid">
         divCategories.append(categorySpan);
@@ -115,9 +123,9 @@ const anecdote = {
           anecdoteData.content,
           anecdoteData.source,
           anecdoteData.created_at,
-          anecdoteData.categoryName1, anecdoteData.categoryColor1, 
-          anecdoteData.categoryName2, anecdoteData.categoryColor2,
-          anecdoteData.categoryName3, anecdoteData.categoryColor3,
+          anecdoteData.category_1, anecdoteData.categoryName1, anecdoteData.categoryColor1, 
+          anecdoteData.category_2, anecdoteData.categoryName2, anecdoteData.categoryColor2,
+          anecdoteData.category_3, anecdoteData.categoryName3, anecdoteData.categoryColor3,
           anecdoteData.userId,
           anecdoteData.pseudo, 
           anecdoteData.upvote,

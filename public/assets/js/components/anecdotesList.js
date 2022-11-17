@@ -32,7 +32,7 @@ const anecdotesList = {
   // DOM
   // ---------------------------------------------------------
 
-  createDivAnecdote: function(id, title, description, categoryName1, categoryColor1, categoryName2, categoryColor2, categoryName3, categoryColor3, pseudo, createdAt) {
+  createDivAnecdote: function(id, title, description, categoryId1, categoryName1, categoryColor1, categoryId2, categoryName2, categoryColor2, categoryId3, categoryName3, categoryColor3, pseudo, createdAt) {
 
     //Create div element <article class="anecdote-browse-item">
     const divAnecdote = document.createElement('article');
@@ -48,9 +48,9 @@ const anecdotesList = {
     divAnecdote.append(divCategories);
 
     const categoriesArray = [
-      {'categoryName' : categoryName1, 'categoryColor' : categoryColor1 },
-      {'categoryName' : categoryName2, 'categoryColor' : categoryColor2 },
-      {'categoryName' : categoryName3, 'categoryColor' : categoryColor3 },
+      {'categoryId': categoryId1, 'categoryName' : categoryName1, 'categoryColor' : categoryColor1 },
+      {'categoryId': categoryId2, 'categoryName' : categoryName2, 'categoryColor' : categoryColor2 },
+      {'categoryId': categoryId3, 'categoryName' : categoryName3, 'categoryColor' : categoryColor3 },
     ]
 
     for (category of categoriesArray) {
@@ -60,7 +60,14 @@ const anecdotesList = {
         const categorySpan = document.createElement('span');
         categorySpan.classList.add('label-category');
         categorySpan.setAttribute('style', 'border: medium solid ' + category.categoryColor);
-        categorySpan.textContent = category.categoryName;
+        
+        //Create a element <a href="/category/id">
+        const categoryLink = document.createElement('a');
+        categoryLink.setAttribute('href', 'category/' + category.categoryId);
+        categoryLink.textContent = category.categoryName;
+      
+        //Add element <a> in element <span>
+        categorySpan.append(categoryLink);
       
         //Add element <span> in element <div id="label-categories" class="container-fluid">
         divCategories.append(categorySpan);
@@ -84,6 +91,7 @@ const anecdotesList = {
     //Create <a> element with link to read anecdote
     const anecdoteLink = document.createElement('a');
     anecdoteLink.setAttribute('href', '/anecdote/' + id);
+    anecdoteLink.setAttribute('id', 'anecdote-browse-link-read')
     anecdoteLink.textContent = 'Lire la suite';
 
     //Add element divAnecdote in element anecdoteDescription
@@ -141,9 +149,9 @@ const anecdotesList = {
               anecdote.id,
               anecdote.title, 
               anecdote.description, 
-              anecdote.categoryName1, anecdote.categoryColor1, 
-              anecdote.categoryName2, anecdote.categoryColor2,
-              anecdote.categoryName3, anecdote.categoryColor3,
+              anecdote.category_1, anecdote.categoryName1, anecdote.categoryColor1, 
+              anecdote.category_2, anecdote.categoryName2, anecdote.categoryColor2,
+              anecdote.category_3, anecdote.categoryName3, anecdote.categoryColor3,
               anecdote.pseudo, 
               anecdote.created_at);
 

@@ -34,7 +34,7 @@ class AnecdoteController extends ApiCoreController
     }
 
     /**
-     * Get all anecdotes with category.
+     * Get anecdotes page (9 anecdotes by pages).
      * 
      * Route("api/anecdote/page/{Id}", name="api-anecdote-browse-page", methods="GET")
      */

@@ -1,7 +1,11 @@
 <section id="anecdote-read" class="container-fluid">
     <div id="anecdote-read-inner" class="carousel-inner">
         <div id="label-categories" class="container-fluid">
-            <!-- <span class="label-category" style ="border: medium solid yellow">Catégorie</span> -->
+        <!-- <span class="label-category" style ="border: medium solid yellow">
+                <a href="/category/id">
+                    Catégorie
+                </a>
+            </span> -->
         </div>
 
         <h1>Titre de l'anecdote 1</h1>

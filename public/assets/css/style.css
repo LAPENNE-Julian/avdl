@@ -58,6 +58,10 @@ h2 {
     justify-content: flex-end;
 }
 
+#label-categories span {
+    text-transform: capitalize;
+}
+
 .label-category {
     padding: 1% 2%;
     margin-left: 2%;
@@ -325,6 +329,18 @@ footer ul a:hover {
     margin: 5%;
 }
 
+.anecdote-browse-item p {
+    margin-bottom: 5%;
+}
+
+#anecdote-browse-link-read {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    color: darkblue;
+    text-decoration: overline dotted darkblue;
+}
+
 /*anecdote-read*/
 #anecdote-read-inner {
     padding-top: 5%;
@@ -354,6 +370,18 @@ footer ul a:hover {
 #anecdote-content-vote {
     width: 25%;
     margin-right: 10%;
+}
+
+#anecdote-content-vote ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#anecdote-read-vote {
+    padding: 10% 0%;
+    font-size: 110%;
+    font-weight: bold;
 }
 
 #anecdote-content p {
@@ -553,7 +581,11 @@ textarea {
     }
 
     #anecdote-read {
-        margin: 10% 0;
+        margin: 15% 0%;
+    }
+
+    #anecdote-read-vote {
+        padding: 15% 0%;
     }
 
     #anecdote-known ul {
@@ -694,6 +726,11 @@ textarea {
     #error404 img,
     #error403 img {
         height: 250px;
+    }
+
+    /*anecdote-read*/
+    #anecdote-read-vote {
+        padding: 15% 0%;
     }
 
     /*category-browse*/

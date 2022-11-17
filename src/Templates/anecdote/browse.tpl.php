@@ -9,7 +9,7 @@
                     </div>
                     <h2>Titre de l'anecdote 1</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime voluptatibus similique odit ex, inventore molestias repudiandae. Expedita similique quod placeat iure voluptatibus consequuntur sequi ducimus esse quos aliquid, ratione ipsum!<a href="#" class="anecdote__link">afficher plus</a></p>
-                    <a href="anecdote/anecdoteId">Lire la suite</a>
+                    <a id="anecdote-browse-link-read" href="anecdote/anecdoteId">Lire la suite</a>
                     <p id="author">Publié par Auteur le 01.01.1999</p>
                 </article>-->
 
