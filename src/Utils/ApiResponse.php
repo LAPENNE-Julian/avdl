@@ -40,4 +40,25 @@ class ApiResponse
         //authorize all port origin
         header('Access-Control-Allow-Origin: *');
     }
+
+    /**
+    * Check request anecdote Id in database
+    */
+    public function checkAnecdoteId($anecdotes, int $anecdoteId) {
+
+        foreach($anecdotes as $anecdote) {
+
+            $anecdoteIdinArray = $anecdote['id'];
+
+            if ($anecdoteId == $anecdoteIdinArray) {
+
+                return true;
+            }
+        }
+
+        //Else, $anecdoteId isn't in databse, post message error
+        http_response_code(404);
+        echo json_encode(["message" => 'message', 'This anecdoteId isn\'t valid']);
+        exit;
+    }
 }

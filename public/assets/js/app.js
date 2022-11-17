@@ -6,6 +6,7 @@ const app = {
     console.log("app.init() appelé");
     categoriesList.init();
     anecdotesList.init();
+    anecdote.init();
   }
 
 };

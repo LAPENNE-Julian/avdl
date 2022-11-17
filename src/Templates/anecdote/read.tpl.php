@@ -1,8 +1,7 @@
 <section id="anecdote-read" class="container-fluid">
     <div id="anecdote-read-inner" class="carousel-inner">
         <div id="label-categories" class="container-fluid">
-            <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
-            <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
+            <!-- <span class="label-category" style ="border: medium solid yellow">Catégorie</span> -->
         </div>
 
         <h1>Titre de l'anecdote 1</h1>
@@ -19,7 +18,7 @@
                         </a>
                     </li>
 
-                    <li>
+                    <li id="anecdote-read-vote">
                         Vote
                     </li>
 
@@ -33,7 +32,7 @@
                 </ul>
             </div>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime voluptatibus similique odit ex, inventore molestias repudiandae. Expedita similique quod placeat iure voluptatibus consequuntur sequi ducimus esse quos aliquid, ratione ipsum!</p>
+            <p id="anecdote-read-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime voluptatibus similique odit ex, inventore molestias repudiandae. Expedita similique quod placeat iure voluptatibus consequuntur sequi ducimus esse quos aliquid, ratione ipsum!</p>
         </div>
         
         <div id="anecdote-source">

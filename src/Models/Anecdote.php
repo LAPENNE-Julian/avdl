@@ -737,7 +737,76 @@ class Anecdote extends CoreModel {
      * 
      * @return JSON
      */
-    public static function browse(int $offsetNum)
+    public static function browse()
+    {
+        $pdo = Database::getPDO();
+        $sql = 'SELECT 
+        `anecdote`.`id`, 
+        `anecdote`.`title`, 
+        `anecdote`.`description`, 
+        `anecdote`.`created_at`,
+        `anecdote`.`category_1`,
+        `anecdote`.`category_2`,
+        `anecdote`.`category_3`,
+
+        (SELECT `name`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_1`) AS `categoryName1`,
+        (SELECT `color`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_1`) AS `categoryColor1`,
+        (SELECT `slug`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_1`) AS `categorySlug1`,          
+        (SELECT `name`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_2`) AS `categoryName2`,
+        (SELECT `color`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_2`) AS `categoryColor2`,
+        (SELECT `slug`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_2`) AS `categorySlug2`,
+        
+        (SELECT `name`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_3`) AS `categoryName3`,
+        (SELECT `color`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_3`) AS `categoryColor3`,
+        (SELECT `slug`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_3`) AS `categorySlug3`,
+
+        `user`.`id` AS `userId`,
+        `user`.`pseudo`,
+        `user`.`img` AS `userImg`,
+
+        (SELECT COUNT(`user_id`) 
+                FROM `anecdote_action` 
+                WHERE `anecdote_action`.`vote` = 1 AND `anecdote_id` = `anecdote`.`id`
+        ) AS `upvote`,
+        (SELECT COUNT(`user_id`) 
+                FROM `anecdote_action` 
+                WHERE `anecdote_action`.`vote` = 2 AND `anecdote_id` = `anecdote`.`id`
+        ) AS `downvote`
+
+        FROM `anecdote`
+        LEFT JOIN `user` ON `anecdote`.`writer_id` = `user`.`id`';
+
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->execute();
+        $results = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $results;
+    }
+
+    /**
+     * Get page of anecdotes (9 anecdotes by pages)
+     * 
+     * @return JSON
+     */
+    public static function browsePage(int $offsetNum)
     {
         $pdo = Database::getPDO();
         $sql = 'SELECT 
