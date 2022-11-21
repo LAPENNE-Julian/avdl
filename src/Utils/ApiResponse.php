@@ -2,9 +2,7 @@
 
 namespace App\Utils;
 
-use App\Models\Anecdote;
 use App\Models\Category;
-use App\Models\User;
 
 /**
  * Generate response for api

@@ -3,23 +3,26 @@ const anecdotesList = {
   init: function() {
 
     console.log("anecdotesList.init() appelé");
-    anecdotesList.bindAllAnecdotes();
+
+    let pathName = window.location.pathname;
+
+    //If pathName of the url is '/anecdote' => loaded All anecdotes in the view
+    if(pathName === '/anecdote'){
+
+      anecdotesList.bindAllAnecdotes(pathName);
+    }
+
+    
   },
 
   // ---------------------------------------------------------
   // Binders
   // ---------------------------------------------------------
 
-  bindAllAnecdotes: function() {
+  bindAllAnecdotes: function(pathName) {
 
-    const pathName = window.location.pathname;
+    anecdotesList.handleLoadAnecdotes(pathName);
 
-    if(pathName == '/anecdote'){
-
-      //If pathName of the url is '/anecdotes' => loaded All anecdotes in the view
-      this.handleLoadAnecdotes(pathName);
-
-    }
   },
 
   // ---------------------------------------------------------

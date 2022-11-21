@@ -3,7 +3,17 @@ const anecdote = {
   init: function() {
 
     console.log("anecdote.init() appelé");
-    anecdote.bindAnecdoteRead();
+
+    let pathName = window.location.pathname;
+
+    let splitPathName = pathName.split("/");
+    let pathNameAnecdote = splitPathName[1]; 
+    let anecdoteId = splitPathName[2];
+
+    if(pathNameAnecdote == 'anecdote' && anecdoteId !== undefined){
+    
+      anecdote.bindAnecdoteRead(anecdoteId);
+    }
 
   },
 
@@ -11,19 +21,9 @@ const anecdote = {
   // Binders
   // ---------------------------------------------------------
 
-  bindAnecdoteRead: function() {
-
-    const pathName = window.location.pathname;
-
-    let splitPathName = pathName.split("/");
-    let pathNameAnecdote = splitPathName[1]; 
-    let anecdoteId = splitPathName[2];
-
-    if(pathNameAnecdote == 'anecdote' && anecdoteId !== undefined){
+  bindAnecdoteRead: function(anecdoteId) {
 
       anecdote.handleLoadAnecdote(anecdoteId);
-
-    }
   },
 
   // ---------------------------------------------------------
@@ -129,7 +129,7 @@ const anecdote = {
         const anecdoteData = object.anecdote[0];
 
         //Create anecdote element browse
-        const anecdoteItem = anecdote.readAnecdote(
+        let anecdoteItem = anecdote.readAnecdote(
           anecdoteData.id,
           anecdoteData.title, 
           anecdoteData.content,

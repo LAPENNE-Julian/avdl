@@ -80,6 +80,7 @@ class AnecdoteController extends ApiCoreController
                 $anecdote = Anecdote::read($anecdoteId);
 
                 $this->apiResponse->responseAsArray(200, 'anecdote', $anecdote);
+
             }
 
         } else {

@@ -45,12 +45,14 @@ class CategoryController extends ApiCoreController
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
             //not table anecdote_category , refaire requete
-            //$checkCategoryId = $this->apiResponse->categoryIdCheckInDatabase($categoryId);
+            $checkCategoryId = $this->apiResponse->categoryIdCheckInDatabase($categoryId);
 
-            $anecdotes = Category::browseAnecdotes($categoryId);
+            if($checkCategoryId == true){
+                $anecdotes = Category::browseAnecdotes($categoryId);
 
-            $this->apiResponse->responseAsArray(200, 'anecdotes', $anecdotes, 'GET');
-        
+                $this->apiResponse->responseAsArray(200, 'anecdotes', $anecdotes);
+            }
+            
         } else {
 
             //not allowed method

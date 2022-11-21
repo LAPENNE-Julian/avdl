@@ -14,7 +14,7 @@ const categoriesList = {
 
   bindAllCategories: function() {
 
-    const pathName = window.location.pathname;
+    let pathName = window.location.pathname;
 
     if(pathName == '/category'){
 
@@ -26,7 +26,7 @@ const categoriesList = {
 
   bindAllAnecdotes: function() {
 
-    const pathName = window.location.pathname;
+    let pathName = window.location.pathname;
 
     let splitPathName = pathName.split("/");
     let pathNameCategory = splitPathName[1]; 
