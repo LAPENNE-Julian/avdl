@@ -74,6 +74,11 @@ $router->map('GET', '/category', [
     'method' => 'browse',
 ], 'category-browse');
 
+$router->map('GET', '/category/[i:id]/anecdote', [
+    'controller' => '\App\Controllers\CategoryController',
+    'method' => 'browseAnecdote',
+], 'category-browse-anecdote');
+
 /* -------------
 --- BACKOFFICE ---
 --------------*/
@@ -217,6 +222,11 @@ $router->map('GET', '/api/category', [
     'controller' => '\App\Controllers\api\CategoryController',
     'method' => 'browse',
 ], 'api-category-browse');
+
+$router->map('GET', '/api/category/[i:id]/anecdote', [
+    'controller' => '\App\Controllers\api\CategoryController',
+    'method' => 'browseAnecdotes',
+], 'api-category-browse-anecdotes');
 
 
 /* -------------

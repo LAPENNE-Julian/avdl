@@ -3,7 +3,7 @@ const anecdote = {
   init: function() {
 
     console.log("anecdote.init() appelé");
-    anecdote.bindAnecdoteReadEvents();
+    anecdote.bindAnecdoteRead();
 
   },
 
@@ -11,26 +11,28 @@ const anecdote = {
   // Binders
   // ---------------------------------------------------------
 
-  bindAnecdoteReadEvents: function() {
+  bindAnecdoteRead: function() {
 
-    const anecdoteReadSection = document.querySelector('#anecdote-read');
+    const pathName = window.location.pathname;
 
-    if(anecdoteReadSection !== null){
+    let splitPathName = pathName.split("/");
+    let pathNameAnecdote = splitPathName[1]; 
+    let anecdoteId = splitPathName[2];
 
-      anecdote.handleLoadAnecdote();
+    if(pathNameAnecdote == 'anecdote' && anecdoteId !== undefined){
+
+      anecdote.handleLoadAnecdote(anecdoteId);
+
     }
-
   },
 
   // ---------------------------------------------------------
   // Handlers
   // ---------------------------------------------------------
 
-  handleLoadAnecdote: function(){
+  handleLoadAnecdote: function(anecdoteId){
 
-    const pathName = window.location.pathname;
-    
-    anecdote.loadAnecdoteFromAPI(pathName);
+    anecdote.loadAnecdoteFromAPI(anecdoteId);
   },
 
   // ---------------------------------------------------------
@@ -59,7 +61,7 @@ const anecdote = {
 
         //Create a element <a href="/category/id">
         const categoryLink = document.createElement('a');
-        categoryLink.setAttribute('href', 'category/' + category.categoryId);
+        categoryLink.setAttribute('href', '/category/' + category.categoryId + '/anecdote');
         categoryLink.textContent = category.categoryName;
 
         //Add element <a> in element <span>
@@ -96,7 +98,7 @@ const anecdote = {
   // AJAX
   // ---------------------------------------------------------
 
-  loadAnecdoteFromAPI: function(pathName) {
+  loadAnecdoteFromAPI: function(anecdoteId) {
 
     const config = {
       method: "GET",
@@ -104,15 +106,25 @@ const anecdote = {
       cache: "no-cache"
     };
 
-    fetch(app.apiRootUrl + pathName, config)
+    fetch(app.apiRootUrl + '/anecdote/' + anecdoteId, config)
     .then(
       function(response) {
-        //convert json response to object
-        return response.json(); 
+        
+        if(response.ok){
+
+          //convert json response to object
+          return response.json(); 
+
+        } else {
+          const pathName = window.location.pathname;
+
+          throw new Error('Network request for products.json failed with response ' + response.status + ': ' + response.statusText);
+
+        }
       }
     )
     .then(
-      function(object) {
+     function(object) {
 
         const anecdoteData = object.anecdote[0];
 
@@ -130,7 +142,7 @@ const anecdote = {
           anecdoteData.pseudo, 
           anecdoteData.upvote,
           anecdoteData.downvote);
-      }
+    }
     );
   },
   

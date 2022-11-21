@@ -23,5 +23,6 @@
         <script defer src="<?php $_SERVER['HTTP_HOST'] ?>/assets/js/components/categoriesList.js"></script>
         <script defer src="<?php $_SERVER['HTTP_HOST'] ?>/assets/js/components/anecdotesList.js"></script>
         <script defer src="<?php $_SERVER['HTTP_HOST'] ?>/assets/js/components/anecdote.js"></script>
+
     </body>
 </html>

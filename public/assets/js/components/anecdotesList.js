@@ -3,29 +3,32 @@ const anecdotesList = {
   init: function() {
 
     console.log("anecdotesList.init() appelé");
-    anecdotesList.bindAllAnecdotesEvents();
+    anecdotesList.bindAllAnecdotes();
   },
 
   // ---------------------------------------------------------
   // Binders
   // ---------------------------------------------------------
 
-  bindAllAnecdotesEvents: function() {
+  bindAllAnecdotes: function() {
 
-    //Select element <a id="nav-link-anecdote-browse">
-    const anecdoteBrowseLink = document.querySelector("#nav-link-anecdote-browse");
-    //Add event listener on click navigation
-    anecdoteBrowseLink.addEventListener("click", anecdotesList.handleLoadAnecdotes());
+    const pathName = window.location.pathname;
 
+    if(pathName == '/anecdote'){
+
+      //If pathName of the url is '/anecdotes' => loaded All anecdotes in the view
+      this.handleLoadAnecdotes(pathName);
+
+    }
   },
 
   // ---------------------------------------------------------
   // Handlers
   // ---------------------------------------------------------
 
-  handleLoadAnecdotes: function(){
+  handleLoadAnecdotes: function(request){
     
-    anecdotesList.loadAnecdotesFromAPI();
+    anecdotesList.loadAnecdotesFromAPI(request);
   },
 
   // ---------------------------------------------------------
@@ -63,7 +66,7 @@ const anecdotesList = {
         
         //Create a element <a href="/category/id">
         const categoryLink = document.createElement('a');
-        categoryLink.setAttribute('href', 'category/' + category.categoryId);
+        categoryLink.setAttribute('href', '/category/' + category.categoryId + '/anecdote');
         categoryLink.textContent = category.categoryName;
       
         //Add element <a> in element <span>
@@ -124,7 +127,7 @@ const anecdotesList = {
   // AJAX
   // ---------------------------------------------------------
 
-  loadAnecdotesFromAPI: function() {
+  loadAnecdotesFromAPI: function(request) {
 
       const config = {
         method: "GET",
@@ -132,7 +135,7 @@ const anecdotesList = {
         cache: "no-cache"
       };
 
-      fetch(app.apiRootUrl + "/anecdote", config)
+      fetch(app.apiRootUrl + request, config)
       .then(
         function(response) {
           //convert json response to object

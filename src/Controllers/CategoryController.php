@@ -10,4 +10,11 @@ class CategoryController extends CoreController
             
         ]);
     }
+
+    public function browseAnecdote()
+    {
+        $this->show('anecdote/browse', [
+            
+        ]);
+    }
 }

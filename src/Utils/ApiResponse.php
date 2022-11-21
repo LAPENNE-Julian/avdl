@@ -61,4 +61,28 @@ class ApiResponse
         echo json_encode(["message" => 'message', 'This anecdoteId isn\'t valid']);
         exit;
     }
+
+    /**
+    * Check request category Id in database
+    */
+    public function categoryIdCheckInDatabase(int $categoryId) {
+
+        //check if category id exist in database
+        $categories = Category::findall();
+
+        foreach($categories as $category) {
+
+            $categoryIdinArray = $category->getId();
+
+            if ($categoryId == $categoryIdinArray) {
+
+                return true;
+            }
+        }
+
+        //Else, $categoryId isn't in databse, post message error
+        http_response_code(404);
+        echo json_encode(["message" => 'message', 'This categoryId isn\'t valid']);
+        exit;
+    }
 }

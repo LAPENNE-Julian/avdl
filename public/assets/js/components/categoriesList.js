@@ -3,18 +3,41 @@ const categoriesList = {
   init: function() {
 
     console.log("categoriesList.init() appelé");
-    this.bindAllCategoriesEvents();
+    this.bindAllCategories();
+    this.bindAllAnecdotes();
+
   },
 
   // ---------------------------------------------------------
   // Binders
   // ---------------------------------------------------------
 
-  bindAllCategoriesEvents: function() {
-    //Select element <a id="nav-link-category-browse">
-    const categoryBrowseLink = document.querySelector("#nav-link-category-browse");
-    //Add event listener on click navigation
-    categoryBrowseLink.addEventListener("click", categoriesList.handleLoadCategories());
+  bindAllCategories: function() {
+
+    const pathName = window.location.pathname;
+
+    if(pathName == '/category'){
+
+      //If pathName of the url is '/category' => loaded All categories in the view
+      categoriesList.handleLoadCategories();
+
+    }
+  },
+
+  bindAllAnecdotes: function() {
+
+    const pathName = window.location.pathname;
+
+    let splitPathName = pathName.split("/");
+    let pathNameCategory = splitPathName[1]; 
+    let categoryId = splitPathName[2];
+
+    if(pathNameCategory = 'category'){
+
+      //If pathName of the url is '/category/[i:id]/anecdote' => loaded All anecdotes in the view
+      anecdotesList.loadAnecdotesFromAPI(pathName);
+
+    }
   },
 
   // ---------------------------------------------------------
@@ -30,7 +53,7 @@ const categoriesList = {
   // DOM
   // ---------------------------------------------------------
 
-  createDivCategory: function(name) {
+  createDivCategory: function(id, name) {
 
     //Create div element <div class="category-browse-item">
     const divElement = document.createElement('div');
@@ -40,6 +63,7 @@ const categoriesList = {
     const linkElement = document.createElement('a');
     linkElement.setAttribute('title', 'category');
     linkElement.setAttribute('alt', 'category');
+    linkElement.setAttribute('href', '/category/' + id + '/anecdote');
     linkElement.classList.add('category-browse-item-a');
 
     //Set text content with category name
@@ -88,7 +112,7 @@ const categoriesList = {
         for(const category of object.categories){
 
           //Create category element browse
-          const categoryItem = categoriesList.createDivCategory(category.name);
+          const categoryItem = categoriesList.createDivCategory(category.id, category.name);
           //Insert into DOM
           categoriesList.insertDivCategoryIntoParent(categoryItem);
         }
