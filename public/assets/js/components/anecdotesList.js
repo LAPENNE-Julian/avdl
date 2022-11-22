@@ -126,41 +126,61 @@ const anecdotesList = {
 
   loadAnecdotesFromAPI: function(request) {
 
-      const config = {
-        method: "GET",
-        mode: "cors",
-        cache: "no-cache"
-      };
+    const config = {
+      method: "GET",
+      mode: "cors",
+      cache: "no-cache"
+    };
 
-      fetch(app.apiRootUrl + request, config)
-      .then(
-        function(response) {
-          //convert json response to object
-          return response.json(); 
+    fetch(app.apiRootUrl + request, config)
+    .then(
+      function(response) {
+        //convert json response to object
+        return response.json(); 
+      }
+    )
+    .then(
+      function(object) {
+
+        for(const anecdote of object.anecdotes){
+
+          //Create anecdote element browse
+          const anecdoteItem = anecdotesList.createDivAnecdote(
+            anecdote.id,
+            anecdote.title, 
+            anecdote.description, 
+            anecdote.category_1, anecdote.categoryName1, anecdote.categoryColor1, 
+            anecdote.category_2, anecdote.categoryName2, anecdote.categoryColor2,
+            anecdote.category_3, anecdote.categoryName3, anecdote.categoryColor3,
+            anecdote.pseudo, 
+            anecdote.created_at);
+
+          //Insert into DOM
+          anecdotesList.insertDivAnecdoteIntoParent(anecdoteItem);
         }
-      )
-      .then(
-        function(object) {
+      }
+    )
+    .catch(
+      function(error) {
 
-          for(const anecdote of object.anecdotes){
+        console.log(error);
 
-            //Create anecdote element browse
-            const anecdoteItem = anecdotesList.createDivAnecdote(
-              anecdote.id,
-              anecdote.title, 
-              anecdote.description, 
-              anecdote.category_1, anecdote.categoryName1, anecdote.categoryColor1, 
-              anecdote.category_2, anecdote.categoryName2, anecdote.categoryColor2,
-              anecdote.category_3, anecdote.categoryName3, anecdote.categoryColor3,
-              anecdote.pseudo, 
-              anecdote.created_at);
+        //Select section element <section>
+        const sectionElement = document.querySelector("#anecdote-browse");
 
-            //Insert into DOM
-            anecdotesList.insertDivAnecdoteIntoParent(anecdoteItem);
-          }
-        }
-      );
-    
-    },
-  
+        //Select h1 in section element
+        const header1 = document.querySelector("#anecdote-browse h1");
+        //delete h1 element
+        header1.remove();
+
+        //Select h1 in section element
+        const arrowNavigation = document.querySelector("#arrow-navigation");
+        //delete h1 element
+        arrowNavigation.remove();
+
+        //Post error 404 view in section element
+        app.error404(sectionElement);
+      }
+    );
+  },
 }

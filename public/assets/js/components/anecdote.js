@@ -169,6 +169,7 @@ const anecdote = {
 
         //Select section element <section id="anecdote-read">
         const sectionElement = document.querySelector("#anecdote-read");
+
         //Post error 404 view in section element
         app.error404(sectionElement);
       }

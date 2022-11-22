@@ -116,7 +116,5 @@ const categoriesList = {
         }
       }
     );
-  
   },
-  
 }
