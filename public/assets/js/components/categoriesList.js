@@ -3,8 +3,23 @@ const categoriesList = {
   init: function() {
 
     console.log("categoriesList.init() appelé");
-    this.bindAllCategories();
-    this.bindAllAnecdotes();
+
+    let pathName = window.location.pathname;
+
+    if(pathName === '/category'){
+
+      categoriesList.bindAllCategories();
+    }
+
+    let splitPathName = pathName.split("/");
+    let pathNameFirst = splitPathName[1]; 
+    let pathNameSecond= splitPathName[2];
+    let pathNameThird = splitPathName[3];
+
+    if(pathNameFirst == 'category' && pathNameThird == 'anecdote'){
+
+      categoriesList.bindAllAnecdotes(pathName);
+    }
 
   },
 
@@ -14,30 +29,14 @@ const categoriesList = {
 
   bindAllCategories: function() {
 
-    let pathName = window.location.pathname;
-
-    if(pathName == '/category'){
-
-      //If pathName of the url is '/category' => loaded All categories in the view
-      categoriesList.handleLoadCategories();
-
-    }
+    //If pathName of the url is '/category' => loaded All categories in the view
+    categoriesList.handleLoadCategories();
   },
 
-  bindAllAnecdotes: function() {
+  bindAllAnecdotes: function(pathName) {
 
-    let pathName = window.location.pathname;
-
-    let splitPathName = pathName.split("/");
-    let pathNameCategory = splitPathName[1]; 
-    let categoryId = splitPathName[2];
-
-    if(pathNameCategory = 'category'){
-
-      //If pathName of the url is '/category/[i:id]/anecdote' => loaded All anecdotes in the view
-      anecdotesList.loadAnecdotesFromAPI(pathName);
-
-    }
+    //If pathName of the url is '/category/[i:id]/anecdote' => loaded All anecdotes of category id in the view
+    anecdotesList.loadAnecdotesFromAPI(pathName);
   },
 
   // ---------------------------------------------------------
@@ -46,7 +45,7 @@ const categoriesList = {
 
   handleLoadCategories: function(){
     
-    this.loadCategoriesFromAPI();
+    categoriesList.loadCategoriesFromAPI();
   },
 
   // ---------------------------------------------------------
