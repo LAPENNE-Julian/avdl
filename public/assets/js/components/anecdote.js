@@ -23,8 +23,8 @@ const anecdote = {
   // ---------------------------------------------------------
 
   bindAnecdoteRead: function(anecdoteId) {
-    
 
+    //If pathName of the url is '/anecdote/[i:id]' => loaded anecdote in the view
     anecdote.handleLoadAnecdote(anecdoteId);
   },
 
@@ -108,14 +108,6 @@ const anecdote = {
     return anecdoteReadElement;
   },
 
-  insertAnecdoteToRead: function(anecdoteItem) {
-
-    //Select section element <section id="anecdote-read">
-    const sectionElement = document.querySelector("#anecdote-read");
-    
-    sectionElement.prepend(anecdoteItem);
-  },
-
   // ---------------------------------------------------------
   // AJAX
   // ---------------------------------------------------------
@@ -145,9 +137,8 @@ const anecdote = {
       }
     )
     .then(
-     function(object) {
-       
-
+      function(object) {
+        
         const anecdoteData = object.anecdote[0];
 
         //Create anecdote element browse
@@ -167,18 +158,20 @@ const anecdote = {
 
           //Select section element <section id="anecdote-read">
           const sectionElement = document.querySelector("#anecdote-read");
-
-          console.log(sectionElement);
-          
+          //Insert anecdote item in section element
           sectionElement.prepend(anecdoteItem);
-    }
+      }
     )
     .catch(
       function(error) {
-          console.log('Error');
 
+        console.log(error);
+
+        //Select section element <section id="anecdote-read">
+        const sectionElement = document.querySelector("#anecdote-read");
+        //Post error 404 view in section element
+        app.error404(sectionElement);
       }
     );
   },
-  
 }

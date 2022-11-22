@@ -6,13 +6,10 @@ const anecdotesList = {
 
     let pathName = window.location.pathname;
 
-    //If pathName of the url is '/anecdote' => loaded All anecdotes in the view
     if(pathName === '/anecdote'){
 
       anecdotesList.bindAllAnecdotes(pathName);
     }
-
-    
   },
 
   // ---------------------------------------------------------
@@ -21,8 +18,8 @@ const anecdotesList = {
 
   bindAllAnecdotes: function(pathName) {
 
+    //If pathName of the url is '/anecdote' => loaded All anecdotes in the view
     anecdotesList.handleLoadAnecdotes(pathName);
-
   },
 
   // ---------------------------------------------------------
@@ -119,11 +116,8 @@ const anecdotesList = {
     //Select element <div id="anecdote-browse-inner"> in DOM
     const parentElement = document.querySelector('#anecdote-browse-inner');
 
-    if(parentElement !== null){
-
-      //Add divAnecdote in parentElement
-      parentElement.append(divAnecdote);
-    }
+    //Add divAnecdote in parentElement
+    parentElement.append(divAnecdote);
   },
 
   // ---------------------------------------------------------

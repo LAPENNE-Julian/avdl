@@ -6,21 +6,20 @@ const categoriesList = {
 
     let pathName = window.location.pathname;
 
-    if(pathName === '/category'){
-
-      categoriesList.bindAllCategories();
-    }
-
     let splitPathName = pathName.split("/");
     let pathNameFirst = splitPathName[1]; 
     let pathNameSecond= splitPathName[2];
     let pathNameThird = splitPathName[3];
 
+    if(pathName === '/category'){
+
+      categoriesList.bindAllCategories();
+    }
+
     if(pathNameFirst == 'category' && pathNameThird == 'anecdote'){
 
       categoriesList.bindAllAnecdotes(pathName);
     }
-
   },
 
   // ---------------------------------------------------------
@@ -36,7 +35,7 @@ const categoriesList = {
   bindAllAnecdotes: function(pathName) {
 
     //If pathName of the url is '/category/[i:id]/anecdote' => loaded All anecdotes of category id in the view
-    anecdotesList.loadAnecdotesFromAPI(pathName);
+    anecdotesList.handleLoadAnecdotes(pathName);
   },
 
   // ---------------------------------------------------------
