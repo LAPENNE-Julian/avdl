@@ -1,19 +1,20 @@
 const app = {
 
-  apiRootUrl: "http://localhost:8080/api",
+  rootUrl: window.location.origin,
+  apiRootUrl: window.location.origin + "/api",
+  pathName: window.location.pathname,
 
   init: function() {
     console.log("app.init() appelé");
 
-    const pathName = window.location.pathname;
+    let splitPathName = app.pathName.split("/");
 
-    let splitPathName = pathName.split("/");
     let pathNameFirst = splitPathName[1]; 
     let pathNameSecond = splitPathName[2];
     let pathNameThird = splitPathName[3];
 
-    categoriesList.init(pathName, pathNameFirst, pathNameSecond, pathNameThird);
-    anecdotesList.init(pathName);
+    categoriesList.init(app.pathName, pathNameFirst, pathNameSecond, pathNameThird);
+    anecdotesList.init(app.pathName);
     anecdote.init(pathNameFirst, pathNameSecond, pathNameThird);
   },
 

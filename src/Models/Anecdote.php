@@ -964,42 +964,23 @@ class Anecdote extends CoreModel {
                     WHERE `category`.`id` = `category_1`) AS `categoryName1`,
         (SELECT `color`
                     FROM `category`
-                    WHERE `category`.`id` = `category_1`) AS `categoryColor1`,
-        (SELECT `slug`
-                    FROM `category`
-                    WHERE `category`.`id` = `category_1`) AS `categorySlug1`,          
+                    WHERE `category`.`id` = `category_1`) AS `categoryColor1`,         
         (SELECT `name`
                     FROM `category`
                     WHERE `category`.`id` = `category_2`) AS `categoryName2`,
         (SELECT `color`
                     FROM `category`
                     WHERE `category`.`id` = `category_2`) AS `categoryColor2`,
-        (SELECT `slug`
-                    FROM `category`
-                    WHERE `category`.`id` = `category_2`) AS `categorySlug2`,
-        
         (SELECT `name`
                     FROM `category`
                     WHERE `category`.`id` = `category_3`) AS `categoryName3`,
         (SELECT `color`
                     FROM `category`
                     WHERE `category`.`id` = `category_3`) AS `categoryColor3`,
-        (SELECT `slug`
-                    FROM `category`
-                    WHERE `category`.`id` = `category_3`) AS `categorySlug3`,
 
         `user`.`id` AS `userId`,
         `user`.`pseudo`,
-        `user`.`img` AS `userImg`,
-
-        (SELECT COUNT(`user_id`) 
-                FROM `anecdote_action` 
-                WHERE `anecdote_action`.`vote` = 1 AND `anecdote_id` = `anecdote`.`id`
-        ) AS `upvote`,
-        (SELECT COUNT(`user_id`) 
-                FROM `anecdote_action` 
-                WHERE `anecdote_action`.`vote` = 2 AND `anecdote_id` = `anecdote`.`id`
-        ) AS `downvote`
+        `user`.`img` AS `userImg`
 
         FROM `anecdote`
         LEFT JOIN `user` ON `anecdote`.`writer_id` = `user`.`id`

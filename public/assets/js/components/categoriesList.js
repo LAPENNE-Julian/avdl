@@ -4,13 +4,6 @@ const categoriesList = {
 
     console.log("categoriesList.init() appelé");
 
-    // let pathName = window.location.pathname;
-
-    // let splitPathName = pathName.split("/");
-    // let pathNameFirst = splitPathName[1]; 
-    // let pathNameSecond= splitPathName[2];
-    // let pathNameThird = splitPathName[3];
-
     if(pathName === "/category"){
 
       categoriesList.bindAllCategories();

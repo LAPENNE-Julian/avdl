@@ -4,13 +4,6 @@ const anecdote = {
 
     console.log("anecdote.init() appelé");
 
-    // let pathName = window.location.pathname;
-
-    // let splitPathName = pathName.split("/");
-    // let pathNameFirst = splitPathName[1]; 
-    // let pathNameSecond = splitPathName[2];
-    // let pathNameThird = splitPathName[3];
-
     if(pathNameFirst === "anecdote" && pathNameSecond !== undefined){
 
       anecdote.bindAnecdoteRead(pathNameSecond);

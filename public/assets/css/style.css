@@ -31,6 +31,7 @@ h2 {
 
 #home, 
 #latest, #best,
+.errorPage,
 #legal-notices, #contact,
 #api-documentation,
 #anecdote-read,
@@ -52,6 +53,15 @@ h2 {
 
 .carousel-inner {
     padding: 10% 15%;
+}
+
+.carousel-item,
+.anecdote-browse-item {
+    background-color: rgb(250 250 250 / 1);
+    border: thin solid rgb(145, 145, 145);
+    box-shadow: 10px 5px 5px rgb(145, 145, 145);
+    border-radius: 10%;
+    padding: 5%;
 }
 
 #label-categories {
@@ -150,6 +160,10 @@ footer ul a:hover {
 }
 
 /*caroussel*/
+.carousel-item{
+    margin: 5% 5% 5% 0%;
+}
+
 #latest, #best {
     margin: 5% 0;
     padding: 0;
@@ -163,7 +177,7 @@ footer ul a:hover {
 /*errorPage*/
 .errorPage {
     /*background-color: #ffffff;*/
-    background-color: rgb(250 250 250 / 0.9);
+    /*background-color: rgb(250 250 250 / 0.9);*/
     margin : 5% 0%;
     padding: 2% 10% 5%;
     border : none;
@@ -363,8 +377,6 @@ api-documentation*/
 }
 
 .anecdote-browse-item {
-    border: medium solid rgb(145, 145, 145);
-    padding: 5%;
     margin: 5%;
 }
 

@@ -220,6 +220,11 @@ $router->map('GET', '/api/anecdote/[i:id]', [
     'method' => 'read',
 ], 'api-anecdote-read');
 
+$router->map('GET', '/api/anecdote/latest', [
+    'controller' => '\App\Controllers\api\AnecdoteController',
+    'method' => 'latest',
+], 'api-anecdote-latest');
+
 /**
  * Request category
  */

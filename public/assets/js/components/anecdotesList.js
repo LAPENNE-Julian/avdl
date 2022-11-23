@@ -4,11 +4,16 @@ const anecdotesList = {
 
     console.log("anecdotesList.init() appelé");
 
-    //let pathName = window.location.pathname;
-
     if(pathName === "/anecdote"){
 
       anecdotesList.bindAllAnecdotes(pathName);
+    }
+
+    const homeElement = document.querySelector("#home");
+
+    if(homeElement !== null || homeElement !== undefined){
+
+      anecdotesList.bindCarouselAnecdotes();
     }
   },
 
@@ -22,6 +27,12 @@ const anecdotesList = {
     anecdotesList.handleLoadAnecdotes(pathName);
   },
 
+  bindCarouselAnecdotes: function() {
+
+    //If pathName of the url is '/anecdote' => loaded All anecdotes in the view
+    anecdotesList.handleLoadCarouselAnecdotes();
+  },
+
   // ---------------------------------------------------------
   // Handlers
   // ---------------------------------------------------------
@@ -29,6 +40,15 @@ const anecdotesList = {
   handleLoadAnecdotes: function(request){
     
     anecdotesList.loadAnecdotesFromAPI(request);
+  },
+
+  handleLoadCarouselAnecdotes: function(){
+    
+    //anecdotesList.loadAnecdotesFromAPI("/best");
+
+    let request = "/anecdote/latest";
+
+    anecdotesList.loadCarouselAnecdotesFromAPI(request);
   },
 
   // ---------------------------------------------------------
@@ -120,6 +140,72 @@ const anecdotesList = {
     parentElement.append(divAnecdote);
   },
 
+  createCarousel: function(id, title, description, categoryId1, categoryName1, categoryColor1, categoryId2, categoryName2, categoryColor2, categoryId3, categoryName3, categoryColor3, userId, pseudo, createdAt){
+
+    //Select template element <template id="carousel-lates-item">
+    const templateElement = document.querySelector("#carousel-latest-item");
+    //clone element
+    const templateCloneElement = templateElement.content.cloneNode(true);
+
+    //Select template Clone to create carousel-item element :
+    const carouselItem = templateCloneElement.querySelector("#carousel-item");
+
+    if(categoryId1 !== null){
+      //Select span element <span id="label-category-1">Catégorie</span>
+      const categorySpan = carouselItem.querySelector("#label-category-1");
+      categorySpan.setAttribute("style", "border: medium solid " + categoryColor1);
+
+      //Select a element <a href="/category/id">
+      const categoryLink = carouselItem.querySelector("#label-category-1 a");
+      categoryLink.setAttribute("href", "/category/" + categoryId1 + "/anecdote");
+      categoryLink.textContent = categoryName1;
+    }
+
+    if(categoryId2 !== null){
+      //Select span element <span class="label-category-2">Catégorie</span>
+      const categorySpan2 = carouselItem.querySelector("#label-category-2");
+      categorySpan2.setAttribute("style", "border: medium solid " + categoryColor2);
+
+      //Select a element <a href="/category/id">
+      const categoryLink2 = carouselItem.querySelector("#label-category-2 a");
+      categoryLink2.setAttribute("href", "/category/" + categoryId2 + "/anecdote");
+      categoryLink2.textContent = categoryName2;
+    }
+
+    if(categoryId3 !== null){
+      //Select span element <span class="label-category-3">Catégorie</span>
+      const categorySpan3 = carouselItem.querySelector("#label-category-3");
+      categorySpan3.setAttribute("style", "border: medium solid " + categoryColor3);
+
+      //Select a element <a href="/category/id">
+      const categoryLink3 = carouselItem.querySelector("#label-category-3 a");
+      categoryLink3.setAttribute("href", "/category/" + categoryId3 + "/anecdote");
+      categoryLink3.textContent = categoryName3;
+    }
+    
+    //Select h1 element <h3>Titre de l'anecdote 1</h3>
+    const anecdoteTitle = carouselItem.querySelector("h3");
+    anecdoteTitle.textContent = title;
+
+    //Select <p> element with description of anecdote
+    const anecdoteDescription = carouselItem.querySelector("#carousel-latest-item-description");
+    anecdoteDescription.textContent = description;
+
+    //Select p element <p id="author">
+    const anecdotePublishing = carouselItem.querySelector("#author");
+    anecdotePublishing.textContent = "Publié par " + pseudo + " le " + createdAt;
+
+    return carouselItem;
+  },
+
+  insertCarouselItemIntoParent: function(anecdoteItem) {
+
+    //Select div element <div id="carousel-latest-anecdote">
+    const carouselElement = document.querySelector("#carousel-latest-inner");
+    //Insert anecdote item in section element
+    carouselElement.append(anecdoteItem);
+  },
+
   // ---------------------------------------------------------
   // AJAX
   // ---------------------------------------------------------
@@ -180,6 +266,60 @@ const anecdotesList = {
 
         //Post error 404 view in section element
         app.error404(sectionElement);
+      }
+    );
+  },
+
+  loadCarouselAnecdotesFromAPI: function(request) {
+
+    const config = {
+      method: "GET",
+      mode: "cors",
+      cache: "no-cache"
+    };
+
+    fetch(app.apiRootUrl + request, config)
+    .then(
+      function(response) {
+        //convert json response to object
+        return response.json(); 
+      }
+    )
+    .then(
+      function(object) {
+
+        console.log(object);
+
+        for(const anecdoteData of object.anecdotes){
+
+          //Create carousel anecdote element browse
+          const anecdoteItem = anecdotesList.createCarousel(
+            anecdoteData.id,
+            anecdoteData.title, 
+            anecdoteData.description, 
+            anecdoteData.category_1, anecdoteData.categoryName1, anecdoteData.categoryColor1, 
+            anecdoteData.category_2, anecdoteData.categoryName2, anecdoteData.categoryColor2,
+            anecdoteData.category_3, anecdoteData.categoryName3, anecdoteData.categoryColor3,
+            anecdoteData.userId,
+            anecdoteData.pseudo, 
+            anecdoteData.created_at);
+
+          //Insert into DOM
+          anecdotesList.insertCarouselItemIntoParent(anecdoteItem);
+        }
+
+        //Select first carouselItem
+        const carouselItem = document.querySelector("#carousel-item");
+
+        carouselItem.classList.add("active");
+        
+        
+      }
+    )
+    .catch(
+      function(error) {
+
+        console.log(error);
       }
     );
   },
