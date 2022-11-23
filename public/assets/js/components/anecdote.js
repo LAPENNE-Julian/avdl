@@ -1,21 +1,20 @@
 const anecdote = {
 
-  init: function() {
+  init: function(pathNameFirst, pathNameSecond, pathNameThird) {
 
     console.log("anecdote.init() appelé");
 
-    let pathName = window.location.pathname;
+    // let pathName = window.location.pathname;
 
-    let splitPathName = pathName.split("/");
-    let pathNameFirst = splitPathName[1]; 
-    let pathNameSecond = splitPathName[2];
-    let pathNameThird = splitPathName[3];
+    // let splitPathName = pathName.split("/");
+    // let pathNameFirst = splitPathName[1]; 
+    // let pathNameSecond = splitPathName[2];
+    // let pathNameThird = splitPathName[3];
 
-    if(pathNameFirst === 'anecdote' && pathNameSecond !== undefined){
+    if(pathNameFirst === "anecdote" && pathNameSecond !== undefined){
 
       anecdote.bindAnecdoteRead(pathNameSecond);
     }
-
   },
 
   // ---------------------------------------------------------
@@ -53,57 +52,57 @@ const anecdote = {
 
     if(categoryId1 !== null){
       //Select span element <span class="label-category-1" style ="border: medium solid yellow">Catégorie</span>
-      const categorySpan = anecdoteReadElement.querySelector('#label-category-1');
-      categorySpan.setAttribute('style', 'border: medium solid ' + categoryColor1);
+      const categorySpan = anecdoteReadElement.querySelector("#label-category-1");
+      categorySpan.setAttribute("style", "border: medium solid " + categoryColor1);
 
       //Select a element <a href="/category/id">
-      const categoryLink = anecdoteReadElement.querySelector('#label-category-1 a');
-      categoryLink.setAttribute('href', '/category/' + categoryId1 + '/anecdote');
+      const categoryLink = anecdoteReadElement.querySelector("#label-category-1 a");
+      categoryLink.setAttribute("href", "/category/" + categoryId1 + "/anecdote");
       categoryLink.textContent = categoryName1;
     }
 
     if(categoryId2 !== null){
       //Select span element <span class="label-category-2" style ="border: medium solid yellow">Catégorie</span>
-      const categorySpan2 = anecdoteReadElement.querySelector('#label-category-2');
-      categorySpan2.setAttribute('style', 'border: medium solid ' + categoryColor2);
+      const categorySpan2 = anecdoteReadElement.querySelector("#label-category-2");
+      categorySpan2.setAttribute("style", "border: medium solid " + categoryColor2);
 
       //Select a element <a href="/category/id">
-      const categoryLink2 = anecdoteReadElement.querySelector('#label-category-2 a');
-      categoryLink2.setAttribute('href', '/category/' + categoryId2 + '/anecdote');
+      const categoryLink2 = anecdoteReadElement.querySelector("#label-category-2 a");
+      categoryLink2.setAttribute("href", "/category/" + categoryId2 + "/anecdote");
       categoryLink2.textContent = categoryName2;
     }
 
     if(categoryId3 !== null){
       //Select span element <span class="label-category-3" style ="border: medium solid yellow">Catégorie</span>
-      const categorySpan3 = anecdoteReadElement.querySelector('#label-category-3');
-      categorySpan3.setAttribute('style', 'border: medium solid ' + categoryColor3);
+      const categorySpan3 = anecdoteReadElement.querySelector("#label-category-3");
+      categorySpan3.setAttribute("style", "border: medium solid " + categoryColor3);
 
       //Select a element <a href="/category/id">
-      const categoryLink3 = anecdoteReadElement.querySelector('#label-category-3 a');
-      categoryLink3.setAttribute('href', '/category/' + categoryId3 + '/anecdote');
+      const categoryLink3 = anecdoteReadElement.querySelector("#label-category-3 a");
+      categoryLink3.setAttribute("href", "/category/" + categoryId3 + "/anecdote");
       categoryLink3.textContent = categoryName3;
     }
     
     //Select h1 element <h1>Titre de l'anecdote 1</h1>
-    const anecdoteTitle = anecdoteReadElement.querySelector('h1');
+    const anecdoteTitle = anecdoteReadElement.querySelector("h1");
     anecdoteTitle.textContent = title;
 
     //Select p element <p id="anecdote-author">
-    const anecdotePublishing = anecdoteReadElement.querySelector('#anecdote-author');
-    anecdotePublishing.textContent = 'Publié par ' + pseudo + ' le ' + createdAt;
+    const anecdotePublishing = anecdoteReadElement.querySelector("#anecdote-author");
+    anecdotePublishing.textContent = "Publié par " + pseudo + " le " + createdAt;
 
     //Select <li> element with vote of anecdote
-    const anecdoteVote = anecdoteReadElement.querySelector('#anecdote-read-vote');
+    const anecdoteVote = anecdoteReadElement.querySelector("#anecdote-read-vote");
     let vote = upvote - downvote;
     anecdoteVote.textContent = vote;
 
     //Select <p> element with content of anecdote
-    const anecdoteContent = anecdoteReadElement.querySelector('#anecdote-read-content');
+    const anecdoteContent = anecdoteReadElement.querySelector("#anecdote-read-content");
     anecdoteContent.textContent = content;
 
     //Select <a> element with link source anecdote
-    const anecdoteLink = anecdoteReadElement.querySelector('#anecdote-source a');
-    anecdoteLink.setAttribute('href', source);
+    const anecdoteLink = anecdoteReadElement.querySelector("#anecdote-source a");
+    anecdoteLink.setAttribute("href", source);
 
     return anecdoteReadElement;
   },
@@ -120,7 +119,7 @@ const anecdote = {
       cache: "no-cache"
     };
 
-    fetch(app.apiRootUrl + '/anecdote/' + anecdoteId, config)
+    fetch(app.apiRootUrl + "/anecdote/" + anecdoteId, config)
     .then(
       function(response) {
         
@@ -131,7 +130,7 @@ const anecdote = {
 
         } else {
 
-          throw new Error('Network request failed with response ' + response.status + ': ' + response.statusText);
+          throw new Error("Network request failed with response " + response.status + ": " + response.statusText);
 
         }
       }

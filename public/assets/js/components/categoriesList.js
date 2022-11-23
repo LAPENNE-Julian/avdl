@@ -1,22 +1,22 @@
 const categoriesList = {
 
-  init: function() {
+  init: function(pathName, pathNameFirst, pathNameSecond, pathNameThird) {
 
     console.log("categoriesList.init() appelé");
 
-    let pathName = window.location.pathname;
+    // let pathName = window.location.pathname;
 
-    let splitPathName = pathName.split("/");
-    let pathNameFirst = splitPathName[1]; 
-    let pathNameSecond= splitPathName[2];
-    let pathNameThird = splitPathName[3];
+    // let splitPathName = pathName.split("/");
+    // let pathNameFirst = splitPathName[1]; 
+    // let pathNameSecond= splitPathName[2];
+    // let pathNameThird = splitPathName[3];
 
-    if(pathName === '/category'){
+    if(pathName === "/category"){
 
       categoriesList.bindAllCategories();
     }
 
-    if(pathNameFirst == 'category' && pathNameThird == 'anecdote'){
+    if(pathNameFirst == "category" && pathNameThird == "anecdote"){
 
       categoriesList.bindAllAnecdotes(pathName);
     }
@@ -54,15 +54,15 @@ const categoriesList = {
   createDivCategory: function(id, name) {
 
     //Create div element <div class="category-browse-item">
-    const divElement = document.createElement('div');
-    divElement.classList.add('category-browse-item');
+    const divElement = document.createElement("div");
+    divElement.classList.add("category-browse-item");
 
     //Create a element <a title="category" alt="category" class="category-browse-item-a">
-    const linkElement = document.createElement('a');
-    linkElement.setAttribute('title', 'category');
-    linkElement.setAttribute('alt', 'category');
-    linkElement.setAttribute('href', '/category/' + id + '/anecdote');
-    linkElement.classList.add('category-browse-item-a');
+    const linkElement = document.createElement("a");
+    linkElement.setAttribute("title", "category");
+    linkElement.setAttribute("alt", "category");
+    linkElement.setAttribute("href", "/category/" + id + "/anecdote");
+    linkElement.classList.add("category-browse-item-a");
 
     //Set text content with category name
     linkElement.textContent = name;
@@ -76,7 +76,7 @@ const categoriesList = {
   insertDivCategoryIntoParent: function(divCategory) {
 
     //Select element <div id="category-browse-inner"> in DOM
-    const parentElement = document.querySelector('#category-browse-inner');
+    const parentElement = document.querySelector("#category-browse-inner");
 
     if(parentElement !== null){
       

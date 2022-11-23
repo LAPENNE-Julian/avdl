@@ -4,7 +4,6 @@ namespace App\Controllers\Api;
 
 use App\Controllers\api\ApiCoreController;
 use App\Models\Anecdote;
-use App\Models\User;
 
 class AnecdoteController extends ApiCoreController
 {

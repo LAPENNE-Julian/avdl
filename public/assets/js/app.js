@@ -4,9 +4,17 @@ const app = {
 
   init: function() {
     console.log("app.init() appelé");
-    categoriesList.init();
-    anecdotesList.init();
-    anecdote.init();
+
+    const pathName = window.location.pathname;
+
+    let splitPathName = pathName.split("/");
+    let pathNameFirst = splitPathName[1]; 
+    let pathNameSecond = splitPathName[2];
+    let pathNameThird = splitPathName[3];
+
+    categoriesList.init(pathName, pathNameFirst, pathNameSecond, pathNameThird);
+    anecdotesList.init(pathName);
+    anecdote.init(pathNameFirst, pathNameSecond, pathNameThird);
   },
 
   error404 : function(sectionElement){

@@ -11,6 +11,11 @@ $router->map('GET', '/', [
     'method' => 'home',
 ], 'main-home');
 
+$router->map('GET', '/api-documentation', [
+    'controller' => '\App\Controllers\MainController',
+    'method' => 'apiDocumentation',
+], 'api-documentation');
+
 $router->map('GET', '/contact', [
     'controller' => '\App\Controllers\MainController',
     'method' => 'contact',

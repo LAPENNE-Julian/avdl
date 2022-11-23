@@ -1,12 +1,12 @@
 const anecdotesList = {
 
-  init: function() {
+  init: function(pathName) {
 
     console.log("anecdotesList.init() appelé");
 
-    let pathName = window.location.pathname;
+    //let pathName = window.location.pathname;
 
-    if(pathName === '/anecdote'){
+    if(pathName === "/anecdote"){
 
       anecdotesList.bindAllAnecdotes(pathName);
     }
@@ -38,14 +38,14 @@ const anecdotesList = {
   createDivAnecdote: function(id, title, description, categoryId1, categoryName1, categoryColor1, categoryId2, categoryName2, categoryColor2, categoryId3, categoryName3, categoryColor3, pseudo, createdAt) {
 
     //Create div element <article class="anecdote-browse-item">
-    const divAnecdote = document.createElement('article');
-    divAnecdote.setAttribute('id', id);
-    divAnecdote.classList.add('anecdote-browse-item');
+    const divAnecdote = document.createElement("article");
+    divAnecdote.setAttribute("id", id);
+    divAnecdote.classList.add("anecdote-browse-item");
 
     //Create div element <div id="label-categories" class="container-fluid">
-    const divCategories = document.createElement('div');
-    divCategories.setAttribute('id', 'label-categories');
-    divCategories.classList.add('container-fluid');
+    const divCategories = document.createElement("div");
+    divCategories.setAttribute("id", "label-categories");
+    divCategories.classList.add("container-fluid");
 
     //Add element divCategories in element divAnecdote
     divAnecdote.append(divCategories);
@@ -60,13 +60,13 @@ const anecdotesList = {
       
       if(category.categoryName !== null){
         //Create span element <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
-        const categorySpan = document.createElement('span');
-        categorySpan.classList.add('label-category');
-        categorySpan.setAttribute('style', 'border: medium solid ' + category.categoryColor);
+        const categorySpan = document.createElement("span");
+        categorySpan.classList.add("label-category");
+        categorySpan.setAttribute("style", "border: medium solid " + category.categoryColor);
         
         //Create a element <a href="/category/id">
-        const categoryLink = document.createElement('a');
-        categoryLink.setAttribute('href', '/category/' + category.categoryId + '/anecdote');
+        const categoryLink = document.createElement("a");
+        categoryLink.setAttribute("href", "/category/" + category.categoryId + "/anecdote");
         categoryLink.textContent = category.categoryName;
       
         //Add element <a> in element <span>
@@ -78,32 +78,32 @@ const anecdotesList = {
     }
 
     //Create h2 element <h2>Titre de l'anecdote 1</h2>
-    const anecdoteTitle = document.createElement('h2');
+    const anecdoteTitle = document.createElement("h2");
     anecdoteTitle.textContent = title;
 
     //Add element divCategories in element divAnecdote
     divAnecdote.append(anecdoteTitle);
 
     //Create <p> element with description of anecdote
-    const anecdoteDescription = document.createElement('p');
+    const anecdoteDescription = document.createElement("p");
     anecdoteDescription.textContent = description;
 
     //Add element anecdoteDescription in element divAnecdote
     divAnecdote.append(anecdoteDescription);
 
     //Create <a> element with link to read anecdote
-    const anecdoteLink = document.createElement('a');
-    anecdoteLink.setAttribute('href', '/anecdote/' + id);
-    anecdoteLink.setAttribute('id', 'anecdote-browse-link-read')
-    anecdoteLink.textContent = 'Lire la suite';
+    const anecdoteLink = document.createElement("a");
+    anecdoteLink.setAttribute("href", "/anecdote/" + id);
+    anecdoteLink.setAttribute("id", "anecdote-browse-link-read")
+    anecdoteLink.textContent = "Lire la suite";
 
     //Add element divAnecdote in element anecdoteDescription
     divAnecdote.append(anecdoteLink);
 
     //Create <p> element with description of anecdote
-    const anecdotePublishing = document.createElement('p');
-    anecdotePublishing.setAttribute('id', 'author');
-    anecdotePublishing.textContent = 'Publié par ' + pseudo + ' le ' + createdAt;
+    const anecdotePublishing = document.createElement("p");
+    anecdotePublishing.setAttribute("id", "author");
+    anecdotePublishing.textContent = "Publié par " + pseudo + " le " + createdAt;
 
     //Add element anecdotePublishing in element divAnecdote
     divAnecdote.append(anecdotePublishing);
@@ -114,7 +114,7 @@ const anecdotesList = {
   insertDivAnecdoteIntoParent: function(divAnecdote) {
 
     //Select element <div id="anecdote-browse-inner"> in DOM
-    const parentElement = document.querySelector('#anecdote-browse-inner');
+    const parentElement = document.querySelector("#anecdote-browse-inner");
 
     //Add divAnecdote in parentElement
     parentElement.append(divAnecdote);
