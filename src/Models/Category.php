@@ -250,49 +250,39 @@ class Category extends CoreModel
         `anecdote`.`id`, 
         `anecdote`.`title`, 
         `anecdote`.`description`, 
-        `anecdote`.`content`,
-        `anecdote`.`img`,
-        `anecdote`.`source`,
         `anecdote`.`created_at`,
-        
-        (SELECT `category_id`
-                    FROM `anecdote_category`
-                    WHERE `anecdote_id` = `anecdote`.`id` LIMIT 1 OFFSET 0) AS `categoryId1`,
+        `anecdote`.`category_1`,
+        `anecdote`.`category_2`,
+        `anecdote`.`category_3`,
+
         (SELECT `name`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId1`) AS `categoryName1`,
+                    WHERE `category`.`id` = `category_1`) AS `categoryName1`,
         (SELECT `color`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId1`) AS `categoryColor1`,
+                    WHERE `category`.`id` = `category_1`) AS `categoryColor1`,
         (SELECT `slug`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId1`) AS `categorySlug1`,
-        
-        (SELECT `category_id`
-                    FROM `anecdote_category`
-                    WHERE `anecdote_id` = `anecdote`.`id` LIMIT 1 OFFSET 1) AS `categoryId2`,
+                    WHERE `category`.`id` = `category_1`) AS `categorySlug1`,          
         (SELECT `name`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId2`) AS `categoryName2`,
+                    WHERE `category`.`id` = `category_2`) AS `categoryName2`,
         (SELECT `color`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId2`) AS `categoryColor2`,
+                    WHERE `category`.`id` = `category_2`) AS `categoryColor2`,
         (SELECT `slug`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId2`) AS `categorySlug2`,
+                    WHERE `category`.`id` = `category_2`) AS `categorySlug2`,
         
-        (SELECT `category_id`
-                    FROM `anecdote_category`
-                    WHERE `anecdote_id` = `anecdote`.`id` LIMIT 1 OFFSET 2) AS `categoryId3`,
         (SELECT `name`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId3`) AS `categoryName3`,
+                    WHERE `category`.`id` = `category_3`) AS `categoryName3`,
         (SELECT `color`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId3`) AS `categoryColor3`,
+                    WHERE `category`.`id` = `category_3`) AS `categoryColor3`,
         (SELECT `slug`
                     FROM `category`
-                    WHERE `category`.`id` = `categoryId3`) AS `categorySlug3`, 
+                    WHERE `category`.`id` = `category_3`) AS `categorySlug3`,
 
         `user`.`id` AS `userId`,
         `user`.`pseudo`,
@@ -307,9 +297,9 @@ class Category extends CoreModel
                 WHERE `anecdote_action`.`vote` = 2 AND `anecdote_id` = `anecdote`.`id`
         ) AS `downvote`
 
-        FROM `anecdote` 
+        FROM `anecdote`
         LEFT JOIN `user` ON `anecdote`.`writer_id` = `user`.`id`
-        HAVING :id IN( `categoryId1`, `categoryId2`, `categoryId3`)';
+        HAVING :id IN( `category_1`, `category_2`, `category_3`)';
 
         $pdoStatement = $pdo->prepare($sql);
         $pdoStatement->execute([':id' => $categoryId]);

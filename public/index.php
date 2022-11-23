@@ -11,6 +11,11 @@ $router->map('GET', '/', [
     'method' => 'home',
 ], 'main-home');
 
+$router->map('GET', '/api-documentation', [
+    'controller' => '\App\Controllers\MainController',
+    'method' => 'apiDocumentation',
+], 'api-documentation');
+
 $router->map('GET', '/contact', [
     'controller' => '\App\Controllers\MainController',
     'method' => 'contact',
@@ -73,6 +78,11 @@ $router->map('GET', '/category', [
     'controller' => '\App\Controllers\CategoryController',
     'method' => 'browse',
 ], 'category-browse');
+
+$router->map('GET', '/category/[i:id]/anecdote', [
+    'controller' => '\App\Controllers\CategoryController',
+    'method' => 'browseAnecdote',
+], 'category-browse-anecdote');
 
 /* -------------
 --- BACKOFFICE ---
@@ -191,6 +201,38 @@ $router->map('GET', '/backoffice/category/delete/[i:id]', [
     'controller' => '\App\Controllers\backoffice\CategoryController',
     'method' => 'delete',
 ], 'backoffice-category-delete');
+
+
+/* -------------
+--- API REQUEST ---
+--------------*/
+
+/**
+ * Request anecdote
+ */
+$router->map('GET', '/api/anecdote', [
+    'controller' => '\App\Controllers\api\AnecdoteController',
+    'method' => 'browse',
+], 'api-anecdote-browse');
+
+$router->map('GET', '/api/anecdote/[i:id]', [
+    'controller' => '\App\Controllers\api\AnecdoteController',
+    'method' => 'read',
+], 'api-anecdote-read');
+
+/**
+ * Request category
+ */
+$router->map('GET', '/api/category', [
+    'controller' => '\App\Controllers\api\CategoryController',
+    'method' => 'browse',
+], 'api-category-browse');
+
+$router->map('GET', '/api/category/[i:id]/anecdote', [
+    'controller' => '\App\Controllers\api\CategoryController',
+    'method' => 'browseAnecdotes',
+], 'api-category-browse-anecdotes');
+
 
 /* -------------
 --- DISPATCH ---
