@@ -749,6 +749,11 @@ textarea {
 
 /*Tablet min 650, lapTop 1024*/
 @media (min-width: 651px) and (max-width: 1024px){
+    /*home*/
+    #home img {
+        height: 150px;
+    }
+
     /*anecdote-browse*/
     #anecdote-browse-inner {
         grid-template-columns: 50% 50%;
