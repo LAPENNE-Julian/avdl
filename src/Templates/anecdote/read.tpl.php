@@ -1,6 +1,6 @@
 <section id="anecdote-read" class="container-fluid">
     <template id="anecdote-read-template">
-        <div id="anecdote-read-inner" class="carousel-inner">
+        <div id="anecdote-read-inner" class="section-inner">
             <div id="label-categories" class="container-fluid">
                 <span id="label-category-1" class="label-category">
                     <a><!--Catégorie-1--></a>

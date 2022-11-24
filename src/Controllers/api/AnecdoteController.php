@@ -89,29 +89,5 @@ class AnecdoteController extends ApiCoreController
             echo json_encode(["message" => 'Method isn\'t allowed']);
         }
     }
-
-    /**
-     * Get five latest anecdotes
-     * 
-     * Route("api/anecdote/latest", name="api-anecdote-latest",  methods="GET")
-     */
-    public function latest()
-    {
-        $this->apiResponse->setHeader('GET');
-
-        //check if httpMethod is correct
-        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-
-            $latestAnecdotes = Anecdote::latest();
-
-            $this->apiResponse->responseAsArray(200, 'anecdotes', $latestAnecdotes);
-
-        } else {
-
-            //not allowed method
-            http_response_code(405);
-            echo json_encode(["message" => 'Method isn\'t allowed']);
-        }
-    }
 }
 

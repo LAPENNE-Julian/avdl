@@ -307,23 +307,4 @@ class Category extends CoreModel
 
         return $results;
     }
-
-    /**
-     * Find categoryName by category Id.
-     * 
-     * @param int $categoryId ID of category
-     * @return JSON
-     */
-    public static function findNameCategoryById($categoryId)
-    {
-        $pdo = Database::getPDO();
-        $sql = 'SELECT name FROM `category` WHERE `category`.`id` = :id';
-
-        $pdoStatement = $pdo->prepare($sql);
-        $pdoStatement->bindValue(':id', $categoryId);
-        $pdoStatement->execute();
-        $results = $pdoStatement->fetch(PDO::FETCH_ASSOC);
-
-        return $results;
-    }
 }

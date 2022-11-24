@@ -6,7 +6,10 @@ const anecdote = {
 
     if(pathNameFirst === "anecdote" && pathNameSecond !== undefined){
 
-      anecdote.bindAnecdoteRead(pathNameSecond);
+      //If pathName of the url is '/anecdote/[i:id]'
+      let anecdoteId = pathNameSecond;
+
+      anecdote.bindAnecdoteRead(anecdoteId);
     }
   },
 
@@ -16,7 +19,7 @@ const anecdote = {
 
   bindAnecdoteRead: function(anecdoteId) {
 
-    //If pathName of the url is '/anecdote/[i:id]' => loaded anecdote in the view
+    //Loaded anecdote in the view
     anecdote.handleLoadAnecdote(anecdoteId);
   },
 
@@ -26,6 +29,7 @@ const anecdote = {
 
   handleLoadAnecdote: function(anecdoteId){
 
+    //Get anecdote by Id from API
     anecdote.loadAnecdoteFromAPI(anecdoteId);
   },
 
@@ -163,7 +167,7 @@ const anecdote = {
         const sectionElement = document.querySelector("#anecdote-read");
 
         //Post error 404 view in section element
-        app.error404(sectionElement);
+        app.createPageError404(sectionElement);
       }
     );
   },

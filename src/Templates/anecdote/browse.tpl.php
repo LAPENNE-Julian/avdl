@@ -1,7 +1,7 @@
 <section id="anecdote-browse" class="container-fluid">
         <h1>Les anecdotes</h1>
         
-            <div id="anecdote-browse-inner" class="carousel-inner">
+            <div id="anecdote-browse-inner" class="section-inner">
                 <!-- <article class="anecdote-browse-item">
                     <div id="label-categories" class="container-fluid">
                         <span class="label-category" style ="border: medium solid yellow">Catégorie</span>

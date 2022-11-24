@@ -9,7 +9,7 @@ class MainController extends CoreController
         $this->show('main/home');
     }
 
-    public function ApiDocumentation()
+    public function apiDocumentation()
     {
         $this->show('main/api-documentation');
     }

@@ -6,12 +6,16 @@ const categoriesList = {
 
     if(pathName === "/category"){
 
+      //If pathName of the url is '/category'
       categoriesList.bindAllCategories();
     }
 
     if(pathNameFirst == "category" && pathNameThird == "anecdote"){
 
-      categoriesList.bindAllAnecdotes(pathName);
+      //If pathName of the url is '/category/[i:id]/anecdote'
+      let categoryId = pathNameSecond;
+
+      categoriesList.bindAllAnecdotes(categoryId);
     }
   },
 
@@ -21,14 +25,14 @@ const categoriesList = {
 
   bindAllCategories: function() {
 
-    //If pathName of the url is '/category' => loaded All categories in the view
+    //Loaded All categories in the view
     categoriesList.handleLoadCategories();
   },
 
-  bindAllAnecdotes: function(pathName) {
+  bindAllAnecdotes: function(categoryId) {
 
-    //If pathName of the url is '/category/[i:id]/anecdote' => loaded All anecdotes of category id in the view
-    anecdotesList.handleLoadAnecdotes(pathName);
+    //Loaded All anecdotes of category id in the view
+    anecdotesList.handleLoadAnecdotes(categoryId);
   },
 
   // ---------------------------------------------------------
@@ -37,6 +41,7 @@ const categoriesList = {
 
   handleLoadCategories: function(){
     
+    //Get all categories from API
     categoriesList.loadCategoriesFromAPI();
   },
 
@@ -44,11 +49,14 @@ const categoriesList = {
   // DOM
   // ---------------------------------------------------------
 
-  createDivCategory: function(id, name) {
+  createDivCategory: function(id, name, color) {
 
     //Create div element <div class="category-browse-item">
     const divElement = document.createElement("div");
     divElement.classList.add("category-browse-item");
+
+    divElement.setAttribute("style", "border: thick solid" + color + ";");
+
 
     //Create a element <a title="category" alt="category" class="category-browse-item-a">
     const linkElement = document.createElement("a");
@@ -71,11 +79,8 @@ const categoriesList = {
     //Select element <div id="category-browse-inner"> in DOM
     const parentElement = document.querySelector("#category-browse-inner");
 
-    if(parentElement !== null){
-      
-      //Add divCategory in parentElement
-      parentElement.append(divCategory);
-    }
+    //Add divCategory in parentElement
+    parentElement.append(divCategory);
   },
 
   // ---------------------------------------------------------
@@ -103,7 +108,7 @@ const categoriesList = {
         for(const category of object.categories){
 
           //Create category element browse
-          const categoryItem = categoriesList.createDivCategory(category.id, category.name);
+          const categoryItem = categoriesList.createDivCategory(category.id, category.name, category.color);
           //Insert into DOM
           categoriesList.insertDivCategoryIntoParent(categoryItem);
         }

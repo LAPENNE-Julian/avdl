@@ -414,61 +414,6 @@ class Anecdote extends CoreModel {
     }
 
     /**
-     * Get categories of anecdote
-     */
-    public static function getCategoryAnecdote(int $anecdoteId)
-    {
-        $pdo = Database::getPDO();
-
-        $sql = 'SELECT 
-        `anecdote`.`id`, 
-        `anecdote`.`category_1`,
-        `anecdote`.`category_2`,
-        `anecdote`.`category_3`,
-
-        (SELECT `name`
-                    FROM `category`
-                    WHERE `category`.`id` = `category_1`) AS `categoryName1`,
-        (SELECT `color`
-                    FROM `category`
-                    WHERE `category`.`id` = `category_1`) AS `categoryColor1`,
-        (SELECT `slug`
-                    FROM `category`
-                    WHERE `category`.`id` = `category_1`) AS `categorySlug1`,          
-        (SELECT `name`
-                    FROM `category`
-                    WHERE `category`.`id` = `category_2`) AS `categoryName2`,
-        (SELECT `color`
-                    FROM `category`
-                    WHERE `category`.`id` = `category_2`) AS `categoryColor2`,
-        (SELECT `slug`
-                    FROM `category`
-                    WHERE `category`.`id` = `category_2`) AS `categorySlug2`,
-        
-        (SELECT `name`
-                    FROM `category`
-                    WHERE `category`.`id` = `category_3`) AS `categoryName3`,
-        (SELECT `color`
-                    FROM `category`
-                    WHERE `category`.`id` = `category_3`) AS `categoryColor3`,
-        (SELECT `slug`
-                    FROM `category`
-                    WHERE `category`.`id` = `category_3`) AS `categorySlug3`
-
-        FROM `anecdote`
-        WHERE `anecdote`.`id` = :anecdoteId';
-
-        $pdoStatement = $pdo->prepare($sql);
-
-        $pdoStatement->bindValue(':anecdoteId', $anecdoteId);
-
-        $pdoStatement->execute();
-        $results = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
-
-        return $results;
-    }
-
-    /**
      * add vote : upVote (vote => 1)
      * @param int $userId 
      * @param int $anecdoteId 

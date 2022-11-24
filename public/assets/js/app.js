@@ -18,7 +18,11 @@ const app = {
     anecdote.init(pathNameFirst, pathNameSecond, pathNameThird);
   },
 
-  error404 : function(sectionElement){
+  // ---------------------------------------------------------
+  // DOM
+  // ---------------------------------------------------------
+
+  createPageError404 : function(sectionElement){
 
     if(sectionElement !== null) {
       //Set section attribut => <section id="error404" class="container-fluid errorPage">
@@ -45,7 +49,7 @@ const app = {
 
       //Create img element
       const img = document.createElement("img");
-      img.setAttribute("src", "http://localhost:8080/assets/css/images/404.jpg");
+      img.setAttribute("src", app.rootUrl + "/assets/css/images/404.jpg");
       img.setAttribute("alt", "404.jpg");
       //Insert img element in div element <div id="error404-item-content">
       divErrorItemContent.prepend(img);

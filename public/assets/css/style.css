@@ -5,16 +5,8 @@ body {
     background-size: cover;
 }
 
-/*user-peseudo-header-nav*/
-.user-pseudo {
-    font-size: 150%;
-    font-weight: bold;
-    text-transform: capitalize;
-    align-self: center;
-    padding: 2%;
-}
-
 h1 {
+    font-family: 'Permanent Marker', cursive;
     font-size: 150%;
     text-align: center;
     padding-top: 2%;
@@ -30,7 +22,6 @@ h2 {
 }
 
 #home, 
-#latest, #best,
 .errorPage,
 #legal-notices, #contact,
 #api-documentation,
@@ -38,54 +29,51 @@ h2 {
 #anecdote-browse,
 #category-browse {
     background-color: rgb(250 250 250 / 0.9);
+    
 }
 
-#home, #latest, #best, .errorPage p {
+.section-inner {
+    padding: 10% 15%;
+}
+
+#home, .errorPage p {
     line-height: 1.5;
 }
-
-#home, 
+ 
 #legal-notices, #contact, 
 #api-documentation {
     padding: 12%;
     border-bottom: medium solid gray;
 }
 
-.carousel-inner {
-    padding: 10% 15%;
+/*Home page*/
+#home h1 {
+    font-size: 200%;
+    text-align: left;
+    padding-bottom: 2%;
 }
 
-.carousel-item,
-.anecdote-browse-item {
-    background-color: rgb(250 250 250 / 1);
-    border: thin solid rgb(145, 145, 145);
-    box-shadow: 10px 5px 5px rgb(145, 145, 145);
-    border-radius: 10%;
-    padding: 5%;
+/*login-form and register-form*/
+#form-login-inner,
+#form-register-inner {
+    padding: 0% 15%;
 }
 
-#label-categories {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+#form-login-inner button,
+#form-register-inner button {
+    align-self: end;
 }
 
-#label-categories span {
+/*user-peseudo-header-nav*/
+.user-pseudo {
+    font-size: 150%;
+    font-weight: bold;
     text-transform: capitalize;
+    align-self: center;
+    padding: 2%;
 }
 
-.label-category {
-    padding: 1% 2%;
-    margin-left: 2%;
-    margin-bottom: 5%;
-    border-radius: 10%;
-}
-
-#author {
-    text-align: end;
-    margin-top: 5%;
-}
-
+/*arrow navigation*/
 #arrow-navigation {
     background-color: rgb(250 250 250 / 0.0);
     padding:5%;
@@ -127,51 +115,6 @@ footer ul a:hover {
     margin: 1% 20% 0%;
     font-size: 70%;
     border-top: 1px solid #b4b5b6;
-}
-
-/*login-form and register-form*/
-#form-login-inner,
-#form-register-inner {
-    padding: 0% 15%;
-}
-
-#form-login-inner button,
-#form-register-inner button {
-    align-self: end;
-}
-
-/*Home page*/
-#home h1 {
-    font-size: 400%;
-    text-align: left;
-    padding-bottom: 5%;
-}
-
-#latest h2, #best h2 {
-    font-size: 150%;
-    text-align: center;
-    padding-top: 2%;
-    margin-bottom: 0%;
-}
-
-#latest h3, #best h3 {
-    font-size: 110%;
-    margin-bottom: 5%;
-}
-
-/*caroussel*/
-.carousel-item{
-    margin: 5% 5% 5% 0%;
-}
-
-#latest, #best {
-    margin: 5% 0;
-    padding: 0;
-}
-
-.carousel-control-prev, 
-.carousel-control-next {
-    width: 5%;
 }
 
 /*errorPage*/
@@ -364,6 +307,28 @@ api-documentation*/
 
 /*anecdote-browse*/
 /*anecdote-read*/
+#label-categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+#label-categories span {
+    text-transform: capitalize;
+}
+
+.label-category {
+    padding: 1% 2%;
+    margin-left: 2%;
+    margin-bottom: 5%;
+    border-radius: 10%;
+}
+
+#author {
+    text-align: end;
+    margin-top: 5%;
+}
+
 #anecdote-read, #anecdote-browse {
     padding: 0%;
     margin: 5% 0;
@@ -377,6 +342,11 @@ api-documentation*/
 }
 
 .anecdote-browse-item {
+    background-color: rgb(250 250 250 / 1);
+    border: thin solid rgb(145, 145, 145);
+    box-shadow: 10px 5px 5px rgb(145, 145, 145);
+    border-radius: 10%;
+    padding: 5%;
     margin: 5%;
 }
 
@@ -472,19 +442,22 @@ api-documentation*/
 }
 
 .category-browse-item {
-    margin: 5%;
+    margin: 10%;
     padding: 15%;
     text-align: center;
-    border: medium solid black;
-    background-color: black;
+    border-radius: 10%;
+    box-shadow: 10px 5px 5px rgb(145, 145, 145);
 }
 
 .category-browse-item-a {
-    color: white;
+    font-size: 110%;
     text-transform: capitalize;
 }
 
-/*--backoffice--*/
+
+/* ---------------------------------------------------------
+ backoffice
+ ---------------------------------------------------------*/
 .backoffice {
     background-color: white;
     padding: 2% 12% 12%;
@@ -584,11 +557,19 @@ textarea {
     margin-top: 1%;
 }
 
-/*--MEDIA QUERIES--*/
+/*---------------------------------------------------------
+ MEDIA QUERIES
+---------------------------------------------------------*/
 
 /*----------multi----------*/
 /*Mobile-S, Mobile-M, Mobile -L*/
 @media (max-width: 425px){
+    /*login-form and register-form*/
+    #form-login-inner,
+    #form-register-inner {
+    padding: 0% 5%;
+    }
+
     /*erro404 page */
     .errorPage {
         margin-bottom: 15%;
@@ -610,12 +591,6 @@ textarea {
         height: 150px;
     }
 
-    /*login-form and register-form*/
-    #form-login-inner,
-    #form-register-inner {
-    padding: 0% 5%;
-    }
-    
     /*legal-notices*/
     #legal-notices h1 {
         margin-bottom: 10%;
@@ -719,6 +694,12 @@ textarea {
 
 /*Mobile-S, Mobile-M, Mobile -L, Tablet*/
 @media (max-width: 1023px){
+    /*user-peseudo-header-nav*/
+    .user-pseudo {
+        font-size: 130%;
+        align-self: flex-start;
+    }
+
     /*api-documentation*/
     #api-documentation h2 {
         margin-bottom: 10%;
@@ -738,12 +719,6 @@ textarea {
 
     .label-GET, .request {
         margin-bottom: 5%;
-    }
-
-    /*user-peseudo-header-nav*/
-    .user-pseudo {
-        font-size: 130%;
-        align-self: flex-start;
     }
 }
 
@@ -782,7 +757,8 @@ textarea {
 @media (min-width: 376px) and (max-width: 425px){
     /*category-browse*/
     #category-browse-inner {
-        grid-template-columns: 50% 50%;
+        display: flex;
+        flex-direction: column;
     }
 
     /*--backoffice--*/
@@ -806,7 +782,7 @@ textarea {
 
     /*category-browse*/
     #category-browse-inner {
-        grid-template-columns: 33% 33% 33%;
+        grid-template-columns: 50% 50%;
     }
 }
 
@@ -817,5 +793,9 @@ textarea {
     #error403 img {
         height: 350px;
     }
-}
 
+    /*category-browse*/
+    #category-browse-inner {
+        grid-template-columns: 33% 33% 33%;
+    }
+}
