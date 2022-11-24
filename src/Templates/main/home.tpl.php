@@ -1,8 +1,15 @@
 <main>
     <section id="home" class="container-fluid">
-
-        <h1>Bienvenue</h1>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non hic ex maxime itaque placeat nisi, repellat labore voluptatibus id dolorum, vero quo, asperiores reprehenderit ut. Provident enim saepe incidunt tenetur?</p>
-    
+        <div id="home-content">
+            <h1>Bienvenue</h1>
+            <p>
+            Avez-vous déja lu...? est une Api permettant de découvrir des anecdotes.
+            </p>
+        </div>
+        
+        <div id="home-img">
+            <img src="<?php $_SERVER['HTTP_HOST'] ?>/assets/css/images/question-mark.jpg" alt="question-mark.jpg">
+        </div>
     </section>
+
 </main>

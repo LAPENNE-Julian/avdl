@@ -36,10 +36,18 @@ h2 {
     padding: 10% 15%;
 }
 
+#home,
+#anecdote-read,
+#anecdote-browse,
+#category-browse {
+    padding: 0%;
+    margin: 5% 0;
+}
+
 #home, .errorPage p {
     line-height: 1.5;
 }
- 
+
 #legal-notices, #contact, 
 #api-documentation {
     padding: 12%;
@@ -47,10 +55,28 @@ h2 {
 }
 
 /*Home page*/
+#home {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 5%;
+}
+
 #home h1 {
     font-size: 200%;
     text-align: left;
-    padding-bottom: 2%;
+    padding-bottom: 5%;
+}
+
+#home-content {
+    width: 45%;
+}
+
+#home img {
+    height: 300px;
+    border: thin solid #33b5e5;
+    box-shadow: 60px -20px #33b5e5;
+    margin-left: 15%;
 }
 
 /*login-form and register-form*/
@@ -329,11 +355,6 @@ api-documentation*/
     margin-top: 5%;
 }
 
-#anecdote-read, #anecdote-browse {
-    padding: 0%;
-    margin: 5% 0;
-}
-
 /*anecdote-browse*/
 #anecdote-browse-inner {
     display: grid;
@@ -430,11 +451,6 @@ api-documentation*/
 }
 
 /*category-browse*/
-#category-browse {
-    padding: 0%;
-    margin: 5% 0;
-}
-
 #category-browse-inner {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
@@ -564,6 +580,15 @@ textarea {
 /*----------multi----------*/
 /*Mobile-S, Mobile-M, Mobile -L*/
 @media (max-width: 425px){
+    /*Home page*/
+    #home-content {
+        width: 80%;
+    }
+
+    #home img {
+        display: none;
+    }
+
     /*login-form and register-form*/
     #form-login-inner,
     #form-register-inner {
