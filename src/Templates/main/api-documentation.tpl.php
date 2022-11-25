@@ -19,6 +19,22 @@
         </p>
     </div>
 
+    <div class="api-documentation-item">
+        <p>
+            <span class="label-GET">GET</span>
+            <span class="label-bold request">/anecdote/random </span>
+            Affiche une anecdote au hasard.
+        </p>
+    </div>
+
+    <div class="api-documentation-item">
+        <p>
+            <span class="label-GET">GET</span>
+            <span class="label-bold request">/anecdote/best </span>
+            Affiche les cinq anecdotes les meiux notées.
+        </p>
+    </div>
+
     <h2>2 - Les informations relative aux catégories</h2>
 
     <div class="api-documentation-item">
