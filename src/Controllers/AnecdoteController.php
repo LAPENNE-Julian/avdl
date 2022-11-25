@@ -17,4 +17,11 @@ class AnecdoteController extends CoreController
             
         ]);
     }
+
+    public function random()
+    {
+        $this->show('anecdote/read', [
+            
+        ]);
+    }
 }

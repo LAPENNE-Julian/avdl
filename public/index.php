@@ -71,6 +71,11 @@ $router->map('GET', '/anecdote/[i:id]', [
     'method' => 'read',
 ], 'anecdote-read');
 
+$router->map('GET', '/anecdote/random', [
+    'controller' => '\App\Controllers\AnecdoteController',
+    'method' => 'random',
+], 'anecdote-random');
+
 /**
  * Category
  */
@@ -219,6 +224,11 @@ $router->map('GET', '/api/anecdote/[i:id]', [
     'controller' => '\App\Controllers\api\AnecdoteController',
     'method' => 'read',
 ], 'api-anecdote-read');
+
+$router->map('GET', '/api/anecdote/random', [
+    'controller' => '\App\Controllers\api\AnecdoteController',
+    'method' => 'random',
+], 'api-anecdote-random');
 
 /**
  * Request category

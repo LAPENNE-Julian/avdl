@@ -89,5 +89,31 @@ class AnecdoteController extends ApiCoreController
             echo json_encode(["message" => 'Method isn\'t allowed']);
         }
     }
+
+    /**
+     * Get random anecdotes.
+     * 
+     * Route("api/anecdote/random", name="api-anecdote-random",  methods="GET")
+     */
+    public function random()
+    {
+        $this->apiResponse->setHeader('GET');
+
+        //check if httpMethod is correct
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+            $anecdoteRandomId = Anecdote::random();
+
+            $anecdoteRandom = Anecdote::read($anecdoteRandomId->id);
+
+            $this->apiResponse->responseAsArray(200, 'anecdote', $anecdoteRandom);
+        
+        } else {
+
+            //not allowed method
+            http_response_code(405);
+            echo json_encode(["message" => 'Method isn\'t allowed']);
+        }
+    }
 }
 

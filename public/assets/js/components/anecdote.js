@@ -4,13 +4,20 @@ const anecdote = {
 
     console.log("anecdote.init() appelé");
 
-    if(pathNameFirst === "anecdote" && pathNameSecond !== undefined){
+    if(pathNameFirst === "anecdote" && pathNameSecond !== undefined && pathNameSecond !== 'random'){
 
       //If pathName of the url is '/anecdote/[i:id]'
       let anecdoteId = pathNameSecond;
 
       anecdote.bindAnecdoteRead(anecdoteId);
     }
+
+    if(pathNameFirst === "anecdote" && pathNameSecond === 'random'){
+
+      //If pathName of the url is '/anecdote/random'
+      anecdote.bindAnecdoteReadRandom();
+    }
+
   },
 
   // ---------------------------------------------------------
@@ -23,6 +30,12 @@ const anecdote = {
     anecdote.handleLoadAnecdote(anecdoteId);
   },
 
+  bindAnecdoteReadRandom: function() {
+
+    //Loaded anecdote in the view
+    anecdote.handleLoadAnecdoteRandom();
+  },
+
   // ---------------------------------------------------------
   // Handlers
   // ---------------------------------------------------------
@@ -31,6 +44,15 @@ const anecdote = {
 
     //Get anecdote by Id from API
     anecdote.loadAnecdoteFromAPI(anecdoteId);
+  },
+
+  handleLoadAnecdoteRandom: function(){
+
+    //Set request option to get random anecdote
+    let requestOption = 'random';
+
+    //Get anecdote by requestOption from API
+    anecdote.loadAnecdoteFromAPI(requestOption);
   },
 
   // ---------------------------------------------------------
@@ -108,7 +130,7 @@ const anecdote = {
   // AJAX
   // ---------------------------------------------------------
 
-  loadAnecdoteFromAPI: function(anecdoteId) {
+  loadAnecdoteFromAPI: function(requestOption) {
 
     const config = {
       method: "GET",
@@ -116,7 +138,7 @@ const anecdote = {
       cache: "no-cache"
     };
 
-    fetch(app.apiRootUrl + "/anecdote/" + anecdoteId, config)
+    fetch(app.apiRootUrl + "/anecdote/" + requestOption, config)
     .then(
       function(response) {
         
@@ -134,7 +156,7 @@ const anecdote = {
     )
     .then(
       function(object) {
-        
+
         const anecdoteData = object.anecdote[0];
 
         //Create anecdote element browse
