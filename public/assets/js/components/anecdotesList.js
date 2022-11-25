@@ -9,33 +9,65 @@ const anecdotesList = {
       //If pathName of the url is '/anecdote'
       anecdotesList.bindAllAnecdotes(pathName);
     }
+
+    if(pathName === "/anecdote/best"){
+
+      //If pathName of the url is '/anecdote'
+      anecdotesList.bindBestAnecdotes();
+    }
   },
 
   // ---------------------------------------------------------
   // Binders
   // ---------------------------------------------------------
 
-  bindAllAnecdotes: function(pathName) {
+  bindAllAnecdotes: function() {
 
     //Loaded All anecdotes in the view
-    anecdotesList.handleLoadAnecdotes(pathName);
+    anecdotesList.handleLoadAnecdotes();
+  },
+
+  bindBestAnecdotes: function() {
+
+    //Loaded All anecdotes in the view
+    anecdotesList.handleLoadBestAnecdotes();
   },
 
   // ---------------------------------------------------------
   // Handlers
   // ---------------------------------------------------------
 
-  handleLoadAnecdotes: function(request){
+  handleLoadAnecdotes: function(){
+    
+    //Set request option to get all anecdote
+    let requestOption = '/anecdote';
+
+    //Get all anecdotes from API
+    anecdotesList.loadAnecdotesFromAPI(requestOption);
+  },
+
+  handleLoadBestAnecdotes: function(){
+    
+    //Set request option to get best anecdote
+    let requestOption = '/anecdote/best';
     
     //Get all anecdotes from API
-    anecdotesList.loadAnecdotesFromAPI(request);
+    anecdotesList.loadAnecdotesFromAPI(requestOption);
   },
 
   // ---------------------------------------------------------
   // DOM
   // ---------------------------------------------------------
 
-  createDivAnecdote: function(id, title, description, categoryId1, categoryName1, categoryColor1, categoryId2, categoryName2, categoryColor2, categoryId3, categoryName3, categoryColor3, pseudo, createdAt) {
+  createDivAnecdote: function(requestOption, id, title, description, categoryId1, categoryName1, categoryColor1, categoryId2, categoryName2, categoryColor2, categoryId3, categoryName3, categoryColor3, pseudo, createdAt) {
+
+    //If request option === /anecdote/best
+    if(requestOption ==="/anecdote/best"){
+      //Select h1 in section element
+      const header1 = document.querySelector("#anecdote-browse h1");
+      //Set header for best anecdotes
+      header1.textContent = "Top 5 des anecdotes";
+    }
 
     //Create div element <article class="anecdote-browse-item">
     const divAnecdote = document.createElement("article");
@@ -124,7 +156,7 @@ const anecdotesList = {
   // AJAX
   // ---------------------------------------------------------
 
-  loadAnecdotesFromAPI: function(request) {
+  loadAnecdotesFromAPI: function(requestOption) {
 
     const config = {
       method: "GET",
@@ -132,7 +164,7 @@ const anecdotesList = {
       cache: "no-cache"
     };
 
-    fetch(app.apiRootUrl + request, config)
+    fetch(app.apiRootUrl + requestOption, config)
     .then(
       function(response) {
         //convert json response to object
@@ -146,6 +178,7 @@ const anecdotesList = {
 
           //Create anecdote element browse
           const anecdoteItem = anecdotesList.createDivAnecdote(
+            requestOption,
             anecdote.id,
             anecdote.title, 
             anecdote.description, 

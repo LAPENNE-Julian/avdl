@@ -15,7 +15,7 @@ const app = {
 
     categoriesList.init(app.pathName, pathNameFirst, pathNameSecond, pathNameThird);
     anecdotesList.init(app.pathName);
-    anecdote.init(pathNameFirst, pathNameSecond, pathNameThird);
+    anecdote.init(app.pathName, pathNameFirst, pathNameSecond, pathNameThird);
   },
 
   // ---------------------------------------------------------

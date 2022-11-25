@@ -115,5 +115,38 @@ class AnecdoteController extends ApiCoreController
             echo json_encode(["message" => 'Method isn\'t allowed']);
         }
     }
+
+    /**
+     * Return informations of five anecdotes with the most upVote.
+     *
+     * Route("api/anecdote/best", name="api-anecdote-best", methods="GET")
+     */
+    public function best()
+    {
+        $this->apiResponse->setHeader('GET');
+
+        //check if httpMethod is correct
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            
+            //Get 5 anecdotes with most upVote
+            $bestAnecdotes = Anecdote::best();
+
+            //If no vote
+            if (empty($bestAnecdotes)) {
+                $randomAnecdotes = Anecdote::randomFive();
+
+                $this->apiResponse->responseAsArray(200, 'anecdotes', $randomAnecdotes);
+                exit;
+            }
+
+            $this->apiResponse->responseAsArray(200, 'anecdotes', $bestAnecdotes);
+
+        } else {
+
+            //not allowed method
+            http_response_code(405);
+            echo json_encode(["message" => 'Method isn\'t allowed']);
+        }  
+    }
 }
 

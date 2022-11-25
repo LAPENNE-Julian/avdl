@@ -1,10 +1,11 @@
 const anecdote = {
 
-  init: function(pathNameFirst, pathNameSecond, pathNameThird) {
+  init: function(pathName, pathNameFirst, pathNameSecond, pathNameThird) {
 
     console.log("anecdote.init() appelé");
 
-    if(pathNameFirst === "anecdote" && pathNameSecond !== undefined && pathNameSecond !== 'random'){
+    if(pathNameFirst === "anecdote" && pathNameSecond !== undefined && pathNameSecond !== 'random'
+    && pathNameSecond !== "best"){
 
       //If pathName of the url is '/anecdote/[i:id]'
       let anecdoteId = pathNameSecond;
@@ -12,7 +13,7 @@ const anecdote = {
       anecdote.bindAnecdoteRead(anecdoteId);
     }
 
-    if(pathNameFirst === "anecdote" && pathNameSecond === 'random'){
+    if(pathName === '/anecdote/random'){
 
       //If pathName of the url is '/anecdote/random'
       anecdote.bindAnecdoteReadRandom();

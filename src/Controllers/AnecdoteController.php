@@ -24,4 +24,11 @@ class AnecdoteController extends CoreController
             
         ]);
     }
+
+    public function best()
+    {
+        $this->show('anecdote/browse', [
+            
+        ]);
+    }
 }

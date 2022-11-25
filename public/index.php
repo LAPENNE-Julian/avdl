@@ -76,6 +76,11 @@ $router->map('GET', '/anecdote/random', [
     'method' => 'random',
 ], 'anecdote-random');
 
+$router->map('GET', '/anecdote/best', [
+    'controller' => '\App\Controllers\AnecdoteController',
+    'method' => 'best',
+], 'anecdote-best');
+
 /**
  * Category
  */
@@ -229,6 +234,11 @@ $router->map('GET', '/api/anecdote/random', [
     'controller' => '\App\Controllers\api\AnecdoteController',
     'method' => 'random',
 ], 'api-anecdote-random');
+
+$router->map('GET', '/api/anecdote/best', [
+    'controller' => '\App\Controllers\api\AnecdoteController',
+    'method' => 'best',
+], 'api-anecdote-best');
 
 /**
  * Request category
