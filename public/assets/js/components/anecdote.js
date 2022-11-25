@@ -4,7 +4,7 @@ const anecdote = {
 
     console.log("anecdote.init() appelé");
 
-    if(pathNameFirst === "anecdote" && pathNameSecond !== undefined && pathNameSecond !== 'random'
+    if(pathNameFirst === "anecdote" && pathNameSecond !== undefined && pathNameSecond !== "random"
     && pathNameSecond !== "best"){
 
       //If pathName of the url is '/anecdote/[i:id]'

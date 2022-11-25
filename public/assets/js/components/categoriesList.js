@@ -10,7 +10,7 @@ const categoriesList = {
       categoriesList.bindAllCategories();
     }
 
-    if(pathNameFirst == "category" && pathNameThird == "anecdote"){
+    if(pathNameFirst === "category" && pathNameThird === "anecdote"){
 
       //If pathName of the url is '/category/[i:id]/anecdote'
       let categoryId = pathNameSecond;
@@ -32,7 +32,7 @@ const categoriesList = {
   bindAllAnecdotes: function(categoryId) {
 
     //Loaded All anecdotes of category id in the view
-    anecdotesList.handleLoadAnecdotes(categoryId);
+    categoriesList.handleLoadCategoryAnecdotes(categoryId);
   },
 
   // ---------------------------------------------------------
@@ -43,6 +43,15 @@ const categoriesList = {
     
     //Get all categories from API
     categoriesList.loadCategoriesFromAPI();
+  },
+
+  handleLoadCategoryAnecdotes: function(categoryId){
+    
+    //Set request option to get anecdote by categoryId
+    let requestOption = "/category/" + categoryId + "/anecdote";
+
+    //Get all anecdotes from API
+    anecdotesList.loadAnecdotesFromAPI(requestOption);
   },
 
   // ---------------------------------------------------------
