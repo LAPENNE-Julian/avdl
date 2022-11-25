@@ -109,7 +109,10 @@ const anecdote = {
 
     //Select p element <p id="anecdote-author">
     const anecdotePublishing = anecdoteReadElement.querySelector("#anecdote-author");
-    anecdotePublishing.textContent = "Publié par " + pseudo + " le " + createdAt;
+    //Represent Date
+    const date = new Date(createdAt);
+    //Set author and date format
+    anecdotePublishing.textContent = "Publié par " + pseudo + " le " + date.toLocaleDateString("fr");
 
     //Select <li> element with vote of anecdote
     const anecdoteVote = anecdoteReadElement.querySelector("#anecdote-read-vote");

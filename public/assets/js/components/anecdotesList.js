@@ -135,7 +135,10 @@ const anecdotesList = {
     //Create <p> element with description of anecdote
     const anecdotePublishing = document.createElement("p");
     anecdotePublishing.setAttribute("id", "author");
-    anecdotePublishing.textContent = "Publié par " + pseudo + " le " + createdAt;
+    //Represent Date
+    const date = new Date(createdAt);
+    //Set author and date format
+    anecdotePublishing.textContent = "Publié par " + pseudo + " le " + date.toLocaleDateString("fr");
 
     //Add element anecdotePublishing in element divAnecdote
     divAnecdote.append(anecdotePublishing);
