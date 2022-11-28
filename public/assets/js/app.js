@@ -16,6 +16,35 @@ const app = {
     categoriesList.init(app.pathName, pathNameFirst, pathNameSecond, pathNameThird);
     anecdotesList.init(app.pathName);
     anecdote.init(app.pathName, pathNameFirst, pathNameSecond, pathNameThird);
+
+    app.bindScriptLoad();
+
+  },
+
+  // ---------------------------------------------------------
+  // Binders
+  // ---------------------------------------------------------
+
+  bindScriptLoad: function() {
+
+    //Remove script error message
+    app.handleRemoveScriptLoad();
+  },
+
+  // ---------------------------------------------------------
+  // Handlers
+  // ---------------------------------------------------------
+
+  handleRemoveScriptLoad: function(){
+    
+    //Select pragraph error
+    const scriptErrorMessage = document.querySelector("#script-error-message");
+    
+    if(scriptErrorMessage !== null || scriptErrorMessage !== undefined){
+
+      //Remove script error message from the page
+      scriptErrorMessage.remove();
+    }
   },
 
   // ---------------------------------------------------------

@@ -1,4 +1,5 @@
 <section id="anecdote-read" class="container-fluid">
+    <p id="script-error-message">Désolé, nous rencontrons des problèmes de serveur temporaire.</p>
     <template id="anecdote-read-template">
         <div id="anecdote-read-inner" class="section-inner">
             <div id="label-categories" class="container-fluid">
@@ -8,15 +9,12 @@
                 <span id="label-category-2" class="label-category">
                     <a><!--Catégorie-2--></a>
                 </span>
-
                 <span id="label-category-3" class="label-category">
                     <a><!--Catégorie-3--></a>
                 </span>
             </div>
-
             <h1>Titre de l'anecdote 1</h1>
             <p id="anecdote-author">Publié par Auteur le 01.01.1999</p>
-
             <div id="anecdote-content">
                 <div id="anecdote-content-vote">
                     <ul>
@@ -27,11 +25,9 @@
                             </svg>
                             </a>
                         </li>
-
                         <li id="anecdote-read-vote">
                             Vote
                         </li>
-
                         <li>
                             <a class="btn btn-outline-dark" href="#" title="sownVote" alt="downVote">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
@@ -41,14 +37,13 @@
                         </li>
                     </ul>
                 </div>
-
                 <p id="anecdote-read-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime voluptatibus similique odit ex, inventore molestias repudiandae. Expedita similique quod placeat iure voluptatibus consequuntur sequi ducimus esse quos aliquid, ratione ipsum!</p>
             </div>
             
             <div id="anecdote-source">
                 <a href="#">Source</a></li>
             </div>
-            
+
             <div id="anecdote-known">
                 <ul>
                     <li>

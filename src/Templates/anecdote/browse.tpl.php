@@ -1,5 +1,7 @@
 <section id="anecdote-browse" class="container-fluid">
         <h1>Les anecdotes</h1>
+
+        <p id="script-error-message">Désolé, nous rencontrons des problèmes de serveur temporaire.</p>
         
             <div id="anecdote-browse-inner" class="section-inner">
                 <!-- <article class="anecdote-browse-item">
@@ -12,7 +14,6 @@
                     <a id="anecdote-browse-link-read" href="anecdote/anecdoteId">Lire la suite</a>
                     <p id="author">Publié par Auteur le 01.01.1999</p>
                 </article>-->
-
             </div>
         </div>
 
