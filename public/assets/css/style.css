@@ -5,6 +5,7 @@ body {
     /*background-size: cover;*/
 }
 
+/*Logo*/
 #avdl{
     font-family: 'Permanent Marker', cursive;
     font-family: 'Rock Salt', cursive;
@@ -786,7 +787,12 @@ textarea {
 
 /*----------standard----------*/
 /*Mobile-S and Mobile-M*/
-@media (max-width: 375px){  
+@media (max-width: 375px){ 
+    /*Logo*/
+    #avdl{
+        font-size: 110%;
+    } 
+    
     /*category-browse*/
     #category-browse-inner {
         display: flex;
