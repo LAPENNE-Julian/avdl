@@ -230,6 +230,16 @@ $router->map('GET', '/api/anecdote/[i:id]', [
     'method' => 'read',
 ], 'api-anecdote-read');
 
+$router->map('GET', '/api/anecdote/page/[i:id]', [
+    'controller' => '\App\Controllers\api\AnecdoteController',
+    'method' => 'browsePage',
+], 'api-anecdote-browse-page');
+
+$router->map('GET', '/api/anecdote/page', [
+    'controller' => '\App\Controllers\api\AnecdoteController',
+    'method' => 'pageNumber',
+], 'api-anecdote-page-number');
+
 $router->map('GET', '/api/anecdote/random', [
     'controller' => '\App\Controllers\api\AnecdoteController',
     'method' => 'random',

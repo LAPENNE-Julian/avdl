@@ -7,7 +7,13 @@ const anecdotesList = {
     if(pathName === "/anecdote"){
 
       //If pathName of the url is '/anecdote'
-      anecdotesList.bindAllAnecdotes(pathName);
+      anecdotesList.bindAnecdotesFirstPage();
+
+      //Get total anecdotes pages number
+      anecdotesList.bindTotalPages();
+
+      //Display arrow navigation in view
+      anecdotesList.displayArrowNavigation();
     }
 
     if(pathName === "/anecdote/best"){
@@ -20,11 +26,22 @@ const anecdotesList = {
   // ---------------------------------------------------------
   // Binders
   // ---------------------------------------------------------
-
+  
   bindAllAnecdotes: function() {
 
+    //Set request option to get all anecdote
+    let requestOption = '/anecdote';
+
     //Loaded All anecdotes in the view
-    anecdotesList.handleLoadAnecdotes();
+    anecdotesList.handleLoadAnecdotes(requestOption);
+  },
+
+  bindAnecdotesFirstPage: function() {
+    //Set request option to get first page anecdotes
+    let requestOption = '/anecdote/page/0';
+
+    //Loaded anecdotes first page in the view
+    anecdotesList.handleLoadAnecdotes(requestOption);
   },
 
   bindBestAnecdotes: function() {
@@ -33,14 +50,35 @@ const anecdotesList = {
     anecdotesList.handleLoadBestAnecdotes();
   },
 
+  bindTotalPages: function() {
+
+    //Loaded total pages number
+    anecdotesList.handleLoadTotalPagesNumber();
+  },
+
+  bindAnecdotesNext: function() {
+
+    //Select arrow next page in <div id="arrow-navigation">
+    const arrowNext = document.querySelector("#anecdote-browse-next");
+
+    //Add event on click 
+    arrowNext.addEventListener("click", anecdotesList.handleLoadAnecdotesNext);
+  },
+
+  bindAnecdotesPrevious: function() {
+
+    //Select arrow previous page in <div id="arrow-navigation">
+    const arrowPrevious = document.querySelector("#anecdote-browse-previous");
+
+    //Add event on click 
+    arrowPrevious.addEventListener("click", anecdotesList.handleLoadAnecdotesPrevious);
+  },
+
   // ---------------------------------------------------------
   // Handlers
   // ---------------------------------------------------------
 
-  handleLoadAnecdotes: function(){
-    
-    //Set request option to get all anecdote
-    let requestOption = '/anecdote';
+  handleLoadAnecdotes: function(requestOption){
 
     //Get all anecdotes from API
     anecdotesList.loadAnecdotesFromAPI(requestOption);
@@ -53,6 +91,68 @@ const anecdotesList = {
     
     //Get all anecdotes from API
     anecdotesList.loadAnecdotesFromAPI(requestOption);
+  },
+
+  handleLoadTotalPagesNumber: function(){
+    
+    //Get page number
+    anecdotesList.loadAnecdotesPageNumberFromAPI();
+  },
+
+  handleLoadAnecdotesNext: function() {
+
+    //Remove preceding anecdotes in page
+    anecdotesList.removePrecedingAnecdotesItem();
+
+    //Select span element  
+    const spanElement= document.querySelector("#current-page");
+    //Get page number in span element - current page = 0 (first page)
+    let currentPage = spanElement.textContent;
+    //Parse integer
+    let currentPageNumber = parseInt(currentPage);
+
+    //Increment current page number
+    let pageNumber = currentPageNumber + 1;
+
+    //Set request option to get next page
+    let requestOption = '/anecdote/page/' + pageNumber;
+
+    //Get all next anecdotes from API in the view
+    anecdotesList.loadAnecdotesFromAPI(requestOption);
+
+    //Set span element with new number page
+    spanElement.textContent = pageNumber;
+
+    //Check currentpage to display arrow navigation
+    anecdotesList.displayArrowNavigation();
+  },
+
+  handleLoadAnecdotesPrevious: function() {
+
+    //Remove preceding anecdotes in page
+    anecdotesList.removePrecedingAnecdotesItem();
+
+    //Select span element  
+    const spanElement= document.querySelector("#current-page");
+    //Get page number in span element - current page = 0 (first page)
+    let currentPage = spanElement.textContent;
+    //Parse integer
+    let currentPageNumber = parseInt(currentPage);
+    
+    //Decrement current page
+    let pageNumber = currentPageNumber - 1;
+
+    //Set request option to get next page
+    let requestOption = '/anecdote/page/' + pageNumber;
+
+    //Get all previous anecdotes from API
+    anecdotesList.loadAnecdotesFromAPI(requestOption);
+
+    //Set span element with new number page
+    spanElement.textContent = pageNumber;
+
+    //Check currentpage to display arrow navigation
+    anecdotesList.displayArrowNavigation();
   },
 
   // ---------------------------------------------------------
@@ -155,6 +255,70 @@ const anecdotesList = {
     parentElement.append(divAnecdote);
   },
 
+  removePrecedingAnecdotesItem: function(){
+
+    //Select anecdotes item
+    const anecdotes = document.querySelectorAll(".anecdote-browse-item");
+    //Remove all next anecdotes
+    for(const anecdote of anecdotes){
+      //Remove anecdote
+      anecdote.remove();
+    }
+  },
+
+  displayArrowNavigation: function() {
+
+    //Select span element current page
+    const spanElementCurrentPage = document.querySelector("#current-page");
+    //Get page number in span element - current page = 0 (first page)
+    let currentPage = spanElementCurrentPage.textContent;
+    //Parse integer
+    let currentPageNumber = parseInt(currentPage);
+
+    //Select span element total page 
+    const spanElementTotalPage = document.querySelector("#total-page");
+    //Get total page number in span element
+    let totalPages = spanElementTotalPage.textContent;
+    //Parse integer
+    let totalPagesNumber = parseInt(totalPages);
+
+    //Select arrow previous element in <div id="arrow-navigation">
+    const arrowPrevious = document.querySelector("#anecdote-browse-previous");
+
+    //Select arrow next page element in <div id="arrow-navigation">
+    const arrowNext = document.querySelector("#anecdote-browse-next");
+
+    //--->Check if the curent page is the first page
+    if(currentPageNumber == 0){
+
+      //Display arrow previous in the view
+      arrowPrevious.setAttribute("style", "display: none;");
+
+    } else {
+
+      //Display arrow previous in the view
+      arrowPrevious.setAttribute("style", "display: flex;");
+
+      //Add event on arrow previous
+      anecdotesList.bindAnecdotesPrevious();
+    }
+
+    //--->Check if current is the last page
+    if(currentPageNumber == totalPagesNumber){
+
+      //Display none arrow next in the view
+      arrowNext.setAttribute("style", "display: none;");
+
+    } else {
+
+      //Display none arrow next in the view
+      arrowNext.setAttribute("style", "display: flex;");
+
+      //Add event on arrow next
+      anecdotesList.bindAnecdotesNext();
+    }
+  },
+
   // ---------------------------------------------------------
   // AJAX
   // ---------------------------------------------------------
@@ -216,6 +380,38 @@ const anecdotesList = {
 
         //Post error 404 view in section element
         app.createPageError404(sectionElement);
+      }
+    );
+  },
+
+  loadAnecdotesPageNumberFromAPI: function() {
+
+    const config = {
+      method: "GET",
+      mode: "cors",
+      cache: "no-cache"
+    };
+
+    fetch(app.apiRootUrl + '/anecdote/page', config)
+    .then(
+      function(response) {
+        //convert json response to object
+        return response.json(); 
+      }
+    )
+    .then(
+      function(object) {
+
+        //Select span element <span id="total-page"></span>
+        const spanElement = document.querySelector("#total-page");
+        //Set span element wtih number of page
+        spanElement.textContent = object.totalPages;
+      }
+    )
+    .catch(
+      function(error) {
+
+        console.log(error);
       }
     );
   },

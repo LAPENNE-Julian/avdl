@@ -737,7 +737,8 @@ class Anecdote extends CoreModel {
         ) AS `downvote`
 
         FROM `anecdote`
-        LEFT JOIN `user` ON `anecdote`.`writer_id` = `user`.`id`';
+        LEFT JOIN `user` ON `anecdote`.`writer_id` = `user`.`id`
+        LIMIT 9 OFFSET 0';
 
         $pdoStatement = $pdo->prepare($sql);
         $pdoStatement->execute();

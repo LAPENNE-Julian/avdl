@@ -44,10 +44,45 @@ class AnecdoteController extends ApiCoreController
         //check if httpMethod is correct
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
 
+            //Get offset with page number * 9 anecdotes
+            $offset = $pageNum * 9;
+
             //Get all anecdotes in database
-            $anecdotes = Anecdote::browsePage($pageNum);
+            $anecdotes = Anecdote::browsePage($offset);
 
             $this->apiResponse->responseAsArray(200, 'anecdotes', $anecdotes);
+        
+        } else {
+
+            //not allowed method
+            http_response_code(405);
+            echo json_encode(["message" => 'Method isn\'t allowed']);
+        }
+    }
+
+    /**
+     * Get the number of page.
+     * 
+     * Route("api/anecdote/page", name="api-anecdote-page-number", methods="GET")
+     */
+    public function PageNumber()
+    {
+        $this->apiResponse->setHeader('GET');
+
+        //check if httpMethod is correct
+        if ($_SERVER['REQUEST_METHOD'] == 'GET'){
+
+            //Get all anecdotes in database
+            $Allanecdotes = Anecdote::findAll();
+
+            //Get count of anecdotes in database
+            $anecdotesNumber = count($Allanecdotes) - 1 ;
+            //Get number page with 9 anecdotes by pages
+            $pageNumber = $anecdotesNumber / 9 ;
+            //Round result half up - 1 => first page = 0
+            $pageNumberRound = round($pageNumber, 0, PHP_ROUND_HALF_UP) - 1;
+
+            $this->apiResponse->responseAsArray(200, 'totalPages', $pageNumberRound);
         
         } else {
 
