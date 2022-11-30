@@ -56,15 +56,6 @@ const anecdotesList = {
     anecdotesList.handleLoadTotalPagesNumber();
   },
 
-  bindAnecdotesNext: function() {
-
-    //Select arrow next page in <div id="arrow-navigation">
-    const arrowNext = document.querySelector("#anecdote-browse-next");
-
-    //Add event on click 
-    arrowNext.addEventListener("click", anecdotesList.handleLoadAnecdotesNext);
-  },
-
   bindAnecdotesPrevious: function() {
 
     //Select arrow previous page in <div id="arrow-navigation">
@@ -72,6 +63,15 @@ const anecdotesList = {
 
     //Add event on click 
     arrowPrevious.addEventListener("click", anecdotesList.handleLoadAnecdotesPrevious);
+  },
+
+  bindAnecdotesNext: function() {
+
+    //Select arrow next page in <div id="arrow-navigation">
+    const arrowNext = document.querySelector("#anecdote-browse-next");
+
+    //Add event on click 
+    arrowNext.addEventListener("click", anecdotesList.handleLoadAnecdotesNext);
   },
 
   // ---------------------------------------------------------
@@ -99,50 +99,6 @@ const anecdotesList = {
 
     //Get page number
     anecdotesList.loadAnecdotesPageNumberFromAPI(requestOption);
-  },
-
-  handleLoadAnecdotesNext: function() {
-
-    //Remove preceding anecdotes in page
-    anecdotesList.removePrecedingAnecdotesItem();
-
-    //Select span element  
-    const spanElement= document.querySelector("#current-page");
-    //Get page number in span element - current page = 0 (first page)
-    let currentPage = spanElement.textContent;
-    //Parse integer
-    let currentPageNumber = parseInt(currentPage);
-
-    //Increment current page number
-    let pageNumber = currentPageNumber + 1;
-
-    //Select span element <span id="categoryId-browse-anecdotes">0</span>
-    const spanElementCategoryId = document.querySelector("#categoryId-browse-anecdotes");
-    //Parse integer span element content
-    let categoryId = parseInt(spanElementCategoryId.textContent);
-
-    if(categoryId == 0){
-
-      //Set request option to get next page
-      let requestOption = "/anecdote/page/" + pageNumber;
-
-      //Get all previous anecdotes from API
-      anecdotesList.loadAnecdotesFromAPI(requestOption);
-
-    } else {
-
-      //Set request option to get next page
-      let requestOption = "/category/" + categoryId + "/anecdote/page/" + pageNumber;
-
-      //Get all previous anecdotes from API
-      anecdotesList.loadAnecdotesFromAPI(requestOption);
-    }
-
-    //Set span element with new number page
-    spanElement.textContent = pageNumber;
-
-    //Check currentpage to display arrow navigation
-    anecdotesList.displayArrowNavigation();
   },
 
   handleLoadAnecdotesPrevious: function() {
@@ -182,6 +138,50 @@ const anecdotesList = {
       anecdotesList.loadAnecdotesFromAPI(requestOption);
     }
     
+    //Set span element with new number page
+    spanElement.textContent = pageNumber;
+
+    //Check currentpage to display arrow navigation
+    anecdotesList.displayArrowNavigation();
+  },
+
+  handleLoadAnecdotesNext: function() {
+
+    //Remove preceding anecdotes in page
+    anecdotesList.removePrecedingAnecdotesItem();
+
+    //Select span element  
+    const spanElement= document.querySelector("#current-page");
+    //Get page number in span element - current page = 0 (first page)
+    let currentPage = spanElement.textContent;
+    //Parse integer
+    let currentPageNumber = parseInt(currentPage);
+
+    //Increment current page number
+    let pageNumber = currentPageNumber + 1;
+
+    //Select span element <span id="categoryId-browse-anecdotes">0</span>
+    const spanElementCategoryId = document.querySelector("#categoryId-browse-anecdotes");
+    //Parse integer span element content
+    let categoryId = parseInt(spanElementCategoryId.textContent);
+
+    if(categoryId == 0){
+
+      //Set request option to get next page
+      let requestOption = "/anecdote/page/" + pageNumber;
+
+      //Get all previous anecdotes from API
+      anecdotesList.loadAnecdotesFromAPI(requestOption);
+
+    } else {
+
+      //Set request option to get next page
+      let requestOption = "/category/" + categoryId + "/anecdote/page/" + pageNumber;
+
+      //Get all previous anecdotes from API
+      anecdotesList.loadAnecdotesFromAPI(requestOption);
+    }
+
     //Set span element with new number page
     spanElement.textContent = pageNumber;
 

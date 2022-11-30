@@ -18,7 +18,6 @@ const anecdote = {
       //If pathName of the url is "/anecdote/random"
       anecdote.bindAnecdoteReadRandom();
     }
-
   },
 
   // ---------------------------------------------------------

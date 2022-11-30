@@ -6,7 +6,7 @@
     <div class="api-documentation-item">
         <p>
             <span class="label-GET">GET</span>
-            <span class="label-bold request">/anecdote </span>
+            <span class="label-bold request">api/anecdote </span>
             Affiche la liste de toutes les anecdotes. (information partiel)
         </p>
     </div>
@@ -14,8 +14,24 @@
     <div class="api-documentation-item">
         <p>
             <span class="label-GET">GET</span>
-            <span class="label-bold request">/anecdote/{anecdoteId} </span>
+            <span class="label-bold request">api/anecdote/{anecdoteId} </span>
             Affiche l'intégralité de l'anecdote via son id.
+        </p>
+    </div>
+
+    <div class="api-documentation-item">
+        <p>
+            <span class="label-GET">GET</span>
+            <span class="label-bold request">api/anecdote/page/{pageId} </span>
+            Pagination par 9 item pour l'intégralité des anecdotes. Numéro des pages via un Id => La première page valant 0.
+        </p>
+    </div>
+
+    <div class="api-documentation-item">
+        <p>
+            <span class="label-GET">GET</span>
+            <span class="label-bold request">api/anecdote/page </span>
+            Nombre totale de page pour l'intégralité des anecdotes.
         </p>
     </div>
 
@@ -40,7 +56,7 @@
     <div class="api-documentation-item">
         <p>
             <span class="label-GET">GET</span>
-            <span class="label-bold request">/category </span>
+            <span class="label-bold request">api/category </span>
             Affiche la liste de toutes les catégories. (information partiel)
         </p>
     </div>
@@ -48,8 +64,24 @@
     <div class="api-documentation-item">
         <p>
             <span class="label-GET">GET</span>
-            <span class="label-bold request">/category/{categoryId}/anecdote </span>
+            <span class="label-bold request">api/category/{categoryId}/anecdote </span>
             Affiche les anecdotes de la catégorie via son id.
+        </p>
+    </div>
+
+    <div class="api-documentation-item">
+        <p>
+            <span class="label-GET">GET</span>
+            <span class="label-bold request">api/category/{categoryId}/anecdote/page/{pageId} </span>
+            Pagination par 9 item pour l'intégralité des anecdotes de la catégories via son Id. Numéro des pages via un Id => La première page valant 0.
+        </p>
+    </div>
+
+    <div class="api-documentation-item">
+        <p>
+            <span class="label-GET">GET</span>
+            <span class="label-bold request">api/category/{categoryId}/anecdote/page </span>
+            Nombre totale de page pour l'intégralité des anecdotes de la catégorie via son Id.
         </p>
     </div>
 </section>
