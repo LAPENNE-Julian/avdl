@@ -107,7 +107,7 @@ class AnecdoteController extends ApiCoreController
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
             //Get all anecdotes in database
-            $anecdotes = Anecdote::browse();
+            $anecdotes = Anecdote::findAll();
 
             $checkAnecdoteId = $this->apiResponse->checkAnecdoteId($anecdotes, $anecdoteId);
 
