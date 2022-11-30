@@ -1,6 +1,7 @@
 <section id="anecdote-browse" class="container-fluid">
         <h1>Les anecdotes</h1>
-
+        <span id="categoryId-browse-anecdotes">0</span>
+        
         <p id="script-error-message">Désolé, nous rencontrons des problèmes de serveur temporaire.</p>
         
             <div id="anecdote-browse-inner" class="section-inner">

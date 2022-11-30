@@ -7,15 +7,15 @@ const anecdote = {
     if(pathNameFirst === "anecdote" && pathNameSecond !== undefined && pathNameSecond !== "random"
     && pathNameSecond !== "best"){
 
-      //If pathName of the url is '/anecdote/[i:id]'
+      //If pathName of the url is "/anecdote/[i:id]""
       let anecdoteId = pathNameSecond;
 
       anecdote.bindAnecdoteRead(anecdoteId);
     }
 
-    if(pathName === '/anecdote/random'){
+    if(pathName === "/anecdote/random"){
 
-      //If pathName of the url is '/anecdote/random'
+      //If pathName of the url is "/anecdote/random"
       anecdote.bindAnecdoteReadRandom();
     }
 
@@ -50,7 +50,7 @@ const anecdote = {
   handleLoadAnecdoteRandom: function(){
 
     //Set request option to get random anecdote
-    let requestOption = 'random';
+    let requestOption = "random";
 
     //Get anecdote by requestOption from API
     anecdote.loadAnecdoteFromAPI(requestOption);

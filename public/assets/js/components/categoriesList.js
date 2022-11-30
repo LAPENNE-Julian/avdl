@@ -6,16 +6,28 @@ const categoriesList = {
 
     if(pathName === "/category"){
 
-      //If pathName of the url is '/category'
+      //If pathName of the url is "/category"
       categoriesList.bindAllCategories();
     }
 
     if(pathNameFirst === "category" && pathNameThird === "anecdote"){
 
-      //If pathName of the url is '/category/[i:id]/anecdote'
+      //If pathName of the url is "/category/[i:id]/anecdote"
       let categoryId = pathNameSecond;
 
-      categoriesList.bindAllAnecdotes(categoryId);
+      //Select span element <span id="categoryId-browse-anecdotes">0</span>
+      const spanElement = document.querySelector("#categoryId-browse-anecdotes");
+      //Set span Element with categoryId in URL
+      spanElement.textContent = categoryId;
+
+      //categoriesList.bindAllAnecdotes(categoryId);
+      categoriesList.bindAnecdotesCategoryFirstPage(categoryId);
+
+      //Get total anecdotes pages number
+      categoriesList.bindTotalPages(categoryId);
+
+      //Display arrow navigation in view
+      anecdotesList.displayArrowNavigation();
     }
   },
 
@@ -31,8 +43,25 @@ const categoriesList = {
 
   bindAllAnecdotes: function(categoryId) {
 
+    //Set request option to get anecdote by categoryId
+    let requestOption = "/category/" + categoryId + "/anecdote";
+
     //Loaded All anecdotes of category id in the view
-    categoriesList.handleLoadCategoryAnecdotes(categoryId);
+    categoriesList.handleLoadCategoryAnecdotes(requestOption);
+  },
+
+  bindAnecdotesCategoryFirstPage: function(categoryId) {
+    //Set request option to get first page anecdotes
+    let requestOption = "/category/" + categoryId + "/anecdote/page/0";
+
+    //Loaded anecdotes first page in the view
+    anecdotesList.handleLoadAnecdotes(requestOption);
+  },
+
+  bindTotalPages: function(categoryId) {
+
+    //Loaded total pages number
+    categoriesList.handleLoadTotalPagesNumber(categoryId);
   },
 
   // ---------------------------------------------------------
@@ -45,13 +74,18 @@ const categoriesList = {
     categoriesList.loadCategoriesFromAPI();
   },
 
-  handleLoadCategoryAnecdotes: function(categoryId){
+  handleLoadCategoryAnecdotes: function(requestOption){
     
-    //Set request option to get anecdote by categoryId
-    let requestOption = "/category/" + categoryId + "/anecdote";
-
     //Get all anecdotes from API
     anecdotesList.loadAnecdotesFromAPI(requestOption);
+  },
+
+  handleLoadTotalPagesNumber: function(categoryId){
+    //Set request option ti get first page anecdotes
+    let requestOption = "/category/" + categoryId + "/anecdote/page";
+
+    //Get page number
+    anecdotesList.loadAnecdotesPageNumberFromAPI(requestOption);
   },
 
   // ---------------------------------------------------------

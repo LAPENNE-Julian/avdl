@@ -263,6 +263,16 @@ $router->map('GET', '/api/category/[i:id]/anecdote', [
     'method' => 'browseAnecdotes',
 ], 'api-category-browse-anecdotes');
 
+$router->map('GET', '/api/category/[i:id]/anecdote/page/[i:idSecond]', [
+    'controller' => '\App\Controllers\api\CategoryController',
+    'method' => 'browsePage',
+], 'api-category-browse-anecdotes-page');
+
+$router->map('GET', '/api/category/[i:id]/anecdote/page', [
+    'controller' => '\App\Controllers\api\CategoryController',
+    'method' => 'pageNumber',
+], 'api-category-browse-anecdotes-page-number');
+
 
 /* -------------
 --- DISPATCH ---

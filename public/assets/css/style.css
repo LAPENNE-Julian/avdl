@@ -11,7 +11,8 @@ body {
     font-family: 'Rock Salt', cursive;
 }
 
-#current-page, #total-page {
+#current-page, #total-page,
+#categoryId-browse-anecdotes {
     display: none;
 }
 

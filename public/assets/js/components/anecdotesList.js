@@ -6,7 +6,7 @@ const anecdotesList = {
 
     if(pathName === "/anecdote"){
 
-      //If pathName of the url is '/anecdote'
+      //If pathName of the url is "/anecdote"
       anecdotesList.bindAnecdotesFirstPage();
 
       //Get total anecdotes pages number
@@ -18,7 +18,7 @@ const anecdotesList = {
 
     if(pathName === "/anecdote/best"){
 
-      //If pathName of the url is '/anecdote'
+      //If pathName of the url is "/anecdote"
       anecdotesList.bindBestAnecdotes();
     }
   },
@@ -30,7 +30,7 @@ const anecdotesList = {
   bindAllAnecdotes: function() {
 
     //Set request option to get all anecdote
-    let requestOption = '/anecdote';
+    let requestOption = "/anecdote";
 
     //Loaded All anecdotes in the view
     anecdotesList.handleLoadAnecdotes(requestOption);
@@ -38,7 +38,7 @@ const anecdotesList = {
 
   bindAnecdotesFirstPage: function() {
     //Set request option to get first page anecdotes
-    let requestOption = '/anecdote/page/0';
+    let requestOption = "/anecdote/page/0";
 
     //Loaded anecdotes first page in the view
     anecdotesList.handleLoadAnecdotes(requestOption);
@@ -87,16 +87,18 @@ const anecdotesList = {
   handleLoadBestAnecdotes: function(){
     
     //Set request option to get best anecdote
-    let requestOption = '/anecdote/best';
+    let requestOption = "/anecdote/best";
     
     //Get all anecdotes from API
     anecdotesList.loadAnecdotesFromAPI(requestOption);
   },
 
   handleLoadTotalPagesNumber: function(){
-    
+    //Set request option ti get first page anecdotes
+    let requestOption = "/anecdote/page";
+
     //Get page number
-    anecdotesList.loadAnecdotesPageNumberFromAPI();
+    anecdotesList.loadAnecdotesPageNumberFromAPI(requestOption);
   },
 
   handleLoadAnecdotesNext: function() {
@@ -114,11 +116,27 @@ const anecdotesList = {
     //Increment current page number
     let pageNumber = currentPageNumber + 1;
 
-    //Set request option to get next page
-    let requestOption = '/anecdote/page/' + pageNumber;
+    //Select span element <span id="categoryId-browse-anecdotes">0</span>
+    const spanElementCategoryId = document.querySelector("#categoryId-browse-anecdotes");
+    //Parse integer span element content
+    let categoryId = parseInt(spanElementCategoryId.textContent);
 
-    //Get all next anecdotes from API in the view
-    anecdotesList.loadAnecdotesFromAPI(requestOption);
+    if(categoryId == 0){
+
+      //Set request option to get next page
+      let requestOption = "/anecdote/page/" + pageNumber;
+
+      //Get all previous anecdotes from API
+      anecdotesList.loadAnecdotesFromAPI(requestOption);
+
+    } else {
+
+      //Set request option to get next page
+      let requestOption = "/category/" + categoryId + "/anecdote/page/" + pageNumber;
+
+      //Get all previous anecdotes from API
+      anecdotesList.loadAnecdotesFromAPI(requestOption);
+    }
 
     //Set span element with new number page
     spanElement.textContent = pageNumber;
@@ -133,21 +151,37 @@ const anecdotesList = {
     anecdotesList.removePrecedingAnecdotesItem();
 
     //Select span element  
-    const spanElement= document.querySelector("#current-page");
+    const spanElementCurrentPage = document.querySelector("#current-page");
     //Get page number in span element - current page = 0 (first page)
-    let currentPage = spanElement.textContent;
+    let currentPage = spanElementCurrentPage.textContent;
     //Parse integer
     let currentPageNumber = parseInt(currentPage);
     
     //Decrement current page
     let pageNumber = currentPageNumber - 1;
 
-    //Set request option to get next page
-    let requestOption = '/anecdote/page/' + pageNumber;
+    //Select span element <span id="categoryId-browse-anecdotes">0</span>
+    const spanElementCategoryId = document.querySelector("#categoryId-browse-anecdotes");
+    //Parse integer span element content
+    let categoryId = parseInt(spanElementCategoryId.textContent);
+    
+    if(categoryId == 0){
 
-    //Get all previous anecdotes from API
-    anecdotesList.loadAnecdotesFromAPI(requestOption);
+      //Set request option to get next page
+      let requestOption = "/anecdote/page/" + pageNumber;
 
+      //Get all previous anecdotes from API
+      anecdotesList.loadAnecdotesFromAPI(requestOption);
+
+    } else {
+
+      //Set request option to get next page
+      let requestOption = "/category/" + categoryId + "/anecdote/page/" + pageNumber;
+
+      //Get all previous anecdotes from API
+      anecdotesList.loadAnecdotesFromAPI(requestOption);
+    }
+    
     //Set span element with new number page
     spanElement.textContent = pageNumber;
 
@@ -183,9 +217,9 @@ const anecdotesList = {
     divAnecdote.append(divCategories);
 
     const categoriesArray = [
-      {'categoryId': categoryId1, 'categoryName' : categoryName1, 'categoryColor' : categoryColor1 },
-      {'categoryId': categoryId2, 'categoryName' : categoryName2, 'categoryColor' : categoryColor2 },
-      {'categoryId': categoryId3, 'categoryName' : categoryName3, 'categoryColor' : categoryColor3 },
+      {"categoryId": categoryId1, "categoryName" : categoryName1, "categoryColor" : categoryColor1 },
+      {"categoryId": categoryId2, "categoryName" : categoryName2, "categoryColor" : categoryColor2 },
+      {"categoryId": categoryId3, "categoryName" : categoryName3, "categoryColor" : categoryColor3 },
     ]
 
     for (category of categoriesArray) {
@@ -384,7 +418,7 @@ const anecdotesList = {
     );
   },
 
-  loadAnecdotesPageNumberFromAPI: function() {
+  loadAnecdotesPageNumberFromAPI: function(requestOption) {
 
     const config = {
       method: "GET",
@@ -392,7 +426,7 @@ const anecdotesList = {
       cache: "no-cache"
     };
 
-    fetch(app.apiRootUrl + '/anecdote/page', config)
+    fetch(app.apiRootUrl + requestOption, config)
     .then(
       function(response) {
         //convert json response to object
@@ -406,12 +440,35 @@ const anecdotesList = {
         const spanElement = document.querySelector("#total-page");
         //Set span element wtih number of page
         spanElement.textContent = object.totalPages;
+
+        if(object.totalPages == 0){
+          //Select arrow next page element in <div id="arrow-navigation">
+          const arrowNext = document.querySelector("#anecdote-browse-next");
+          //Display none arrow next in the view
+          arrowNext.setAttribute("style", "display: none;");
+        }
       }
     )
     .catch(
       function(error) {
 
         console.log(error);
+
+        //Select section element <section>
+        const sectionElement = document.querySelector("#anecdote-browse");
+
+        //Select h1 in section element
+        const header1 = document.querySelector("#anecdote-browse h1");
+        //delete h1 element
+        header1.remove();
+
+        //Select h1 in section element
+        const arrowNavigation = document.querySelector("#arrow-navigation");
+        //delete h1 element
+        arrowNavigation.remove();
+
+        //Post error 404 view in section element
+        app.createPageError404(sectionElement);
       }
     );
   },

@@ -750,6 +750,7 @@ class Anecdote extends CoreModel {
     /**
      * Get page of anecdotes (9 anecdotes by pages)
      * 
+     * @param int $offsetNum 
      * @return JSON
      */
     public static function browsePage(int $offsetNum)

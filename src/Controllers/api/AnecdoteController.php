@@ -33,7 +33,7 @@ class AnecdoteController extends ApiCoreController
     }
 
     /**
-     * Get anecdotes page (9 anecdotes by pages).
+     * Get anecdotes page (9 anecdotes by page).
      * 
      * Route("api/anecdote/page/{Id}", name="api-anecdote-browse-page", methods="GET")
      */
@@ -77,10 +77,12 @@ class AnecdoteController extends ApiCoreController
 
             //Get count of anecdotes in database
             $anecdotesNumber = count($Allanecdotes) - 1 ;
+
             //Get number page with 9 anecdotes by pages
             $pageNumber = $anecdotesNumber / 9 ;
-            //Round result half up - 1 => first page = 0
-            $pageNumberRound = round($pageNumber, 0, PHP_ROUND_HALF_UP) - 1;
+
+            //Round up result - 1 => first page = 0
+            $pageNumberRound = ceil($pageNumber) - 1 ;
 
             $this->apiResponse->responseAsArray(200, 'totalPages', $pageNumberRound);
         
