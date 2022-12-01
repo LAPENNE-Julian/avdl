@@ -225,11 +225,6 @@ $router->map('GET', '/api/anecdote', [
     'method' => 'browse',
 ], 'api-anecdote-browse');
 
-$router->map('GET', '/api/anecdote/[i:id]', [
-    'controller' => '\App\Controllers\api\AnecdoteController',
-    'method' => 'read',
-], 'api-anecdote-read');
-
 $router->map('GET', '/api/anecdote/page/[i:id]', [
     'controller' => '\App\Controllers\api\AnecdoteController',
     'method' => 'browsePage',
@@ -239,6 +234,21 @@ $router->map('GET', '/api/anecdote/page', [
     'controller' => '\App\Controllers\api\AnecdoteController',
     'method' => 'pageNumber',
 ], 'api-anecdote-page-number');
+
+$router->map('GET', '/api/anecdote/[i:id]', [
+    'controller' => '\App\Controllers\api\AnecdoteController',
+    'method' => 'read',
+], 'api-anecdote-read');
+
+$router->map('GET', '/api/anecdote/[i:id]/next', [
+    'controller' => '\App\Controllers\api\AnecdoteController',
+    'method' => 'readNext',
+], 'api-anecdote-read-next');
+
+$router->map('GET', '/api/anecdote/[i:id]/prev', [
+    'controller' => '\App\Controllers\api\AnecdoteController',
+    'method' => 'readPrevious',
+], 'api-anecdote-read-previous');
 
 $router->map('GET', '/api/anecdote/random', [
     'controller' => '\App\Controllers\api\AnecdoteController',

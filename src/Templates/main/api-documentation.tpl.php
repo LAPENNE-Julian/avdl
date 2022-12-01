@@ -23,7 +23,7 @@
         <p>
             <span class="label-GET">GET</span>
             <span class="label-bold request">api/anecdote/page/{pageId} </span>
-            Pagination par 9 item pour l'intégralité des anecdotes. Numéro des pages via un Id => La première page valant 0.
+            Pagination par 9 items pour l'intégralité des anecdotes. Numéro des pages via un Id => La première page valant 0.
         </p>
     </div>
 
@@ -73,7 +73,7 @@
         <p>
             <span class="label-GET">GET</span>
             <span class="label-bold request">api/category/{categoryId}/anecdote/page/{pageId} </span>
-            Pagination par 9 item pour l'intégralité des anecdotes de la catégories via son Id. Numéro des pages via un Id => La première page valant 0.
+            Pagination par 9 items pour l'intégralité des anecdotes de la catégories via son Id. Numéro des pages via un Id => La première page valant 0.
         </p>
     </div>
 

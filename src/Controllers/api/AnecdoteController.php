@@ -128,6 +128,72 @@ class AnecdoteController extends ApiCoreController
     }
 
     /**
+     * Navigation to read next of all anecdotes.
+     * 
+     * Route("api/anecdote/[i:id]/next", name="api-anecdote-read-next", methods="GET")
+     */
+    public function readNext(int $anecdoteId)
+    {
+        $this->apiResponse->setHeader('GET');
+
+        //check if httpMethod is correct
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            //Get all anecdotes in database
+            $anecdotes = Anecdote::findAll();
+
+            $checkAnecdoteId = $this->apiResponse->checkAnecdoteId($anecdotes, $anecdoteId);
+
+            if ($checkAnecdoteId == true) {
+                //Get next anecdoteId
+                $nextAnecdoteId = $this->apiNavigationAnecdote->next($anecdotes, $anecdoteId);
+
+                $nextAnecdote = Anecdote::read($nextAnecdoteId);
+
+                $this->apiResponse->responseAsArray(200, 'anecdote', $nextAnecdote);
+            }
+
+        } else {
+
+            //not allowed method
+            http_response_code(405);
+            echo json_encode(["message" => 'Method isn\'t allowed']);
+        }
+    }
+
+    /**
+     * Navigation to read previous of all anecdotes.
+     * 
+     * Route("api/anecdote/[i:id]/prev", name="api-anecdote-read-previous", methods="GET")
+     */
+    public function readPrevious(int $anecdoteId)
+    {
+        $this->apiResponse->setHeader('GET');
+
+        //check if httpMethod is correct
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+            //Get all anecdotes in database
+            $anecdotes = Anecdote::findAll();
+
+            $checkAnecdoteId = $this->apiResponse->checkAnecdoteId($anecdotes, $anecdoteId);
+
+            if ($checkAnecdoteId == true) {
+                //Get previous anecdoteId
+                $previousAnecdoteId = $this->apiNavigationAnecdote->previous($anecdotes, $anecdoteId);
+
+                $previousAnecdote = Anecdote::read($previousAnecdoteId);
+
+                $this->apiResponse->responseAsArray(200, 'anecdote', $previousAnecdote);
+            }
+        } else {
+
+            //not allowed method
+            http_response_code(405);
+            echo json_encode(["message" => 'Method isn\'t allowed']);
+        }
+    }
+
+    /**
      * Get random anecdotes.
      * 
      * Route("api/anecdote/random", name="api-anecdote-random",  methods="GET")
