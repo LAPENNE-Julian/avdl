@@ -4,18 +4,17 @@
         
         <p id="script-error-message">Désolé, nous rencontrons des problèmes de serveur temporaire.</p>
         
-            <div id="anecdote-browse-inner" class="section-inner">
-                <!-- <article class="anecdote-browse-item">
-                    <div id="label-categories" class="container-fluid">
-                        <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
-                        <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
-                    </div>
-                    <h2>Titre de l'anecdote 1</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime voluptatibus similique odit ex, inventore molestias repudiandae. Expedita similique quod placeat iure voluptatibus consequuntur sequi ducimus esse quos aliquid, ratione ipsum!<a href="#" class="anecdote__link">afficher plus</a></p>
-                    <a id="anecdote-browse-link-read" href="anecdote/anecdoteId">Lire la suite</a>
-                    <p id="author">Publié par Auteur le 01.01.1999</p>
-                </article>-->
-            </div>
+        <div id="anecdote-browse-inner" class="section-inner">
+            <!-- <article class="anecdote-browse-item">
+                <div id="label-categories" class="container-fluid">
+                    <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
+                    <span class="label-category" style ="border: medium solid yellow">Catégorie</span>
+                </div>
+                <h2>Titre de l'anecdote 1</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime voluptatibus similique odit ex, inventore molestias repudiandae. Expedita similique quod placeat iure voluptatibus consequuntur sequi ducimus esse quos aliquid, ratione ipsum!<a href="#" class="anecdote__link">afficher plus</a></p>
+                <a id="anecdote-browse-link-read" href="anecdote/anecdoteId">Lire la suite</a>
+                <p id="author">Publié par Auteur le 01.01.1999</p>
+            </article>-->
         </div>
 
         <div id="arrow-navigation">

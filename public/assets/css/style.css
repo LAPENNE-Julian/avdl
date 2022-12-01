@@ -12,7 +12,8 @@ body {
 }
 
 #current-page, #total-page,
-#categoryId-browse-anecdotes {
+#categoryId-browse-anecdotes,
+#current-anecdoteId {
     display: none;
 }
 

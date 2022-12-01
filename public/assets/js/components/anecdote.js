@@ -10,7 +10,12 @@ const anecdote = {
       //If pathName of the url is "/anecdote/[i:id]""
       let anecdoteId = pathNameSecond;
 
+      //Get anecdote
       anecdote.bindAnecdoteRead(anecdoteId);
+
+      //Add event in navigation
+      anecdote.bindAnecdoteReadPrevious();
+      anecdote.bindAnecdoteReadNext();
     }
 
     if(pathName === "/anecdote/random"){
@@ -30,6 +35,24 @@ const anecdote = {
     anecdote.handleLoadAnecdote(anecdoteId);
   },
 
+  bindAnecdoteReadPrevious: function() {
+
+    //Select arrow next page in <div id="arrow-navigation">
+    const arrowNext = document.querySelector("#anecdote-read-previous");
+
+    //Add event on click 
+    arrowNext.addEventListener("click", anecdote.handleLoadAnecdotePrevious);
+  },
+
+  bindAnecdoteReadNext: function() {
+
+    //Select arrow next page in <div id="arrow-navigation">
+    const arrowNext = document.querySelector("#anecdote-read-next");
+
+    //Add event on click 
+    arrowNext.addEventListener("click", anecdote.handleLoadAnecdoteNext);
+  },
+
   bindAnecdoteReadRandom: function() {
 
     //Loaded anecdote in the view
@@ -44,6 +67,34 @@ const anecdote = {
 
     //Get anecdote by Id from API
     anecdote.loadAnecdoteFromAPI(anecdoteId);
+  },
+
+  handleLoadAnecdotePrevious: function() {
+
+    //Select span element <span id="current-anecdoteId"></span>
+    const spanAnecdoteId = document.querySelector("#current-anecdoteId");
+    //Select anecdoteId in template
+    let anecdoteId = spanAnecdoteId.textContent;
+
+    //Set request option to get random anecdote
+    let requestOption = anecdoteId + "/prev";
+
+    //Get next anecdote by requestOption from API
+    anecdote.loadAnecdoteNavigationFromAPI(requestOption);
+  },
+
+  handleLoadAnecdoteNext: function() {
+
+    //Select span element <span id="current-anecdoteId"></span>
+    const spanAnecdoteId = document.querySelector("#current-anecdoteId");
+    //Select anecdoteId in template
+    let anecdoteId = spanAnecdoteId.textContent;
+
+    //Set request option to get random anecdote
+    let requestOption = anecdoteId + "/next";
+
+    //Get next anecdote by requestOption from API
+    anecdote.loadAnecdoteNavigationFromAPI(requestOption);
   },
 
   handleLoadAnecdoteRandom: function(){
@@ -106,6 +157,10 @@ const anecdote = {
     const anecdoteTitle = anecdoteReadElement.querySelector("h1");
     anecdoteTitle.textContent = title;
 
+    //Select span element <span id="current-anecdoteId"></span>
+    const spanAnecdoteId = anecdoteReadElement.querySelector("#current-anecdoteId");
+    spanAnecdoteId.textContent = id;
+
     //Select p element <p id="anecdote-author">
     const anecdotePublishing = anecdoteReadElement.querySelector("#anecdote-author");
     //Represent Date
@@ -127,6 +182,14 @@ const anecdote = {
     anecdoteLink.setAttribute("href", source);
 
     return anecdoteReadElement;
+  },
+
+  removePrecedingAnecdoteItem: function(){
+
+    //Select anecdote item
+    const anecdote = document.querySelector("#anecdote-read-inner");
+    //Remove anecdote
+    anecdote.remove();
   },
 
   // ---------------------------------------------------------
@@ -187,6 +250,63 @@ const anecdote = {
       function(error) {
 
         console.log(error);
+
+        //Select section element <section id="anecdote-read">
+        const sectionElement = document.querySelector("#anecdote-read");
+
+        //Post error 404 view in section element
+        app.createPageError404(sectionElement);
+      }
+    );
+  },
+
+  loadAnecdoteNavigationFromAPI: function(requestOption) {
+
+    const config = {
+      method: "GET",
+      mode: "cors",
+      cache: "no-cache"
+    };
+
+    fetch(app.apiRootUrl + "/anecdote/" + requestOption, config)
+    .then(
+      function(response) {
+        
+        if(response.ok){
+
+          //convert json response to object
+          return response.json(); 
+
+        } else {
+
+          throw new Error("Network request failed with response " + response.status + ": " + response.statusText);
+
+        }
+      }
+    )
+    .then(
+      function(object) {
+
+        const anecdoteData = object.anecdote[0];
+  
+        //Set new anecdoteId in url
+        urlOption = "/anecdote/" + anecdoteData.id;
+        //Redirection
+        location.assign(app.rootUrl + urlOption);
+      }
+    )
+    .catch(
+      function(error) {
+
+        console.log(error);
+
+        //Remove preceding anecdote in view
+        anecdote.removePrecedingAnecdoteItem();
+
+        //Select element in <div id="arrow-navigation">
+        const arrowNavigation = document.querySelector("#arrow-navigation");
+        //Remove navigation in the view
+        arrowNavigation.remove();
 
         //Select section element <section id="anecdote-read">
         const sectionElement = document.querySelector("#anecdote-read");

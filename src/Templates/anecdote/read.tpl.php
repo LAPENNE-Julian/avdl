@@ -1,7 +1,9 @@
 <section id="anecdote-read" class="container-fluid">
     <p id="script-error-message">Désolé, nous rencontrons des problèmes de serveur temporaire.</p>
+
     <template id="anecdote-read-template">
         <div id="anecdote-read-inner" class="section-inner">
+
             <div id="label-categories" class="container-fluid">
                 <span id="label-category-1" class="label-category">
                     <a><!--Catégorie-1--></a>
@@ -13,7 +15,10 @@
                     <a><!--Catégorie-3--></a>
                 </span>
             </div>
+
             <h1>Titre de l'anecdote 1</h1>
+            <span id="current-anecdoteId"></span>
+
             <p id="anecdote-author">Publié par Auteur le 01.01.1999</p>
             <div id="anecdote-content">
                 <div id="anecdote-content-vote">
@@ -64,25 +69,26 @@
                 </ul>
             </div>
         </div>
-
-        <div id="arrow-navigation">
-            <ul>
-                <li>
-                    <a href="#" title="previous" alt="previous">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
-                    </svg> Précédent
-                    </a>
-                </li> 
-
-                <li>
-                    <a href="#" title="next" alt="next">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-                    </svg> Suivant
-                    </a>
-                </li>
-            </ul>
-        </div>
     </template>
+
+    <div id="arrow-navigation">
+        <ul>
+            <li>
+                <button id="anecdote-read-previous" title="previous" alt="previous">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                </svg> Précédent
+                </button>
+            </li> 
+
+            <li>
+                <button id="anecdote-read-next" title="next" alt="next">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+                </svg> Suivant
+                </button>
+            </li>
+        </ul>
+    </div>
+    
 </section>

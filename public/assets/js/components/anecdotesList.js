@@ -20,6 +20,11 @@ const anecdotesList = {
 
       //If pathName of the url is "/anecdote"
       anecdotesList.bindBestAnecdotes();
+
+      //Select element in <div id="arrow-navigation">
+      const arrowNavigation = document.querySelector("#arrow-navigation");
+      //Remove navigation in the view
+      arrowNavigation.remove();
     }
   },
 
