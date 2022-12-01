@@ -81,6 +81,11 @@ $router->map('GET', '/anecdote/best', [
     'method' => 'best',
 ], 'anecdote-best');
 
+$router->map('GET', '/anecdote/best/[i:id]', [
+    'controller' => '\App\Controllers\AnecdoteController',
+    'method' => 'bestRead',
+], 'anecdote-best-read');
+
 /**
  * Category
  */
@@ -240,15 +245,15 @@ $router->map('GET', '/api/anecdote/[i:id]', [
     'method' => 'read',
 ], 'api-anecdote-read');
 
-$router->map('GET', '/api/anecdote/[i:id]/next', [
-    'controller' => '\App\Controllers\api\AnecdoteController',
-    'method' => 'readNext',
-], 'api-anecdote-read-next');
-
 $router->map('GET', '/api/anecdote/[i:id]/prev', [
     'controller' => '\App\Controllers\api\AnecdoteController',
     'method' => 'readPrevious',
 ], 'api-anecdote-read-previous');
+
+$router->map('GET', '/api/anecdote/[i:id]/next', [
+    'controller' => '\App\Controllers\api\AnecdoteController',
+    'method' => 'readNext',
+], 'api-anecdote-read-next');
 
 $router->map('GET', '/api/anecdote/random', [
     'controller' => '\App\Controllers\api\AnecdoteController',
@@ -259,6 +264,23 @@ $router->map('GET', '/api/anecdote/best', [
     'controller' => '\App\Controllers\api\AnecdoteController',
     'method' => 'best',
 ], 'api-anecdote-best');
+
+$router->map('GET', '/api/anecdote/best/[i:id]', [
+    'controller' => '\App\Controllers\api\AnecdoteController',
+    'method' => 'bestRead',
+], 'api-anecdote-best-read');
+
+$router->map('GET', '/api/anecdote/best/[i:id]/prev', [
+    'controller' => '\App\Controllers\api\AnecdoteController',
+    'method' => 'bestPrevious',
+], 'api-anecdote-best-previous');
+
+$router->map('GET', '/api/anecdote/best/[i:id]/next', [
+    'controller' => '\App\Controllers\api\AnecdoteController',
+    'method' => 'bestNext',
+], 'api-anecdote-best-next');
+
+
 
 /**
  * Request category

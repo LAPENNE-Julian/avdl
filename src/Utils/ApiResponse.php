@@ -46,7 +46,7 @@ class ApiResponse
 
         foreach($anecdotes as $anecdote) {
 
-            $anecdoteIdinArray = $anecdote->getId();
+            $anecdoteIdinArray = $anecdote['id'];
 
             if ($anecdoteId == $anecdoteIdinArray) {
 

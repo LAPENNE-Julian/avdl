@@ -18,6 +18,19 @@ const anecdote = {
       anecdote.bindAnecdoteReadNext();
     }
 
+    if(pathNameFirst === "anecdote" && pathNameSecond === "best" && pathNameThird !== undefined){
+
+      //If pathName of the url is "/anecdote/best/[i:id]""
+      let anecdoteId = pathNameThird;
+
+      //Get anecdote
+      anecdote.bindAnecdoteRead(anecdoteId);
+
+      //Add event in navigation
+      anecdote.bindAnecdoteBestReadPrevious();
+      anecdote.bindAnecdoteBestReadNext();
+    }
+
     if(pathName === "/anecdote/random"){
 
       //If pathName of the url is "/anecdote/random"
@@ -51,6 +64,24 @@ const anecdote = {
 
     //Add event on click 
     arrowNext.addEventListener("click", anecdote.handleLoadAnecdoteNext);
+  },
+
+  bindAnecdoteBestReadPrevious: function() {
+
+    //Select arrow next page in <div id="arrow-navigation">
+    const arrowNext = document.querySelector("#anecdote-read-previous");
+
+    //Add event on click 
+    arrowNext.addEventListener("click", anecdote.handleLoadAnecdoteBestPrevious);
+  },
+
+  bindAnecdoteBestReadNext: function() {
+
+    //Select arrow next page in <div id="arrow-navigation">
+    const arrowNext = document.querySelector("#anecdote-read-next");
+
+    //Add event on click 
+    arrowNext.addEventListener("click", anecdote.handleLoadAnecdoteBestNext);
   },
 
   bindAnecdoteReadRandom: function() {
@@ -92,6 +123,34 @@ const anecdote = {
 
     //Set request option to get random anecdote
     let requestOption = anecdoteId + "/next";
+
+    //Get next anecdote by requestOption from API
+    anecdote.loadAnecdoteNavigationFromAPI(requestOption);
+  },
+
+  handleLoadAnecdoteBestPrevious: function() {
+
+    //Select span element <span id="current-anecdoteId"></span>
+    const spanAnecdoteId = document.querySelector("#current-anecdoteId");
+    //Select anecdoteId in template
+    let anecdoteId = spanAnecdoteId.textContent;
+
+    //Set request option to get random anecdote
+    let requestOption = "best/" + anecdoteId + "/prev";
+
+    //Get next anecdote by requestOption from API
+    anecdote.loadAnecdoteNavigationFromAPI(requestOption);
+  },
+
+  handleLoadAnecdoteBestNext: function() {
+
+    //Select span element <span id="current-anecdoteId"></span>
+    const spanAnecdoteId = document.querySelector("#current-anecdoteId");
+    //Select anecdoteId in template
+    let anecdoteId = spanAnecdoteId.textContent;
+
+    //Set request option to get random anecdote
+    let requestOption = "best/" + anecdoteId + "/next";
 
     //Get next anecdote by requestOption from API
     anecdote.loadAnecdoteNavigationFromAPI(requestOption);
@@ -288,11 +347,26 @@ const anecdote = {
       function(object) {
 
         const anecdoteData = object.anecdote[0];
+
+        //GET Url
+        let splitPathName = app.pathName.split("/");
+        let pathNameFirst = splitPathName[1]; 
+        let pathNameSecond = splitPathName[2];
   
-        //Set new anecdoteId in url
-        urlOption = "/anecdote/" + anecdoteData.id;
-        //Redirection
-        location.assign(app.rootUrl + urlOption);
+        if(pathNameFirst === "anecdote" && pathNameSecond === "best"){
+
+            //Set new anecdoteId in url
+            urlOption = "/anecdote/best/" + anecdoteData.id;
+            //Redirection
+            location.assign(app.rootUrl + urlOption);
+
+        } else {
+
+          //Set new anecdoteId in url
+          urlOption = "/anecdote/" + anecdoteData.id;
+          //Redirection
+          location.assign(app.rootUrl + urlOption);
+        }
       }
     )
     .catch(

@@ -13,7 +13,8 @@ body {
 
 #current-page, #total-page,
 #categoryId-browse-anecdotes,
-#current-anecdoteId {
+#current-anecdoteId,
+#anecdotes-theme {
     display: none;
 }
 

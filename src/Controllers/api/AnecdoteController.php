@@ -107,7 +107,7 @@ class AnecdoteController extends ApiCoreController
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
             //Get all anecdotes in database
-            $anecdotes = Anecdote::findAll();
+            $anecdotes = Anecdote::browse();
 
             $checkAnecdoteId = $this->apiResponse->checkAnecdoteId($anecdotes, $anecdoteId);
 
@@ -117,39 +117,6 @@ class AnecdoteController extends ApiCoreController
 
                 $this->apiResponse->responseAsArray(200, 'anecdote', $anecdote);
 
-            }
-
-        } else {
-
-            //not allowed method
-            http_response_code(405);
-            echo json_encode(["message" => 'Method isn\'t allowed']);
-        }
-    }
-
-    /**
-     * Navigation to read next of all anecdotes.
-     * 
-     * Route("api/anecdote/[i:id]/next", name="api-anecdote-read-next", methods="GET")
-     */
-    public function readNext(int $anecdoteId)
-    {
-        $this->apiResponse->setHeader('GET');
-
-        //check if httpMethod is correct
-        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            //Get all anecdotes in database
-            $anecdotes = Anecdote::findAll();
-
-            $checkAnecdoteId = $this->apiResponse->checkAnecdoteId($anecdotes, $anecdoteId);
-
-            if ($checkAnecdoteId == true) {
-                //Get next anecdoteId
-                $nextAnecdoteId = $this->apiNavigationAnecdote->next($anecdotes, $anecdoteId);
-
-                $nextAnecdote = Anecdote::read($nextAnecdoteId);
-
-                $this->apiResponse->responseAsArray(200, 'anecdote', $nextAnecdote);
             }
 
         } else {
@@ -173,7 +140,7 @@ class AnecdoteController extends ApiCoreController
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
             //Get all anecdotes in database
-            $anecdotes = Anecdote::findAll();
+            $anecdotes = Anecdote::browse();
 
             $checkAnecdoteId = $this->apiResponse->checkAnecdoteId($anecdotes, $anecdoteId);
 
@@ -185,6 +152,40 @@ class AnecdoteController extends ApiCoreController
 
                 $this->apiResponse->responseAsArray(200, 'anecdote', $previousAnecdote);
             }
+        } else {
+
+            //not allowed method
+            http_response_code(405);
+            echo json_encode(["message" => 'Method isn\'t allowed']);
+        }
+    }
+
+    /**
+     * Navigation to read next of all anecdotes.
+     * 
+     * Route("api/anecdote/[i:id]/next", name="api-anecdote-read-next", methods="GET")
+     */
+    public function readNext(int $anecdoteId)
+    {
+        $this->apiResponse->setHeader('GET');
+
+        //check if httpMethod is correct
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+            //Get all anecdotes in database
+            $anecdotes = Anecdote::browse();
+
+            $checkAnecdoteId = $this->apiResponse->checkAnecdoteId($anecdotes, $anecdoteId);
+
+            if ($checkAnecdoteId == true) {
+                //Get next anecdoteId
+                $nextAnecdoteId = $this->apiNavigationAnecdote->next($anecdotes, $anecdoteId);
+
+                $nextAnecdote = Anecdote::read($nextAnecdoteId);
+
+                $this->apiResponse->responseAsArray(200, 'anecdote', $nextAnecdote);
+            }
+
         } else {
 
             //not allowed method
@@ -250,6 +251,104 @@ class AnecdoteController extends ApiCoreController
             http_response_code(405);
             echo json_encode(["message" => 'Method isn\'t allowed']);
         }  
+    }
+
+    /**
+     * Read an best anecdote by id.
+     * 
+     * Route("api/anecdote/best/[i:id]", name="api-anecdote-best-read", methods="GET")
+     */
+    public function bestRead(int $anecdoteId)
+    {
+        $this->apiResponse->setHeader('GET');
+
+        //check if httpMethod is correct
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+            //Get 5 anecdotes with most upVote
+            $bestAnecdotes = Anecdote::best();
+
+            $checkAnecdoteId = $this->apiResponse->checkAnecdoteId($bestAnecdotes, $anecdoteId);
+
+            if ($checkAnecdoteId == true) {
+                $bestAnecdote = Anecdote::read($anecdoteId);
+
+                $this->apiResponse->responseAsArray(200, 'anecdote', $bestAnecdote);
+            }
+
+        } else {
+
+            //not allowed method
+            http_response_code(405);
+            echo json_encode(["message" => 'Method isn\'t allowed']);
+        }
+    }
+
+    /**
+     * Navigation to previous in for five anecdotes with the most upVote.
+     * 
+     * Route("api/anecdote/best/[i:id]/prev", name="api-anecdote-best-previous", methods="GET")
+     */
+    public function bestPrevious(int $anecdoteId)
+    {
+        $this->apiResponse->setHeader('GET');
+
+        //check if httpMethod is correct
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+            //Get 5 anecdotes with most upVote
+            $bestAnecdotes = Anecdote::best();
+
+            $checkAnecdoteId = $this->apiResponse->checkAnecdoteId($bestAnecdotes, $anecdoteId);
+
+            if ($checkAnecdoteId == true) {
+                $previousBestAnecdoteId = $this->apiNavigationAnecdote->previous($bestAnecdotes, $anecdoteId);
+
+                $previousBestAnecdote = Anecdote::read($previousBestAnecdoteId);
+
+                $this->apiResponse->responseAsArray(200, 'anecdote', $previousBestAnecdote);
+            }
+
+        } else {
+
+            //not allowed method
+            http_response_code(405);
+            echo json_encode(["message" => 'Method isn\'t allowed']);
+        }
+    }
+
+    /**
+     * Navigation to next in five anecdotes with the most upVote.
+     * 
+     * Route("api/anecdote/best/[i:id]/next", name="api-anecdote-best-next", methods={"GET"})
+     */
+    public function bestNext(int $anecdoteId)
+    {
+        $this->apiResponse->setHeader('GET');
+
+        //check if httpMethod is correct
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+            //Get 5 anecdotes with most upVote
+            $bestAnecdotes = Anecdote::best();
+
+            $checkAnecdoteId = $this->apiResponse->checkAnecdoteId($bestAnecdotes, $anecdoteId);
+
+            if ($checkAnecdoteId == true) {
+
+                $nextBestAnecdoteId = $this->apiNavigationAnecdote->next($bestAnecdotes, $anecdoteId);
+
+                $nextBestAnecdote = Anecdote::read($nextBestAnecdoteId);
+
+                $this->apiResponse->responseAsArray(200, 'anecdote', $nextBestAnecdote);
+            }
+
+        } else {
+
+            //not allowed method
+            http_response_code(405);
+            echo json_encode(["message" => 'Method isn\'t allowed']);
+        }
     }
 }
 

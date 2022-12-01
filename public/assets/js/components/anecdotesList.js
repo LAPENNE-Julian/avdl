@@ -201,7 +201,7 @@ const anecdotesList = {
   createDivAnecdote: function(requestOption, id, title, description, categoryId1, categoryName1, categoryColor1, categoryId2, categoryName2, categoryColor2, categoryId3, categoryName3, categoryColor3, pseudo, createdAt) {
 
     //If request option === /anecdote/best
-    if(requestOption ==="/anecdote/best"){
+    if(requestOption === "/anecdote/best"){
       //Select h1 in section element
       const header1 = document.querySelector("#anecdote-browse h1");
       //Set header for best anecdotes
@@ -267,6 +267,11 @@ const anecdotesList = {
     anecdoteLink.setAttribute("href", "/anecdote/" + id);
     anecdoteLink.setAttribute("id", "anecdote-browse-link-read")
     anecdoteLink.textContent = "Lire la suite";
+
+    //If request option === /anecdote/best
+    if(requestOption === "/anecdote/best"){
+      anecdoteLink.setAttribute("href", "/anecdote/best/" + id);
+    }
 
     //Add element divAnecdote in element anecdoteDescription
     divAnecdote.append(anecdoteLink);

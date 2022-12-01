@@ -22,7 +22,7 @@ class ApiNavigationAnecdote {
             //count key in array
             $indexMax = count($array) - 1;
             //get anecdote id
-            $anecdoteId = $anecdote->getId();
+            $anecdoteId = $anecdote['id'];
             
             //if the request id is egal to one of the anecdote id in the loop
             if($id == $anecdoteId){
@@ -46,7 +46,7 @@ class ApiNavigationAnecdote {
             return false;
         }
 
-        return $nextAnecdote->getId();
+        return $nextAnecdote['id'];
     
     }
 
@@ -63,7 +63,7 @@ class ApiNavigationAnecdote {
             //count key in array
             $indexMax = count($array) - 1;
             //get anecdote id
-            $anecdoteId = $anecdote->getId();
+            $anecdoteId = $anecdote['id'];
             
             //if the request id is egal to one of the anecdote id in the loop
             if($id == $anecdoteId){
@@ -87,6 +87,7 @@ class ApiNavigationAnecdote {
             return false;
         }
 
-        return $previousAnecdote->getId();
+        return $previousAnecdote['id'];
     }
+
 }

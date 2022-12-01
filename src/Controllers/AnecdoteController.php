@@ -31,4 +31,11 @@ class AnecdoteController extends CoreController
             
         ]);
     }
+
+    public function bestRead()
+    {
+        $this->show('anecdote/read', [
+            
+        ]);
+    }
 }
