@@ -14,14 +14,6 @@
     <div class="api-documentation-item">
         <p>
             <span class="label-GET">GET</span>
-            <span class="label-bold request">api/anecdote/{anecdoteId} </span>
-            Affiche l'intégralité de l'anecdote via son id.
-        </p>
-    </div>
-
-    <div class="api-documentation-item">
-        <p>
-            <span class="label-GET">GET</span>
             <span class="label-bold request">api/anecdote/page/{pageId} </span>
             Pagination par 9 items pour l'intégralité des anecdotes. Numéro des pages via un Id => La première page valant 0.
         </p>
@@ -38,6 +30,30 @@
     <div class="api-documentation-item">
         <p>
             <span class="label-GET">GET</span>
+            <span class="label-bold request">api/anecdote/{anecdoteId} </span>
+            Affiche l'intégralité de l'anecdote via son id.
+        </p>
+    </div>
+
+    <div class="api-documentation-item">
+        <p>
+            <span class="label-GET">GET</span>
+            <span class="label-bold request">api/anecdote/{anecdoteId}/prev </span>
+            Affiche l'intégralité de l'anecdote précédente de la liste intégrale via son id.
+        </p>
+    </div>
+
+    <div class="api-documentation-item">
+        <p>
+            <span class="label-GET">GET</span>
+            <span class="label-bold request">api/anecdote/{anecdoteId}/next </span>
+            Affiche l'intégralité de l'anecdote suivante de la liste intégrale via son id.
+        </p>
+    </div>
+
+    <div class="api-documentation-item">
+        <p>
+            <span class="label-GET">GET</span>
             <span class="label-bold request">/anecdote/random </span>
             Affiche une anecdote au hasard.
         </p>
@@ -48,6 +64,30 @@
             <span class="label-GET">GET</span>
             <span class="label-bold request">/anecdote/best </span>
             Affiche les cinq anecdotes les meiux notées.
+        </p>
+    </div>
+
+    <div class="api-documentation-item">
+        <p>
+            <span class="label-GET">GET</span>
+            <span class="label-bold request">/anecdote/best/{anecdoteId} </span>
+            Affiche l'intégralité de l'anecdote de la liste best anecdotes via son id.
+        </p>
+    </div>
+
+    <div class="api-documentation-item">
+        <p>
+            <span class="label-GET">GET</span>
+            <span class="label-bold request">/anecdote/best/{anecdoteId}/prev </span>
+            Affiche l'intégralité de l'anecdote précédente de la liste best anecdotes via son id.
+        </p>
+    </div>
+
+    <div class="api-documentation-item">
+        <p>
+            <span class="label-GET">GET</span>
+            <span class="label-bold request">/anecdote/best/{anecdoteId}/next </span>
+            Affiche l'intégralité de l'anecdote suivante de la liste best anecdotes via son id.
         </p>
     </div>
 

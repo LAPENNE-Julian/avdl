@@ -35,6 +35,11 @@ const anecdote = {
 
       //If pathName of the url is "/anecdote/random"
       anecdote.bindAnecdoteReadRandom();
+
+      //Select element in <div id="arrow-navigation">
+      const arrowNavigation = document.querySelector("#arrow-navigation");
+      //Remove navigation in the view
+      arrowNavigation.remove();
     }
   },
 
