@@ -5,20 +5,15 @@ const app = {
   pathName: window.location.pathname,
 
   init: function() {
-    console.log("app.init() appelé");
 
+    console.log("app.init() appelé");
     let splitPathName = app.pathName.split("/");
 
-    let pathNameFirst = splitPathName[1]; 
-    let pathNameSecond = splitPathName[2];
-    let pathNameThird = splitPathName[3];
-
-    categoriesList.init(app.pathName, pathNameFirst, pathNameSecond, pathNameThird);
+    categoriesList.init(app.pathName, splitPathName[1], splitPathName[2], splitPathName[3]);
     anecdotesList.init(app.pathName);
-    anecdote.init(app.pathName, pathNameFirst, pathNameSecond, pathNameThird);
+    anecdote.init(app.pathName, splitPathName[1], splitPathName[2], splitPathName[3]);
 
     app.bindScriptLoad();
-
   },
 
   // ---------------------------------------------------------

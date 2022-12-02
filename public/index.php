@@ -295,7 +295,7 @@ $router->map('GET', '/api/category/[i:id]/anecdote', [
     'method' => 'browseAnecdotes',
 ], 'api-category-browse-anecdotes');
 
-$router->map('GET', '/api/category/[i:id]/anecdote/page/[i:idSecond]', [
+$router->map('GET', '/api/category/[i:id]/anecdote/page/[i:idsecond]', [
     'controller' => '\App\Controllers\api\CategoryController',
     'method' => 'browsePage',
 ], 'api-category-browse-anecdotes-page');

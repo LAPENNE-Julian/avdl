@@ -341,7 +341,7 @@ const anecdotesList = {
     } else {
 
       //Display arrow previous in the view
-      arrowPrevious.setAttribute("style", "display: flex;");
+      arrowPrevious.setAttribute("style", "display: inline-block;");
 
       //Add event on arrow previous
       anecdotesList.bindAnecdotesPrevious();
@@ -356,7 +356,7 @@ const anecdotesList = {
     } else {
 
       //Display none arrow next in the view
-      arrowNext.setAttribute("style", "display: flex;");
+      arrowNext.setAttribute("style", "display: inline-block;");
 
       //Add event on arrow next
       anecdotesList.bindAnecdotesNext();

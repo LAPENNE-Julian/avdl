@@ -95,18 +95,18 @@ const anecdote = {
     let theme = spanCurrentTheme.textContent;
 
     if(theme === "best"){
-      //Set request option to get random anecdote
+      //Set request option to get previous best anecdote
       let requestOption = theme + "/" + anecdoteId + "/prev";
 
-      //Get next anecdote by requestOption from API
+      //Get next best anecdote by requestOption from API
       anecdote.loadAnecdoteNavigationFromAPI(requestOption);
 
     } else {
 
-      //Set request option to get random anecdote
+      //Set request option to get previous anecdote
       let requestOption = anecdoteId + "/prev";
 
-      //Get next anecdote by requestOption from API
+      //Get previous anecdote by requestOption from API
       anecdote.loadAnecdoteNavigationFromAPI(requestOption);
     }
   },
@@ -124,15 +124,15 @@ const anecdote = {
     let theme = spanCurrentTheme.textContent;
 
     if(theme === "best"){
-      //Set request option to get random anecdote
+      //Set request option to get next best anecdote
       let requestOption = theme + "/" + anecdoteId + "/next";
 
-      //Get next anecdote by requestOption from API
+      //Get next best anecdote by requestOption from API
       anecdote.loadAnecdoteNavigationFromAPI(requestOption);
 
     } else {
 
-      //Set request option to get random anecdote
+      //Set request option to get  next anecdote
       let requestOption = anecdoteId + "/next";
 
       //Get next anecdote by requestOption from API

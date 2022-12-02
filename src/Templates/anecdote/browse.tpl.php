@@ -17,9 +17,10 @@
             </article>-->
         </div>
 
+        <span id="current-page">0</span>
+        <span id="total-page"></span>
+        
         <div id="arrow-navigation">
-            <span id="current-page">0</span>
-            <span id="total-page"></span>
             <ul>
                 <li>
                     <button id="anecdote-browse-previous" title="previous" alt="previous">

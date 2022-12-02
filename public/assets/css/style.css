@@ -14,7 +14,8 @@ body {
 #current-page, #total-page,
 #categoryId-browse-anecdotes,
 #current-anecdoteId,
-#anecdotes-theme {
+#current-theme,
+#current-category {
     display: none;
 }
 

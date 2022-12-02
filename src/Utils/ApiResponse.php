@@ -2,6 +2,7 @@
 
 namespace App\Utils;
 
+use App\Models\Anecdote;
 use App\Models\Category;
 
 /**
@@ -40,7 +41,7 @@ class ApiResponse
     }
 
     /**
-    * Check request anecdote Id in database
+    * Check request anecdote Id in array anecdotes
     */
     public function checkAnecdoteId($anecdotes, int $anecdoteId) {
 
@@ -81,6 +82,30 @@ class ApiResponse
         //Else, $categoryId isn't in databse, post message error
         http_response_code(404);
         echo json_encode(["message" => 'message', 'This categoryId isn\'t valid']);
+        exit;
+    }
+
+    /**
+    * Check request anecdote Id in database
+    */
+    public function anecdoteIdCheckInDatabase(int $anecdoteId) {
+
+        //check if anecdote id exist in database
+        $anecdotes = Anecdote::findAll();
+
+        foreach($anecdotes as $anecdote) {
+
+            $anecdoteIdinArray = $anecdote->getId();
+
+            if ($anecdoteId == $anecdoteIdinArray) {
+
+                return true;
+            }
+        }
+
+        //Else, $anecdoteId isn't in databse, post message error
+        http_response_code(404);
+        echo json_encode(["message" => 'message', 'This anecdoteId isn\'t exist']);
         exit;
     }
 }

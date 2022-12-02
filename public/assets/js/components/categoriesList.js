@@ -138,7 +138,7 @@ const categoriesList = {
       cache: "no-cache"
     };
 
-    fetch(app.apiRootUrl + "/category", config)
+    fetch(app.apiRootUrl + "/category8", config)
     .then(
       function(response) {
         //convert json response to object
@@ -155,6 +155,23 @@ const categoriesList = {
           //Insert into DOM
           categoriesList.insertDivCategoryIntoParent(categoryItem);
         }
+      }
+    )
+    .catch(
+      function(error) {
+
+        console.log(error);
+
+        //Select section element <section>
+        const sectionElement = document.querySelector("#category-browse");
+
+        //Select h1 in section element
+        const header1 = document.querySelector("#category-browse h1");
+        //delete h1 element
+        header1.remove();
+
+        //Post error 404 view in section element
+        app.createPageError404(sectionElement);
       }
     );
   },
