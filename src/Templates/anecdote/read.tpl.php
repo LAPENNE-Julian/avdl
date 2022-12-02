@@ -18,6 +18,7 @@
 
             <h1>Titre de l'anecdote 1</h1>
             <span id="current-anecdoteId"></span>
+            <span id="current-theme"></span>
 
             <p id="anecdote-author">Publié par Auteur le 01.01.1999</p>
             <div id="anecdote-content">

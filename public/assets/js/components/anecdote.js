@@ -14,8 +14,7 @@ const anecdote = {
       anecdote.bindAnecdoteRead(anecdoteId);
 
       //Add event in navigation
-      anecdote.bindAnecdoteReadPrevious();
-      anecdote.bindAnecdoteReadNext();
+      anecdote.bindAnecdoteNavigation();
     }
 
     if(pathNameFirst === "anecdote" && pathNameSecond === "best" && pathNameThird !== undefined){
@@ -27,8 +26,7 @@ const anecdote = {
       anecdote.bindAnecdoteRead(anecdoteId);
 
       //Add event in navigation
-      anecdote.bindAnecdoteBestReadPrevious();
-      anecdote.bindAnecdoteBestReadNext();
+      anecdote.bindAnecdoteNavigation();
     }
 
     if(pathName === "/anecdote/random"){
@@ -53,40 +51,19 @@ const anecdote = {
     anecdote.handleLoadAnecdote(anecdoteId);
   },
 
-  bindAnecdoteReadPrevious: function() {
+  bindAnecdoteNavigation(){
 
-    //Select arrow next page in <div id="arrow-navigation">
-    const arrowNext = document.querySelector("#anecdote-read-previous");
+    //Select arrow previous page in <div id="arrow-navigation">
+    const arrowPrevious = document.querySelector("#anecdote-read-previous");
 
     //Add event on click 
-    arrowNext.addEventListener("click", anecdote.handleLoadAnecdotePrevious);
-  },
-
-  bindAnecdoteReadNext: function() {
-
+    arrowPrevious.addEventListener("click", anecdote.handleLoadAnecdotePrevious);
+    
     //Select arrow next page in <div id="arrow-navigation">
     const arrowNext = document.querySelector("#anecdote-read-next");
 
-    //Add event on click 
+    //Add event on click
     arrowNext.addEventListener("click", anecdote.handleLoadAnecdoteNext);
-  },
-
-  bindAnecdoteBestReadPrevious: function() {
-
-    //Select arrow next page in <div id="arrow-navigation">
-    const arrowNext = document.querySelector("#anecdote-read-previous");
-
-    //Add event on click 
-    arrowNext.addEventListener("click", anecdote.handleLoadAnecdoteBestPrevious);
-  },
-
-  bindAnecdoteBestReadNext: function() {
-
-    //Select arrow next page in <div id="arrow-navigation">
-    const arrowNext = document.querySelector("#anecdote-read-next");
-
-    //Add event on click 
-    arrowNext.addEventListener("click", anecdote.handleLoadAnecdoteBestNext);
   },
 
   bindAnecdoteReadRandom: function() {
@@ -112,53 +89,55 @@ const anecdote = {
     //Select anecdoteId in template
     let anecdoteId = spanAnecdoteId.textContent;
 
-    //Set request option to get random anecdote
-    let requestOption = anecdoteId + "/prev";
+    //Select span element <span id="current-theme"></span>
+    const spanCurrentTheme = document.querySelector("#current-theme");
+    //Select anecdote theme in template
+    let theme = spanCurrentTheme.textContent;
 
-    //Get next anecdote by requestOption from API
-    anecdote.loadAnecdoteNavigationFromAPI(requestOption);
+    if(theme === "best"){
+      //Set request option to get random anecdote
+      let requestOption = theme + "/" + anecdoteId + "/prev";
+
+      //Get next anecdote by requestOption from API
+      anecdote.loadAnecdoteNavigationFromAPI(requestOption);
+
+    } else {
+
+      //Set request option to get random anecdote
+      let requestOption = anecdoteId + "/prev";
+
+      //Get next anecdote by requestOption from API
+      anecdote.loadAnecdoteNavigationFromAPI(requestOption);
+    }
   },
 
-  handleLoadAnecdoteNext: function() {
+  handleLoadAnecdoteNext: function(request) {
 
     //Select span element <span id="current-anecdoteId"></span>
     const spanAnecdoteId = document.querySelector("#current-anecdoteId");
     //Select anecdoteId in template
     let anecdoteId = spanAnecdoteId.textContent;
 
-    //Set request option to get random anecdote
-    let requestOption = anecdoteId + "/next";
+    //Select span element <span id="current-theme"></span>
+    const spanCurrentTheme = document.querySelector("#current-theme");
+    //Select anecdote theme in template
+    let theme = spanCurrentTheme.textContent;
 
-    //Get next anecdote by requestOption from API
-    anecdote.loadAnecdoteNavigationFromAPI(requestOption);
-  },
+    if(theme === "best"){
+      //Set request option to get random anecdote
+      let requestOption = theme + "/" + anecdoteId + "/next";
 
-  handleLoadAnecdoteBestPrevious: function() {
+      //Get next anecdote by requestOption from API
+      anecdote.loadAnecdoteNavigationFromAPI(requestOption);
 
-    //Select span element <span id="current-anecdoteId"></span>
-    const spanAnecdoteId = document.querySelector("#current-anecdoteId");
-    //Select anecdoteId in template
-    let anecdoteId = spanAnecdoteId.textContent;
+    } else {
 
-    //Set request option to get random anecdote
-    let requestOption = "best/" + anecdoteId + "/prev";
+      //Set request option to get random anecdote
+      let requestOption = anecdoteId + "/next";
 
-    //Get next anecdote by requestOption from API
-    anecdote.loadAnecdoteNavigationFromAPI(requestOption);
-  },
-
-  handleLoadAnecdoteBestNext: function() {
-
-    //Select span element <span id="current-anecdoteId"></span>
-    const spanAnecdoteId = document.querySelector("#current-anecdoteId");
-    //Select anecdoteId in template
-    let anecdoteId = spanAnecdoteId.textContent;
-
-    //Set request option to get random anecdote
-    let requestOption = "best/" + anecdoteId + "/next";
-
-    //Get next anecdote by requestOption from API
-    anecdote.loadAnecdoteNavigationFromAPI(requestOption);
+      //Get next anecdote by requestOption from API
+      anecdote.loadAnecdoteNavigationFromAPI(requestOption);
+    }
   },
 
   handleLoadAnecdoteRandom: function(){
@@ -174,7 +153,7 @@ const anecdote = {
   // DOM
   // ---------------------------------------------------------
 
-  readAnecdote: function(id, title, content, source, createdAt, categoryId1, categoryName1, categoryColor1, categoryId2, categoryName2, categoryColor2, categoryId3, categoryName3, categoryColor3, userId, pseudo, upvote, downvote){
+  readAnecdote: function(theme, id, title, content, source, createdAt, categoryId1, categoryName1, categoryColor1, categoryId2, categoryName2, categoryColor2, categoryId3, categoryName3, categoryColor3, userId, pseudo, upvote, downvote){
 
     //Select template element <template id="anecdote-read-template">
     const templateElement = document.querySelector("#anecdote-read-template");
@@ -225,6 +204,16 @@ const anecdote = {
     const spanAnecdoteId = anecdoteReadElement.querySelector("#current-anecdoteId");
     spanAnecdoteId.textContent = id;
 
+    //Select span element <span id="current-theme"></span>
+    const spanCurrentTheme = anecdoteReadElement.querySelector("#current-theme");
+
+    if(theme === "best"){
+      spanCurrentTheme.textContent = theme;
+
+    } else {
+      spanCurrentTheme.textContent = "anecdote";
+    }
+    
     //Select p element <p id="anecdote-author">
     const anecdotePublishing = anecdoteReadElement.querySelector("#anecdote-author");
     //Represent Date
@@ -287,10 +276,15 @@ const anecdote = {
     .then(
       function(object) {
 
+        let pathName = window.location.pathname;
+        let request = pathName.split("/");
+        let theme = request[2];
+
         const anecdoteData = object.anecdote[0];
 
         //Create anecdote element browse
         let anecdoteItem = anecdote.readAnecdote(
+          theme,
           anecdoteData.id,
           anecdoteData.title, 
           anecdoteData.content,
@@ -314,6 +308,14 @@ const anecdote = {
       function(error) {
 
         console.log(error);
+
+        //Remove preceding anecdote in view
+        anecdote.removePrecedingAnecdoteItem();
+
+        //Select element in <div id="arrow-navigation">
+        const arrowNavigation = document.querySelector("#arrow-navigation");
+        //Remove navigation in the view
+        arrowNavigation.remove();
 
         //Select section element <section id="anecdote-read">
         const sectionElement = document.querySelector("#anecdote-read");
