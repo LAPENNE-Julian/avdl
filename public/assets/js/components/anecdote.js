@@ -15,6 +15,7 @@ const anecdote = {
 
       //Add event in navigation
       anecdote.bindAnecdoteNavigation();
+
     }
 
     if(pathNameFirst === "anecdote" && pathNameSecond === "best" && pathNameThird !== undefined){
@@ -51,6 +52,10 @@ const anecdote = {
     anecdote.handleLoadAnecdote(anecdoteId);
   },
 
+  bindAnecdoteReadTooltips: function(){
+    
+  },
+
   bindAnecdoteNavigation(){
 
     //Select arrow previous page in <div id="arrow-navigation">
@@ -80,6 +85,24 @@ const anecdote = {
 
     //Get anecdote by Id from API
     anecdote.loadAnecdoteFromAPI(anecdoteId);
+  },
+
+  handleAnecdoteReadTooltipsUpvote: function (){
+    
+    console.log("nous somme ici");
+    //Select section element
+    const sectionElement = document.querySelector("#anecdote-content-vote li");
+
+    //Select event element
+    const eventElement = document.querySelector("#anecdote-read-upvote");
+
+    //Set message
+    let bubbleHeader = "Upvote";
+
+    //Get tooltips, set message
+    app.createTooltips(sectionElement, eventElement, bubbleHeader);
+
+    setTimeout(app.removeTooltips, 1500);
   },
 
   handleLoadAnecdotePrevious: function() {
@@ -220,6 +243,12 @@ const anecdote = {
     const date = new Date(createdAt);
     //Set author and date format
     anecdotePublishing.textContent = "Publié par " + pseudo + " le " + date.toLocaleDateString("fr");
+
+
+    //Select <li> element with upvote of anecdote
+    const arrowUpvote = anecdoteReadElement.querySelector("#anecdote-read-upvote");
+
+    arrowUpvote.addEventListener("click", anecdote.handleAnecdoteReadTooltipsUpvote);
 
     //Select <li> element with vote of anecdote
     const anecdoteVote = anecdoteReadElement.querySelector("#anecdote-read-vote");

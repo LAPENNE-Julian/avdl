@@ -5,6 +5,27 @@ body {
     /*background-size: cover;*/
 }
 
+.bubble {
+    position: absolute;
+    bottom: 10%;
+}
+
+.bubble-text {
+    background:#139ee0;
+    color:#fff;
+    padding:7px 15px;
+    border-radius:3px;
+    width:200px;
+}
+
+.bubble-text::after{
+    content:""; 
+    border-left:20px solid transparent;
+    border-right:20px solid transparent;
+    border-top: 20px solid #139ee0;
+    position: absolute;  
+}
+
 /*Logo*/
 #avdl{
     font-family: 'Permanent Marker', cursive;

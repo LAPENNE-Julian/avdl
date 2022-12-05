@@ -119,6 +119,54 @@ const app = {
     }
   },
 
+  createTooltips: function(sectionElement, eventElement, header){
+
+    //Create element <div class="bubble">
+    const divBubble = document.createElement("div");
+    //Set attribute 
+    divBubble.classList.add("bubble");
+
+    //Create element <div class="bubble-text">
+    const divBubbleText = document.createElement("div");
+    //Set attribute 
+    divBubbleText.classList.add("bubble-text");
+
+    //Insert divBubbleText in divBubble
+    divBubble.append(divBubbleText);
+
+    //Create h1 element
+    const headerBubble = document.createElement("h1");
+    //Set attribute
+    headerBubble.setAttribute("style", "font-size: 120%");
+    //Set header
+    headerBubble.textContent = header;
+    //Insert header in divBubbleText
+    divBubbleText.append(headerBubble);
+
+    //Create hr element
+    const hr = document.createElement("hr");
+    //Insert hr in divBubbleText
+    divBubbleText.append(hr);
+
+    //Create hr element
+    const paragraph = document.createElement("p");
+    //Set content of paragh
+    paragraph.textContent = "Fonctionnalité bientôt disponible";
+    //Insert paragraph in divBubbleText
+    divBubbleText.append(paragraph);
+
+    //Insert div bubble in sectionElement
+    sectionElement.insertBefore(divBubble, eventElement);
+  },
+
+  removeTooltips: function() {
+
+    //Select element bubble
+    const bubble = document.querySelector(".bubble");
+
+    bubble.remove();
+  },
+
 };
 
 //Call app.init when DOM loaded
