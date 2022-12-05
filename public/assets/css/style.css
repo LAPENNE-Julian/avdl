@@ -241,6 +241,10 @@ api-documentation*/
 }
 
 /*api-documentation*/
+#api-documentation {
+    padding: 5% 8%;
+}
+
 #api-documentation h2 {
     margin-top: 10%;
 }
@@ -252,7 +256,7 @@ api-documentation*/
     margin-bottom: 2%;
 }
 
-.api-documentation-item p {
+.api-documentation-item p{
     color:rgb(97, 95, 95);
     padding: 1%;
     margin: 0.5%;
