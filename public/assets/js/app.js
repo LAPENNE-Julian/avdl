@@ -119,7 +119,15 @@ const app = {
     }
   },
 
-  createTooltips: function(sectionElement, eventElement, header){
+  createTooltips: function(title, parentElement, pointerElement){
+    
+    //Select preceding bubble 
+    const precedingBubble = document.querySelector(".bubble");
+
+    if(precedingBubble !== null){
+      //if exist remove
+      precedingBubble.remove();
+    }
 
     //Create element <div class="bubble">
     const divBubble = document.createElement("div");
@@ -137,9 +145,9 @@ const app = {
     //Create h1 element
     const headerBubble = document.createElement("h1");
     //Set attribute
-    headerBubble.setAttribute("style", "font-size: 120%");
+    headerBubble.setAttribute("style", "font-size: 120%; text-align: center;");
     //Set header
-    headerBubble.textContent = header;
+    headerBubble.textContent = title;
     //Insert header in divBubbleText
     divBubbleText.append(headerBubble);
 
@@ -150,21 +158,29 @@ const app = {
 
     //Create hr element
     const paragraph = document.createElement("p");
+    //Set attribute
+    paragraph.setAttribute("style", "font-size: 120%; text-align: center;");
     //Set content of paragh
-    paragraph.textContent = "Fonctionnalité bientôt disponible";
+    paragraph.textContent = "Bientôt disponible";
     //Insert paragraph in divBubbleText
     divBubbleText.append(paragraph);
 
-    //Insert div bubble in sectionElement
-    sectionElement.insertBefore(divBubble, eventElement);
+    //Insert div bubble in parentElement
+    parentElement.prepend(divBubble);
+
+    //Remove tooltips after 1 secondes
+    setTimeout(app.removeTooltips, 1500, pointerElement);
   },
 
-  removeTooltips: function() {
+  removeTooltips: function(pointerElement) {
 
     //Select element bubble
     const bubble = document.querySelector(".bubble");
-
+    //Remove
     bubble.remove();
+
+    //Remove class "pointer"
+    pointerElement.classList.remove("pointer");
   },
 
 };

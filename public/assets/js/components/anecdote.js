@@ -52,8 +52,27 @@ const anecdote = {
     anecdote.handleLoadAnecdote(anecdoteId);
   },
 
-  bindAnecdoteReadTooltips: function(){
+  bindAnecdoteReadTooltips: function(anecdoteReadElement){
     
+    //Select <li> element with upvote of anecdote
+    const upvote = anecdoteReadElement.querySelector("#anecdote-read-upvote");
+    //Add event
+    upvote.addEventListener("click", anecdote.handleAnecdoteReadTooltipsVote);
+
+    //Select <li> element with downvote of anecdote
+    const downvote = anecdoteReadElement.querySelector("#anecdote-read-downvote");
+    //Add event
+    downvote.addEventListener("click", anecdote.handleAnecdoteReadTooltipsVote);
+
+    //Select <li> element with knownvote of anecdote
+    const knownvote = anecdoteReadElement.querySelector("#anecdote-read-known");
+    //Add event
+    knownvote.addEventListener("click", anecdote.handleAnecdoteReadTooltipsKnown);
+
+    //Select <li> element with downknownvote of anecdote
+    const unknownvote = anecdoteReadElement.querySelector("#anecdote-read-unknown");
+    //Add event
+    unknownvote.addEventListener("click", anecdote.handleAnecdoteReadTooltipsUnknown);
   },
 
   bindAnecdoteNavigation(){
@@ -87,22 +106,51 @@ const anecdote = {
     anecdote.loadAnecdoteFromAPI(anecdoteId);
   },
 
-  handleAnecdoteReadTooltipsUpvote: function (){
-    
-    console.log("nous somme ici");
+  handleAnecdoteReadTooltipsVote: function (){
+
+    //Set position relative for ancestor element
+    let pointerElement = document.querySelector("#anecdote-read-li-upvote");
+    pointerElement.classList.add("pointer");
+
+    //Select tooltips parent element
+    const parentElement = document.querySelector("#anecdote-read-li-upvote");
+
+    //Set title
+    let bubbleTitle = "Vote";
+
+    //Create tooltips and set position
+    app.createTooltips(bubbleTitle, parentElement, pointerElement);
+  },
+
+  handleAnecdoteReadTooltipsKnown: function (){
+
+    /*let pointerElement = document.querySelector("#anecdote-notice");*/
+    let pointerElement = document.querySelector("#anecdote-read-li-known");
+    pointerElement.classList.add("pointer");
+
     //Select section element
-    const sectionElement = document.querySelector("#anecdote-content-vote li");
+    const parentElement = document.querySelector("#anecdote-read-known");
 
-    //Select event element
-    const eventElement = document.querySelector("#anecdote-read-upvote");
-
-    //Set message
-    let bubbleHeader = "Upvote";
+    //Set title
+    let bubbleTitle = "Avis";
 
     //Get tooltips, set message
-    app.createTooltips(sectionElement, eventElement, bubbleHeader);
+    app.createTooltips(bubbleTitle, parentElement, pointerElement);
+  },
 
-    setTimeout(app.removeTooltips, 1500);
+  handleAnecdoteReadTooltipsUnknown: function (){
+
+    let pointerElement = document.querySelector("#anecdote-read-li-unknown");
+    pointerElement.classList.add("pointer");
+
+    //Select section element
+    const parentElement = document.querySelector("#anecdote-read-unknown");
+
+    //Set title
+    let bubbleTitle = "Avis";
+
+    //Get tooltips, set message
+    app.createTooltips(bubbleTitle, parentElement, pointerElement);
   },
 
   handleLoadAnecdotePrevious: function() {
@@ -244,11 +292,8 @@ const anecdote = {
     //Set author and date format
     anecdotePublishing.textContent = "Publié par " + pseudo + " le " + date.toLocaleDateString("fr");
 
-
-    //Select <li> element with upvote of anecdote
-    const arrowUpvote = anecdoteReadElement.querySelector("#anecdote-read-upvote");
-
-    arrowUpvote.addEventListener("click", anecdote.handleAnecdoteReadTooltipsUpvote);
+    //Add tooltips event
+    anecdote.bindAnecdoteReadTooltips(anecdoteReadElement);
 
     //Select <li> element with vote of anecdote
     const anecdoteVote = anecdoteReadElement.querySelector("#anecdote-read-vote");

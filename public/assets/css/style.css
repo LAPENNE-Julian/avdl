@@ -2,28 +2,8 @@ body {
     background-color: #212529;
     background-image: url('images/question.jpg');
     background-repeat: repeat;
+    /*position: relative;*/
     /*background-size: cover;*/
-}
-
-.bubble {
-    position: absolute;
-    bottom: 10%;
-}
-
-.bubble-text {
-    background:#139ee0;
-    color:#fff;
-    padding:7px 15px;
-    border-radius:3px;
-    width:200px;
-}
-
-.bubble-text::after{
-    content:""; 
-    border-left:20px solid transparent;
-    border-right:20px solid transparent;
-    border-top: 20px solid #139ee0;
-    position: absolute;  
 }
 
 /*Logo*/
@@ -433,6 +413,33 @@ api-documentation*/
 }
 
 /*anecdote-read*/
+.pointer {
+    position: relative;
+}
+
+.bubble {
+    position: absolute;
+    bottom: 150%;
+    left: 10%;
+    width: 180px;
+    height: auto;
+}
+
+.bubble-text {
+    background: #139ee0;
+    color: #fff;
+    padding: 10px;
+    border-radius:10%;
+}
+
+.bubble-text::after{
+    content:""; 
+    border-left:20px solid transparent;
+    border-right:20px solid transparent;
+    border-top: 20px solid #139ee0;
+    position: absolute;  
+}
+
 #anecdote-read-inner {
     padding-top: 5%;
     padding-bottom: 5%;
@@ -487,14 +494,14 @@ api-documentation*/
     color: darkblue;
 }
 
-#anecdote-known ul {
+#anecdote-notice ul {
     display: flex;
     flex-direction: row;
     justify-content: start;
     margin-left: 10%;
 }
 
-#anecdote-known li {
+#anecdote-notice li {
     margin-right: 5%;
     margin-top: 10%;
 }
@@ -692,7 +699,7 @@ textarea {
         padding: 15% 0%;
     }
 
-    #anecdote-known ul {
+    #anecdote-notice ul {
         flex-direction: column;
     }
 
@@ -844,6 +851,13 @@ textarea {
 
 /*Mobile L*/
 @media (min-width: 376px) and (max-width: 425px){
+
+    /*anecdote-read*/
+    .bubble {
+        bottom: 90%;
+        left: 15%;
+    }
+
     /*category-browse*/
     #category-browse-inner {
         display: flex;
@@ -870,6 +884,12 @@ textarea {
     }
 
     /*anecdote-read*/
+    /*anecdote-read*/
+    .bubble {
+        bottom: 140%;
+        left: 10%;
+    }
+
     #anecdote-read-vote {
         padding: 25% 0%;
     }
@@ -886,6 +906,12 @@ textarea {
     #error404 img,
     #error403 img {
         height: 350px;
+    }
+
+    /*anecdote-read*/
+    .bubble {
+        bottom: 60%;
+        left: 8%;
     }
 
     /*category-browse*/

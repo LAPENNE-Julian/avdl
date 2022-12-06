@@ -21,25 +21,28 @@
             <span id="current-theme"></span>
 
             <p id="anecdote-author">Publié par Auteur le 01.01.1999</p>
+            
             <div id="anecdote-content">
                 <div id="anecdote-content-vote">
                     <ul>
-                        <li id="first-li">
-                            <a id="anecdote-read-upvote" class="btn btn-outline-dark" href="#" title="upVote" alt="upVote">
+                        <li id="anecdote-read-li-upvote">
+                            <button id="anecdote-read-upvote" class="btn btn-outline-dark" title="upVote" alt="upVote">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
                             </svg>
-                            </a>
+                            </button>
                         </li>
+
                         <li id="anecdote-read-vote">
                             Vote
                         </li>
-                        <li>
-                            <a id="anecdote-read-sownvote" class="btn btn-outline-dark" href="#" title="sownVote" alt="downVote">
+
+                        <li id="anecdote-read-li-downvote">
+                            <button id="anecdote-read-downvote" class="btn btn-outline-dark" title="downVote" alt="downVote">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
                             </svg>
-                            </a>
+                            </button>
                         </li>
                     </ul>
                 </div>
@@ -50,24 +53,26 @@
                 <a href="#">Source</a></li>
             </div>
 
-            <div id="anecdote-known">
-                <ul>
-                    <li>
-                        <a class="btn btn-outline-success" href="#" title="known" alt="known">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-                        <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-                        </svg> Je connaissais
-                        </a>
-                    </li> 
+            <div id="anecdote-notice">
+                <div id="anecdote-notice-vote">
+                    <ul>
+                        <li id="anecdote-read-li-known">
+                            <button id="anecdote-read-known" class="btn btn-outline-success" title="known" alt="known">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+                            </svg> Je connaissais
+                            </button>
+                        </li> 
 
-                    <li>
-                        <a class="btn btn-outline-danger" href="#" title="known" alt="known">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-                        </svg> Je ne connaissais pas
-                        </a>
-                    </li>
-                </ul>
+                        <li id="anecdote-read-li-unknown">
+                            <button id="anecdote-read-unknown" class="btn btn-outline-danger" title="known" alt="known">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                            </svg> Je ne connaissais pas
+                            </button>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </template>
