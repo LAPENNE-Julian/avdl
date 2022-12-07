@@ -4,6 +4,7 @@
                     <ul class="list-inline">
                         <li class="list-inline-item"><a href="/">Home</a></li>
                         <!-- <li><a href="">Qui sommes-nous ?</a></li> -->
+                        <li class="list-inline-item"><a href="/api-documentation">Api Documentation</a></li>
                         <li class="list-inline-item"><a href="/contact">Contact</a></li>
                         <li class="list-inline-item"><a href="/mentions-legales">Mentions légales</a></li>
                     </ul>

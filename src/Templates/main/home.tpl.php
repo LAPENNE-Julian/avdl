@@ -5,6 +5,9 @@
             <p>
             Avez-vous déja lu...? est une Api permettant de découvrir des anecdotes.
             </p>
+            <p>
+            Utilisez la <span class="label-bold"><a href="/api-documentation">Documentation</a></span>
+            </p>
         </div>
         
         <div id="home-img">

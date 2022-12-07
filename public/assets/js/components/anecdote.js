@@ -315,8 +315,11 @@ const anecdote = {
 
     //Select anecdote item
     const anecdote = document.querySelector("#anecdote-read-inner");
-    //Remove anecdote
-    anecdote.remove();
+
+    if(anecdote !== null) {
+      //Remove anecdote
+      anecdote.remove();
+    }
   },
 
   // ---------------------------------------------------------

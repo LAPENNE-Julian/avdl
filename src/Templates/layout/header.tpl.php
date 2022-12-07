@@ -48,9 +48,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/anecdote/best">Top 5</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/api-documentation">Api Documentation</a>
-                        </li>
                     </ul>
 
                     <ul class="navbar-nav me-4 mb-md-0">

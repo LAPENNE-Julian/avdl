@@ -138,7 +138,7 @@ const categoriesList = {
       cache: "no-cache"
     };
 
-    fetch(app.apiRootUrl + "/category8", config)
+    fetch(app.apiRootUrl + "/category", config)
     .then(
       function(response) {
         //convert json response to object

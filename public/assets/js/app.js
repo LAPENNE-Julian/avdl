@@ -5,14 +5,16 @@ const app = {
   pathName: window.location.pathname,
 
   init: function() {
-
     console.log("app.init() appelé");
+    //Get Url
     let splitPathName = app.pathName.split("/");
 
+    //Scripts
     categoriesList.init(app.pathName, splitPathName[1], splitPathName[2], splitPathName[3]);
     anecdotesList.init(app.pathName);
     anecdote.init(app.pathName, splitPathName[1], splitPathName[2], splitPathName[3]);
 
+    //Remove errorMessage if script loaded
     app.bindScriptLoad();
   },
 

@@ -126,17 +126,12 @@ h2 {
     justify-content: space-between;
 }
 
-#arrow-navigation ul a:hover {
-    opacity:0.8;
-    color: rgb(68, 67, 67);
-}
-
 #arrow-navigation button {
     border: none;
     background-color: unset;
 }
 
-/* footer */
+/*footer*/
 footer ul {
     list-style:none;
     padding: 1%;
@@ -852,12 +847,6 @@ textarea {
 /*Mobile L*/
 @media (min-width: 376px) and (max-width: 425px){
 
-    /*anecdote-read*/
-    .bubble {
-        bottom: 90%;
-        left: 15%;
-    }
-
     /*category-browse*/
     #category-browse-inner {
         display: flex;
@@ -884,12 +873,6 @@ textarea {
     }
 
     /*anecdote-read*/
-    /*anecdote-read*/
-    .bubble {
-        bottom: 140%;
-        left: 10%;
-    }
-
     #anecdote-read-vote {
         padding: 25% 0%;
     }
@@ -906,12 +889,6 @@ textarea {
     #error404 img,
     #error403 img {
         height: 350px;
-    }
-
-    /*anecdote-read*/
-    .bubble {
-        bottom: 60%;
-        left: 8%;
     }
 
     /*category-browse*/
