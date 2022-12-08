@@ -19,6 +19,12 @@ class MainController extends CoreController
         $this->show('main/contact');
     }
 
+    public function contactPost()
+    {
+        //WIP
+        $this->show('error/worksite');
+    }
+
     public function legal()
     {
         $this->show('main/legal-notices');

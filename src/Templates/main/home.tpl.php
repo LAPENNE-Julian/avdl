@@ -11,7 +11,7 @@
         </div>
         
         <div id="home-img">
-            <img src="<?php $_SERVER['HTTP_HOST'] ?>/assets/css/images/question-mark.jpg" alt="question-mark.jpg">
+            <!-- <img src="<?php $_SERVER['HTTP_HOST'] ?>/assets/css/images/home.jpg" alt="home.jpg"> -->
         </div>
     </section>
 

@@ -88,8 +88,9 @@ h2 {
 }
 
 #home img {
-    height: 300px;
+    height: 350px;
     border: thin solid #33b5e5;
+    border-radius: 15%;
     box-shadow: 60px -20px #33b5e5;
     margin-left: 15%;
 }
@@ -177,8 +178,8 @@ footer ul a:hover {
     margin-bottom: 2%;
 }
 
-#error404-item-data,
-#error403-item-data,
+#error404-item-data p,
+#error403-item-data p,
 #worksite-item-data p {
     margin: 2%;
 }
@@ -200,7 +201,7 @@ footer ul a:hover {
     margin-left: 10%;
 }
 
-#error404,
+#error404 a,
 #worksite a {
     padding: 2%;
     color: white;

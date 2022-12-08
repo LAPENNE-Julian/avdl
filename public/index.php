@@ -21,6 +21,11 @@ $router->map('GET', '/contact', [
     'method' => 'contact',
 ], 'main-contact');
 
+$router->map('POST', '/contact', [
+    'controller' => '\App\Controllers\MainController',
+    'method' => 'contactPost',
+], 'main-contact-post');
+
 $router->map('GET', '/mentions-legales', [
     'controller' => '\App\Controllers\MainController',
     'method' => 'legal',

@@ -54,7 +54,7 @@
 
         <h1>Nous contacter</h1>
 
-        <form id="contact-form-content" action="#" method="POST">
+        <form id="contact-form-content" method="post">
             
             <div class="row-border">
                 <!-- <label class="required" for="name">Votre nom :</label><br /> -->
