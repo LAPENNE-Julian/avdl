@@ -98,7 +98,7 @@ const categoriesList = {
     const divElement = document.createElement("div");
     divElement.classList.add("category-browse-item");
 
-    divElement.setAttribute("style", "border: thick solid" + color + ";");
+    divElement.setAttribute("style", "border: thick solid " + color + ";");
 
 
     //Create a element <a title="category" alt="category" class="category-browse-item-a">

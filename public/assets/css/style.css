@@ -169,8 +169,13 @@ footer ul a:hover {
 }
 
 /*Home page*/
+.label-dark-blue {
+    color: #187394;
+}
+
 #homePage h1 {
     text-align: left;
+    margin-bottom: 5%;
 }
 
 #homePage-item-content {
@@ -180,12 +185,22 @@ footer ul a:hover {
     align-items: center;
 }
 
+#homePage p {
+    margin-bottom: 2% 5%;
+    text-align: justify;
+}
+
 #homePage img {
     height: 350px;
     border: thin solid #33b5e5;
     border-radius: 5%;
     box-shadow: 60px -20px #33b5e5;
     margin-left: 10%;
+}
+
+#homePage a {
+    color: rgb(77, 139, 15);
+    font-weight: bold;
 }
 
 /*login-form and register-form*/
@@ -353,6 +368,10 @@ api-documentation*/
 
 /*anecdote-browse*/
 /*anecdote-read*/
+.section-inner {
+    padding: 10% 15%;
+}
+
 #label-categories {
     display: flex;
     flex-direction: row;
@@ -822,6 +841,15 @@ textarea {
     /*errorPage */
     .errorPage h1 {
         font-size: 300%;
+    }
+
+    /*homePage */
+    #homePage-item-content {
+        display: inline-block;
+    }
+
+    #homePage img {
+        float: right;
     }
 }
 
