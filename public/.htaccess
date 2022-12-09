@@ -1,0 +1,17 @@
+RewriteEngine On
+
+# dynamically setup base URI
+RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
+RewriteRule ^(.*) - [E=BASE_URI:%1]
+
+# redirect every request to index.php
+# and give the relative URL in "_url" GET param
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# add condition if request is not directory or files
+# check if directory of files exist
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# not use index.php redirection for CSS  an Js directory
+# RewriteCond $1 !^(css|js)
