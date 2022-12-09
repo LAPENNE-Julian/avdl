@@ -7,7 +7,7 @@ INSERT INTO `user` (`id`,`pseudo`, `email`, `password`, `img`, `roles`, `created
 (2, 'user', 'user@mail.fr', '$2y$10$Kr2iCL3ywK3paO1agjpT3uUOv6h.jyshrLe9gA2ZkAP.afXaNWqd.', DEFAULT, 1, DEFAULT, NULL, 0),
 (3, 'ameli', 'ameli@mail.fr', 'ameli', DEFAULT, 1, DEFAULT, NULL, 0);
 
--- admin mdp crypt : $2y$10$Wu9LyPxOlv3dfSlZhDvQLuuu8agIsoG/Y7YQjyXCNctKvOrO4BSXq = admin
+-- admin mdp crypt : $2y$10$HOydlNGOn/zCM8caFnn13.eNTTylhdBkevWV.t3AEW/MwiBcDlFPu = admin
 -- user mpd crypt : $2y$10$Kr2iCL3ywK3paO1agjpT3uUOv6h.jyshrLe9gA2ZkAP.afXaNWqd. = user
 
 COMMIT;
