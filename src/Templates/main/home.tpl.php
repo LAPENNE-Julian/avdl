@@ -1,18 +1,24 @@
-<main>
-    <section id="home" class="container-fluid">
-        <div id="home-content">
-            <h1>Bienvenue</h1>
-            <p>
-            Avez-vous déja lu...? est une Api permettant de découvrir des anecdotes.
-            </p>
-            <p>
-            Utilisez la <span class="label-bold"><a href="/api-documentation">Documentation</a></span>
-            </p>
-        </div>
-        
-        <div id="home-img">
-            <!-- <img src="<?php $_SERVER['HTTP_HOST'] ?>/assets/css/images/home.jpg" alt="home.jpg"> -->
-        </div>
-    </section>
+<section id="homePage" class="container-fluid errorPage">
+    <div id="homePage-inner">
 
-</main>
+        <h1>Bienvenue</h1>
+
+        <div id="homePage-item-content">
+
+            <img src="<?php $_SERVER['HTTP_HOST'] ?>/assets/css/images/qcolor.jpg" alt="qcolor.jpg">
+
+            <div id="homePage-item-data">
+
+                <p>
+                Avez-vous déja lu...? est une Api permettant de découvrir des anecdotes.
+                </p>
+
+                <p>
+                Utilisez la <span class="label-bold"><a href="/api-documentation">Documentation</a></span>
+                </p>
+                
+            </div>
+        </div> 
+        </div> 
+</section>
+

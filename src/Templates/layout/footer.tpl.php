@@ -1,3 +1,4 @@
+        </main>
         <footer class="container-fluid bg-dark bottom">
             <div id="footer-inner">
                 <nav class="text-center text-white">
@@ -24,6 +25,5 @@
         <script defer src="<?php $_SERVER['HTTP_HOST'] ?>/assets/js/components/categoriesList.js"></script>
         <script defer src="<?php $_SERVER['HTTP_HOST'] ?>/assets/js/components/anecdotesList.js"></script>
         <script defer src="<?php $_SERVER['HTTP_HOST'] ?>/assets/js/components/anecdote.js"></script>
-
     </body>
 </html>

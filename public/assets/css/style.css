@@ -2,7 +2,6 @@ body {
     background-color: #212529;
     background-image: url('images/question.jpg');
     background-repeat: repeat;
-    /*position: relative;*/
     /*background-size: cover;*/
 }
 
@@ -36,7 +35,7 @@ h2 {
     font-weight: bold;
 }
 
-#home, 
+#homePage, 
 .errorPage,
 #legal-notices, #contact,
 #api-documentation,
@@ -47,11 +46,6 @@ h2 {
     
 }
 
-.section-inner {
-    padding: 10% 15%;
-}
-
-#home,
 #anecdote-read,
 #anecdote-browse,
 #category-browse {
@@ -59,60 +53,10 @@ h2 {
     margin: 5% 0;
 }
 
-#home, .errorPage p {
-    line-height: 1.5;
-}
-
 #legal-notices, #contact, 
 #api-documentation {
     padding: 12%;
     border-bottom: medium solid gray;
-}
-
-/*Home page*/
-#home {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding: 5%;
-}
-
-#home h1 {
-    font-size: 250%;
-    text-align: left;
-    padding-bottom: 5%;
-}
-
-#home-content {
-    width: 45%;
-}
-
-#home img {
-    height: 350px;
-    border: thin solid #33b5e5;
-    border-radius: 15%;
-    box-shadow: 60px -20px #33b5e5;
-    margin-left: 15%;
-}
-
-/*login-form and register-form*/
-#form-login-inner,
-#form-register-inner {
-    padding: 0% 15%;
-}
-
-#form-login-inner button,
-#form-register-inner button {
-    align-self: end;
-}
-
-/*user-peseudo-header-nav*/
-.user-pseudo {
-    font-size: 150%;
-    font-weight: bold;
-    text-transform: capitalize;
-    align-self: center;
-    padding: 2%;
 }
 
 /*arrow navigation*/
@@ -166,8 +110,6 @@ footer ul a:hover {
 
 /*errorPage*/
 .errorPage {
-    /*background-color: #ffffff;*/
-    /*background-color: rgb(250 250 250 / 0.9);*/
     margin : 5% 0%;
     padding: 2% 10% 5%;
     border : none;
@@ -176,6 +118,10 @@ footer ul a:hover {
 .errorPage h1 {
     font-size: 400%;
     margin-bottom: 2%;
+}
+
+.errorPage p {
+    line-height: 1.5;
 }
 
 #error404-item-data p,
@@ -220,6 +166,51 @@ footer ul a:hover {
     border: thin solid #b2261b;
     border-radius: 5%;
     margin-top: 5%;
+}
+
+/*Home page*/
+#homePage h1 {
+    text-align: left;
+}
+
+#homePage-item-content {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+}
+
+#homePage img {
+    height: 350px;
+    border: thin solid #33b5e5;
+    border-radius: 5%;
+    box-shadow: 60px -20px #33b5e5;
+    margin-left: 10%;
+}
+
+/*login-form and register-form*/
+#form-login-inner,
+#form-register-inner {
+    padding: 0% 15%;
+}
+
+#form-login-inner button,
+#form-register-inner button {
+    align-self: end;
+}
+
+#forgot-password {
+    font-size: 90%;
+    color: blue;
+}
+
+/*user-peseudo-header-nav*/
+.user-pseudo {
+    font-size: 150%;
+    font-weight: bold;
+    text-transform: capitalize;
+    align-self: center;
+    padding: 2%;
 }
 
 /*legale notices
@@ -636,19 +627,11 @@ textarea {
 /*----------multi----------*/
 /*Mobile-S, Mobile-M, Mobile -L*/
 @media (max-width: 425px){
-    /*Home page*/
-    #home-content {
-        width: 80%;
-    }
-
-    #home img {
-        display: none;
-    }
 
     /*login-form and register-form*/
     #form-login-inner,
     #form-register-inner {
-    padding: 0% 5%;
+        padding: 0% 5%;
     }
 
     /*error-script*/
@@ -656,7 +639,7 @@ textarea {
         padding: 40% 0%;
     }
 
-    /*erro404 page */
+    /*errorPage */
     .errorPage {
         margin-bottom: 15%;
     }
@@ -677,6 +660,21 @@ textarea {
     #error403 img,
     #worksite img {
         height: 150px;
+    }
+
+    /*homePage*/
+    #homePage-item-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #homePage h1 {
+        text-align: center;
+    }
+
+    #homePage img {
+        margin: 15% 0 10% 0;
     }
 
     /*legal-notices*/
@@ -812,10 +810,6 @@ textarea {
 
 /*Tablet min 650, lapTop 1024*/
 @media (min-width: 651px) and (max-width: 1024px){
-    /*home*/
-    #home img {
-        height: 150px;
-    }
 
     /*anecdote-browse*/
     #anecdote-browse-inner {
@@ -825,7 +819,7 @@ textarea {
 
 /*Tablet, LapTop 1024*/
 @media (min-width: 426px) and (max-width: 1024px){
-    /*erro404 page */
+    /*errorPage */
     .errorPage h1 {
         font-size: 300%;
     }
@@ -837,7 +831,13 @@ textarea {
     /*Logo*/
     #avdl{
         font-size: 110%;
-    } 
+    }
+
+    /*homePage*/
+    #homePage img {
+        height: 150px;
+        box-shadow: 20px -20px #33b5e5;
+    }
     
     /*category-browse*/
     #category-browse-inner {
@@ -853,6 +853,11 @@ textarea {
 
 /*Mobile L*/
 @media (min-width: 376px) and (max-width: 425px){
+    /*homePage*/
+    #homePage img {
+        height: 200px;
+        box-shadow: 35px -20px #33b5e5;
+    }
 
     /*category-browse*/
     #category-browse-inner {
@@ -873,11 +878,18 @@ textarea {
         padding: 25% 0%;
     }
 
-    /*erro404 page */
+    /*errorPage */
     #error404 img,
     #error403 img, 
     #worksite img {
         height: 250px;
+    }
+
+    /*homePage */
+    #homePage img {
+        height: 200px;
+        box-shadow: 40px -20px #33b5e5;
+        margin: 5% 0 10% 10%;
     }
 
     /*anecdote-read*/
@@ -893,11 +905,18 @@ textarea {
 
 /*lapTop 1024*/
 @media (min-width: 769px) and (max-width: 1024px){
-    /*erro404 page */
+    /*errorPage */
     #error404 img,
     #error403 img,
     #worksite img {
         height: 350px;
+    }
+
+    /*homePage */
+    #homePage img {
+        height: 280px;
+        box-shadow: 50px -20px #33b5e5;
+        margin: 5% 0 10% 10%;
     }
 
     /*category-browse*/

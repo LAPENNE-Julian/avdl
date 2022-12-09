@@ -18,10 +18,14 @@
             <input type="password" name="login-password" id="password" class="form-control" autocomplete="current-password" required>
         </div>
 
+        <a id="forgot-password" href="/register">Forgot password ?</a>
+
         <div class="form-group text-end">
             <input type="hidden" name="token" id="token" value="<?= $_SESSION['token'] ?>">
             <button  class="btn btn-info" >Sign</button>
         </div>
+
+        
        
     </form>
 </section>
