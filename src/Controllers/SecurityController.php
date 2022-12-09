@@ -23,8 +23,8 @@ class SecurityController extends CoreController
         //Find User by Email
         $user = User::findByEmail($clearEmail);
 
-        //If user email is verified
-        if($user->isVerified() == 1){
+        //--->If user email is verified
+        //-->if($user->isVerified() == true){
 
             //instanceof check if $user is an instance of User class
             //password_verify check if the password is correct
@@ -47,12 +47,12 @@ class SecurityController extends CoreController
                 $this->redirectionWithMessage('login', 'errorMessage', 'incorrect identifiers');   
             }
 
-        } else {
+        //-->} else {
 
             //Redirection to login and post error message in the view 
             //header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/login');
-            $this->redirectionWithMessage('login', 'errorMessage', 'Your email isn\'t verified, please check your mails'); 
-        }
+            //-->$this->redirectionWithMessage('login', 'errorMessage', 'Your email isn\'t verified, please check your mails'); 
+        //-->}
     }
 
     public function logout()

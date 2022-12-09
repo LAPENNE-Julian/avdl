@@ -1,23 +1,54 @@
 const app = {
 
-  apiRootUrl: "http://localhost:8080/api",
+  rootUrl: window.location.origin,
+  apiRootUrl: window.location.origin + "/api",
+  pathName: window.location.pathname,
 
   init: function() {
     console.log("app.init() appelé");
+    //Get Url
+    let splitPathName = app.pathName.split("/");
 
-    const pathName = window.location.pathname;
+    //Scripts
+    categoriesList.init(app.pathName, splitPathName[1], splitPathName[2], splitPathName[3]);
+    anecdotesList.init(app.pathName);
+    anecdote.init(app.pathName, splitPathName[1], splitPathName[2], splitPathName[3]);
 
-    let splitPathName = pathName.split("/");
-    let pathNameFirst = splitPathName[1]; 
-    let pathNameSecond = splitPathName[2];
-    let pathNameThird = splitPathName[3];
-
-    categoriesList.init(pathName, pathNameFirst, pathNameSecond, pathNameThird);
-    anecdotesList.init(pathName);
-    anecdote.init(pathNameFirst, pathNameSecond, pathNameThird);
+    //Remove errorMessage if script loaded
+    app.bindScriptLoad();
   },
 
-  error404 : function(sectionElement){
+  // ---------------------------------------------------------
+  // Binders
+  // ---------------------------------------------------------
+
+  bindScriptLoad: function() {
+
+    //Remove script error message
+    app.handleRemoveScriptLoad();
+  },
+
+  // ---------------------------------------------------------
+  // Handlers
+  // ---------------------------------------------------------
+
+  handleRemoveScriptLoad: function(){
+    
+    //Select pragraph error
+    const scriptErrorMessage = document.querySelector("#script-error-message");
+    
+    if(scriptErrorMessage !== null || scriptErrorMessage !== undefined){
+
+      //Remove script error message from the page
+      scriptErrorMessage.remove();
+    }
+  },
+
+  // ---------------------------------------------------------
+  // DOM
+  // ---------------------------------------------------------
+
+  createPageError404 : function(sectionElement){
 
     if(sectionElement !== null) {
       //Set section attribut => <section id="error404" class="container-fluid errorPage">
@@ -44,7 +75,7 @@ const app = {
 
       //Create img element
       const img = document.createElement("img");
-      img.setAttribute("src", "http://localhost:8080/assets/css/images/404.jpg");
+      img.setAttribute("src", app.rootUrl + "/assets/css/images/404.jpg");
       img.setAttribute("alt", "404.jpg");
       //Insert img element in div element <div id="error404-item-content">
       divErrorItemContent.prepend(img);
@@ -88,6 +119,70 @@ const app = {
 
       return sectionElement;
     }
+  },
+
+  createTooltips: function(title, parentElement, pointerElement){
+    
+    //Select preceding bubble 
+    const precedingBubble = document.querySelector(".bubble");
+
+    if(precedingBubble !== null){
+      //if exist remove
+      precedingBubble.remove();
+    }
+
+    //Create element <div class="bubble">
+    const divBubble = document.createElement("div");
+    //Set attribute 
+    divBubble.classList.add("bubble");
+
+    //Create element <div class="bubble-text">
+    const divBubbleText = document.createElement("div");
+    //Set attribute 
+    divBubbleText.classList.add("bubble-text");
+
+    //Insert divBubbleText in divBubble
+    divBubble.append(divBubbleText);
+
+    //Create h1 element
+    const headerBubble = document.createElement("h1");
+    //Set attribute
+    headerBubble.setAttribute("style", "font-size: 120%; text-align: center;");
+    //Set header
+    headerBubble.textContent = title;
+    //Insert header in divBubbleText
+    divBubbleText.append(headerBubble);
+
+    //Create hr element
+    const hr = document.createElement("hr");
+    //Insert hr in divBubbleText
+    divBubbleText.append(hr);
+
+    //Create hr element
+    const paragraph = document.createElement("p");
+    //Set attribute
+    paragraph.setAttribute("style", "font-size: 120%; text-align: center;");
+    //Set content of paragh
+    paragraph.textContent = "Bientôt disponible";
+    //Insert paragraph in divBubbleText
+    divBubbleText.append(paragraph);
+
+    //Insert div bubble in parentElement
+    parentElement.prepend(divBubble);
+
+    //Remove tooltips after 1 secondes
+    setTimeout(app.removeTooltips, 1500, pointerElement);
+  },
+
+  removeTooltips: function(pointerElement) {
+
+    //Select element bubble
+    const bubble = document.querySelector(".bubble");
+    //Remove
+    bubble.remove();
+
+    //Remove class "pointer"
+    pointerElement.classList.remove("pointer");
   },
 
 };

@@ -140,6 +140,77 @@ class Category extends CoreModel
         return $results;
     }
 
+    /**
+     * Get All anecdotes by category
+     * 
+     * @param int $categoryId
+     * @return Category[]
+     */
+    public static function findAnecdotes($categoryId)
+    {
+        $pdo = Database::getPDO();
+        $sql = 'SELECT 
+        `anecdote`.`id`, 
+        `anecdote`.`title`, 
+        `anecdote`.`description`, 
+        `anecdote`.`created_at`,
+        `anecdote`.`category_1`,
+        `anecdote`.`category_2`,
+        `anecdote`.`category_3`,
+
+        (SELECT `name`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_1`) AS `categoryName1`,
+        (SELECT `color`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_1`) AS `categoryColor1`,
+        (SELECT `slug`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_1`) AS `categorySlug1`,          
+        (SELECT `name`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_2`) AS `categoryName2`,
+        (SELECT `color`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_2`) AS `categoryColor2`,
+        (SELECT `slug`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_2`) AS `categorySlug2`,
+        
+        (SELECT `name`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_3`) AS `categoryName3`,
+        (SELECT `color`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_3`) AS `categoryColor3`,
+        (SELECT `slug`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_3`) AS `categorySlug3`,
+
+        `user`.`id` AS `userId`,
+        `user`.`pseudo`,
+        `user`.`img` AS `userImg`,
+
+        (SELECT COUNT(`user_id`) 
+                FROM `anecdote_action` 
+                WHERE `anecdote_action`.`vote` = 1 AND `anecdote_id` = `anecdote`.`id`
+        ) AS `upvote`,
+        (SELECT COUNT(`user_id`) 
+                FROM `anecdote_action` 
+                WHERE `anecdote_action`.`vote` = 2 AND `anecdote_id` = `anecdote`.`id`
+        ) AS `downvote`
+
+        FROM `anecdote`
+        LEFT JOIN `user` ON `anecdote`.`writer_id` = `user`.`id`
+        HAVING :id IN( `category_1`, `category_2`, `category_3`)';
+
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->execute([':id' => $categoryId]);
+        $results = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+
+        return $results;
+    }
+
     public function insert()
     {
         $pdo = Database::getPDO();
@@ -309,20 +380,74 @@ class Category extends CoreModel
     }
 
     /**
-     * Find categoryName by category Id.
+     * Get page of anecdotes (9 anecdotes by pages) by category
      * 
-     * @param int $categoryId ID of category
+     * @param int $categoryId ID of anecdote
+     * @param int $offsetNum
      * @return JSON
      */
-    public static function findNameCategoryById($categoryId)
-    {
+    public static function browsePage($categoryId, int $offsetNum){
+
         $pdo = Database::getPDO();
-        $sql = 'SELECT name FROM `category` WHERE `category`.`id` = :id';
+        $sql = 'SELECT 
+        `anecdote`.`id`, 
+        `anecdote`.`title`, 
+        `anecdote`.`description`, 
+        `anecdote`.`created_at`,
+        `anecdote`.`category_1`,
+        `anecdote`.`category_2`,
+        `anecdote`.`category_3`,
+
+        (SELECT `name`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_1`) AS `categoryName1`,
+        (SELECT `color`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_1`) AS `categoryColor1`,
+        (SELECT `slug`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_1`) AS `categorySlug1`,          
+        (SELECT `name`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_2`) AS `categoryName2`,
+        (SELECT `color`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_2`) AS `categoryColor2`,
+        (SELECT `slug`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_2`) AS `categorySlug2`,
+        
+        (SELECT `name`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_3`) AS `categoryName3`,
+        (SELECT `color`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_3`) AS `categoryColor3`,
+        (SELECT `slug`
+                    FROM `category`
+                    WHERE `category`.`id` = `category_3`) AS `categorySlug3`,
+
+        `user`.`id` AS `userId`,
+        `user`.`pseudo`,
+        `user`.`img` AS `userImg`,
+
+        (SELECT COUNT(`user_id`) 
+                FROM `anecdote_action` 
+                WHERE `anecdote_action`.`vote` = 1 AND `anecdote_id` = `anecdote`.`id`
+        ) AS `upvote`,
+        (SELECT COUNT(`user_id`) 
+                FROM `anecdote_action` 
+                WHERE `anecdote_action`.`vote` = 2 AND `anecdote_id` = `anecdote`.`id`
+        ) AS `downvote`
+
+        FROM `anecdote`
+        LEFT JOIN `user` ON `anecdote`.`writer_id` = `user`.`id`
+        HAVING :id IN( `category_1`, `category_2`, `category_3`)
+        LIMIT 9 OFFSET ' . $offsetNum;
 
         $pdoStatement = $pdo->prepare($sql);
-        $pdoStatement->bindValue(':id', $categoryId);
-        $pdoStatement->execute();
-        $results = $pdoStatement->fetch(PDO::FETCH_ASSOC);
+        $pdoStatement->execute([':id' => $categoryId]);
+        $results = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
 
         return $results;
     }

@@ -11,7 +11,7 @@
                 <h2>Appelez-nous</h2>
             </div>
             
-            <p>+336 00 00 00 00</p>
+            <p>+336 XX XX XX XX</p>
 
             <div class="contact-data-header">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
@@ -22,7 +22,7 @@
                 <h2>Emplacement</h2>
             </div>
             
-            <p>00 rue inconnu 69 000 LYON</p>
+            <p>LYON (69)</p>
 
         </address>
 
@@ -54,7 +54,7 @@
 
         <h1>Nous contacter</h1>
 
-        <form id="contact-form-content" action="#" method="POST">
+        <form id="contact-form-content" method="post">
             
             <div class="row-border">
                 <!-- <label class="required" for="name">Votre nom :</label><br /> -->

@@ -27,6 +27,7 @@ class CoreController
             //'anecdote-browse' =>    [1,2], public
             //'anecdote-read' =>    [1,2], public
             //'category-browse' =>    [1,2], public
+            //'category-browse-anecdote' =>    [1,2], public
 
             //----Backoffice----//
             //Router user

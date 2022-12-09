@@ -9,7 +9,7 @@ class MainController extends CoreController
         $this->show('main/home');
     }
 
-    public function ApiDocumentation()
+    public function apiDocumentation()
     {
         $this->show('main/api-documentation');
     }
@@ -17,6 +17,12 @@ class MainController extends CoreController
     public function contact()
     {
         $this->show('main/contact');
+    }
+
+    public function contactPost()
+    {
+        //WIP
+        $this->show('error/worksite');
     }
 
     public function legal()

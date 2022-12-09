@@ -21,6 +21,11 @@ $router->map('GET', '/contact', [
     'method' => 'contact',
 ], 'main-contact');
 
+$router->map('POST', '/contact', [
+    'controller' => '\App\Controllers\MainController',
+    'method' => 'contactPost',
+], 'main-contact-post');
+
 $router->map('GET', '/mentions-legales', [
     'controller' => '\App\Controllers\MainController',
     'method' => 'legal',
@@ -29,16 +34,15 @@ $router->map('GET', '/mentions-legales', [
 /**
  * register
  */
-/*$router->map('GET', '/register', [
+$router->map('GET', '/register', [
     'controller' => '\App\Controllers\RegistrationController',
     'method' => 'register',
 ], 'register');
 
-$router->map('POST', '/register', [
-    'controller' => '\App\Controllers\RegistrationController',
-    'method' => 'registerPost',
-], 'register-post');
-*/
+// $router->map('POST', '/register', [
+//     'controller' => '\App\Controllers\RegistrationController',
+//     'method' => 'registerPost',
+// ], 'register-post');
 
 /**
  * connection
@@ -70,6 +74,21 @@ $router->map('GET', '/anecdote/[i:id]', [
     'controller' => '\App\Controllers\AnecdoteController',
     'method' => 'read',
 ], 'anecdote-read');
+
+$router->map('GET', '/anecdote/random', [
+    'controller' => '\App\Controllers\AnecdoteController',
+    'method' => 'random',
+], 'anecdote-random');
+
+$router->map('GET', '/anecdote/best', [
+    'controller' => '\App\Controllers\AnecdoteController',
+    'method' => 'best',
+], 'anecdote-best');
+
+$router->map('GET', '/anecdote/best/[i:id]', [
+    'controller' => '\App\Controllers\AnecdoteController',
+    'method' => 'bestRead',
+], 'anecdote-best-read');
 
 /**
  * Category
@@ -215,10 +234,57 @@ $router->map('GET', '/api/anecdote', [
     'method' => 'browse',
 ], 'api-anecdote-browse');
 
+$router->map('GET', '/api/anecdote/page/[i:id]', [
+    'controller' => '\App\Controllers\api\AnecdoteController',
+    'method' => 'browsePage',
+], 'api-anecdote-browse-page');
+
+$router->map('GET', '/api/anecdote/page', [
+    'controller' => '\App\Controllers\api\AnecdoteController',
+    'method' => 'pageNumber',
+], 'api-anecdote-page-number');
+
 $router->map('GET', '/api/anecdote/[i:id]', [
     'controller' => '\App\Controllers\api\AnecdoteController',
     'method' => 'read',
 ], 'api-anecdote-read');
+
+$router->map('GET', '/api/anecdote/[i:id]/prev', [
+    'controller' => '\App\Controllers\api\AnecdoteController',
+    'method' => 'readPrevious',
+], 'api-anecdote-read-previous');
+
+$router->map('GET', '/api/anecdote/[i:id]/next', [
+    'controller' => '\App\Controllers\api\AnecdoteController',
+    'method' => 'readNext',
+], 'api-anecdote-read-next');
+
+$router->map('GET', '/api/anecdote/random', [
+    'controller' => '\App\Controllers\api\AnecdoteController',
+    'method' => 'random',
+], 'api-anecdote-random');
+
+$router->map('GET', '/api/anecdote/best', [
+    'controller' => '\App\Controllers\api\AnecdoteController',
+    'method' => 'best',
+], 'api-anecdote-best');
+
+$router->map('GET', '/api/anecdote/best/[i:id]', [
+    'controller' => '\App\Controllers\api\AnecdoteController',
+    'method' => 'bestRead',
+], 'api-anecdote-best-read');
+
+$router->map('GET', '/api/anecdote/best/[i:id]/prev', [
+    'controller' => '\App\Controllers\api\AnecdoteController',
+    'method' => 'bestPrevious',
+], 'api-anecdote-best-previous');
+
+$router->map('GET', '/api/anecdote/best/[i:id]/next', [
+    'controller' => '\App\Controllers\api\AnecdoteController',
+    'method' => 'bestNext',
+], 'api-anecdote-best-next');
+
+
 
 /**
  * Request category
@@ -232,6 +298,16 @@ $router->map('GET', '/api/category/[i:id]/anecdote', [
     'controller' => '\App\Controllers\api\CategoryController',
     'method' => 'browseAnecdotes',
 ], 'api-category-browse-anecdotes');
+
+$router->map('GET', '/api/category/[i:id]/anecdote/page/[i:idsecond]', [
+    'controller' => '\App\Controllers\api\CategoryController',
+    'method' => 'browsePage',
+], 'api-category-browse-anecdotes-page');
+
+$router->map('GET', '/api/category/[i:id]/anecdote/page', [
+    'controller' => '\App\Controllers\api\CategoryController',
+    'method' => 'pageNumber',
+], 'api-category-browse-anecdotes-page-number');
 
 
 /* -------------

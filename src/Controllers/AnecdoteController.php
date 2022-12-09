@@ -17,4 +17,25 @@ class AnecdoteController extends CoreController
             
         ]);
     }
+
+    public function random()
+    {
+        $this->show('anecdote/read', [
+            
+        ]);
+    }
+
+    public function best()
+    {
+        $this->show('anecdote/browse', [
+            
+        ]);
+    }
+
+    public function bestRead()
+    {
+        $this->show('anecdote/read', [
+            
+        ]);
+    }
 }

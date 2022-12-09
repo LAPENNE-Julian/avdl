@@ -9,11 +9,15 @@ class RegistrationController extends CoreController
 {
     public function register()
     {
+        //WIP
+        $this->show('error/worksite');
+
         //Create new user object
-        $this->show('registration/register', [
-            'user' => new User(),
-        ]);
-    }  
+        // $this->show('registration/register', [
+        //     'user' => new User(),
+        // ]);
+    } 
+     
     public function registerPost(){
 
         //Get input values

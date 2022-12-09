@@ -1,9 +1,11 @@
+        </main>
         <footer class="container-fluid bg-dark bottom">
             <div id="footer-inner">
                 <nav class="text-center text-white">
                     <ul class="list-inline">
                         <li class="list-inline-item"><a href="/">Home</a></li>
                         <!-- <li><a href="">Qui sommes-nous ?</a></li> -->
+                        <li class="list-inline-item"><a href="/api-documentation">Api Documentation</a></li>
                         <li class="list-inline-item"><a href="/contact">Contact</a></li>
                         <li class="list-inline-item"><a href="/mentions-legales">Mentions légales</a></li>
                     </ul>
@@ -23,6 +25,5 @@
         <script defer src="<?php $_SERVER['HTTP_HOST'] ?>/assets/js/components/categoriesList.js"></script>
         <script defer src="<?php $_SERVER['HTTP_HOST'] ?>/assets/js/components/anecdotesList.js"></script>
         <script defer src="<?php $_SERVER['HTTP_HOST'] ?>/assets/js/components/anecdote.js"></script>
-
     </body>
 </html>
