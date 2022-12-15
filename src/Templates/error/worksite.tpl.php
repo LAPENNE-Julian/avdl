@@ -5,7 +5,7 @@
         
         <div id="worksite-item-content">
             
-            <img src="<?php $_SERVER['HTTP_HOST'] ?>/assets/css/images/worksite.jpg" alt="worksite.jpg">
+            <img src="<?php $_SERVER['HTTP_HOST'] ?>/css/images/worksite.jpg" alt="worksite.jpg">
            
             <div id="worksite-item-data">
                 
