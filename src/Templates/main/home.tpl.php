@@ -5,8 +5,8 @@
 
         <div id="homePage-item-content">
 
-            <img src="<?php $_SERVER['HTTP_HOST'] ?>/assets/css/images/qcolor.jpg" alt="qcolor.jpg">
-
+            <img src="<?php $_SERVER['HTTP_HOST'] ?>/images/qcolor.jpg" alt="qcolor.jpg">
+          
             <div id="homePage-item-data">
 
                 <p>La culture générale est une valeur sûre dans une conversation mais aujourd'hui tout va de plus en plus vite. Les modes de communication entre individus se sont drastiquement multipliés et sont devenus de plus en plus concis.</p>

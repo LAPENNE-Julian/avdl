@@ -21,9 +21,9 @@
             integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
         </script>
 
-        <script defer src="<?php $_SERVER['HTTP_HOST'] ?>/assets/js/app.js"></script>
-        <script defer src="<?php $_SERVER['HTTP_HOST'] ?>/assets/js/components/categoriesList.js"></script>
-        <script defer src="<?php $_SERVER['HTTP_HOST'] ?>/assets/js/components/anecdotesList.js"></script>
-        <script defer src="<?php $_SERVER['HTTP_HOST'] ?>/assets/js/components/anecdote.js"></script>
+        <script defer src="<?php  ?>/js/app.js"></script>
+        <script defer src="<?php $_SERVER['HTTP_HOST'] ?>/js/components/categoriesList.js"></script>
+        <script defer src="<?php $_SERVER['HTTP_HOST'] ?>/js/components/anecdotesList.js"></script>
+        <script defer src="<?php $_SERVER['HTTP_HOST'] ?>/js/components/anecdote.js"></script>
     </body>
 </html>

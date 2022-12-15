@@ -34,7 +34,7 @@ class RegistrationController extends CoreController
         $user->setRoles(1);
 
         //Set Image default
-        $user->setImg('http://' . $_SERVER['HTTP_HOST'] . '/assets/uploads/default-avatar.jpg');
+        $user->setImg('http://' . $_SERVER['HTTP_HOST'] . '/uploads/default-avatar.jpg');
 
 
         //Clear datas html entities
