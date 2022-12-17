@@ -28,6 +28,22 @@ CREATE TABLE IF NOT EXISTS `user` (
 PRIMARY KEY (`id`),
 UNIQUE INDEX (`pseudo`, `email`))
 ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `category`
+-- -----------------------------------------------------
+
+CREATE TABLE `category` (
+`id` INT UNSIGNED NOT NULL AUTO_INCREMENT,  
+`name` VARCHAR(255) NOT NULL, 
+`color` VARCHAR(255) DEFAULT NULL, 
+`img` VARCHAR(255) NULL,  
+`created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+`updated_at` DATETIME DEFAULT NULL,
+`slug` VARCHAR(255) NOT NULL,
+PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
 -- -----------------------------------------------------
 -- Table `anecdote`
 -- -----------------------------------------------------
@@ -57,20 +73,6 @@ FOREIGN KEY (`category_2`) REFERENCES `category`(`id`) ON DELETE SET NULL ON UPD
 
 INDEX `fk_anecdote_category_3` (`category_3`),
 FOREIGN KEY (`category_3`) REFERENCES `category`(`id`) ON DELETE SET NULL ON UPDATE CASCADE)
-ENGINE = InnoDB;
--- -----------------------------------------------------
--- Table `category`
--- -----------------------------------------------------
-
-CREATE TABLE `category` (
-`id` INT UNSIGNED NOT NULL AUTO_INCREMENT,  
-`name` VARCHAR(255) NOT NULL, 
-`color` VARCHAR(255) DEFAULT NULL, 
-`img` VARCHAR(255) NULL,  
-`created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 
-`updated_at` DATETIME DEFAULT NULL,
-`slug` VARCHAR(255) NOT NULL,
-PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------

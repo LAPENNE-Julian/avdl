@@ -334,8 +334,8 @@ class UserController extends RegistrationController
         //get http host
         $server = $_SERVER['HTTP_HOST'];
         //set the url of the user image
-        //default avatar -> '/assets/uploads/default-avatar.jpg'
-        $userImageUrl = 'http://' . $server . '/assets/uploads' . '/' . $imgName . '.' . $imgType;
+        //default avatar -> '/uploads/default-avatar.jpg'
+        $userImageUrl = 'http://' . $server . '/uploads' . '/' . $imgName . '.' . $imgType;
 
         return $userImageUrl;
     }
