@@ -8,4 +8,3 @@ RewriteCond %{REQUEST_FILENAME} !-f
 # redirect every request to index.php
 # and give the relative URL in "_url" GET param
 RewriteRule ^(.*)$ index.php [QSA,L]
-
