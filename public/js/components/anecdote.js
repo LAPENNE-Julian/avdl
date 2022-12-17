@@ -241,7 +241,7 @@ const anecdote = {
 
       //Select a element <a href="/category/id">
       const categoryLink = anecdoteReadElement.querySelector("#label-category-1 a");
-      categoryLink.setAttribute("href", "/categorie/" + categoryId1);
+      categoryLink.setAttribute("href", "/category/" + categoryId1);
       categoryLink.textContent = categoryName1;
     }
 
@@ -252,7 +252,7 @@ const anecdote = {
 
       //Select a element <a href="/category/id">
       const categoryLink2 = anecdoteReadElement.querySelector("#label-category-2 a");
-      categoryLink2.setAttribute("href", "/categorie/" + categoryId2);
+      categoryLink2.setAttribute("href", "/category/" + categoryId2);
       categoryLink2.textContent = categoryName2;
     }
 
@@ -263,7 +263,7 @@ const anecdote = {
 
       //Select a element <a href="/category/id">
       const categoryLink3 = anecdoteReadElement.querySelector("#label-category-3 a");
-      categoryLink3.setAttribute("href", "/categorie/" + categoryId3);
+      categoryLink3.setAttribute("href", "/category/" + categoryId3);
       categoryLink3.textContent = categoryName3;
     }
     

@@ -98,7 +98,7 @@ $router->map('GET', '/categories', [
     'method' => 'browse',
 ], 'category-browse');
 
-$router->map('GET', '/categorie/[i:id]', [
+$router->map('GET', '/category/[i:id]', [
     'controller' => '\App\Controllers\CategoryController',
     'method' => 'browseAnecdote',
 ], 'category-browse-anecdote');
