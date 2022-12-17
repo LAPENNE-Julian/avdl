@@ -13,11 +13,11 @@
                
                 <p>Il est reconnu depuis longtemps que seuls vingt pourcents de ce que l'on communique vont être retenus.</p>
                 
-                <p><span class="label-bold label-dark-blue">Avez-vous déjà lu..?</span> est une application simple et facile à utiliser dont le contenu est axé sur la culture générale par le biais d'anecdotes.</p>
+                <p><span class="label-bold label-dark-blue">Avez-vous déjà lu ..?</span> est une application simple et facile à utiliser dont le contenu est axé sur la culture générale par le biais d'anecdotes.</p>
 
                 <hr>
 
-                <p><span class="label-bold label-dark-blue">Avez-vous déjà lu..?</span> est aussi une Api permettant de découvrir des anecdotes.</p>
+                <p><span class="label-bold label-dark-blue">Avez-vous déjà lu ..?</span> est aussi une Api permettant de découvrir des anecdotes.</p>
 
                 <p>Utilisez la <span class="label-bold label-dark-blue"><a href="/api-documentation">Documentation</a></span></p>
                 

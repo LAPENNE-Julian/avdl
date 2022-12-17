@@ -1,6 +1,6 @@
-# Avez-vous déjà lu..?
+# Avez-vous déjà lu ..?
 
-Whether for people already cultured or not, "Avez-vous déjà lu..?" project is an application simple and easy to use whose content is focused on general culture through anecdotes.
+Whether for people already cultured or not, "Avez-vous déjà lu ..?" project is an application simple and easy to use whose content is focused on general culture through anecdotes.
 The project responds to the user's need to diversify its content in terms of general culture through short and playful references.
 
 ## Rendering examples

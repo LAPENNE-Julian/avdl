@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avez-vous déjà lu..? 2.0</title>
+    <title>Avez-vous déjà lu ..? 2.0</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!--avdl logo font--> 
@@ -40,7 +40,7 @@
                             <a class="nav-link" href="/anecdote">Anecdotes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/category">Catégories</a>
+                            <a class="nav-link" href="/categories">Catégories</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/anecdote/random">Hasard</a>
