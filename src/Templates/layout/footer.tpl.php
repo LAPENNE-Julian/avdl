@@ -12,7 +12,7 @@
                 </nav>
 
                 <div id="footer-copyright" class="text-center text-white">
-                    <p>2022 &copy; Avez-vous déjà lu..? - all rights reserved</p>
+                    <p>2022 &copy; Avez-vous déjà lu ..? - all rights reserved</p>
                 </div>
             </div>
         </footer>
