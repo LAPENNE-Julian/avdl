@@ -5,7 +5,7 @@
         
         <div id="error403-item-content">
             
-            <img src="<?php $_SERVER['HTTP_HOST'] ?>/css/images/403.jpg" alt="403.jpg">
+            <img src="<?php $_SERVER['HTTP_HOST'] ?>/images/403.jpg" alt="403.jpg">
            
             <div id="error403-item-data">
                 

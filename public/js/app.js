@@ -75,7 +75,7 @@ const app = {
 
       //Create img element
       const img = document.createElement("img");
-      img.setAttribute("src", app.rootUrl + "/assets/css/images/404.jpg");
+      img.setAttribute("src", app.rootUrl + "/images/404.jpg");
       img.setAttribute("alt", "404.jpg");
       //Insert img element in div element <div id="error404-item-content">
       divErrorItemContent.prepend(img);
