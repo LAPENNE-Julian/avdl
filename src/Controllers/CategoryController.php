@@ -17,4 +17,11 @@ class CategoryController extends CoreController
             
         ]);
     }
+
+    public function anecdoteRead()
+    {
+        $this->show('anecdote/read', [
+            
+        ]);
+    }
 }

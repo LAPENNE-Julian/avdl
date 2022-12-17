@@ -1,6 +1,6 @@
 const anecdotesList = {
 
-  init: function(pathName) {
+  init: function(pathName, pathNameFirst, pathNameSecond, pathNameThird) {
 
     console.log("anecdotesList.init() appelé");
 
@@ -25,6 +25,26 @@ const anecdotesList = {
       const arrowNavigation = document.querySelector("#arrow-navigation");
       //Remove navigation in the view
       arrowNavigation.remove();
+    }
+
+    if(pathNameFirst === "categorie" && pathNameThird === "anecdote"){
+
+      //If pathName of the url is "/categorie/[i:id]/anecdote"
+      let categoryId = pathNameSecond;
+
+      //Select span element <span id="categoryId-browse-anecdotes">0</span>
+      const spanElement = document.querySelector("#categoryId-browse-anecdotes");
+      //Set span Element with categoryId in URL
+      spanElement.textContent = categoryId;
+
+      //categoriesList.bindAllAnecdotes(categoryId);
+      categoriesList.bindAnecdotesCategoryFirstPage(categoryId);
+
+      //Get total anecdotes pages number
+      categoriesList.bindTotalPages(categoryId);
+
+      //Display arrow navigation in view
+      anecdotesList.displayArrowNavigation();
     }
   },
 
@@ -267,6 +287,11 @@ const anecdotesList = {
     anecdoteLink.setAttribute("href", "/anecdote/" + id);
     anecdoteLink.setAttribute("id", "anecdote-browse-link-read")
     anecdoteLink.textContent = "Lire la suite";
+
+    //If request option === /anecdote/best
+    if(requestOption !== "/anecdote/best" && requestOption !== "/anecdote"){
+      anecdoteLink.setAttribute("href", "/categorie/" + categoryId1 + "/anecdote/" + id);
+    }
 
     //If request option === /anecdote/best
     if(requestOption === "/anecdote/best"){

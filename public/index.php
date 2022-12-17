@@ -103,6 +103,11 @@ $router->map('GET', '/categorie/[i:id]', [
     'method' => 'browseAnecdote',
 ], 'category-browse-anecdote');
 
+$router->map('GET', '/categorie/[i:id]/anecdote', [
+    'controller' => '\App\Controllers\CategoryController',
+    'method' => 'anecdoteRead',
+], 'category-anecdote-read');
+
 /* -------------
 --- BACKOFFICE ---
 --------------*/

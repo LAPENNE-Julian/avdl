@@ -11,7 +11,7 @@ const app = {
 
     //Scripts
     categoriesList.init(app.pathName, splitPathName[1], splitPathName[2], splitPathName[3]);
-    anecdotesList.init(app.pathName);
+    anecdotesList.init(app.pathName, splitPathName[1], splitPathName[2], splitPathName[3]);
     anecdote.init(app.pathName, splitPathName[1], splitPathName[2], splitPathName[3]);
 
     //Remove errorMessage if script loaded
