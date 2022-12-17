@@ -237,7 +237,7 @@ const anecdotesList = {
         
         //Create a element <a href="/category/id">
         const categoryLink = document.createElement("a");
-        categoryLink.setAttribute("href", "/categorie/" + category.categoryId);
+        categoryLink.setAttribute("href", "/category/" + category.categoryId);
         categoryLink.textContent = category.categoryName;
       
         //Add element <a> in element <span>

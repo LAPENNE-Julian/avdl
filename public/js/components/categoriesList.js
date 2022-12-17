@@ -10,7 +10,7 @@ const categoriesList = {
       categoriesList.bindAllCategories();
     }
 
-    if(pathNameFirst === "categorie"){
+    if(pathNameFirst === "category"){
 
       //If pathName of the url is "/categorie/[i:id]"
       let categoryId = pathNameSecond;
@@ -105,7 +105,7 @@ const categoriesList = {
     const linkElement = document.createElement("a");
     linkElement.setAttribute("title", "category");
     linkElement.setAttribute("alt", "category");
-    linkElement.setAttribute("href", "/categorie/" + id);
+    linkElement.setAttribute("href", "/category/" + id);
     linkElement.classList.add("category-browse-item-a");
 
     //Set text content with category name
