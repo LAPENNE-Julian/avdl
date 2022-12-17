@@ -4,15 +4,15 @@ const categoriesList = {
 
     console.log("categoriesList.init() appelé");
 
-    if(pathName === "/category"){
+    if(pathName === "/categories"){
 
       //If pathName of the url is "/category"
       categoriesList.bindAllCategories();
     }
 
-    if(pathNameFirst === "category" && pathNameThird === "anecdote"){
+    if(pathNameFirst === "categorie"){
 
-      //If pathName of the url is "/category/[i:id]/anecdote"
+      //If pathName of the url is "/categorie/[i:id]"
       let categoryId = pathNameSecond;
 
       //Select span element <span id="categoryId-browse-anecdotes">0</span>
@@ -105,7 +105,7 @@ const categoriesList = {
     const linkElement = document.createElement("a");
     linkElement.setAttribute("title", "category");
     linkElement.setAttribute("alt", "category");
-    linkElement.setAttribute("href", "/category/" + id + "/anecdote");
+    linkElement.setAttribute("href", "/categorie/" + id);
     linkElement.classList.add("category-browse-item-a");
 
     //Set text content with category name

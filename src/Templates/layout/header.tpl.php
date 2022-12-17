@@ -40,7 +40,7 @@
                             <a class="nav-link" href="/anecdote">Anecdotes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/category">Catégories</a>
+                            <a class="nav-link" href="/categories">Catégories</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/anecdote/random">Hasard</a>
