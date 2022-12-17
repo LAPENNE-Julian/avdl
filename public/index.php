@@ -93,15 +93,20 @@ $router->map('GET', '/anecdote/best/[i:id]', [
 /**
  * Category
  */
-$router->map('GET', '/category', [
+$router->map('GET', '/categories', [
     'controller' => '\App\Controllers\CategoryController',
     'method' => 'browse',
 ], 'category-browse');
 
-$router->map('GET', '/category/[i:id]/anecdote', [
+$router->map('GET', '/categorie/[i:id]', [
     'controller' => '\App\Controllers\CategoryController',
     'method' => 'browseAnecdote',
 ], 'category-browse-anecdote');
+
+$router->map('GET', '/categorie/[i:id]/anecdote', [
+    'controller' => '\App\Controllers\CategoryController',
+    'method' => 'anecdoteRead',
+], 'category-anecdote-read');
 
 /* -------------
 --- BACKOFFICE ---

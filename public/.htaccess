@@ -1,10 +1,11 @@
 RewriteEngine On
 
-# redirect every request to index.php
-# and give the relative URL in "_url" GET param
-RewriteRule ^(.*)$ index.php [QSA,L]
-
 # add condition if request is not directory or files
 # check if directory of files exist
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
+
+# redirect every request to index.php
+# and give the relative URL in "_url" GET param
+RewriteRule ^(.*)$ index.php [QSA,L]
+
