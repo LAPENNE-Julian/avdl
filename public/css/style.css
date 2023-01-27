@@ -547,7 +547,7 @@ api-documentation*/
     background-color: white;
     padding: 2% 12% 12%;
     border-bottom: medium solid gray;
-    margin-bottom: 5%;
+    margin-bottom: 15%;
 }
 
 #backoffice-anecdote-header, 
@@ -905,7 +905,7 @@ textarea {
 
     /*--backoffice--*/
     .backoffice {
-        margin-bottom: 30%;
+        margin-bottom: 40%;
     }
 }
 
@@ -925,7 +925,7 @@ textarea {
 
     /*--backoffice--*/
     .backoffice {
-        margin-bottom: 15%;
+        margin-bottom: 30%;
     }
 }
 
