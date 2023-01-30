@@ -78,6 +78,7 @@ h2 {
 
 /*footer*/
 footer ul {
+    
     list-style:none;
     padding: 1%;
     font-size:inherit;
@@ -204,6 +205,10 @@ footer ul a:hover {
 }
 
 /*login-form and register-form*/
+#form-login {
+    height: 100vh;
+}
+
 #form-login-inner,
 #form-register-inner {
     padding: 0% 15%;
