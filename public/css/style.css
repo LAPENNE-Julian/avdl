@@ -917,6 +917,15 @@ textarea {
         box-shadow: 35px -20px #33b5e5;
     }
 
+    /*contact*/
+    #contact-name,
+    #contact-email,
+    #contact-message,
+    #contact textarea,
+    .row-border {
+        width: 90%;
+    }
+
     /*category-browse*/
     #category-browse-inner {
         display: flex;
