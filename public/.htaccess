@@ -1,7 +1,7 @@
 RewriteEngine On
 
-RewriteCond %{HTTPS} off
-RewriteRule (.*) https://avdl.app [R=301,L]
+# RewriteCond %{HTTPS} off
+# RewriteRule (.*) https://avdl.app [R=301,L]
 
 # add condition if request is not directory or files
 # check if directory of files exist
