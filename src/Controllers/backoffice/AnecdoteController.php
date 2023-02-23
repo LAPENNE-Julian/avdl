@@ -213,8 +213,8 @@ class AnecdoteController extends CoreController
             if($clearCategory1 == false ){
 
                 //Post error message in the view and redirection to edit form
-                // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/edit/'. $anecdote->getId());
-                $this->redirectionWithMessage('backoffice/anecdote/add/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
+                // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/add/');
+                $this->redirectionWithMessage('backoffice/anecdote/add/', 'errorMessage', 'Please choose 3 differents categories or null');
             
             } else {
 
@@ -235,8 +235,8 @@ class AnecdoteController extends CoreController
             if($clearCategory2 == false ){
 
                 //Post error message in the view and redirection to edit form
-                // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/edit/'. $anecdote->getId());
-                $this->redirectionWithMessage('backoffice/anecdote/add/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
+                // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/add/');
+                $this->redirectionWithMessage('backoffice/anecdote/add/', 'errorMessage', 'Please choose 3 differents categories or null');
             
             } else {
 
@@ -258,8 +258,8 @@ class AnecdoteController extends CoreController
             if($clearCategory3 == false ){
 
                 //Post error message in the view and redirection to edit form
-                // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/edit/'. $anecdote->getId());
-                $this->redirectionWithMessage('backoffice/anecdote/add/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
+                // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/add/');
+                $this->redirectionWithMessage('backoffice/anecdote/add/', 'errorMessage', 'Please choose 3 differents categories or null');
             
             } else {
 
@@ -317,11 +317,6 @@ class AnecdoteController extends CoreController
 
         if ($categoryIsInteger == true) {
 
-            $categories = Category::findall();
-            $arraylength = count($categories) - 1;
-
-            if ($categoryValue != 0 && $categoryValue <= $arraylength) {
-                
                 $category = Category::find($categoryValue);
 
                 if (!empty($category) || $category != null || $category != false) {
@@ -332,10 +327,7 @@ class AnecdoteController extends CoreController
 
                     return false;
                 }
-            } else {
-
-                return false;
-            }
+            
         } else {
 
             return false;
