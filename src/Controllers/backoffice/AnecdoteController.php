@@ -80,7 +80,9 @@ class AnecdoteController extends CoreController
         //Check categories are unique
         $categories = $this->checkUniqueCategoryValue($category1, $category2, $category3);
 
-        extract($categories);
+        $c1 = $categories['c1'];
+        $c2 = $categories['c2'];
+        $c3 = $categories['c3'];
 
         //Set Category1
         if($c1 == 0){
@@ -89,16 +91,13 @@ class AnecdoteController extends CoreController
 
         } else {
 
-            $clearCategory1 = $this->clearCategoryData($c1);
+            $clearCategory1 = $this->checkCategoryIdExist($c1);
 
             if($clearCategory1 == false ){
+                //Set category
+                $anecdote->setCategory1(null);
 
-                //Post error message in the view and redirection to edit form
-                // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/edit/'. $anecdote->getId());
-                $this->redirectionWithMessage('backoffice/anecdote/edit/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
-            
             } else {
-
                 $anecdote->setCategory1($c1);
 
             }
@@ -111,16 +110,13 @@ class AnecdoteController extends CoreController
 
         } else {
 
-            $clearCategory2 = $this->clearCategoryData($c2);
+            $clearCategory2 = $this->checkCategoryIdExist($c2);
 
             if($clearCategory2 == false ){
+                //Set category
+                $anecdote->setCategory2(null);
 
-                //Post error message in the view and redirection to edit form
-                // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/edit/'. $anecdote->getId());
-                $this->redirectionWithMessage('backoffice/anecdote/edit/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
-            
             } else {
-
                 $anecdote->setCategory2($c2);
 
             }
@@ -134,16 +130,13 @@ class AnecdoteController extends CoreController
 
         } else {
 
-            $clearCategory3 = $this->clearCategoryData($c3);
+            $clearCategory3 = $this->checkCategoryIdExist($c3);
 
             if($clearCategory3 == false ){
+                //Set category
+                $anecdote->setCategory3(null);
 
-                //Post error message in the view and redirection to edit form
-                // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/edit/'. $anecdote->getId());
-                $this->redirectionWithMessage('backoffice/anecdote/edit/'. $anecdote->getId(), 'errorMessage', 'Please choose 3 differents categories or null');
-            
             } else {
-
                 $anecdote->setCategory3($c3);
 
             }
@@ -199,7 +192,9 @@ class AnecdoteController extends CoreController
         //Check categories are unique
         $categories = $this->checkUniqueCategoryValue($category1, $category2, $category3);
 
-        extract($categories);
+        $c1 = $categories['c1'];
+        $c2 = $categories['c2'];
+        $c3 = $categories['c3'];
 
         //Set Category1
         if($c1 == 0){
@@ -208,16 +203,13 @@ class AnecdoteController extends CoreController
 
         } else {
 
-            $clearCategory1 = $this->clearCategoryData($c1);
+            $clearCategory1 = $this->checkCategoryIdExist($c1);
 
             if($clearCategory1 == false ){
+                //Set category
+                $anecdote->setCategory1(null);
 
-                //Post error message in the view and redirection to edit form
-                // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/add/');
-                $this->redirectionWithMessage('backoffice/anecdote/add/', 'errorMessage', 'Please choose 3 differents categories or null');
-            
             } else {
-
                 $anecdote->setCategory1($c1);
 
             }
@@ -230,16 +222,13 @@ class AnecdoteController extends CoreController
 
         } else {
 
-            $clearCategory2 = $this->clearCategoryData($c2);
+            $clearCategory2 = $this->checkCategoryIdExist($c2);
 
             if($clearCategory2 == false ){
+                //Set category
+                $anecdote->setCategory2(null);
 
-                //Post error message in the view and redirection to edit form
-                // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/add/');
-                $this->redirectionWithMessage('backoffice/anecdote/add/', 'errorMessage', 'Please choose 3 differents categories or null');
-            
             } else {
-
                 $anecdote->setCategory2($c2);
 
             }
@@ -253,16 +242,13 @@ class AnecdoteController extends CoreController
 
         } else {
 
-            $clearCategory3 = $this->ClearCategoryData($c3);
+            $clearCategory3 = $this->checkCategoryIdExist($c3);
 
             if($clearCategory3 == false ){
+                //Set category
+                $anecdote->setCategory3(null);
 
-                //Post error message in the view and redirection to edit form
-                // header('Location: '. $_SERVER['HTTP_ORIGIN'] . '/backoffice/anecdote/add/');
-                $this->redirectionWithMessage('backoffice/anecdote/add/', 'errorMessage', 'Please choose 3 differents categories or null');
-            
             } else {
-
                 $anecdote->setCategory3($c3);
 
             }
@@ -305,29 +291,18 @@ class AnecdoteController extends CoreController
     }
 
     /**
-     * Clear category value
-     *
-     * @param int|null|string $categoryValue
-     * @return null|bool
-     */
-    protected function clearCategoryData($categoryValue){
+    * Check category id in database
+    *
+    * @param int|string $categoryValue
+    */
+    protected function checkCategoryIdExist($categoryId){
 
-        //Check if category value is an integer
-        $categoryIsInteger = is_numeric($categoryValue);
+        $category = Category::find($categoryId);
 
-        if ($categoryIsInteger == true) {
+        if (!empty($category) || $category != null || $category != false) {
 
-                $category = Category::find($categoryValue);
+            return true;
 
-                if (!empty($category) || $category != null || $category != false) {
-
-                    return $category->getId();
-
-                } else {
-
-                    return false;
-                }
-            
         } else {
 
             return false;
@@ -363,7 +338,7 @@ class AnecdoteController extends CoreController
             $category3 = 0;
         }
 
-        //Default categories arrayto return
+        //Default categories array to return
         $array = [
             'c1' => $category1,
             'c2' => $category2,
@@ -374,7 +349,7 @@ class AnecdoteController extends CoreController
         if ($category1 == 0 && $category2 == 0 && $category3 !== 0){
 
             //Default categories array change
-            $array = [
+            return $array = [
                 'c1' => $category3,
                 'c2' => $category1,
                 'c3' => $category2,
@@ -385,7 +360,7 @@ class AnecdoteController extends CoreController
         if ($category1 == 0 && $category2 !== 0 && $category3 == 0){
 
             //Default categories array change
-            $array = [
+            return $array = [
                 'c1' => $category2,
                 'c2' => $category1,
                 'c3' => $category3,
@@ -396,7 +371,7 @@ class AnecdoteController extends CoreController
         if ($category1 !== 0 && $category2 == 0 && $category3 !== 0){
 
             //Default categories array change
-            $array = [
+            return $array = [
                 'c1' => $category1,
                 'c2' => $category3,
                 'c3' => $category2,
@@ -407,7 +382,7 @@ class AnecdoteController extends CoreController
         if ($category1 == 0 && $category2 !== 0 && $category3 !== 0){
 
             //Default categories array change
-            $array = [
+            return $array = [
                 'c1' => $category2,
                 'c2' => $category3,
                 'c3' => $category1,
